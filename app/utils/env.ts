@@ -3,6 +3,7 @@ const API_KEY = import.meta.env.VITE_API_KEY as string
 const VITE_IMG_PREFIX = import.meta.env.VITE_IMG_PREFIX as string
 const VITE_UMAMI_SRC = import.meta.env.VITE_UMAMI_SRC as string
 const VITE_UMAMI_ID = import.meta.env.VITE_UMAMI_ID as string
+const VITE_UMAMI_DOMAIN = import.meta.env.VITE_UMAMI_DOMAIN as string
 
 export {
   API_URL,
@@ -10,4 +11,5 @@ export {
   VITE_IMG_PREFIX,
   VITE_UMAMI_SRC,
   VITE_UMAMI_ID,
+  VITE_UMAMI_DOMAIN,
 }

@@ -29,7 +29,7 @@ import { getLocalString } from '~/i18n';
 import "~/tailwind.css";
 import themeObject, { cssVariableResolver } from '~/theme/mantine';
 import { PreferenceConfig } from "~/types";
-import { VITE_UMAMI_ID, VITE_UMAMI_SRC } from './utils/env';
+import { VITE_UMAMI_DOMAIN, VITE_UMAMI_ID, VITE_UMAMI_SRC } from '~/utils/env';
 
 export const meta: MetaFunction = () => {
   const title = getLocalString("meta-name")
@@ -79,6 +79,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           nonce="Gssv/TOwbkAUpOWyoftzJg=="
           src={VITE_UMAMI_SRC}
           data-website-id={VITE_UMAMI_ID}
+          data-domains={VITE_UMAMI_DOMAIN}
         />
       </head>
       <body>
