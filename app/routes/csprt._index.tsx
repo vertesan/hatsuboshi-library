@@ -49,7 +49,7 @@ export default function Csprt() {
   return (
     <>
       <div className="p-4 flex relative">
-        <div className="flex-[1_0_100%] sm:flex-[1_0_27rem] xl:pr-[476px]">
+        <div className="flex-[1_0_100%] sm:flex-[1_0_27rem] xl:pr-4">
           <Pagination value={activePage} onChange={setPage}
             total={(filteredCards.length - 1) / 10 + 1} siblings={1}
             className={`pb-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
@@ -82,9 +82,9 @@ export default function Csprt() {
           />
         </div>
         <div
-          className={`fixed z-[102] px-2 pb-24 top-2 left-0 right-0 h-screen w-screen overflow-x-hidden overflow-y-auto
+          className={`fixed xl:static z-[102] px-2 pb-24 top-2 left-0 right-0 h-screen w-screen overflow-x-hidden overflow-y-auto
             bg-[--mantine-color-body] ${opened ? "" : "translate-x-full"} sm:z-[111]
-            xl:top-auto xl:left-auto xl:z-[100] xl:flex-none xl:w-[460px] xl:block xl:translate-x-0
+            xl:top-auto xl:left-auto xl:z-[100] xl:flex-none xl:w-[460px] xl:block xl:translate-x-0 xl:h-auto
             transition-transform duration-150 ease-in-out`
           }
         >
