@@ -56,7 +56,6 @@ export function HydrateFallback() {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  console.log("rendering root")
   const { i18n } = useTranslation()
   const [prefConfig, setPrefConfig] = useLocalStorage<PreferenceConfig>({
     key: preferenceKey,
@@ -111,7 +110,6 @@ export async function clientLoader({
 }
 
 export default function App() {
-  console.log("rendering app")
   const [opened, { toggle, close }] = useDisclosure(false)
   // const pinned = useHeadroom({ fixedAt: 120 })
   const { t } = useTranslation()

@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 const middleAnchor = 90
 
 export default function NavigationBar() {
-  console.log("rendering navigation bar")
   const [progress, setProgress] = useState({ value: 0, visible: false })
   const state = useNavigation().state
 
