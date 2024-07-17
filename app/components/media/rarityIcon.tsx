@@ -27,7 +27,7 @@ function _RarityIcon({
     default: break
   }
   return (
-    <div className={`${className} overflow-hidden`}>
+    <div className={`${className} aspect-video overflow-hidden`}>
       <img
         src={assetPath}
         alt={assetPath}

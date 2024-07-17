@@ -53,7 +53,7 @@ export function CsprtImage({
           <p className="absolute right-2 top-2 text-lg font-black text-white text-outline-black dark:text-white dark:text-outline-black">
             {card.name}
           </p>
-          <div className="absolute bottom-0 right-0 mb-2 mr-2 h-[24%] flex flex-row gap-1 items-end">
+          <div className="absolute bottom-2 right-2 h-[24%] w-[37%] flex flex-row gap-1 items-end">
             {
               produceItem
                 ? <ProduceItemIcon

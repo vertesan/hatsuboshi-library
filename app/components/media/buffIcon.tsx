@@ -13,10 +13,8 @@ function _ExamEffectIcon({
   const iconImg = getExamEffectImgUrl(effectType)
   return (
     <div className={`relative aspect-square overflow-visible ${className}`}>
-      <img src={bgImg} alt={bgImg} className="object-fill absolute inset-0" />
-      <div className="absolute inset-0 h-full w-full flex items-center justify-center">
-        <img src={iconImg} alt={iconImg} className="object-fill h-[80%] w-[80%]" />
-      </div>
+      <img src={bgImg} alt={bgImg} className="object-contain absolute inset-0" />
+      <img src={iconImg} alt={iconImg} className="object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[80%] w-[80%]" />
     </div>
   )
 }

@@ -41,15 +41,15 @@ export function CidolImage({
       />
       {showIcons
         ? <>
-          <div className="absolute left-2 top-2 gap-2 flex flex-col h-[30%] justify-start content-center">
+          <div className="absolute left-2 top-2 gap-2 flex flex-col h-[30%] aspect-[1/3] justify-start content-center">
             <PlanIcon planType={card.planType} className="h-1/3" />
             <ExamEffectIcon effectType={card.examEffectType} className="h-1/3" />
           </div>
 
-          <div className="h-[10%] absolute left-2 bottom-2 flex flex-row gap-2">
+          <div className="h-[10%] w-[32%] min-w-0 absolute left-2 bottom-2 flex flex-row gap-2">
             <RarityIcon rarity={card.rarity} className="h-full flex-none" />
           </div>
-          <div className="absolute bottom-2 right-2 h-[8%] flex flex-row gap-1">
+          <div className="absolute bottom-2 right-2 h-[8%] w-[52%] grid grid-cols-2 gap-1">
             <LimitIcon limitLevel={limitLevel ?? 0} />
             <PotentialIcon potentialLevel={potentialLevel ?? 0} />
           </div>

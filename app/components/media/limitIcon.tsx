@@ -12,16 +12,16 @@ function _LimitIcon({
   className?: string,
 }) {
   return (
-    <div className={`${className} h-full w-full overflow-hidden flex flex-row justify-center items-center`}>
+    <div className={`${className} min-h-0 min-w-0 w-full h-full flex justify-center items-center`}>
       <img
         src={limitIcon}
         alt="limit icon"
-        className="object-contain max-w-full max-h-full"
+        className="object-contain min-w-0 min-h-0 max-w-full max-h-full"
       />
       <img
         src={numberMap[limitLevel]}
         alt="limit level"
-        className="object-contain max-w-full max-h-full"
+        className="object-contain min-w-0 min-h-0 max-w-full max-h-full"
       />
     </div>
   )
