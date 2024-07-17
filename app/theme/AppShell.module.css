@@ -1,0 +1,7 @@
+.root {
+  --app-shell-border-color: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-6));
+}
+
+.navbar {
+  /* background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8)); */
+}

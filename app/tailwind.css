@@ -1,3 +1,34 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer tailwind-base, mantine, tailwind-utilities;
+
+@import '@mantine/core/styles.css' layer(mantine);
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
+@layer utilities {
+  .text-outline-black {
+    -webkit-text-stroke: 0.8px #333;
+  }
+
+  .text-outline-white {
+    -webkit-text-stroke: 0.8px #ccc;
+  }
+
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    /* IE and Edge */
+    -ms-overflow-style: none;
+    /* Firefox */
+    scrollbar-width: none;
+  }
+}

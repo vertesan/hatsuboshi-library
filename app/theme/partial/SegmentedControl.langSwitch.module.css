@@ -1,0 +1,10 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.control {
+  .root[data-with-items-borders] :where(&)::before {
+    width: 0px;
+  }
+}

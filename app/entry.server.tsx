@@ -6,13 +6,43 @@
 
 import { PassThrough } from "node:stream";
 
-import type { AppLoadContext, EntryContext } from "@remix-run/node";
+import type { ActionFunctionArgs, AppLoadContext, EntryContext, LoaderFunctionArgs } from "@remix-run/node";
 import { createReadableStreamFromReadable } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
 
 const ABORT_DELAY = 5_000;
+
+const exceptions: string[] = [
+]
+
+// handle 'loader' and 'action' requests
+export function handleDataRequest(
+  response: Response,
+  {
+    request,
+    params,
+    context,
+  }: LoaderFunctionArgs | ActionFunctionArgs
+) {
+  const url = new URL(request.url)
+  if (
+    request.method.toUpperCase() === "GET" &&
+    !exceptions.includes(url.pathname)
+  ) {
+    response.headers.set('CDN-Cache-Control', 'public, max-age=600, stale-while-revalidate=1800')
+    response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate')
+    if (
+      !!request.headers.get("If-None-Match") &&
+      !!response.headers.get("ETag") &&
+      request.headers.get("If-None-Match") === response.headers.get("ETag")
+    ) {
+      return new Response("", { status: 304, headers: response.headers });
+    }
+  }
+  return response
+}
 
 export default function handleRequest(
   request: Request,
@@ -26,17 +56,17 @@ export default function handleRequest(
 ) {
   return isbot(request.headers.get("user-agent") || "")
     ? handleBotRequest(
-        request,
-        responseStatusCode,
-        responseHeaders,
-        remixContext
-      )
+      request,
+      responseStatusCode,
+      responseHeaders,
+      remixContext
+    )
     : handleBrowserRequest(
-        request,
-        responseStatusCode,
-        responseHeaders,
-        remixContext
-      );
+      request,
+      responseStatusCode,
+      responseHeaders,
+      remixContext
+    );
 }
 
 function handleBotRequest(
@@ -110,6 +140,14 @@ function handleBrowserRequest(
           const stream = createReadableStreamFromReadable(body);
 
           responseHeaders.set("Content-Type", "text/html");
+          responseHeaders.set(
+            "Content-Security-Policy",
+            "connect-src 'self' *.idolism.org;" +
+            "script-src 'self' 'nonce-Gssv/TOwbkAUpOWyoftzJg==';" +
+            "img-src 'self' blob: data: *.idolism.org res.cloudinary.com *.githubusercontent.com"
+          );
+          // responseHeaders.set('CDN-Cache-Control', 'public, max-age=600, stale-while-revalidate=1800');
+          // responseHeaders.set('Cache-Control', 'public, max-age=0, must-revalidate');
 
           resolve(
             new Response(stream, {

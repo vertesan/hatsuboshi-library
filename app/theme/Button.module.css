@@ -1,0 +1,26 @@
+.root {
+  --button-fz: var(--mantine-font-size-md);
+  --mantine-primary-color-filled: light-dark(var(--mantine-primary-color-6), var(--mantine-primary-color-7));
+  --mantine-primary-color-filled-hover: light-dark(var(--mantine-primary-color-7), var(--mantine-primary-color-6));
+  --color-filled-active: light-dark(var(--mantine-primary-color-8), var(--mantine-primary-color-5));
+
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: ease-in-out;
+  transition-duration: 200ms;
+
+  &:hover {
+    &:where(:not([data-loading], :disabled, [data-disabled])) {
+      background-color: var(--mantine-primary-color-filled-hover);
+    }
+  }
+
+  &:active {
+    background-color: var(--color-filled-active);
+  }
+
+  &[data-variant='red'] {
+    --mantine-primary-color-filled: light-dark(var(--mantine-color-red-6), var(--mantine-color-red-7));
+    --mantine-primary-color-filled-hover: light-dark(var(--mantine-color-red-7), var(--mantine-color-red-6));
+    --color-filled-active: light-dark(var(--mantine-color-red-8), var(--mantine-color-red-5));
+  }
+}

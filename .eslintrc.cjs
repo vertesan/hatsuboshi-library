@@ -53,7 +53,7 @@ module.exports = {
     // Typescript
     {
       files: ["**/*.{ts,tsx}"],
-      plugins: ["@typescript-eslint", "import"],
+      plugins: ["@typescript-eslint", "import", "react-refresh"],
       parser: "@typescript-eslint/parser",
       settings: {
         "import/internal-regex": "^~/",
@@ -73,6 +73,11 @@ module.exports = {
       ],
       rules: {
         "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "react-refresh/only-export-components": [
+          "error",
+          { "allowExportNames": ["meta", "links", "headers", "loader", "action", "clientLoader", "clientAction"] }
+        ]
       },
     },
 

@@ -1,48 +1,54 @@
-import type { MetaFunction } from "@remix-run/node";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
+import { Alert, Divider } from "@mantine/core";
+import { IconInfoCircle } from "@tabler/icons-react";
+import dayjs from "dayjs";
+import { useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { Announcements } from "~/components/media/announcements";
+import { EventView } from "~/components/media/eventView";
+import { PvpRate } from "~/components/media/pvpRate";
+import { MasterContext } from "~/contexts/masterContext";
 
 export default function Index() {
+  const { t } = useTranslation()
+  const { noticeList, events, pvp } = useContext(MasterContext)
+  const ongoingEvents = events.filter(event => {
+    const now = dayjs()
+    return now.isAfter(+event.startTime) &&
+      now.isBefore(+event.endTime)
+  })
+
   return (
-    <div className="font-sans p-4">
-      <h1 className="text-3xl">Welcome to Remix</h1>
-      <ul className="list-disc mt-4 pl-6 space-y-2">
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/quickstart"
-            rel="noreferrer"
-          >
-            5m Quick Start
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/tutorial"
-            rel="noreferrer"
-          >
-            30m Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/docs"
-            rel="noreferrer"
-          >
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+    <div className="p-4">
+      <div className="mx-auto grid grid-cols-1 lg:grid-cols-[minmax(440px,2fr)_minmax(0,3fr)] gap-4">
+        <div className="">
+          <div>
+            <h2 className="text-2xl font-medium">{t("Ongoing Events")}</h2>
+            <Divider my="sm" />
+            {ongoingEvents.length
+              ? <ul> {ongoingEvents.map(event =>
+                <li key={event.eventId} >
+                  <EventView event={event} className="" />
+                </li>
+              )}
+              </ul>
+              : <Alert className="" color="red" variant="light" icon={<IconInfoCircle />}>
+                {t("Currently no events are going on")}
+              </Alert>
+            }
+          </div>
+
+          <div className="mt-8">
+            <h2 className="text-2xl font-medium">{t("In-game Announcements")}</h2>
+            <Announcements className="pt-4" noticeList={noticeList} />
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-medium">{t("Ongoing Contest")}</h2>
+          <Divider my="sm" />
+          <PvpRate pvp={pvp} className="" />
+        </div>
+      </div>
     </div>
-  );
+  )
 }

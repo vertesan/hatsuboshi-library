@@ -1,0 +1,7 @@
+/* https://github.com/mantinedev/mantine/blob/master/packages/%40mantine/core/src/core/MantineProvider/global.css */
+
+.active {
+  &:active {
+    /* leave this field empty to remove mantine default active style */
+  }
+}

@@ -1,0 +1,48 @@
+import { Alert, Avatar } from "@mantine/core"
+import { IconInfoCircle } from "@tabler/icons-react"
+import { Link } from "@remix-run/react";
+
+export function CopyrightAlert({ children }) {
+  return (
+    <div style={{maxWidth: "720px"}}>
+      <Alert variant="light" color="blue" icon={<IconInfoCircle />}>
+        {children}
+      </Alert>
+    </div>
+  )
+}
+
+export function Contributors() {
+  return (
+    <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, 120px)" }}>
+      <Link to="https://github.com/vertesan" className="w-max">
+        <div className="flex flex-row items-center">
+          <Avatar src="https://avatars.githubusercontent.com/u/162897218?v=4" alt="vertesan" />
+          <span>Vertesan</span>
+        </div>
+      </Link>
+    </div>
+  )
+}
+
+
+## Hatsuboshi Library
+
+A fan made utility application for all junior Producers studying at the Faculty of Produce, Hatsuboshi Academy.
+
+<CopyrightAlert>
+  Please note neither the project nor the developers are affiliated with the official team (i.e. Bandai Namco Entertainment Inc. & QualiArts, Inc.).  
+  Copyright of used game data & assets are belong to their original publishers.
+</CopyrightAlert>
+
+### Contributors
+<Contributors />
+
+### Miscellaneous
+
+Project Homepage: [https://github.com/vertesan/hatsuboshi-library](https://github.com/vertesan/hatsuboshi-library)  
+Open Source License: [AGPL-3.0 license](https://www.gnu.org/licenses/agpl-3.0.en.html)
+
+### We Love Coffee
+
+If you like this application, you can [buy us a cup of Ko-fi](https://ko-fi.com/vertesan).
