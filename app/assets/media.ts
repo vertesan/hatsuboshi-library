@@ -109,6 +109,9 @@ export function getExamEffectImgUrl(effectType: ProduceExamEffectType) {
     case ProduceExamEffectType.ExamCardUpgrade:
       effectName = "examcardcreateid"
       break
+    case ProduceExamEffectType.ExamStaminaConsumptionAdd:
+      effectName = "examstaminaconsumptiondown"
+      break
   }
   return VITE_IMG_PREFIX + examEffectTemplate.replace(("{id}"), effectName)
 }
