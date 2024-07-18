@@ -48,9 +48,10 @@ export function PvpRate({
         <RingProgress
           sections={[{ value: progressPercentage, color: 'sky' }]}
           roundCaps
+          thickness={9}
           label={
-            <p className="text-center text-lg font-medium">
-              {progressPercentage}%
+            <p className={`text-center text-lg font-medium ${progressPercentage < 0 ? "text-sm" : ""}`}>
+              {progressPercentage < 0 ? t("Preparing") : progressPercentage + "%"}
             </p>
           }
         />
