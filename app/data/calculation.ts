@@ -127,7 +127,7 @@ export function calcBattleScoreConfig(
   }
 
   const calcSlope = (prevParam: number, curParam: number, prevPermil: number, currPermil: number) => {
-    const slope = Math.round((currPermil - prevPermil) / (curParam - prevParam) * 1000) / 1000 / 1000
+    const slope = Number((Math.round((currPermil - prevPermil) / (curParam - prevParam) * 1000) / 1000 / 1000).toFixed(6))
     const diff = prevParam === 0 ? "value" : `(value - ${prevParam})`
     const result = `${prevPermil / 1000} + ${slope} * ${diff}`
     return result
