@@ -97,7 +97,7 @@ export default function Cidol() {
       </div>
       <ActionIcon
         variant="light"
-        className="fixed z-[103] sm:z-[112] right-4 bottom-12 rounded-full h-9 w-9 xl:hidden"
+        className="fixed z-[103] sm:z-[112] right-4 bottom-12 rounded-full h-12 w-12 xl:hidden"
         onClick={() => { handlers.toggle() }}
       >
         <IconZoom className="w-[65%] h-[65%]" stroke={1.5} />

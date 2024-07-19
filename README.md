@@ -5,7 +5,7 @@ A utility application for all junior Producers studying at the Faculty of Produc
 > [!NOTE]  
 > Neither this project nor the developers are affiliated with the official team (i.e. BNEI & QualiArts, Inc.)
 
-## Build
+## Building
 
 Hatsuboshi Library builds on top of the recently introduced Remix [SPA mode](https://remix.run/docs/en/main/guides/spa-mode) which makes it a completely client application by disabling SSR, you can simply run `pnpm remix vite:build` in your terminal to build static bundles and the building itself will succeed. However if you serve those bundles and navigate to the target URL in your browser errors will occur. That is because some required envs are not bundled at building time which makes client data fetching failed. To make it work, you will have to provide correct envs to vite. Required envs can be found in `~/utils/env.ts`. 
 
