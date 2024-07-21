@@ -32,7 +32,6 @@ export default function CidolViewPage() {
   if (id) {
     idolCard = xIdolCards.find(it => it.id === id)
   }
-  console.log("redn")
   useEffect(() => {
     if (idolCard) {
       document.title = idolCard.name + t("meta-name-suffix")

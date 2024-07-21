@@ -1,6 +1,6 @@
 # Hatsuboshi Library
 
-A utility application for all junior Producers studying at the Faculty of Produce, Hatsuboshi Academy.
+A utility application for all junior Producers studying at the Faculty of Producing, Hatsuboshi Academy.
 
 > [!NOTE]  
 > Neither this project nor the developers are affiliated with the official team (i.e. BNEI & QualiArts, Inc.)

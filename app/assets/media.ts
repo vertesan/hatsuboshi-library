@@ -91,6 +91,12 @@ export function getCidolFullImgUrl1(assetId: string) {
 export function getSDFaceImgUrl(charaId: string) {
   return `${VITE_IMG_PREFIX}img_sd_${charaId}_face-00${extension}`
 }
+export function getCharaFullImgUrl(charaId: string) {
+  return `${VITE_IMG_PREFIX}img_chr_${charaId}_00-full${extension}`
+}
+export function getCharaSignImgUrl(charaId: string) {
+  return `${VITE_IMG_PREFIX}img_general_sign_${charaId}_00${extension}`
+}
 
 export function getAssetImgUrl(assetId: string) {
   return `${VITE_IMG_PREFIX}${assetId}${extension}`

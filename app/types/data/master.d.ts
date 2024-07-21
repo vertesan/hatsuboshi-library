@@ -27,6 +27,9 @@ import {
   PvpRateConfig,
   StoryEvent,
   PvpRateConfig_Stage,
+  CharacterDetail,
+  Achievement,
+  AchievementProgress,
 } from "~/types/proto/pmaster"
 import { UnArray } from "~/types/utils"
 
@@ -63,4 +66,6 @@ export type XMaster = {
       )[]
     }
   },
+  characterDetails: { [id: string]: CharacterDetail[] },
+  achievements: { [id: string]: Achievement & { progress: AchievementProgress[] } }
 }

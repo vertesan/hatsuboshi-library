@@ -13,7 +13,6 @@ export function getRoutes(t: TFunction<"translation", undefined>) {
       route: "/characters",
       label: t("route-characters"),
       icon: routeCharactersIcon,
-      disabled: true,
     },
     {
       route: "/tools",
