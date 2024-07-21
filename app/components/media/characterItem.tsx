@@ -10,7 +10,7 @@ export function CharacterItem({ chara }: {
   const name = chara.lastName + " " + chara.firstName
   const alphabetName = chara.alphabetFirstName + " " + chara.alphabetLastName
   return (
-    <Link to={"/characters/" + chara.id}>
+    <Link to={"/characters/" + chara.id} className="h-full aspect-[9/16]">
       <div className="h-full relative aspect-[9/16]">
         <img
           src={getCharaFullImgUrl(chara.id)}
@@ -24,7 +24,7 @@ export function CharacterItem({ chara }: {
         />
         <div className="absolute top-0 inset-x-0 text-center">
           <p>{alphabetName}</p>
-          <p className="text-2xl">{name}</p>
+          <p className="text-xl lg:text-2xl">{name}</p>
         </div>
       </div>
     </Link>
