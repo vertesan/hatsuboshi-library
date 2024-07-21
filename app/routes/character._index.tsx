@@ -7,7 +7,7 @@ import { getLocalString } from "~/i18n"
 import { useHorizontalScroll } from "~/utils/hooks"
 
 export const meta: MetaFunction = () => {
-  const title = getLocalString("meta-characters")
+  const title = getLocalString("meta-character")
   return [
     { title: title },
   ]

@@ -10,8 +10,8 @@ import {
 export function getRoutes(t: TFunction<"translation", undefined>) {
   return [
     {
-      route: "/characters",
-      label: t("route-characters"),
+      route: "/character",
+      label: t("route-character"),
       icon: routeCharactersIcon,
     },
     {

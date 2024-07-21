@@ -10,7 +10,7 @@ export function CharacterItem({ chara }: {
   const name = chara.lastName + " " + chara.firstName
   const alphabetName = chara.alphabetFirstName + " " + chara.alphabetLastName
   return (
-    <Link to={"/characters/" + chara.id} className="h-full aspect-[9/16]">
+    <Link to={"/character/" + chara.id} className="h-full aspect-[9/16]">
       <div className="h-full relative aspect-[9/16]">
         <img
           src={getCharaFullImgUrl(chara.id)}
