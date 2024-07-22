@@ -17,7 +17,7 @@ export default function Characters() {
   const xMaster = useContext(MasterContext)
   const { t } = useTranslation()
   if (typeof document !== 'undefined') {
-    document.title = t("meta-characters")
+    document.title = t("meta-character")
   }
   const scrollRef = useHorizontalScroll<HTMLDivElement>()
 
