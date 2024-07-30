@@ -10,6 +10,7 @@ export default function NumberCompose({
   width,
   setValue,
   label,
+  controlWidth = 26,
   readOnly,
   className,
 }: {
@@ -20,6 +21,7 @@ export default function NumberCompose({
   width: number,
   setValue: (v: number) => void,
   label?: string,
+  controlWidth?: number,
   readOnly?: boolean,
   className?: string,
 }) {
@@ -33,6 +35,7 @@ export default function NumberCompose({
         variant="light"
         onClick={() => handlersRef.current?.decrement()}
         ref={actionIconDeRef}
+        w={controlWidth}
       >
         -{step}
         <Ripple targetRef={actionIconDeRef} />
@@ -57,6 +60,7 @@ export default function NumberCompose({
         variant="light"
         onClick={() => handlersRef.current?.increment()}
         ref={actionIconInRef}
+        w={controlWidth}
       >
         +{step}
         <Ripple targetRef={actionIconInRef} />

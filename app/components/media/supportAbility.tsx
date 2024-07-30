@@ -1,5 +1,5 @@
 import { XSupportCard } from "~/types"
-import { UnArrary } from "~/types/utils"
+import { UnArray } from "~/types/utils"
 import { ProduceEffectIcon } from "~/components/media/effectIcon"
 import { EffectDescription } from "~/components/media/effectDescription"
 import React from "react"
@@ -11,7 +11,7 @@ export function SupportAbility({
   className,
   ...props
 }: {
-  supportCardSkillLevels: UnArrary<XSupportCard['produceSkills']>,
+  supportCardSkillLevels: UnArray<XSupportCard['produceSkills']>,
   level: { cardLevel?: number, skillLevel?: number },
   className?: string,
 } & React.ComponentProps<'div'>) {

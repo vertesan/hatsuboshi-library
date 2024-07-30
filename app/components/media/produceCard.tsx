@@ -1,5 +1,5 @@
 import { HoverCard } from "@mantine/core"
-import React, { useMemo, useRef } from "react"
+import React from "react"
 import * as media from "~/assets/media"
 import { getAssetImgUrl, staminaIcon } from "~/assets/media"
 import { EffectDescription } from "~/components/media/effectDescription"
@@ -11,16 +11,22 @@ import { ExamEffectIcon } from "./buffIcon"
 /** Remember to set position (relative or absolute) attribute */
 export function ProduceCardIcon({
   card,
+  character = "kllj",
   withHoverDescription,
   closeDelay = 50,
   className,
   ...props
 }: {
   card: ProduceCard,
+  character?: string,
   withHoverDescription?: boolean,
   closeDelay?: number,
   className?: string,
 } & Omit<React.ComponentProps<'div'>, 'className'>) {
+
+  const applyedAssetId = card.isCharacterAsset
+    ? card.assetId + "-" + character
+    : card.assetId
 
   const frameIcon = (() => {
     switch (card.category) {
@@ -48,7 +54,7 @@ export function ProduceCardIcon({
   const cardElement = (
     <div className={`aspect-square overflow-hidden border-2 rounded-lg border-zinc-500 ${className}`} {...props}>
       <img
-        src={getAssetImgUrl(card.assetId)}
+        src={getAssetImgUrl(applyedAssetId)}
         alt={card.id}
         className="absolute object-fill"
       />

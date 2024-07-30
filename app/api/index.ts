@@ -8,6 +8,7 @@ const apiPaths: { [k in ApiType]: string } = {
   master: "/api/master",
   csprt: "/api/csprt",
   cidol: "/api/cidol",
+  pcard: "/api/pcard",
 }
 
 export async function getApiData<T extends ApiType>(type: T): Promise<ApiData<T>> {

@@ -4,7 +4,7 @@ import { getAssetImgUrl } from "~/assets/media"
 import { MasterContext } from "~/contexts/masterContext"
 import { XSupportCard } from "~/types"
 import { ProduceEffectType } from "~/types/proto/penum"
-import { UnArrary } from "~/types/utils"
+import { UnArray } from "~/types/utils"
 import { EffectDescription } from "~/components/media/effectDescription"
 
 const _ProduceEffectIcon = forwardRef(function _ProduceEffectIcon({
@@ -37,7 +37,7 @@ export function ProduceEventEffectIcon({
   className,
   ...props
 }: {
-  produceEvent: UnArrary<XSupportCard['produceEvents']>,
+  produceEvent: UnArray<XSupportCard['produceEvents']>,
   withHoverDescription?: boolean,
   className?: string,
 } & React.ComponentPropsWithoutRef<'div'>) {

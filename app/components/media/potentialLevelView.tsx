@@ -1,6 +1,6 @@
 import { XIdolCard } from "~/types";
 import { IdolCardLevelLimitEffectType, IdolCardPotentialEffectType, ProduceEffectType, ProduceParameterType } from "~/types/proto/penum";
-import { UnArrary } from "~/types/utils";
+import { UnArray } from "~/types/utils";
 import { AttributeIcon } from "./attributeIcon";
 import { t } from "i18next";
 import { Divider } from "@mantine/core";
@@ -12,7 +12,7 @@ export function PotentialLevelView({
   potential,
   className,
 }: {
-  potential: UnArrary<XIdolCard['potentials']>
+  potential: UnArray<XIdolCard['potentials']>
   className?: string,
 }) {
   const elements: JSX.Element[] = []

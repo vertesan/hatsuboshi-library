@@ -1,1 +1,1 @@
-export type UnArrary<T> = T extends (infer U)[] ? U : T
+export type UnArray<T> = T extends (infer U)[] ? U : T

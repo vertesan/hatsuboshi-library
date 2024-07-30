@@ -2,7 +2,7 @@ import {
   Outlet
 } from "@remix-run/react";
 
-export default function CharacterLayout() {
+export default function BriefcaseLayout() {
   return (
     <Outlet />
   )

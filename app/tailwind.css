@@ -1,6 +1,7 @@
 @layer tailwind-base, mantine, tailwind-utilities;
 
 @import '@mantine/core/styles.css' layer(mantine);
+@import '@mantine/charts/styles.css' layer(mantine);
 
 @layer tailwind-base {
   @tailwind base;

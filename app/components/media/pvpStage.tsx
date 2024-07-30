@@ -1,5 +1,5 @@
 import { XMaster } from "~/types"
-import { UnArrary } from "~/types/utils"
+import { UnArray } from "~/types/utils"
 import { PlanIcon } from "./planIcon"
 import { PvpRateStageType } from "~/types/proto/penum"
 import { useTranslation } from "react-i18next"
@@ -13,7 +13,7 @@ export function PvpStage({
   cards,
   className,
 }: {
-  stage: UnArrary<Required<XMaster>['pvp']['pvpRateConfig']['stages']>,
+  stage: UnArray<Required<XMaster>['pvp']['pvpRateConfig']['stages']>,
   cards: Required<XMaster>['pvp']['pvpRateConfig']['commonProduceCards'],
   className?: string,
 }) {

@@ -5,13 +5,13 @@ import { t } from "i18next"
 import { getAssetImgUrl } from "~/assets/media"
 import { XMaster } from "~/types"
 import { EventType } from "~/types/proto/penum"
-import { UnArrary } from "~/types/utils"
+import { UnArray } from "~/types/utils"
 
 export function EventView({
   event,
   className,
 }: {
-  event: UnArrary<XMaster['events']>,
+  event: UnArray<XMaster['events']>,
   className?: string,
 }) {
   let eventName = EventType[event.eventType]

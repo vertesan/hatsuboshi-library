@@ -19,6 +19,10 @@ import {
 import {
   XIdolCard,
 } from "./data/cidol"
+import {
+  XProduceCard,
+  ProduceCardFilter,
+} from "./data/pcard"
 
 export type {
   ApiData,
@@ -30,5 +34,7 @@ export type {
   XMaster,
   Unarray,
   XIdolCard,
+  XProduceCard,
+  ProduceCardFilter,
 }
 
