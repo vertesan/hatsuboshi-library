@@ -2,7 +2,9 @@ import { Alert, Badge, Space } from "@mantine/core"
 import { IconInfoCircle } from "@tabler/icons-react"
 import dayjs from "dayjs"
 import { t } from "i18next"
+import { useContext } from "react"
 import { getAssetImgUrl } from "~/assets/media"
+import { MasterContext } from "~/contexts/masterContext"
 import { XMaster } from "~/types"
 import { EventType } from "~/types/proto/penum"
 import { UnArray } from "~/types/utils"
@@ -14,7 +16,8 @@ export function EventView({
   event: UnArray<XMaster['events']>,
   className?: string,
 }) {
-  let eventName = EventType[event.eventType]
+  const { eventLabels } = useContext(MasterContext)
+  let eventName = eventLabels.find(x => x.eventType === event.eventType)?.name ?? EventType[event.eventType]
   let banner
   if (event.storyEvent) {
     eventName = event.storyEvent.title

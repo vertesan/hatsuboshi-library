@@ -30,6 +30,7 @@ import {
   CharacterDetail,
   Achievement,
   AchievementProgress,
+  EventLabel,
 } from "~/types/proto/pmaster"
 import { UnArray } from "~/types/utils"
 
@@ -52,6 +53,7 @@ export type XMaster = {
     Event &
     { storyEvent?: StoryEvent }
   )[],
+  eventLabels: EventLabel[],
   pvp?: Pick<PvpRateGetResponse, 'startTime' | 'endTime' | 'pvpRateConfigId'> &
   {
     pvpRateConfig: Omit<PvpRateConfig, 'stages'> &
