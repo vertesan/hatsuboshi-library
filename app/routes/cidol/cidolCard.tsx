@@ -51,7 +51,7 @@ export function CidolCard({
     <div
       className="flex flex-row rounded-lg bg-white dark:bg-[--mantine-color-dark-6] overflow-hidden w-full h-[280px] sm:h-[380px] max-h-[380px] shadow-md"
     >
-      <div className="flex-none h-full">
+      <div className="flex-none aspect-[9/16] h-[280px] sm:h-[380px]">
         {disableLink
           ? cidolImageComponent
           : <Link to={`/cidol/${card.id}`}>{cidolImageComponent}</Link>
