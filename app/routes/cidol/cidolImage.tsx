@@ -20,16 +20,11 @@ export function CidolImage({
   potentialLevel?: IdolCardPotentialRank,
   showIcons?: boolean,
 }) {
-  let imgUrl = getCidolFullImgUrl1(card.assetId)
-  if (assetSkinId) {
-    imgUrl = getCidolFullImgUrl1(assetSkinId)
-  }
-  if (limitLevel !== undefined && limitLevel < IdolCardLevelLimitRank._4) {
-    if (!assetSkinId) {
-      imgUrl = getCidolFullImgUrl0(card.assetId)
-    } else {
-      imgUrl = getCidolFullImgUrl0(assetSkinId)
-    }
+  const isDefaultSkin = assetSkinId === undefined || card.assetId === assetSkinId
+  const imgAssetId = assetSkinId ?? card.assetId
+  let imgUrl = getCidolFullImgUrl0(imgAssetId)
+  if (isDefaultSkin && limitLevel !== undefined && limitLevel >= IdolCardLevelLimitRank._4) {
+    imgUrl = getCidolFullImgUrl1(imgAssetId)
   }
 
   return (
