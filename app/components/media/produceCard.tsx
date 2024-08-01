@@ -67,7 +67,7 @@ export function ProduceCardIcon({
       {card.upgradeCount
         ? <PlusIcon
           upgradeCount={card.upgradeCount}
-          className="absolute right-0 h-full w-1/4"
+          className="absolute -right-1 h-full w-[30%]"
         />
         : null
       }
