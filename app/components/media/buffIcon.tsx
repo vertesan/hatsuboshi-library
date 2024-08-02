@@ -14,7 +14,7 @@ function _ExamEffectIcon({
   return (
     <div className={`relative aspect-square overflow-visible ${className}`}>
       <img src={bgImg} alt={bgImg} className="object-contain absolute inset-0" />
-      <img src={iconImg} alt={iconImg} className="object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[80%] w-[80%]" />
+      <img src={iconImg} alt={iconImg} className="object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[77%] w-[77%]" />
     </div>
   )
 }

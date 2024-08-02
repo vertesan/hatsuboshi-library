@@ -1,7 +1,6 @@
 import { memo } from "react";
-import { limitIcon, numberMap, potentialIcon } from "~/assets/media";
+import { numberMap, potentialIcon } from "~/assets/media";
 import {
-  IdolCardLevelLimitRank,
   IdolCardPotentialRank
 } from "~/types/proto/penum";
 

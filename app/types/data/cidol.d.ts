@@ -1,3 +1,4 @@
+import { IdolCardRarity, ProduceExamEffectType, ProducePlanType } from "../proto/penum"
 import {
   IdolCard,
   IdolCardLevelLimit,
@@ -6,7 +7,6 @@ import {
   IdolCardPotential,
   IdolCardPotentialProduceSkill,
   IdolCardSkin,
-  ProduceCard,
   ProduceEffect,
   ProduceExamBattleConfig,
   ProduceExamBattleNpcGroup,
@@ -16,10 +16,10 @@ import {
   ProduceSkill,
   ProduceStepAuditionDifficulty
 } from "../proto/pmaster"
-import { IdolCardRarity, ProduceExamEffectType, ProducePlanType } from "../proto/penum"
+import { XProduceCard } from "./pcard"
 
 export type XIdolCard = IdolCard & {
-  produceCards: ProduceCard[],
+  produceCards: XProduceCard[],
   produceItems: ProduceItem[],
   idolCardSkins: IdolCardSkin[],
   levelLimits: (

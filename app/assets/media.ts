@@ -38,8 +38,11 @@ export const number5 = "/img/ef_txt_special_5_before.webp"
 export const number6 = "/img/ef_txt_special_6_before.webp"
 export const number7 = "/img/ef_txt_special_7_before.webp"
 export const number8 = "/img/ef_txt_special_8_before.webp"
-export const number9 = "/img/ef_txt_special_9_after.webp"
+export const number9 = "/img/ef_txt_special_9_before.webp"
+export const numberMinus = "/img/ef_txt_minus.webp"
 export const contestIcon = "/img/icon_contest.webp"
+export const blockIcon = "/img/icon_block.webp"
+export const multiplier = "/img/text_multiplier.webp"
 
 export const numberMap = {
   0: number0,
@@ -103,24 +106,30 @@ export function getAssetImgUrl(assetId: string) {
   return `${VITE_IMG_PREFIX}${assetId}${extension}`
 }
 
+
 const examEffectTemplate = `img_general_icon_exam-effect_{id}${extension}`
 export function getExamEffectImgUrl(effectType: ProduceExamEffectType) {
-  let effectName = ProduceExamEffectType[effectType].toLowerCase()
-  switch (effectType) {
-    case ProduceExamEffectType.ExamStaminaReduceFix:
-      effectName = "examstaminarecoverfix"
-      break
-    case ProduceExamEffectType.ExamBlockFix:
-      effectName = "examblock"
-      break
-    case ProduceExamEffectType.ExamCardUpgrade:
-      effectName = "examcardcreateid"
-      break
-    case ProduceExamEffectType.ExamStaminaConsumptionAdd:
-      effectName = "examstaminaconsumptiondown"
-      break
+  let iconEffectType = effectType
+  if (extraEffectNameMap[effectType] !== undefined) {
+    iconEffectType = extraEffectNameMap[effectType]
   }
+  const effectName = ProduceExamEffectType[iconEffectType].toLowerCase()
   return VITE_IMG_PREFIX + examEffectTemplate.replace(("{id}"), effectName)
+}
+
+const extraEffectNameMap: { [x: number]: ProduceExamEffectType } = {
+  [ProduceExamEffectType.ExamCardDraw]: ProduceExamEffectType.ExamCardCreateId,
+  [ProduceExamEffectType.ExamStaminaReduceFix]: ProduceExamEffectType.ExamStaminaRecoverFix,
+  [ProduceExamEffectType.ExamCardUpgrade]: ProduceExamEffectType.ExamCardCreateId,
+  [ProduceExamEffectType.ExamLessonDependBlock]: ProduceExamEffectType.ExamLesson,
+  [ProduceExamEffectType.ExamCardCreateSearch]: ProduceExamEffectType.ExamCardCreateId,
+  [ProduceExamEffectType.ExamMultipleLessonBuffLesson]: ProduceExamEffectType.ExamLesson,
+  [ProduceExamEffectType.ExamStaminaConsumptionAdd]: ProduceExamEffectType.ExamStaminaConsumptionDown,
+  [ProduceExamEffectType.ExamHandGraveCountCardDraw]: ProduceExamEffectType.ExamCardCreateId,
+  [ProduceExamEffectType.ExamBlockFix]: ProduceExamEffectType.ExamBlock,
+  [ProduceExamEffectType.ExamLessonDependExamReview]: ProduceExamEffectType.ExamLesson,
+  [ProduceExamEffectType.ExamLessonDependExamCardPlayAggressive]: ProduceExamEffectType.ExamLesson,
+  [ProduceExamEffectType.ExamLessonDependParameterBuff]: ProduceExamEffectType.ExamLesson,
 }
 
 export const buffTypeBackground = {
@@ -141,7 +150,7 @@ export const buffTypeBackground = {
   [ProduceExamEffectType.ExamCardStaminaConsumptionChange]: buffBgYellow,
   [ProduceExamEffectType.ExamBlockRestriction]: buffBgRed,
   [ProduceExamEffectType.ExamLessonDependBlock]: buffBgBlue,
-  [ProduceExamEffectType.ExamCardCreateSearch]: buffBgBlue,
+  [ProduceExamEffectType.ExamCardCreateSearch]: buffBgYellow,
   [ProduceExamEffectType.ExamStatusEnchant]: buffBgYellow,
   [ProduceExamEffectType.ExamMultipleLessonBuffLesson]: buffBgBlue,
   [ProduceExamEffectType.ExamForcePlayCardSearch]: buffBgBlue,

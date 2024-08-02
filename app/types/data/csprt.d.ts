@@ -1,5 +1,11 @@
 import {
-  ProduceCard,
+  ProduceEffectType,
+  ProducePhaseType,
+  ProducePlanType,
+  SupportCardRarity,
+  SupportCardType,
+} from "../proto/penum"
+import {
   ProduceEffect,
   ProduceEventSupportCard,
   ProduceItem,
@@ -8,16 +14,10 @@ import {
   SupportCard,
   SupportCardProduceSkillLevelAssist
 } from "../proto/pmaster"
-import {
-  ProducePlanType,
-  SupportCardRarity,
-  SupportCardType,
-  ProduceEffectType,
-  ProducePhaseType,
-} from "../proto/penum"
+import { XProduceCard } from "./pcard"
 
 export type XSupportCard = SupportCard & {
-  produceCards: ProduceCard[],
+  produceCards: XProduceCard[],
   produceItems: ProduceItem[],
   produceEvents: (
     ProduceEventSupportCard &

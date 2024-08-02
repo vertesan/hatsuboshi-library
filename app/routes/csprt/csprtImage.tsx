@@ -53,14 +53,14 @@ export function CsprtImage({
           <p className="absolute right-2 top-2 text-lg font-black text-white text-outline-black dark:text-white dark:text-outline-black">
             {card.name}
           </p>
-          <div className="absolute bottom-2 right-2 h-[24%] w-[37%] flex flex-row gap-1 items-end">
+          <div className="absolute bottom-2 right-2 flex flex-row gap-1 items-end">
             {
               produceItem
                 ? <ProduceItemIcon
                   item={produceItem}
                   withHoverDescription
                   onClick={(e) => { e.preventDefault() }}
-                  className="relative h-full cursor-default"
+                  className="relative h-[58px] w-[58px] sm:h-[74px] sm:w-[74px] cursor-default"
                 />
                 : null
             }
@@ -70,7 +70,7 @@ export function CsprtImage({
                   card={produceCard}
                   withHoverDescription
                   onClick={(e) => { e.preventDefault() }}
-                  className="relative h-full cursor-default"
+                  className="relative h-[58px] w-[58px] sm:h-[74px] sm:w-[74px] cursor-default"
                 />
                 : null
             }
@@ -81,7 +81,7 @@ export function CsprtImage({
                     key={event.id}
                     withHoverDescription
                     onClick={(e) => { e.preventDefault() }}
-                    className="relative h-4/5 cursor-default"
+                    className="relative h-[52px] w-[52px] sm:w-[62px] sm:h-[62px] cursor-default"
                     produceEvent={event}
                   />
                 )

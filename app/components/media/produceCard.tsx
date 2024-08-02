@@ -4,9 +4,12 @@ import * as media from "~/assets/media"
 import { getAssetImgUrl, staminaIcon } from "~/assets/media"
 import { EffectDescription } from "~/components/media/effectDescription"
 import { PlusIcon } from "~/components/media/plusIcon"
+import { costMap } from "~/data/examCostMap"
+import { XProduceCard } from "~/types"
 import { ExamCostType, ProduceCardCategory, ProduceCardRarity, ProduceExamEffectType } from "~/types/proto/penum"
-import { ProduceCard } from "~/types/proto/pmaster"
 import { ExamEffectIcon } from "./buffIcon"
+import { CostNumberIcon } from "./costNumberIcon"
+import { BlockIcon } from "./blockIcon"
 
 /** Remember to set position (relative or absolute) attribute */
 export function ProduceCardIcon({
@@ -17,7 +20,7 @@ export function ProduceCardIcon({
   className,
   ...props
 }: {
-  card: ProduceCard,
+  card: XProduceCard,
   character?: string,
   withHoverDescription?: boolean,
   closeDelay?: number,
@@ -51,6 +54,10 @@ export function ProduceCardIcon({
     }
   })()
 
+  const blockValue = card.playEffects.find(
+    effect => effect.produceExamEffect.effectType === ProduceExamEffectType.ExamBlock
+  )?.produceExamEffect.effectValue1
+
   const cardElement = (
     <div className={`aspect-square overflow-hidden border-2 rounded-lg border-zinc-500 ${className}`} {...props}>
       <img
@@ -63,11 +70,17 @@ export function ProduceCardIcon({
         alt={frameIcon}
         className="absolute object-fill"
       />
-      {/* <CostIcon card={card} className="absolute right-0 bottom-0 w-1/3 h-1/3" /> */}
+      <LessonIcon card={card} className="absolute left-0 top-0 h-1/4 opacity-70" />
+      {blockValue !== undefined
+        ? <BlockIcon blockValue={blockValue} className="absolute right-0 top-0 w-1/3 h-1/3" />
+        : null
+      }
+      <PlayEffectsIcon card={card} className="absolute left-0 bottom-0 w-[29%] h-full" />
+      <CostIcon card={card} className="absolute right-0 bottom-0 w-1/3 h-1/3" />
       {card.upgradeCount
         ? <PlusIcon
           upgradeCount={card.upgradeCount}
-          className="absolute -right-1 h-full w-[30%]"
+          className="absolute -right-[2px] h-full w-1/4"
         />
         : null
       }
@@ -85,11 +98,80 @@ export function ProduceCardIcon({
     : cardElement
 }
 
+function LessonIcon({
+  card,
+  className,
+}: {
+  card: XProduceCard,
+  className?: string,
+}) {
+  const lessonEffect = card.playEffects.find(
+    effect => effect.produceExamEffect.effectType === ProduceExamEffectType.ExamLesson
+  )
+  if (lessonEffect === undefined) return null
+  const multiplier = lessonEffect.produceExamEffect.effectCount
+
+  return (
+    <div className={`${className}`}>
+      <div className="flex flex-row justify-start h-full">
+        <CostNumberIcon
+          value={lessonEffect.produceExamEffect.effectValue1}
+          invert noMinus
+          className="h-full"
+        />
+        {multiplier > 1
+          ? <div className="bg-black opacity-70 rounded-3xl w-[18px] h-[80%] flex justify-center items-center">
+            <CostNumberIcon
+              value={multiplier}
+              noMinus
+              withMultiplier
+              className="h-[70%]"
+            />
+          </div>
+          : null
+        }
+      </div>
+    </div>
+  )
+}
+
+function PlayEffectsIcon({
+  card,
+  className,
+}: {
+  card: XProduceCard,
+  className?: string,
+}) {
+  const displayEffects = card.playEffects.filter(effect =>
+    !effect.hideIcon &&
+    effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamLesson &&
+    effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlock &&
+    effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount
+  )
+  return (
+    displayEffects.length > 0
+      ? <div className={`${className}`}>
+        <div className="flex flex-col w-full h-full justify-end">
+          {displayEffects.map((effect, idx) => {
+            return (
+              <ExamEffectIcon
+                key={idx}
+                className="aspect-square w-full object-contain"
+                effectType={effect.produceExamEffect.effectType}
+              />
+            )
+          })}
+        </div>
+      </div>
+      : null
+  )
+}
+
 function CostIcon({
   card,
   className,
 }: {
-  card: ProduceCard,
+  card: XProduceCard,
   className?: string,
 }) {
   let costValue = card.stamina
@@ -100,28 +182,20 @@ function CostIcon({
     costImageSrc = media.staminaRedIcon
   }
   if (card.costType !== ExamCostType.Unknown) {
-    const costMap = {
-      [ExamCostType.ExamLessonBuff]: ProduceExamEffectType.ExamLessonBuff,
-      [ExamCostType.ExamReview]: ProduceExamEffectType.ExamReview,
-      [ExamCostType.ExamCardPlayAggressive]: ProduceExamEffectType.ExamCardPlayAggressive,
-      [ExamCostType.ExamParameterBuff]: ProduceExamEffectType.ExamParameterBuff,
-    }
     costValue = card.costValue
-    costImageComponent = <ExamEffectIcon className="absolute top-0 right-0 object-contain" effectType={costMap[card.costType]} />
+    costImageComponent = <ExamEffectIcon className="absolute -top-2 object-contain" effectType={costMap[card.costType]} />
   }
-
-  const bg = `url('${costImageSrc}')`
 
   return (
     <div className={`${className}`}>
       <div className="relative h-full w-full">
-        {costImageComponent
-          ? costImageComponent
-          : <>
-            <img className="absolute bottom-0 inset-x-0 object-fill" src={costImageSrc} alt="stamina icon" />
-            <p className="absolute bottom-0 inset-x-0 text-xs sm:text-sm text-center text-white font-bold text-outline-black">{costValue ? `-${costValue}` : costValue}</p>
-          </>
-        }
+        <div className="absolute h-full w-full bottom-0 right-0">
+          {costImageComponent
+            ? costImageComponent
+            : <img className="absolute bottom-0 object-contain" src={costImageSrc} alt="stamina" />
+          }
+          <CostNumberIcon value={costValue} className="absolute bottom-[3px] inset-x-0 h-[55%]" />
+        </div>
       </div>
     </div>
   )

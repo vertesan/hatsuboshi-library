@@ -11,12 +11,15 @@ import {
   ProducePlanType
 } from "~/types/proto/penum"
 import {
+  Achievement,
+  AchievementProgress,
   Character,
+  CharacterDetail,
   CharacterTrueEndBonus,
+  EventLabel,
   ExamInitialDeck,
   ExamSetting,
   Produce,
-  ProduceCard,
   ProduceDescription,
   ProduceDescriptionProduceEffectType,
   ProduceDescriptionProduceExamEffectType,
@@ -25,14 +28,10 @@ import {
   ProduceExamGimmickEffectGroup,
   ProduceItem,
   PvpRateConfig,
-  StoryEvent,
   PvpRateConfig_Stage,
-  CharacterDetail,
-  Achievement,
-  AchievementProgress,
-  EventLabel,
+  StoryEvent
 } from "~/types/proto/pmaster"
-import { UnArray } from "~/types/utils"
+import { XProduceCard } from "./pcard"
 
 export type XMaster = {
   version: string,
@@ -59,7 +58,7 @@ export type XMaster = {
     pvpRateConfig: Omit<PvpRateConfig, 'stages'> &
     { examSetting: ExamSetting } &
     { produceExamBattleScoreConfigs: ProduceExamBattleScoreConfig[] } &
-    { commonProduceCards: Partial<{ [x in ProducePlanType]: ProduceCard[] }> } &
+    { commonProduceCards: Partial<{ [x in ProducePlanType]: XProduceCard[] }> } &
     {
       stages: (
         PvpRateConfig_Stage &
