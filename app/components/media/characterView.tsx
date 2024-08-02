@@ -46,7 +46,7 @@ export function CharacterView({
             </div>
 
             <div className="pt-4 flex flex-row gap-4">
-              <ColorSwatch color={`#${colors.mainColor}`}/>
+              <ColorSwatch color={`#${colors.mainColor}`} />
               <p>#{colors.mainColor}</p>
             </div>
             <div className="pt-4 flex flex-row gap-4">

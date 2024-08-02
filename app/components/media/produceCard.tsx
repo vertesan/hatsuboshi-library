@@ -7,9 +7,9 @@ import { PlusIcon } from "~/components/media/plusIcon"
 import { costMap } from "~/data/examCostMap"
 import { XProduceCard } from "~/types"
 import { ExamCostType, ProduceCardCategory, ProduceCardRarity, ProduceExamEffectType } from "~/types/proto/penum"
+import { BlockIcon } from "./blockIcon"
 import { ExamEffectIcon } from "./buffIcon"
 import { CostNumberIcon } from "./costNumberIcon"
-import { BlockIcon } from "./blockIcon"
 
 /** Remember to set position (relative or absolute) attribute */
 export function ProduceCardIcon({

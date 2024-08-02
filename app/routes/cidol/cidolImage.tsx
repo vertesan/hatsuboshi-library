@@ -1,4 +1,5 @@
 import { getCidolFullImgUrl0, getCidolFullImgUrl1 } from "~/assets/media";
+import { PulseImage } from "~/components/general/pulseImage";
 import { ExamEffectIcon } from "~/components/media/buffIcon";
 import { LimitIcon } from "~/components/media/limitIcon";
 import { PlanIcon } from "~/components/media/planIcon";
@@ -29,7 +30,7 @@ export function CidolImage({
 
   return (
     <div className="relative aspect-[9/16] overflow-hidden max-h-full max-w-full">
-      <img
+      <PulseImage
         src={imgUrl}
         alt={card.id}
         className="object-fill z-0"

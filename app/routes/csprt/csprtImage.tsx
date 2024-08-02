@@ -6,6 +6,7 @@ import { ProduceItemIcon } from "~/components/media/produceItem";
 import { ProduceCardIcon } from "~/components/media/produceCard";
 import { ProduceEffectType } from "~/types/proto/penum";
 import { ProduceEventEffectIcon } from "~/components/media/effectIcon";
+import { PulseImage } from "~/components/general/pulseImage";
 
 export function CsprtImage({
   card,
@@ -34,7 +35,7 @@ export function CsprtImage({
   }
   return (
     <div className="relative aspect-video overflow-hidden max-h-full max-w-full">
-      <img
+      <PulseImage
         src={getCsprtFullImgUrl(card.assetId)}
         alt={card.id}
         className="object-fill z-0"
