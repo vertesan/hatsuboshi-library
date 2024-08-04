@@ -8,6 +8,7 @@ import { MasterContext } from "~/contexts/masterContext"
 import { XMaster } from "~/types"
 import { EventType } from "~/types/proto/penum"
 import { UnArray } from "~/types/utils"
+import { PulseImage } from "../general/pulseImage"
 
 export function EventView({
   event,
@@ -35,7 +36,7 @@ export function EventView({
           </p>
         </div>
         {banner
-          ? <img src={banner} alt="event banner" className="object-contain w-full" />
+          ? <PulseImage src={banner} alt="event banner" className="object-fill aspect-[2.91] w-full" />
           : null
         }
         <Alert className="" variant="light" color="blue" icon={<IconInfoCircle />}>
