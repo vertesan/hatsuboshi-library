@@ -106,6 +106,7 @@ export enum ConditionType {
   Login = 6,
   TutorialClear = 7,
   GameStartTutorialClearHour = 8,
+  HomeCharacter = 9,
   ProducerLevel = 10,
   Character = 11,
   FanCount = 12,
@@ -576,6 +577,7 @@ export enum ItemType {
   SupportCardEnhancePoint = 3,
   ActionPointRecovery = 4,
   IdolCardLevelLimitMaterial = 5,
+  ProduceRerollMemory = 6,
   GashaTicket = 7,
   Coin = 8,
   ExchangeMaterial = 9,
@@ -829,6 +831,8 @@ export enum ProduceCampaignType {
   RewardQuantityUp = 3,
   ProduceResultRewardAdd = 4,
   ProduceResultRewardChange = 5,
+  MemoryRerollCountUp = 6,
+  MemoryRerollFree = 7,
 }
 export enum ProduceCardCategory {
   Unknown = 0,
@@ -1089,6 +1093,11 @@ export enum ProduceEffectType {
   ProduceCardSelectRerollCountUp = 87,
   ProducePointAdditionDisableTrigger = 88,
   LessonLimitUp = 89,
+  ParameterLimitUp = 90,
+  VocalLimitUp = 91,
+  DanceLimitUp = 92,
+  VisualLimitUp = 93,
+  SupportCardEventProduceCardUpgrade = 94,
 }
 export enum ProduceEventCharacterType {
   Unknown = 0,
@@ -1117,6 +1126,11 @@ export enum ProduceEventType {
   CharacterGrowth = 4,
   IdolCard = 5,
   SupportCard = 6,
+}
+export enum ProduceExamAutoCardSelectEvaluationType {
+  Unknown = 0,
+  LessonCoefficient = 1,
+  FullPowerPointCoefficient = 2,
 }
 export enum ProduceExamAutoEvaluationType {
   Unknown = 0,
@@ -1229,6 +1243,17 @@ export enum ProduceExamEffectType {
   ExamLessonDependParameterBuff = 131,
   ExamLessonAddMultipleParameterBuff = 132,
   ExamBlockPerUseCardCount = 133,
+  ExamChainEffect = 140,
+  StanceLock = 141,
+  ExamLessonDependStamina = 142,
+  ExamBlockAddMultipleAggressive = 143,
+  ExamLessonDependStaminaConsumptionSum = 144,
+  ExamChainEffectPerPassedTurn = 145,
+  ExamChainEffectPerRemainTurn = 146,
+  ExamLessonDependPlayCardCountSum = 147,
+  ExamDebuffRecover = 148,
+  ExamAggressiveValueMultiple = 149,
+  ExamItemFireLimitAdd = 150,
 }
 export enum ProduceExamFieldStatusType {
   Unknown = 0,

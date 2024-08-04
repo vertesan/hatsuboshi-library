@@ -82,6 +82,7 @@ export type UserData = {
   userProduceProgressScheduleList: ptransaction.UserProduceProgressSchedule[]
   userProduceProgressShopList: ptransaction.UserProduceProgressShop[]
   userProduceProgressSupportCardList: ptransaction.UserProduceProgressSupportCard[]
+  userProduceRerollMemoryList: ptransaction.UserProduceRerollMemory[]
   userProduceStartAchievementList: ptransaction.UserProduceStartAchievement[]
   userProduceStoryList: ptransaction.UserProduceStory[]
   userProduceSupportCardDeckList: ptransaction.UserProduceSupportCardDeck[]
