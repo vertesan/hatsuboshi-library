@@ -1,6 +1,6 @@
 const translation = {
   "meta-name": "初星图书馆",
-  "meta-description": "一个为就读于初星学院制作人系的所有初级制作人设计的实用程序",
+  "meta-description": "为就读于初星学院制作人系的初级制作人设计的实用程序",
   "meta-name-suffix": " - 初星图书馆",
   "meta-produce": "Produce - 初星图书馆",
   "meta-briefcase": "工具箱 - 初星图书馆",
@@ -232,15 +232,6 @@ const translation = {
   "ProduceCardSelectRerollCountUp": "Card Refreshable Chance Increase",
   "ProducePointAdditionDisableTrigger": "Initial P-Point Increase",
   "LessonLimitUp": "Lesson Increasable Parameter Limit Break",
-  // =====================================================
-  // strings underneath this section should not be translated
-  "non-translatables": {
-    language: "语言",
-    "supported-languages": {
-      en: "English",
-      zh-hans: "简体中文",
-    },
-  },
 }
 
 export default translation
