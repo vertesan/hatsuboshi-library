@@ -2,6 +2,7 @@ import * as i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 import en from '~/locales/en'
+import zh_Hans from '~/locales/zh-Hans'
 import { readLocalStorage } from '~/utils/localStorage'
 
 export type Translation = typeof en
@@ -18,6 +19,7 @@ export function getLocalString(key: keyof typeof en) {
   let locale: Partial<typeof en> = en
   switch (readLocaleLng()) {
     case "en": locale = en; break;
+    case "zh-Hans": locale = zh_Hans; break;
     // add new cases for new languages
     default: break;
   }
@@ -35,6 +37,7 @@ i18n
     defaultNS: 'translation',
     resources: {
       en: { translation: en },
+      "zh-Hans": { translation: zh_Hans },
       // add new languages
     },
     interpolation: {
