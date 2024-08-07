@@ -4,6 +4,7 @@ const translation = {
   "meta-name-suffix": " - Hatsuboshi Library",
   "meta-produce": "Produce - Hatsuboshi Library",
   "meta-briefcase": "Briefcase - Hatsuboshi Library",
+  "meta-evaluation": "Evaluation - Hatsuboshi Library",
   "meta-tools": "Briefcase - Hatsuboshi Library",
   "meta-cidol": "Produce Idols - Hatsuboshi Library",
   "meta-csprt": "Support Cards - Hatsuboshi Library",
@@ -16,6 +17,7 @@ const translation = {
   "route-csprt": "Support Cards",
   "route-character": "Characters",
   "route-pcard": "Produce Cards",
+  "route-evaluation": "Evaluation",
   "route-about": "About",
   "Rarity": "Rarity",
   "Produce Plan": "Produce Plan",
@@ -238,6 +240,7 @@ const translation = {
     language: "Language",
     "supported-languages": {
       en: "English",
+      "zh-Hans": "简体中文",
     },
   },
 }

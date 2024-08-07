@@ -14,13 +14,22 @@ export function CopyrightAlert({ children }) {
 
 export function Contributors() {
   return (
-    <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, 120px)" }}>
-      <Link to="https://github.com/vertesan" className="w-max">
+    <div className="grid" style={{ maxWidth: "720px", gridTemplateRows: "minmax(0, 1fr)", gap: "4px"}}>
+      <Link to="https://github.com/vertesan">
         <div className="flex flex-row items-center">
           <Avatar src="https://avatars.githubusercontent.com/u/162897218?v=4" alt="vertesan" />
           <span>Vertesan</span>
         </div>
       </Link>
+      <div className="flex items-center">
+        <Link to="https://github.com/Dreamink0">
+          <div className="flex flex-row items-center">
+            <Avatar src="https://avatars.githubusercontent.com/u/62631990?v=4" alt="Dreamink0" />
+            <span>Dream_ink</span>
+          </div>
+        </Link>
+        <p className="">&nbsp;(Simplified Chinese)</p>
+      </div>
     </div>
   )
 }
