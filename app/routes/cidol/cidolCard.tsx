@@ -90,11 +90,11 @@ export function CidolCard({
 
         <div className="flex-1 flex flex-row sm:flex-col">
           <div className="flex-1 flex flex-row gap-2 justify-center sm:justify-start items-center">
-            <ProduceCardIcon withHoverDescription card={pCard} className="flex-none relative h-16 w-16" />
+            <ProduceCardIcon withHoverDescription card={pCard} className="flex-none relative h-[68px] w-[68px]" />
             <div className="hidden sm:block flex-1 md:text-sm"><EffectDescription descriptions={pCard.descriptions} /></div>
           </div>
           <div className="flex-1 flex flex-row gap-2 justify-center sm:justify-start items-center">
-            <ProduceItemIcon withHoverDescription item={pItem} className="flex-none relative h-16 w-16" />
+            <ProduceItemIcon withHoverDescription item={pItem} className="flex-none relative h-[68px] w-[68px]" />
             <div className="hidden sm:block flex-1 md:text-sm"><EffectDescription descriptions={pItem.descriptions} /></div>
           </div>
         </div>

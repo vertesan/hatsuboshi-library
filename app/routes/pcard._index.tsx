@@ -6,12 +6,12 @@ import { useContext, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { EffectDescription } from "~/components/media/effectDescription"
 import { ProduceCardIcon } from "~/components/media/produceCard"
+import { MasterContext } from "~/contexts/masterContext"
 import { constructProduceExamEffectType, defaultPCardFilter, filterPCards } from "~/data/pCardFilters"
 import { getLocalString } from "~/i18n"
 import { ProduceCardFilter, XProduceCard } from "~/types"
 import { ProduceCardCategory } from "~/types/proto/penum"
 import { OptionPannel } from "./pcard/optionPannel"
-import { MasterContext } from "~/contexts/masterContext"
 
 export const meta: MetaFunction = () => {
   const title = getLocalString("meta-pcard")
@@ -77,7 +77,7 @@ export default function PCard() {
                       <ProduceCardIcon
                         card={pCard}
                         character="kllj"
-                        className="flex-none relative h-16 w-16"
+                        className="flex-none relative h-[68px] w-[68px]"
                       />
                       <div className="flex-1 text-sm self-start">
                         <p className="text-md font-bold">{pCard.name}</p>

@@ -4,6 +4,7 @@ import {
   routeCharactersIcon,
   routeCidolIcon,
   routeCsprtIcon,
+  routeEvaluationIcon,
   routePCardIcon,
   routeToolsIcon
 } from "~/assets/media";
@@ -34,6 +35,12 @@ export function getRoutes(t: TFunction<"translation", undefined>) {
       route: "/pcard",
       label: t("route-pcard"),
       icon: routePCardIcon,
+    },
+    {
+      route: "/evaluation",
+      label: t("route-evaluation"),
+      icon: routeEvaluationIcon,
+      disable: false,
     },
     {
       route: "/about",

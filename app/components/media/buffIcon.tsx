@@ -9,7 +9,7 @@ function _ExamEffectIcon({
   effectType: ProduceExamEffectType
   className?: string
 }) {
-  const bgImg = buffTypeBackground[effectType]
+  const bgImg = buffTypeBackground[effectType as keyof typeof buffTypeBackground]
   const iconImg = getExamEffectImgUrl(effectType)
   return (
     <div className={`relative aspect-square overflow-visible ${className}`}>
