@@ -2,7 +2,7 @@ import { DndContext, DragEndEvent } from "@dnd-kit/core"
 import { Button, Popover } from "@mantine/core"
 import { useLocalStorage } from "@mantine/hooks"
 import { MetaFunction, useOutletContext } from "@remix-run/react"
-import { useContext, useMemo, useState } from "react"
+import { Fragment, useContext, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { DraggableProduceCard } from "~/components/media/draggableProduceCard"
 import { MasterContext } from "~/contexts/masterContext"
@@ -190,7 +190,7 @@ export default function Evaluation() {
               {
                 Object.entries(filteredCards).map(([eva, cards], idx) => {
                   return (
-                    <>
+                    <Fragment key={idx}>
                       <p className="pt-4">{t("Eva. ") + evaluationMap[+eva].text}</p>
                       <div key={idx} className="grid grid-cols-[repeat(auto-fit,68px)]">
                         {cards.map((card, idx) => {
@@ -204,7 +204,7 @@ export default function Evaluation() {
                           )
                         })}
                       </div>
-                    </>
+                    </Fragment>
                   )
                 })
               }
