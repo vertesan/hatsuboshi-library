@@ -1,12 +1,11 @@
+import { useTranslation } from "react-i18next"
 import { XMaster } from "~/types"
 import { UnArray } from "~/types/utils"
-import { PlanIcon } from "./planIcon"
-import { PvpRateStageType } from "~/types/proto/penum"
-import { useTranslation } from "react-i18next"
-import { ProduceItemIcon } from "./produceItem"
-import { GimmicksTimeline } from "./gimmicksTimeline"
 import { EffectDescription } from "./effectDescription"
+import { GimmicksTimeline } from "./gimmicksTimeline"
+import { PlanIcon } from "./planIcon"
 import { ProduceCardIcon } from "./produceCard"
+import { ProduceItemIcon } from "./produceItem"
 
 export function PvpStage({
   stage,
@@ -27,7 +26,7 @@ export function PvpStage({
 
           {stage.produceItem
             ? <div className="mt-2 flex flex-row gap-2 items-center">
-              <ProduceItemIcon withHoverDescription item={stage.produceItem} className="flex-none relative h-16 w-16" />
+              <ProduceItemIcon withHoverDescription item={stage.produceItem} className="flex-none relative h-[68px] w-[68px]" />
               <EffectDescription descriptions={stage.produceItem.descriptions} />
             </div>
             : null
@@ -35,12 +34,12 @@ export function PvpStage({
 
           {cards[stage.planType]
             ? <>
-              <div className="mt-2 grid grid-cols-[repeat(auto-fit,minmax(66px,1fr))] sm:grid-cols-[repeat(auto-fit,66px)]">
+              <div className="mt-2 grid grid-cols-[repeat(auto-fit,minmax(68px,1fr))] sm:grid-cols-[repeat(auto-fit,68px)]">
                 {
                   cards[stage.planType]?.map((card, idx) => {
                     return (
                       <div key={idx}>
-                        <ProduceCardIcon card={card} className="relative h-16 w-16" closeDelay={50} withHoverDescription />
+                        <ProduceCardIcon card={card} className="relative h-[68px] w-[68px]" closeDelay={50} withHoverDescription />
                       </div>
                     )
                   })

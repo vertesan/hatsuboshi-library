@@ -1,5 +1,5 @@
 import { HoverCard } from "@mantine/core"
-import React from "react"
+import React, { memo } from "react"
 import * as media from "~/assets/media"
 import { getAssetImgUrl, staminaIcon } from "~/assets/media"
 import { EffectDescription } from "~/components/media/effectDescription"
@@ -11,8 +11,10 @@ import { BlockIcon } from "./blockIcon"
 import { ExamEffectIcon } from "./buffIcon"
 import { CostNumberIcon } from "./costNumberIcon"
 
+export const ProduceCardIcon = memo(_ProduceCardIcon)
+
 /** Remember to set position (relative or absolute) attribute */
-export function ProduceCardIcon({
+function _ProduceCardIcon({
   card,
   character = "kllj",
   withHoverDescription,
@@ -25,7 +27,7 @@ export function ProduceCardIcon({
   withHoverDescription?: boolean,
   closeDelay?: number,
   className?: string,
-} & Omit<React.ComponentProps<'div'>, 'className'>) {
+} & Omit<React.ComponentPropsWithoutRef<'div'>, 'className'>) {
 
   const applyedAssetId = card.isCharacterAsset
     ? card.assetId + "-" + character
@@ -199,5 +201,4 @@ function CostIcon({
       </div>
     </div>
   )
-
 }

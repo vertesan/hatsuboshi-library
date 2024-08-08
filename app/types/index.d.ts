@@ -23,6 +23,10 @@ import {
   XProduceCard,
   ProduceCardFilter,
 } from "./data/pcard"
+import {
+  MemorySlot,
+  MemorySlots,
+} from "./data/evaluation"
 
 export type {
   ApiData,
@@ -36,5 +40,7 @@ export type {
   XIdolCard,
   XProduceCard,
   ProduceCardFilter,
+  MemorySlot,
+  MemorySlots,
 }
 
