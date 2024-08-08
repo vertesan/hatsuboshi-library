@@ -99,7 +99,7 @@ const translation = {
   "Height": "身高",
   "Weight": "体重",
   "BloodType": "血型",
-  "ThreeSize": "三维",
+  "ThreeSize": "三围",
   "ZodiacSign": "星座",
   "Cv": "CV",
   "Age": "年龄",
@@ -226,7 +226,7 @@ const translation = {
   "ProduceResultRewardSupportCardEnhancePointUp": "养成所得支援卡强化 PT 奖励提升",
   "SupportCardEventStaminaRecoverUp": "事件体力恢复值增加",
   "SupportCardEventProducePointAdditionValueUp": "事件所得 P 点数增加",
-  "SupportCardEventParameterAdditionValueUp": "Event Increased Parameter Value Increase", // 仍在考虑翻译
+  "SupportCardEventParameterAdditionValueUp": "支援事件提升属性增加",
   "SupportCardEventProbabilityUp": "支援事件概率提升",
   "LessonPresentProducePointUp": "训练所得 P 点数提升",
   "LessonPresentProducePointDown": "训练所得 P 点数降低",
