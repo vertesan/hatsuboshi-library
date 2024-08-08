@@ -88,7 +88,7 @@ export const DroppableMemorySlots = forwardRef(({
         {Object.entries(rankEvaluation).map(([k, v]) => {
           const inRange = totalEva >= v.from && totalEva <= v.to
           return (
-            <div key={k} className={`text-right ${inRange ? "text-emerald-600" : "text-rose-700"}`}>
+            <div key={k} className={`text-right ${inRange ? "text-emerald-600" : ""}`}>
               {`${k} [${v.from}, ${v.to}]`}
             </div>
           )
