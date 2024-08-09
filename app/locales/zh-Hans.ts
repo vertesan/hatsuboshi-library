@@ -4,7 +4,7 @@ const translation = {
   "meta-name-suffix": " - 初星图书馆",
   "meta-produce": "Produce - 初星图书馆", // 网页暂未实装
   "meta-briefcase": "工具箱 - 初星图书馆", // 网页暂未实装
-  "meta-evaluation": "评价计算 - 初星图书馆",
+  "meta-evaluation": "容量计算 - 初星图书馆",
   "meta-tools": "评分图表  - 初星图书馆",
   "meta-cidol": "偶像卡 - 初星图书馆",
   "meta-csprt": "支援卡 - 初星图书馆",
@@ -17,7 +17,7 @@ const translation = {
   "route-csprt": "支援卡",
   "route-character": "角色",
   "route-pcard": "技能卡",
-  "route-evaluation": "评价计算",
+  "route-evaluation": "容量计算",
   "route-about": "关于",
   "Rarity": "稀有度",
   "Produce Plan": "计划",
