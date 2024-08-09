@@ -135,7 +135,7 @@ const translation = {
   "Evaluation": "计值",
   "Slot": "槽位",
   "Dedicated": "专用", // 暂译
-  "Support & Common": "支援技能卡 & 普通技能卡",
+  "Support & Common": "支援卡 & 普卡",
   "Enhance": "强化",
   // produce phase
   "RecoveryStamina": "体力恢复",
