@@ -1,6 +1,6 @@
 const translation = {
   "meta-name": "初星资料库",
-  "meta-description": "为就读于初星学院制作人系的初级制作人设计的实用程序",
+  "meta-description": "为就读于初星学院培育科的初级制作人设计的实用程序",
   "meta-name-suffix": " - 初星资料库",
   "meta-produce": "Produce - 初星资料库", // 网页暂未实装
   "meta-briefcase": "工具箱 - 初星资料库", // 网页暂未实装
@@ -21,7 +21,7 @@ const translation = {
   "route-about": "关于",
   "Rarity": "稀有度",
   "Produce Plan": "计划",
-  "Common": "普通",
+  "Common": "不限"， // 原网页中出现在评分图表中，图标和free一致，可以与下文一致取“不限”或译为“通用”
   "plan-free": "不限",
   "plan-sense": "感性",
   "plan-logic": "理性",
@@ -34,36 +34,36 @@ const translation = {
   "Shop": "商店",
   "Support Card Event": "支援卡事件",
   "Uncategorized": "未分类",
-  "Inline operator": "逻辑关系（满足其一 / 同时满足）",
+  "Inline operator": "单条件筛选/多条件筛选",
   "Show all effects": "显示所有效果",
   "Event Characters": "事件角色",
   "Produce Effect Trigger": "触发条件",
-  "Misc": "杂项",
-  "Show enhanced cards/items if available": "显示可强化的技能卡/道具",
+  "Misc": "其他",
+  "Show enhanced cards/items if available": "显示强化(技能卡/道具)",
   "Lesson support chance:": "支援发生率:",
-  "attr-assist": "协助 Sp.",
+  "attr-assist": "支援 Sp.",
   "attr-dance": "舞蹈 Da.",
-  "attr-vocal": "歌唱 Vo.",
-  "attr-visual": "表现 Vi.",
+  "attr-vocal": "声乐 Vo.",
+  "attr-visual": "形象 Vi.",
   "Reward Type": "育成内获得", // 考虑是否有更好译名，暂跟随主要中文wiki内翻译
   "Item": "道具",
   "Card": "技能卡",
   "None": "无",
   "Event Effect": "事件效果",
-  "ProduceCardChange": "替换技能卡",
-  "ProduceCardUpgrade": "强化技能卡",
-  "ProduceCardDelete": "删除技能卡",
+  "ProduceCardChange": "随机转变技能卡",
+  "ProduceCardUpgrade": "随机强化技能卡",
+  "ProduceCardDelete": "随机删除技能卡",
   "Unknown": "未知",
   "No results": "暂无结果",
   "Total": "总计",
   "St.": "体力 St.",
-  "Main Effect": "专属效果", // 或译为"主要效果"?
+  "Main Effect": "角色流派", // 或译为"主要效果"?
   "Training Level": "特训阶段",
   "Training Level ": "特训阶段 ",
   " Training Level": " 特训阶段",
   "Potential Level": "才能开花等级",
   "Potential Level ": "才能开花等级 ",
-  "Count secondary attribute in": "次要计数属性", // 网页暂未调用？
+  "Count secondary attribute in": "加入副属性筛选", // 网页暂未调用？
   "produce-001": "Regular", // 无需翻译
   "produce-002": "Pro", // 无需翻译
   "produce-003": "Master", // 游戏内暂未实装
@@ -132,62 +132,62 @@ const translation = {
   "Cannot set common card into dedicated card cell": "无法将普通技能卡添加到专用卡槽中",
   "Cannot set duplicated cards": "无法添加重复技能卡",
   "Eva. ": "Eva. ",
-  "Evaluation": "计值",
-  "Slot": "槽位",
-  "Dedicated": "专用", // 暂译
-  "Support & Common": "支援卡 & 普卡",
+  "Evaluation": "容量值",
+  "Slot": "卡槽",
+  "Dedicated": "角色卡", // 暂译
+  "Support & Common": "支援卡或技能卡",
   "Enhance": "强化",
   // produce phase
   "RecoveryStamina": "体力恢复",
   "GetProducePoint": "获得 P 点数",
   "GetProduceItem": "获得 P 道具",
-  "GetProduceDrink": "获得 P 饮品",
-  "UseProduceDrink": "使用 P 饮品",
+  "GetProduceDrink": "获得 P 饮料",
+  "UseProduceDrink": "使用 P 饮料",
   "GetProduceCard": "获得技能卡",
   "UpgradeProduceCard": "强化技能卡",
   "DeleteProduceCard": "删除技能卡",
-  "ProduceStart": "开始养成",
+  "ProduceStart": "培育开始",
   "StartStep": "回合开始",
   "StartShop": "进入商店",
-  "StartRefresh": "开始休息",
-  "StartPresent": "获得活动经费（活動支給）",
+  "StartRefresh": "选择睡觉",
+  "StartPresent": "选择活動支給"， //取日语原文算了，反正都是汉字
   "StartLesson": "训练开始",
-  "EndLessonBeforePresent": "训练开始 & 结束时获得加成",
+  "EndLessonBeforePresent": "P点数获取量增加",
   "EndLesson": "训练结束",
   "FailedLesson": "训练失败",
   "EndStepEventActivity": "外出结束",
-  "EndStepEventSchool": "授课结束",
+  "EndStepEventSchool": "上课结束",
   "EndStepEventCharacterOpening": "EndStepEventCharacterOpening", // idk what is this 我也不知道这啥
   "ChangeProduceCard": "技能卡转换", // 暂未实装此类型技能卡
   "StartAuditionMid": "期中考试开始",
-  "StartAuditionMid1": "第一次期中考试开始",
-  "StartAuditionMid2": "第二次期中考试开始",
+  "StartAuditionMid1": "第一次期中考试开始"， //一模？
+  "StartAuditionMid2": "第二次期中考试开始"， //二模？
   "StartAuditionFinal": "期末考试开始",
   "StartAudition": "考试开始",
   "EndAuditionMid": "期中考试结束",
   "EndAuditionMid1": "第一次期中考试结束",
   "EndAuditionMid2": "第二次期中考试结束",
-  "EndAuditionFinal": "最终考试结束",
+  "EndAuditionFinal": "期末考试结束",
   "EndAudition": "考试结束",
   "BuyShopItem": "购买道具",
-  "BuyShopItemProduceCard": "购买技能卡",
-  "BuyShopItemProduceDrink": "购买 P 饮品",
-  "BuyShopItemProduceItem": "购买 P 道具",
-  "BuyShopItemUpgradeProduceCard": "增强技能卡",
-  "BuyShopItemDeleteProduceCard": "删除技能卡",
+  "BuyShopItemProduceCard": "商店购买技能卡",
+  "BuyShopItemProduceDrink": "商店购买P饮料",
+  "BuyShopItemProduceItem": "商店购买P道具",
+  "BuyShopItemUpgradeProduceCard": "商店强化技能卡",
+  "BuyShopItemDeleteProduceCard": "商店删除技能卡",
   // produce effects
-  "VocalAddition": "歌唱Vo. 上升",
+  "VocalAddition": "声乐Vo. 上升",
   "DanceAddition": "舞蹈Da. 上升",
-  "VisualAddition": "表现Vi. 上升",
-  "VocalDown": "歌唱Vo. 降低",
+  "VisualAddition": "形象Vi. 上升",
+  "VocalDown": "声乐Vo. 降低",
   "DanceDown": "舞蹈Da. 降低",
-  "VisualDown": "表现Vi. 降低",
-  "VocalGrowthRateAddition": "歌唱Vo. 成长率提升",
+  "VisualDown": "形象Vi. 降低",
+  "VocalGrowthRateAddition": "声乐Vo. 成长率提升",
   "DanceGrowthRateAddition": "舞蹈Da. 成长率提升",
-  "VisualGrowthRateAddition": "表现Vi. 成长率提升",
-  "VocalGrowthRateDown": "歌唱Vo. 成长率降低",
+  "VisualGrowthRateAddition": "形象Vi. 成长率提升",
+  "VocalGrowthRateDown": "声乐Vo. 成长率降低",
   "DanceGrowthRateDown": "舞蹈Da. 成长率降低",
-  "VisualGrowthRateDown": "表现Vi. 成长率降低",
+  "VisualGrowthRateDown": "形象Vi. 成长率降低",
   "StaminaRecoverFix": "体力恢复 (固定值)",
   "StaminaRecoverMultiple": "体力恢复 (百分比)",
   "StaminaReduceFix": "体力下降 (固定值)",
@@ -214,7 +214,7 @@ const translation = {
   "ProducePointAddition": "P 点数降低",
   "ProducePointGetDisable": "阻止 P 点数改变",
   "ProduceItemGetDisable": "阻止 P 道具改变",
-  "ProduceDrinkGetDisable": "阻止 P 饮品改变",
+  "ProduceDrinkGetDisable": "阻止 P 饮料改变",
   "ProduceReward": "养成奖励",
   "ProduceRewardSet": "养成奖励", // 和上一项是否存在区别?
   "AuditionParameterBonusMultiple": "分数加成 (百分比)",
@@ -224,20 +224,20 @@ const translation = {
   "LessonVisualSpChangeRatePermilAddition": "SP 训练发生率上升 (Vi.)",
   "LessonSpChangeRatePermilDown": "SP 训练发生率下降 (All)",
   "ExamStatusEnchant": "训练/考试额外效果",
-  "LessonPresentProduceCardRewardCountUp": "可选技能卡增加",
-  "LessonPresentProduceCardRewardCountDown": "可选技能卡减少",
-  "LessonPresentSearchProduceCardRewardCountUp": "LessonPresentSearchProduceCardRewardCountUp", // idk what does this mean 我也不知道啥意思
-  "ShopPriceDiscountMultiple": "商店折扣 (百分比)",
-  "ShopProduceCardPriceDiscountMultiple": "技能卡折扣 (百分比)",
-  "ShopProduceDrinkPriceDiscountMultiple": "饮品折扣 (百分比)",
-  "ShopProduceCardUpgradePriceDiscountMultiple": "技能卡增强折扣 (百分比)",
-  "ShopProduceCardUpgradePriceSpecify": "Shop Card Upgrade Price Assignment",
-  "ShopProduceCardDeletePriceDiscountMultiple": "删除技能卡折扣 (百分比)",
-  "ShopProduceCardDeletePriceSpecify": "Shop Card Deletion Price Assignment",
-  "ProduceResultRewardMoneyUp": "养成所得金币奖励提升",
-  "ProduceResultRewardSupportCardEnhancePointUp": "养成所得支援卡强化 PT 奖励提升",
-  "SupportCardEventStaminaRecoverUp": "事件体力恢复值增加",
-  "SupportCardEventProducePointAdditionValueUp": "事件所得 P 点数增加",
+  "LessonPresentProduceCardRewardCountUp": "训练结束增加可选技能卡",
+  "LessonPresentProduceCardRewardCountDown": "训练结束减少可选技能卡",
+  "LessonPresentSearchProduceCardRewardCountUp": "训练结束提高可选技能卡稀有度", // idk what does this mean 我也不知道啥意思
+  "ShopPriceDiscountMultiple": "商店打折(百分比)",
+  "ShopProduceCardPriceDiscountMultiple": "技能卡打折(百分比)",
+  "ShopProduceDrinkPriceDiscountMultiple": "饮料打折(百分比)",
+  "ShopProduceCardUpgradePriceDiscountMultiple": "强化技能卡打折(百分比)",
+  "ShopProduceCardUpgradePriceSpecify": "强化技能卡打折(固定值)"， // 根据描述推测效果，未实装
+  "ShopProduceCardDeletePriceDiscountMultiple": "删除技能卡折扣(百分比)",
+  "ShopProduceCardDeletePriceSpecify": "删除技能卡折扣(固定值)"， // 根据描述推测效果，未实装
+  "ProduceResultRewardMoneyUp": "培育结束获得金币数量增加",
+  "ProduceResultRewardSupportCardEnhancePointUp": "培育结束获得S卡PT增加",
+  "SupportCardEventStaminaRecoverUp": "S卡支援事件体力恢复值增加",
+  "SupportCardEventProducePointAdditionValueUp": "支援事件所得P点数增加",
   "SupportCardEventParameterAdditionValueUp": "支援事件提升属性增加",
   "SupportCardEventProbabilityUp": "支援事件概率提升",
   "LessonPresentProducePointUp": "训练所得 P 点数提升",
@@ -245,7 +245,16 @@ const translation = {
   "SupportCardProduceCardUpgradeProbabilityUp": "训练支援概率提升",
   "ProduceCardSelectRerollCountUp": "技能卡刷新概率提升",
   "ProducePointAdditionDisableTrigger": "初始 P 点数提升",
-  "LessonLimitUp": "Lesson Increasable Parameter Limit Break", // 仍在考虑翻译
+  "LessonLimitUp": "训练数值提升", // 仍在考虑翻译      //看描述像是直接改变训练的最大数值，一次课加60变成加80什么的？
+  
+  ///以下词条在网页中出现但未出现在此文件中///  The following entries appear on the webpage but do not appear in this file
+  "Contest Item": "可继承道具",
+  "Produce Item": "不可继承道具",
+  "Produce Effect": "支援卡效果"
+  "Characters": "角色"
+  "Card Level": "S卡等级"
+  "Reset": "重置"
+  "Has P-Level Precondition": "仅显示Plv提升解锁的技能卡"
 }
 
 export default translation
