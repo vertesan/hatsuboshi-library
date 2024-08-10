@@ -255,6 +255,7 @@ const translation = {
   // "Card Level": "S卡等级"
   // "Reset": "重置"
   // "Has P-Level Precondition": "仅显示Plv提升解锁的技能卡"
+  
 }
 
 export default translation
