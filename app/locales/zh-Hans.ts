@@ -21,11 +21,11 @@ const translation = {
   "route-about": "关于",
   "Rarity": "稀有度",
   "Produce Plan": "计划",
-  "Common": "不限"， // 原网页中出现在评分图表中，图标和free一致，可以与下文一致取“不限”或译为“通用”
+  "Common": "不限", // 原网页中出现在评分图表中,图标和free一致,可以与下文一致取“不限”或译为“通用”
   "plan-free": "不限",
   "plan-sense": "感性",
   "plan-logic": "理性",
-  "plan-anomary": "异常", // 游戏内暂未实装，暂译
+  "plan-anomary": "异常", // 游戏内暂未实装,暂译
   "Attribute": "属性",
   "Stamina": "体力",
   "P-Point": "P 点数",
@@ -45,7 +45,7 @@ const translation = {
   "attr-dance": "舞蹈 Da.",
   "attr-vocal": "声乐 Vo.",
   "attr-visual": "形象 Vi.",
-  "Reward Type": "育成内获得", // 考虑是否有更好译名，暂跟随主要中文wiki内翻译
+  "Reward Type": "育成内获得", // 考虑是否有更好译名,暂跟随主要中文wiki内翻译
   "Item": "道具",
   "Card": "技能卡",
   "None": "无",
@@ -150,7 +150,7 @@ const translation = {
   "StartStep": "回合开始",
   "StartShop": "进入商店",
   "StartRefresh": "选择睡觉",
-  "StartPresent": "选择活動支給"， //取日语原文算了，反正都是汉字
+  "StartPresent": "选择活動支給", //取日语原文算了,反正都是汉字
   "StartLesson": "训练开始",
   "EndLessonBeforePresent": "P点数获取量增加",
   "EndLesson": "训练结束",
@@ -160,8 +160,8 @@ const translation = {
   "EndStepEventCharacterOpening": "EndStepEventCharacterOpening", // idk what is this 我也不知道这啥
   "ChangeProduceCard": "技能卡转换", // 暂未实装此类型技能卡
   "StartAuditionMid": "期中考试开始",
-  "StartAuditionMid1": "第一次期中考试开始"， //一模？
-  "StartAuditionMid2": "第二次期中考试开始"， //二模？
+  "StartAuditionMid1": "第一次期中考试开始", //一模？
+  "StartAuditionMid2": "第二次期中考试开始", //二模？
   "StartAuditionFinal": "期末考试开始",
   "StartAudition": "考试开始",
   "EndAuditionMid": "期中考试结束",
@@ -231,9 +231,9 @@ const translation = {
   "ShopProduceCardPriceDiscountMultiple": "技能卡打折(百分比)",
   "ShopProduceDrinkPriceDiscountMultiple": "饮料打折(百分比)",
   "ShopProduceCardUpgradePriceDiscountMultiple": "强化技能卡打折(百分比)",
-  "ShopProduceCardUpgradePriceSpecify": "强化技能卡打折(固定值)"， // 根据描述推测效果，未实装
+  "ShopProduceCardUpgradePriceSpecify": "强化技能卡打折(固定值)", // 根据描述推测效果,未实装
   "ShopProduceCardDeletePriceDiscountMultiple": "删除技能卡折扣(百分比)",
-  "ShopProduceCardDeletePriceSpecify": "删除技能卡折扣(固定值)"， // 根据描述推测效果，未实装
+  "ShopProduceCardDeletePriceSpecify": "删除技能卡折扣(固定值)", // 根据描述推测效果,未实装
   "ProduceResultRewardMoneyUp": "培育结束获得金币数量增加",
   "ProduceResultRewardSupportCardEnhancePointUp": "培育结束获得S卡PT增加",
   "SupportCardEventStaminaRecoverUp": "S卡支援事件体力恢复值增加",
@@ -245,7 +245,7 @@ const translation = {
   "SupportCardProduceCardUpgradeProbabilityUp": "训练支援概率提升",
   "ProduceCardSelectRerollCountUp": "技能卡刷新概率提升",
   "ProducePointAdditionDisableTrigger": "初始 P 点数提升",
-  "LessonLimitUp": "训练数值提升", // 看描述像是直接改变训练的最大数值，一次课加60变成加80什么的？
+  "LessonLimitUp": "训练数值提升", // 看描述像是直接改变训练的最大数值,一次课加60变成加80什么的？
   
   // 以下词条在网页中出现但未出现在此文件中 The following entries appear on the webpage but do not appear in this file.
   // "Contest Item": "可继承道具",
