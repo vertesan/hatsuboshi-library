@@ -137,6 +137,13 @@ const translation = {
   "Dedicated": "Dedicated",
   "Support & Common": "Support & Common",
   "Enhance": "Enhance",
+  "Contest Item": "Contest Item",
+  "Produce Item": "Produce Item",
+  "Produce Effect": "Produce Effect",
+  "Characters": "Characters",
+  "Card Level": "Card Level",
+  "Reset": "Reset",
+  "Has P-Level Precondition": "Has P-Level Precondition",
   // produce phase
   "RecoveryStamina": "Stamina Recovered",
   "GetProducePoint": "P-Point Obtained",
