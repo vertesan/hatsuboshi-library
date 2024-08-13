@@ -29,7 +29,7 @@ export function EffectDescription({
         targetIdSet.add(cur.targetId)
       }
       if (cur.type === ProduceDescriptionType.ProduceExamEffectType) {
-        const bgImg = buffTypeBackground[cur.examEffectType]
+        const bgImg = buffTypeBackground[cur.examEffectType as keyof typeof buffTypeBackground]
         const iconImg = getExamEffectImgUrl(cur.examEffectType)
         const buffIcon =
           `<div class="relative inline-block align-text-top aspect-square overflow-visible h-5 w-5">` +

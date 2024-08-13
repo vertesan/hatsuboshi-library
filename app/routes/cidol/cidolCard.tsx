@@ -57,7 +57,7 @@ export function CidolCard({
           : <Link to={`/cidol/${card.id}`}>{cidolImageComponent}</Link>
         }
       </div>
-      <div className="flex-1 p-2 flex flex-col gap-2">
+      <div className="flex-1 p-2 flex flex-col gap-1">
         <div className="flex flex-row gap-2">
           <div className="flex-1 flex flex-col justify-center">
             <AttributeProgress percentage={voProgressPercentage} value={attrs.vo} attr="vo" />
@@ -73,17 +73,17 @@ export function CidolCard({
           </div>
         </div>
 
-        <div className="flex flex-row text-center text-sm md:text-xl">
+        <div className="flex flex-row text-center text-sm md:text-lg">
           <p className="flex-1">
-            <img src={arrowVoUp} alt="voup" className="h-2 w-2 sm:h-4 sm:w-4 align-baseline inline-block" />
+            <img src={arrowVoUp} alt="voup" className="h-2 w-2 sm:h-3 sm:w-3 align-baseline inline-block" />
             &nbsp;{voGrowthPercentage}
           </p>
           <p className="flex-1 border-l-2 dark:border-zinc-600">
-            <img src={arrowDaUp} alt="voup" className="h-2 w-2 sm:h-4 sm:w-4 align-baseline inline-block" />
+            <img src={arrowDaUp} alt="daup" className="h-2 w-2 sm:h-3 sm:w-3 align-baseline inline-block" />
             &nbsp;{daGrowthPercentage}
           </p>
           <p className="flex-1 border-l-2 dark:border-zinc-600">
-            <img src={arrowViUp} alt="voup" className="h-2 w-2 sm:h-4 sm:w-4 align-baseline inline-block" />
+            <img src={arrowViUp} alt="viup" className="h-2 w-2 sm:h-3 sm:w-3 align-baseline inline-block" />
             &nbsp;{viGrowthPercentage}
           </p>
         </div>
