@@ -2,7 +2,7 @@ const translation = {
   "meta-name": "初星资料库",
   "meta-description": "为就读于初星学院培育科的初级制作人设计的实用程序",
   "meta-name-suffix": " - 初星资料库",
-  "meta-produce": "Produce - 初星资料库", // 网页暂未实装
+  "meta-produce": "Produce - 初星资料库", // 网页暂未实装     //// Produce → 偶像培育
   "meta-briefcase": "工具箱 - 初星资料库", // 网页暂未实装
   "meta-evaluation": "容量计算 - 初星资料库",
   "meta-tools": "评分图表  - 初星资料库",
@@ -11,7 +11,7 @@ const translation = {
   "meta-character": "角色 - 初星资料库",
   "meta-pcard": "技能卡 - 初星资料库",
   "meta-about": "关于 - 初星资料库",
-  "route-produce": "Produce", // 网页暂未实装
+  "route-produce": "Produce", // 网页暂未实装     //// Produce → 偶像培育
   "route-tools": "评分图表",
   "route-cidol": "偶像卡",
   "route-csprt": "支援卡",
@@ -45,14 +45,14 @@ const translation = {
   "attr-dance": "舞蹈 Da.",
   "attr-vocal": "声乐 Vo.",
   "attr-visual": "形象 Vi.",
-  "Reward Type": "育成内获得", // 考虑是否有更好译名,暂跟随主要中文wiki内翻译
+  "Reward Type": "育成内获得", // 考虑是否有更好译名,暂跟随主要中文wiki内翻译     //// 育成内获得 → 奖励类型 （感觉直译就好，就是指训练结束后获得的那些道具以及技能卡）
   "Item": "道具",
   "Card": "技能卡",
   "None": "无",
   "Event Effect": "事件效果",
   "ProduceCardChange": "随机转变技能卡",
   "ProduceCardUpgrade": "随机强化技能卡",
-  "ProduceCardDelete": "随机删除技能卡",
+  "ProduceCardDelete": "随机删除技能卡", ////随机删除技能卡 -> 删除技能卡（现在应该还没有能随机删除的卡片，也不应该有？以及上面的两个也可以直接删除随机）
   "Unknown": "未知",
   "No results": "暂无结果",
   "Total": "总计",
@@ -67,23 +67,23 @@ const translation = {
   "produce-001": "Regular", // 无需翻译
   "produce-002": "Pro", // 无需翻译
   "produce-003": "Master", // 游戏内暂未实装
-  "AuditionMid1": "期中考试 1",
-  "AuditionMid2": "期中考试 2",
-  "AuditionFinal": "期末考试",
+  "AuditionMid1": "期中考试 1", ////期中前追练？
+  "AuditionMid2": "期中考试 2", ////期末前追练？
+  "AuditionFinal": "期末考试",  ////虽然的确也是考试，不过按剧情感觉直接试镜更合适？（上下同）
   "Terminates when score reaches ": "分数终止于 ",
   "Turn ": "回合 ",
   "Special Training Bonus": "特训提升",
   "Potential Level Bonus": "才能开花提升",
-  "Initial": "Initial",
-  "Default": "Default",
+  "Initial": "Initial", //// 初始化
+  "Default": "Default", //// 默认
   "MissionDailyRelease": "游戏发布日常任务",
   "MissionPanel": "九宫格任务", // 面板任务？
   "ProduceHighScore": "High Score",
   "StoryCampaign": "Story campaign",
   "StoryEvent": "活动事件",
   "StoryEventMainStory": "主线故事",
-  "StoryEventBoxGasha": "活动故事",
-  "StoryEventGuildMission": "Story Event", // 仍在考虑更好译名
+  "StoryEventBoxGasha": "活动故事", //// 活动卡池（游戏里无限池那种）
+  "StoryEventGuildMission": "Story Event", // 仍在考虑更好译名      //// 活动工会任务（应该还没有时装，记得好像哪里提到过）
   "Ends at": "结束于",
   "Currently no events are going on": "目前暂无活动",
   "In-game Announcements": "游戏内公告",
@@ -115,9 +115,9 @@ const translation = {
   "X-Axis Reference Line": "X 轴参考线",
   "Y-Axis Reference Line": "Y 轴参考线",
   "Category": "分类",
-  "ActiveSkill": "A 卡",
-  "MentalSkill": "M 卡",
-  "Trouble": "T 卡", // 游戏内暂未实装 
+  "ActiveSkill": "A 卡", ////行动卡（直接A卡也行）
+  "MentalSkill": "M 卡", ////属性卡（直接M卡也行）
+  "Trouble": "T 卡", // 游戏内暂未实装 ////也许可以翻译成扰乱卡（实际已经时装，不过只有一张，就是那张眠气）
   "Origin": "来源",
   "P-Idol": "偶像卡",
   "S-Card": "支援卡",
@@ -134,7 +134,7 @@ const translation = {
   "Eva. ": "Eva. ",
   "Evaluation": "容量值",
   "Slot": "卡槽",
-  "Dedicated": "角色卡", // 暂译
+  "Dedicated": "角色卡", // 暂译      ////角色专属卡
   "Support & Common": "支援卡或技能卡",
   "Enhance": "强化",
   // produce phase
@@ -149,24 +149,24 @@ const translation = {
   "ProduceStart": "培育开始",
   "StartStep": "回合开始",
   "StartShop": "进入商店",
-  "StartRefresh": "选择睡觉",
-  "StartPresent": "选择活動支給", //取日语原文算了,反正都是汉字
+  "StartRefresh": "选择睡觉", ////休息
+  "StartPresent": "选择活動支給", //取日语原文算了,反正都是汉字     ////获取活动支援
   "StartLesson": "训练开始",
-  "EndLessonBeforePresent": "P点数获取量增加",
+  "EndLessonBeforePresent": "P点数获取量增加", ////提前结束训练？
   "EndLesson": "训练结束",
   "FailedLesson": "训练失败",
   "EndStepEventActivity": "外出结束",
   "EndStepEventSchool": "上课结束",
-  "EndStepEventCharacterOpening": "EndStepEventCharacterOpening", // idk what is this 我也不知道这啥
-  "ChangeProduceCard": "技能卡转换", // 暂未实装此类型技能卡
+  "EndStepEventCharacterOpening": "EndStepEventCharacterOpening", // idk what is this 我也不知道这啥      ////不知道加一，猜测是角色卡事件？或者那个三个属性到达一定值给的奖励？
+  "ChangeProduceCard": "技能卡转换", // 暂未实装此类型技能卡      ////就是指随机转换技能卡吧？
   "StartAuditionMid": "期中考试开始",
-  "StartAuditionMid1": "第一次期中考试开始", //一模？
-  "StartAuditionMid2": "第二次期中考试开始", //二模？
+  "StartAuditionMid1": "第一次期中考试开始", //一模？     ////期中前追练
+  "StartAuditionMid2": "第二次期中考试开始", //二模？     ////期末前追练
   "StartAuditionFinal": "期末考试开始",
   "StartAudition": "考试开始",
   "EndAuditionMid": "期中考试结束",
-  "EndAuditionMid1": "第一次期中考试结束",
-  "EndAuditionMid2": "第二次期中考试结束",
+  "EndAuditionMid1": "第一次期中考试结束", ////期中前追练结束
+  "EndAuditionMid2": "第二次期中考试结束", ////期末前追练结束
   "EndAuditionFinal": "期末考试结束",
   "EndAudition": "考试结束",
   "BuyShopItem": "购买道具",
@@ -190,9 +190,9 @@ const translation = {
   "VisualGrowthRateDown": "形象Vi. 成长率降低",
   "StaminaRecoverFix": "体力恢复 (固定值)",
   "StaminaRecoverMultiple": "体力恢复 (百分比)",
-  "StaminaReduceFix": "体力下降 (固定值)",
+  "StaminaReduceFix": "体力下降 (固定值)", ////下降可以改为消耗，下同（另外有些效果应该都是爬塔里的？）
   "StaminaReduceMultiple": "体力下降 (百分比)",
-  "StaminaSpecify": "Stamina Assignment", // 暂无相关支援卡
+  "StaminaSpecify": "Stamina Assignment", // 暂无相关支援卡  ////固定体力？
   "StaminaRecoverValueUp": "体力恢复值提升", // 暂无相关支援卡
   "StaminaRecoverValueDown": "体力恢复值降低", // 暂无相关支援卡
   "StaminaReduceValueUp": "体力下降值提升", // 暂无相关支援卡
@@ -211,12 +211,12 @@ const translation = {
   "ProduceCardDuplicate": "技能卡重复",
   "ProduceCardDuplicateUpgrade": "技能卡重复 & 增强",
   "ProduceCardChangeUpgrade": "技能卡转换 & 增强",
-  "ProducePointAddition": "P 点数降低",
-  "ProducePointGetDisable": "阻止 P 点数改变",
+  "ProducePointAddition": "P 点数降低", ////P点数增加
+  "ProducePointGetDisable": "阻止 P 点数改变", ////改变改为获取，下同（不过应该不是阻止，只是个开关的flag？）
   "ProduceItemGetDisable": "阻止 P 道具改变",
   "ProduceDrinkGetDisable": "阻止 P 饮料改变",
   "ProduceReward": "养成奖励",
-  "ProduceRewardSet": "养成奖励", // 和上一项是否存在区别?
+  "ProduceRewardSet": "养成奖励", // 和上一项是否存在区别?      ////养成奖励合集（奖励有的时候只有技能卡，有的时候同时会有饮料）
   "AuditionParameterBonusMultiple": "分数加成 (百分比)",
   "LessonSpChangeRatePermilAddition": "SP 训练发生率上升 (All)",
   "LessonVocalSpChangeRatePermilAddition": "SP 训练发生率上升 (Vo.)",
@@ -226,7 +226,7 @@ const translation = {
   "ExamStatusEnchant": "训练/考试额外效果",
   "LessonPresentProduceCardRewardCountUp": "训练结束增加可选技能卡",
   "LessonPresentProduceCardRewardCountDown": "训练结束减少可选技能卡",
-  "LessonPresentSearchProduceCardRewardCountUp": "训练结束提高可选技能卡稀有度", // idk what does this mean 我也不知道啥意思
+  "LessonPresentSearchProduceCardRewardCountUp": "训练结束提高可选技能卡稀有度", // idk what does this mean 我也不知道啥意思      ////就是增加金卡彩卡概率吧
   "ShopPriceDiscountMultiple": "商店打折(百分比)",
   "ShopProduceCardPriceDiscountMultiple": "技能卡打折(百分比)",
   "ShopProduceDrinkPriceDiscountMultiple": "饮料打折(百分比)",
