@@ -57,13 +57,13 @@ const translation = {
   "No results": "暂无结果",
   "Total": "总计",
   "St.": "体力 St.",
-  "Main Effect": "角色流派", // 或译为"主要效果"?
+  "Main Effect": "角色流派",
   "Training Level": "特训阶段",
   "Training Level ": "特训阶段 ",
   " Training Level": " 特训阶段",
   "Potential Level": "才能开花等级",
   "Potential Level ": "才能开花等级 ",
-  "Count secondary attribute in": "加入副属性筛选", // 网页暂未调用？
+  "Count secondary attribute in": "加入副属性筛选",
   "produce-001": "Regular", // 无需翻译
   "produce-002": "Pro", // 无需翻译
   "produce-003": "Master", // 游戏内暂未实装
@@ -115,8 +115,8 @@ const translation = {
   "X-Axis Reference Line": "X 轴参考线",
   "Y-Axis Reference Line": "Y 轴参考线",
   "Category": "分类",
-  "ActiveSkill": "A 卡", ////行动卡（直接A卡也行）
-  "MentalSkill": "M 卡", ////属性卡（直接M卡也行）
+  "ActiveSkill": "A 卡", // 行动卡
+  "MentalSkill": "M 卡", // 属性卡
   "Trouble": "T 卡", // 游戏内暂未实装
   "Origin": "来源",
   "P-Idol": "偶像卡",
@@ -157,11 +157,11 @@ const translation = {
   "FailedLesson": "训练失败",
   "EndStepEventActivity": "外出结束",
   "EndStepEventSchool": "上课结束",
-  "EndStepEventCharacterOpening": "EndStepEventCharacterOpening", // idk what is this 我也不知道这啥      ////不知道加一，猜测是角色卡事件？或者那个三个属性到达一定值给的奖励？
-  "ChangeProduceCard": "技能卡转换", ////就是指随机转换技能卡吧？
+  "EndStepEventCharacterOpening": "EndStepEventCharacterOpening", // idk what is this 我也不知道这啥
+  "ChangeProduceCard": "技能卡转换",
   "StartAuditionMid": "期中考试开始",
-  "StartAuditionMid1": "第一次期中考试开始", //一模？
-  "StartAuditionMid2": "第二次期中考试开始", //二模？
+  "StartAuditionMid1": "第一次期中考试开始",
+  "StartAuditionMid2": "第二次期中考试开始",
   "StartAuditionFinal": "期末考试开始",
   "StartAudition": "考试开始",
   "EndAuditionMid": "期中考试结束",
@@ -192,7 +192,7 @@ const translation = {
   "StaminaRecoverMultiple": "体力恢复 (百分比)",
   "StaminaReduceFix": "体力消耗 (固定值)",
   "StaminaReduceMultiple": "体力消耗 (百分比)",
-  "StaminaSpecify": "Stamina Assignment", // 暂无相关支援卡  ////固定体力？
+  "StaminaSpecify": "Stamina Assignment", // 暂无相关支援卡
   "StaminaRecoverValueUp": "体力恢复值提升", // 暂无相关支援卡
   "StaminaRecoverValueDown": "体力恢复值降低", // 暂无相关支援卡
   "StaminaReduceValueUp": "体力消耗值提升", // 暂无相关支援卡
@@ -212,7 +212,7 @@ const translation = {
   "ProduceCardDuplicateUpgrade": "技能卡重复 & 增强",
   "ProduceCardChangeUpgrade": "技能卡转换 & 增强",
   "ProducePointAddition": "P 点数增加",
-  "ProducePointGetDisable": "阻止获取 P 点数", ////改变改为获取，下同（不过应该不是阻止，只是个开关的flag？）
+  "ProducePointGetDisable": "阻止获取 P 点数",
   "ProduceItemGetDisable": "阻止获取 P 道具",
   "ProduceDrinkGetDisable": "阻止获取 P 饮料",
   "ProduceReward": "养成奖励",
@@ -245,7 +245,7 @@ const translation = {
   "SupportCardProduceCardUpgradeProbabilityUp": "训练支援概率提升",
   "ProduceCardSelectRerollCountUp": "技能卡刷新概率提升",
   "ProducePointAdditionDisableTrigger": "初始 P 点数提升",
-  "LessonLimitUp": "训练数值提升", // 看描述像是直接改变训练的最大数值,一次课加60变成加80什么的？
+  "LessonLimitUp": "训练数值提升",
   
   // 以下词条在网页中出现但未出现在此文件中 The following entries appear on the webpage but do not appear in this file.
   // "Contest Item": "可继承道具",
