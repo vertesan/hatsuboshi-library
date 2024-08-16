@@ -67,9 +67,9 @@ const translation = {
   "produce-001": "Regular", // 无需翻译
   "produce-002": "Pro", // 无需翻译
   "produce-003": "Master", // 游戏内暂未实装
-  "AuditionMid1": "期中考试 1",
-  "AuditionMid2": "期中考试 2",
-  "AuditionFinal": "期末考试",
+  "AuditionMid1": "期中考试 1", ////期中前追练？
+  "AuditionMid2": "期中考试 2", ////期末前追练？
+  "AuditionFinal": "期末考试",  ////虽然的确也是考试，不过按剧情感觉直接试镜更合适？（上下同）
   "Terminates when score reaches ": "分数终止于 ",
   "Turn ": "回合 ",
   "Special Training Bonus": "特训提升",
@@ -226,7 +226,7 @@ const translation = {
   "ExamStatusEnchant": "训练/考试额外效果",
   "LessonPresentProduceCardRewardCountUp": "训练结束增加可选技能卡",
   "LessonPresentProduceCardRewardCountDown": "训练结束减少可选技能卡",
-  "LessonPresentSearchProduceCardRewardCountUp": "训练结束提高可选技能卡稀有度", // idk what does this mean 我也不知道啥意思
+  "LessonPresentSearchProduceCardRewardCountUp": "训练结束提高可选技能卡稀有度", // idk what does this mean 我也不知道啥意思      ////就是增加金卡彩卡概率吧
   "ShopPriceDiscountMultiple": "商店打折(百分比)",
   "ShopProduceCardPriceDiscountMultiple": "技能卡打折 (百分比)",
   "ShopProduceDrinkPriceDiscountMultiple": "饮料打折 (百分比)",
