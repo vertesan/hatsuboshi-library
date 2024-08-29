@@ -57,7 +57,7 @@ export function CommonTab() {
           className="pt-4"
           width={70}
           controlWidth={50}
-          max={4500} min={1500} step={100}
+          max={5400} min={1500} step={100}
           value={uiOptions.xreferenceLine}
           label={t("X-Axis Reference Line")}
           setValue={(value) => onPreferenceChange("xreferenceLine", value)}

@@ -3,7 +3,7 @@ import { calcFinalAuditionRequiredScore, produceEvaBorder } from "~/data/calcula
 export const displayRanks: (keyof typeof produceEvaBorder)[] = ["SS+", "SS", "S+", "S", "A+", "A", "B+"]
 const _ceiling = 80000
 const _from = 1500
-const _to = 4500
+const _to = 5400
 
 export function filterOptions(
   data: ReturnType<typeof getScoreChatData>,
