@@ -57,7 +57,9 @@ function _ProduceCardIcon({
   })()
 
   const blockValue = card.playEffects.find(
-    effect => effect.produceExamEffect.effectType === ProduceExamEffectType.ExamBlock
+    effect =>
+      effect.produceExamEffect.effectType === ProduceExamEffectType.ExamBlock ||
+      effect.produceExamEffect.effectType === ProduceExamEffectType.ExamBlockAddMultipleAggressive
   )?.produceExamEffect.effectValue1
 
   const cardElement = (
@@ -148,7 +150,8 @@ function PlayEffectsIcon({
     !effect.hideIcon &&
     effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamLesson &&
     effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlock &&
-    effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount
+    effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount &&
+    effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive
   )
   return (
     displayEffects.length > 0
