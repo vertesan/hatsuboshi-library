@@ -131,6 +131,10 @@ const extraEffectNameMap: { [x: number]: ProduceExamEffectType } = {
   [ProduceExamEffectType.ExamLessonDependExamReview]: ProduceExamEffectType.ExamLesson,
   [ProduceExamEffectType.ExamLessonDependExamCardPlayAggressive]: ProduceExamEffectType.ExamLesson,
   [ProduceExamEffectType.ExamLessonDependParameterBuff]: ProduceExamEffectType.ExamLesson,
+  [ProduceExamEffectType.ExamReviewReduce]: ProduceExamEffectType.ExamReview,
+  [ProduceExamEffectType.ExamAggressiveReduce]: ProduceExamEffectType.ExamCardPlayAggressive,
+  [ProduceExamEffectType.ExamLessonBuffReduce]: ProduceExamEffectType.ExamLessonBuff,
+  [ProduceExamEffectType.ExamParameterBuffReduce]: ProduceExamEffectType.ExamParameterBuff,
 }
 
 export const buffTypeBackground = {
@@ -222,4 +226,21 @@ export const buffTypeBackground = {
   [ProduceExamEffectType.ExamLessonDependParameterBuff]: buffBgBlue,
   [ProduceExamEffectType.ExamLessonAddMultipleParameterBuff]: buffBgBlue,
   [ProduceExamEffectType.ExamBlockPerUseCardCount]: buffBgBlue,
+  [ProduceExamEffectType.ExamChainEffect]: buffBgBlue,
+  [ProduceExamEffectType.StanceLock]: buffBgBlue,
+  [ProduceExamEffectType.ExamLessonDependStamina]: buffBgBlue,
+  [ProduceExamEffectType.ExamBlockAddMultipleAggressive]: buffBgBlue,
+  [ProduceExamEffectType.ExamLessonDependStaminaConsumptionSum]: buffBgBlue,
+  [ProduceExamEffectType.ExamChainEffectPerPassedTurn]: buffBgBlue,
+  [ProduceExamEffectType.ExamChainEffectPerRemainTurn]: buffBgBlue,
+  [ProduceExamEffectType.ExamLessonDependPlayCardCountSum]: buffBgBlue,
+  [ProduceExamEffectType.ExamDebuffRecover]: buffBgBlue,
+  [ProduceExamEffectType.ExamAggressiveValueMultiple]: buffBgBlue,
+  [ProduceExamEffectType.ExamItemFireLimitAdd]: buffBgRed,
+  [ProduceExamEffectType.ExamReviewReduce]: buffBgRed,
+  [ProduceExamEffectType.ExamAggressiveReduce]: buffBgRed,
+  [ProduceExamEffectType.ExamLessonBuffReduce]: buffBgRed,
+  [ProduceExamEffectType.ExamParameterBuffReduce]: buffBgRed,
+  [ProduceExamEffectType.ExamLessonValueMultipleDown]: buffBgRed,
+  [ProduceExamEffectType.ExamAddGrowEffect]: buffBgBlue,
 }
