@@ -246,15 +246,13 @@ const translation = {
   "ProduceCardSelectRerollCountUp": "技能卡刷新概率提升",
   "ProducePointAdditionDisableTrigger": "初始 P 点数提升",
   "LessonLimitUp": "训练数值提升",
-  
-  // 以下词条在网页中出现但未出现在此文件中 The following entries appear on the webpage but do not appear in this file.
-  // "Contest Item": "可继承道具",
-  // "Produce Item": "不可继承道具",
-  // "Produce Effect": "支援卡效果"
-  // "Characters": "角色"
-  // "Card Level": "S 卡等级"
-  // "Reset": "重置"
-  // "Has P-Level Precondition": "仅显示Plv提升解锁的技能卡"
+  "Contest Item": "可继承道具",
+  "Produce Item": "不可继承道具",
+  "Produce Effect": "支援卡效果"
+  "Characters": "角色"
+  "Card Level": "S 卡等级"
+  "Reset": "重置"
+  "Has P-Level Precondition": "仅显示Plv提升解锁的技能卡"
   
 }
 
