@@ -114,7 +114,7 @@ export function getExamEffectImgUrl(effectType: ProduceExamEffectType) {
   if (extraEffectNameMap[effectType] !== undefined) {
     iconEffectType = extraEffectNameMap[effectType]
   }
-  const effectName = ProduceExamEffectType[iconEffectType].toLowerCase()
+  const effectName = ProduceExamEffectType[iconEffectType]?.toLowerCase()
   return VITE_IMG_PREFIX + examEffectTemplate.replace(("{id}"), effectName)
 }
 
