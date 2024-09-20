@@ -84,7 +84,7 @@ export default function Csprt() {
         <div
           className={`fixed xl:static z-[102] px-2 pb-24 top-2 left-0 right-0 h-screen w-screen overflow-x-hidden overflow-y-auto
             bg-[--mantine-color-body] ${opened ? "" : "translate-x-full"} sm:z-[111]
-            xl:top-auto xl:left-auto xl:z-[100] xl:flex-none xl:w-[460px] xl:block xl:translate-x-0 xl:h-auto
+            xl:top-auto xl:left-auto xl:z-[0] xl:flex-none xl:w-[460px] xl:block xl:translate-x-0 xl:h-auto
             transition-transform duration-150 ease-in-out`
           }
         >

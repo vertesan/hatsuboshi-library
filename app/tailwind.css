@@ -7,6 +7,23 @@
   @tailwind base;
 }
 
+@layer mantine {
+  .mscrollbar {
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #6b728088;
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6b7280aa;
+    }
+  }
+}
+
 @layer tailwind-utilities {
   @tailwind components;
   @tailwind utilities;

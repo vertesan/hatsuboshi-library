@@ -1,16 +1,15 @@
-import { XIdolCard } from "~/types"
-import { CidolCard } from "~/routes/cidol/cidolCard"
-import { Alert, Card, Radio, Table, Timeline } from "@mantine/core"
-import { useTranslation } from "react-i18next"
-import { ProduceStepType } from "~/types/proto/penum"
-import { EffectDescription } from "~/components/media/effectDescription"
+import { Alert, Card, Radio } from "@mantine/core"
 import { IconInfoCircle } from "@tabler/icons-react"
-import { LevelLimitUpView } from "~/components/media/levelLimitUpView"
-import { PotentialLevelView } from "~/components/media/potentialLevelView"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 import NumberCompose from "~/components/general/numberCompose"
 import { GimmicksTimeline } from "~/components/media/gimmicksTimeline"
+import { LevelLimitUpView } from "~/components/media/levelLimitUpView"
 import { NpcScoreTable } from "~/components/media/npcScoreTable"
+import { PotentialLevelView } from "~/components/media/potentialLevelView"
+import { CidolCard } from "~/routes/cidol/cidolCard"
+import { XIdolCard } from "~/types"
+import { ProduceStepType } from "~/types/proto/penum"
 
 export function CidolView({
   idolCard,

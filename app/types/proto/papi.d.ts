@@ -199,6 +199,7 @@ export type ExchangeItem = {
   exchangeLimit: number
   exchangedCount: number
   nextResetTime: string
+  viewConditionSetId: string
   unlockConditionSetId: string
   unlocked: boolean
   noti: boolean
@@ -618,6 +619,7 @@ type GuildTopResponse_HomeInfo = {
   joinRequestList: GuildMemberInfo[]
   donationRequestList: DonationRequest[]
   receivedDonationInfo: GuildTopResponse_HomeInfo_ReceivedDonationInfo
+  isInEvent: boolean
 }
 type GuildTopResponse_HomeInfo_ReceivedDonationInfo = {
   guildDonationItemId: string
@@ -835,6 +837,14 @@ export type MeishiFollowRequest = {
 export type MeishiFollowResponse = {
   commonResponse: papicommon.Response
 }
+export type MeishiGetDetailRequest = {
+  publicUserId: string
+  number: number
+}
+export type MeishiGetDetailResponse = {
+  meishi: pcommon.Meishi
+  commonResponse: papicommon.Response
+}
 export type MeishiGetRequest = {
   publicUserId: string
 }
@@ -851,6 +861,7 @@ type MeishiListFollowResponse_Follow = {
   meishi: pcommon.Meishi
   followTime: string
   lastLoginTime: string
+  userName: string
 }
 export type MeishiListResponse = {
   meishiList: MeishiListResponse_MeishiInfo[]
@@ -884,6 +895,7 @@ export type MeishiUpdateRequest = {
   meishiBase: MeishiUpdateRequest_MeishiBase
   objects: MeishiUpdateRequest_Object[]
   order: number
+  meishiImageId: string
 }
 type MeishiUpdateRequest_MeishiBase = {
   layoutNumber: number
@@ -907,6 +919,15 @@ type MeishiUpdateRequest_Object = {
   displayComment: boolean
   achievementId: string
   meishiIllustrationAssetId: string
+  idolCardSkinId: string
+  supportCardId: string
+  produceCardId: string
+  produceItemId: string
+  produceDrinkId: string
+  userPhotoId: string
+  userMemoryId: string
+  userMovieId: string
+  meishiBaseAssetId: string
   meishiTextColorId: string
   positionX: number
   positionY: number
@@ -914,6 +935,7 @@ type MeishiUpdateRequest_Object = {
   lock: boolean
   background: boolean
   layer: number
+  metadata: string
 }
 export type MeishiUpdateResponse = {
   commonResponse: papicommon.Response
@@ -1017,6 +1039,7 @@ export type MoneyReceiveResponse = {
 }
 export type MovieCreateRequest = {
   userMovieId: string
+  meishiNumber: number
 }
 export type MovieCreateResponse = {
   commonResponse: papicommon.Response
@@ -1025,6 +1048,13 @@ export type MovieDeleteRequest = {
   userMovieIds: string[]
 }
 export type MovieDeleteResponse = {
+  commonResponse: papicommon.Response
+}
+export type MovieRetakeRequest = {
+  userMovieId: string
+  meishiImageId: string
+}
+export type MovieRetakeResponse = {
   commonResponse: papicommon.Response
 }
 export type MusicSendActionLogRequest = {
@@ -1091,9 +1121,31 @@ export type NoticeUpdateDetailTimeRequest = {
 export type NoticeUpdateDetailTimeResponse = {
   commonResponse: papicommon.Response
 }
+export type PhotoCreateByMemoryRequest = {
+  userMemoryId: string
+}
+export type PhotoCreateByMemoryResponse = {
+  userPhotoId: string
+  commonResponse: papicommon.Response
+}
+export type PhotoCreateIdolRequest = {
+  characterSettings: PhotoCreateIdolRequest_CharacterSetting[]
+  userPhotoIds: string[]
+  photoBackgroundId: string
+}
+type PhotoCreateIdolRequest_CharacterSetting = {
+  characterId: string
+  costumeId: string
+  costumeHeadId: string
+}
+export type PhotoCreateIdolResponse = {
+  commonResponse: papicommon.Response
+}
 export type PhotoCreateRequest = {
   idolCardId: string
   userPhotoIds: string[]
+  costumeId: string
+  costumeHeadId: string
 }
 export type PhotoCreateResponse = {
   commonResponse: papicommon.Response
@@ -1116,6 +1168,13 @@ export type PhotoUpdateProtectionRequest = {
   isProtected: boolean
 }
 export type PhotoUpdateProtectionResponse = {
+  commonResponse: papicommon.Response
+}
+export type PreferenceUpdateRequest = {
+  photoButtonExecuteType: penum.PhotoButtonExecuteType
+  preferenceTypes: penum.PreferenceType[]
+}
+export type PreferenceUpdateResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceActivateEffectRequest = {
@@ -1348,6 +1407,9 @@ export type ProduceReportGuildMissionRequest = {
   produceUuid: string
 }
 export type ProduceReportGuildMissionResponse = {
+  guildMissions: pcommon.GuildMission[]
+  guildMissionHistories: pcommon.GuildMissionHistory[]
+  storyEventProduceResult: pcommon.StoryEventProduceResult
   commonResponse: papicommon.Response
 }
 export type ProduceRerollMemoryRequest = {
@@ -1374,6 +1436,7 @@ export type ProduceResultResponse = {
   rewardResults: pcommon.RewardResult[]
   storyEventProduceResult: pcommon.StoryEventProduceResult
   highScoreUpdateResult: ProduceResultResponse_HighScoreUpdateResult
+  unlockChallengeSlotNumbers: number[]
   commonResponse: papicommon.Response
 }
 type ProduceResultResponse_HighScoreUpdateResult = {
@@ -1411,6 +1474,7 @@ export type ProduceStartRequest = {
   isChangeCostumeProduce: boolean
   isChangeCostumeLive: boolean
   isChangeCostumeTraining: boolean
+  challengeProduceItemIds: string[]
   clientProduceUuid: string
 }
 type ProduceStartRequest_Memory = {
@@ -1554,6 +1618,12 @@ export type ProduceTopResponse = {
   storyEventConsumptionItemId: string
   storyEventBonus: pcommon.StoryEventBonus
   produceHighScoreCharacterIds: string[]
+  commonResponse: papicommon.Response
+}
+export type ProduceUnlockPictureBookLiveRequest = {
+  musicId: string
+}
+export type ProduceUnlockPictureBookLiveResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceUpdateMemoryDeck = {
@@ -1965,6 +2035,7 @@ export type ShopTopResponse = {
   itemExchangeNoti: boolean
   dailyExchangeNoti: boolean
   coinGashaNoti: boolean
+  ticketExchangeNoti: boolean
   startupNotifications: pcommon.StartupNotification[]
   commonResponse: papicommon.Response
 }
@@ -1985,9 +2056,38 @@ export type StartupConfirmResponse = {
   rewardResults: pcommon.RewardResult[]
   commonResponse: papicommon.Response
 }
+export type StartupListNotificationsRequest = {
+  displayType: penum.StartupNotificationDisplayType
+  targetId: string
+}
+export type StartupListNotificationsResponse = {
+  notifications: pcommon.StartupNotification[]
+  commonResponse: papicommon.Response
+}
 export type StepUpGashaProbability = {
   step: number
   defaultGashaProbability: DefaultGashaProbability
+}
+export type StoryEventListGuildMissionRequest = {
+  storyEventId: string
+}
+export type StoryEventListGuildMissionResponse = {
+  guildMissions: pcommon.GuildMission[]
+  guildMissionHistories: pcommon.GuildMissionHistory[]
+  canReceive: boolean
+  commonResponse: papicommon.Response
+}
+export type StoryEventReceiveGuildMissionRequest = {
+  storyEventId: string
+  storyEventGuildMissionIds: string[]
+}
+export type StoryEventReceiveGuildMissionResponse = {
+  receiveResults: StoryEventReceiveGuildMissionResponse_ReceiveResult[]
+  commonResponse: papicommon.Response
+}
+type StoryEventReceiveGuildMissionResponse_ReceiveResult = {
+  guildMissionHistory: pcommon.GuildMissionHistory
+  rewardResult: pcommon.RewardResult
 }
 export type StoryEventTopRequest = {
   storyEventId: string
@@ -2019,6 +2119,8 @@ export type StoryEventTopResponse = {
   storyEventPointRewards: pcommon.StoryEventPointReward[]
   currentPoint: string
   startupNotifications: pcommon.StartupNotification[]
+  isJoinedGuild: boolean
+  guildMissionNoti: boolean
   startTime: string
   endTime: string
   closeTime: string
@@ -2148,6 +2250,8 @@ export type TicketExchangeItem = {
   id: string
   rewards: pcommon.Reward[]
   exchangedCount: number
+  unlocked: boolean
+  unlockConditionSetId: string
   order: number
 }
 export type TicketExchangeListItemsRequest = {
@@ -2258,6 +2362,7 @@ export type TowerTopResponse = {
   previousTotalClearRank: number
   nextTotalClearRank: number
   nextReward: pcommon.Reward
+  startupNotifications: pcommon.StartupNotification[]
   commonResponse: papicommon.Response
 }
 type TowerTopResponse_Tower = {

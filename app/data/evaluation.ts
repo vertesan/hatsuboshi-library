@@ -3,7 +3,7 @@ export const rankEvaluation = {
   "B+": { from: 107, to: 146 },
   "A": { from: 152, to: 178 },
   "A+": { from: 152, to: 203 },
-  "S": { from: 152, to: 219 },
+  "S": { from: 187, to: 219 },
 }
 
 export const evaluationMap: {

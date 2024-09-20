@@ -63,7 +63,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     getInitialValueInEffect: true,
   })
   return (
-    <html lang={i18n.language} className={prefConfig.colorScheme}>
+    <html lang={i18n.language} className={`${prefConfig.colorScheme} mscrollbar`}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
