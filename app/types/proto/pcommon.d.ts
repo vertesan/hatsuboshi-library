@@ -90,8 +90,10 @@ export type Event = {
   missionDailyReleaseGroupId: string
   missionPanelSheetGroupId: string
   storyGroupId: string
+  itemId: string
   startTime: string
   endTime: string
+  fixRankTime: string
   closeTime: string
   priority: number
 }
@@ -273,6 +275,33 @@ export type GashaStepUpStep = {
   bonusRewards: Reward[]
   gashaButtonId: string
 }
+export type GuildMission = {
+  number: number
+  storyEventGuildMissionId: string
+  produceConditionSetDescription1: string
+  produceConditionSetDescription2: string
+  produceConditionSetDescription3: string
+  produceConditionSetCount: number
+  threshold: number
+  progress: number
+  reward: Reward
+  received: boolean
+  mvpProfile: SimpleProfile
+  icon: GuildMission_Icon
+}
+type GuildMission_Icon = {
+  type: penum.ProduceConditionType
+  resourceId1: string
+  resourceId2: string
+  grade: penum.ResultGrade
+}
+export type GuildMissionHistory = {
+  number: number
+  storyEventGuildMissionId: string
+  profile: SimpleProfile
+  phaseType: penum.GuildMissionPhaseType
+  progressedTime: string
+}
 export type HomeBanner = {
   assetId: string
   linkType: penum.LinkType
@@ -299,6 +328,7 @@ export type Meishi = {
   publicUserId: string
   meishiBase: MeishiBase
   objects: MeishiObject[]
+  imagePath: string
 }
 export type MeishiBase = {
   layoutNumber: number
@@ -332,6 +362,17 @@ export type MeishiObject = {
   achievementId: string
   achievement: Achievement
   meishiIllustrationAssetId: string
+  idolCardSkinId: string
+  supportCardId: string
+  produceCardId: string
+  produceItemId: string
+  produceDrinkId: string
+  imagePath: string
+  moviePath: string
+  userPhotoId: string
+  userMemoryId: string
+  userMovieId: string
+  meishiBaseAssetId: string
   meishiTextColorId: string
   positionX: number
   positionY: number
@@ -339,6 +380,7 @@ export type MeishiObject = {
   lock: boolean
   background: boolean
   layer: number
+  metadata: string
 }
 export type Memory = {
   userMemoryId: string
@@ -419,6 +461,7 @@ export type ProduceEffectResult = {
   beforeProduceCards: ProduceCard[]
   afterProduceCards: ProduceCard[]
   providedRewards: ProduceRewardResult[]
+  effectNumbers: number[]
 }
 export type ProduceExamEndResult = {
   stepType: penum.ProduceStepType
@@ -596,6 +639,9 @@ type StoryEventBonus_SupportCardBonus_LevelLimitRankBonusPermil = {
 export type StoryEventPointReward = {
   point: number
   reward: Reward
+  feature: boolean
+  repeat: boolean
+  repeatPoint: number
 }
 export type StoryEventProduceResult = {
   pointResult: StoryEventProduceResult_PointResult
@@ -626,6 +672,7 @@ type StoryEventProduceResult_PointResult = {
   beforePoint: number
   afterPoint: number
   allRewards: StoryEventPointReward[]
+  provideRewards: StoryEventPointReward[]
 }
 export type SupportCard = {
   id: string

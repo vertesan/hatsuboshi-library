@@ -99,6 +99,10 @@ export type UserItem = {
 }
 export type UserMeishi = {
   number: number
+  imagePath: string
+  useUserMemoryIds: string[]
+  useUserPhotoIds: string[]
+  useUserMovieIds: string[]
   baseLayoutNumber: number
   baseUserMemoryId: string
   baseUserPhotoId: string
@@ -135,6 +139,9 @@ export type UserMemory = {
   stamina: number
   examBattleProduceCards: pcommon.ProduceCard[]
   examBattleProduceItemIds: string[]
+  produceLiveType: penum.ProduceLiveType
+  liveCostumeId: string
+  liveCostumeHeadId: string
 }
 type UserMemory_MemoryAbility = {
   id: string
@@ -180,6 +187,8 @@ export type UserMoney = {
 export type UserMovie = {
   userMovieId: string
   moviePath: string
+  retakeCount: number
+  meishiNumber: number
 }
 export type UserMusic = {
   musicId: string
@@ -191,6 +200,17 @@ export type UserPhoto = {
   name: string
   shotTime: string
   isProtected: boolean
+  characterIds: string[]
+  photoBackgroundId: string
+}
+export type UserPhotoBackground = {
+  photoBackgroundId: string
+}
+export type UserPhotoPose = {
+  photoPoseId: string
+}
+export type UserPreference = {
+  photoButtonExecuteType: penum.PhotoButtonExecuteType
 }
 export type UserProduce = {
   produceId: string
@@ -204,8 +224,18 @@ export type UserProduceCard = {
   produceCardId: string
   produceCardUpgradeCount: number
 }
+export type UserProduceCharacter = {
+  characterId: string
+  produceId: string
+  unlockChallengeSlotNumber: number
+}
 export type UserProduceDrink = {
   produceDrinkId: string
+}
+export type UserProduceIdolCard = {
+  produceId: string
+  idolCardId: string
+  challengeProduceItemIds: string[]
 }
 export type UserProduceItem = {
   produceItemId: string
@@ -282,6 +312,9 @@ export type UserProduceProgress = {
   produceDrinkIds: string[]
   produceDrinkGetDisableTurn: number
   auditionEffectParameterBonusPermil: number
+  auditionNpcEnhancePermil: number
+  eventSchoolStaminaPermil: number
+  eventActivityProducePointPermil: number
   examSeedValue: number
   produceExamGimmickEffectGroupId: string
   examStatusEnchants: UserProduceProgress_ExamStatusEnchant[]
@@ -292,6 +325,7 @@ export type UserProduceProgress = {
   lessonGrowthResult: pcommon.ProduceLessonGrowthResult
   examEndResult: pcommon.ProduceExamEndResult
   lessonLimitUpScore: number
+  examExtraTurn: number
   liveType: penum.ProduceLiveType
   lessonPresentAdditionalProduceCardRewardCount: number
   shopProduceCardUpgradePrice: number
@@ -530,6 +564,7 @@ export type UserWork = {
   lastSkippedTime: string
   skipCount: number
   totalFinishCount: number
+  fixedIsExcellent: boolean
 }
 export type UserWorkCharacter = {
   characterId: string

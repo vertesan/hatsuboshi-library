@@ -155,6 +155,8 @@ export enum ConditionType {
   AchievementFirstThresholdClearHour = 61,
   MainTaskFirstThresholdClearHour = 62,
   MissionFirstThresholdClearHour = 63,
+  PhotoBackground = 64,
+  PhotoPose = 65,
   Set = 998,
   NegativeSet = 999,
 }
@@ -171,6 +173,13 @@ export enum ConsentType {
   Advertisement = 3,
   CustomizedAdvertisement = 4,
   Sns = 5,
+}
+export enum CostumeFeatureType {
+  Unknown = 0,
+  Home = 1,
+  Produce = 2,
+  Live = 3,
+  Photography = 4,
 }
 export enum CostumeMotionType {
   Unknown = 0,
@@ -462,6 +471,13 @@ export enum GuildJoinType {
   NotJoined = 1,
   Joined = 2,
 }
+export enum GuildMissionPhaseType {
+  Unknown = 0,
+  ProduceConditionSet1Unlocked = 1,
+  ProduceConditionSet2Unlocked = 2,
+  ProduceConditionSet3Unlocked = 3,
+  Cleared = 99,
+}
 export enum GuildNotificationType {
   Unknown = 0,
   Join = 1,
@@ -587,6 +603,7 @@ export enum ItemType {
   PvpRateCoin = 13,
   StoryUnlockKey = 14,
   ExchangeTicket = 15,
+  ProduceLiveUnlockItem = 16,
   ProduceBoostRewardSupportCardEnhancePoint = 102,
   ProduceBoostRewardIdolCardLevelLimitMaterial = 103,
 }
@@ -628,6 +645,8 @@ export enum LinkType {
   ExchangeItem = 30,
   ExchangeEvent = 31,
   MediaFourPanelComic = 32,
+  PhotoTop = 33,
+  PhotoIdol = 34,
 }
 export enum LoginBonusType {
   Unknown = 0,
@@ -647,10 +666,20 @@ export enum MediaType {
   Other = 3,
   FourPanelComic = 4,
 }
+export enum MeishiBaseAssetType {
+  Unknown = 0,
+  StoryBackground = 1,
+  CommonBackground = 2,
+  Frame = 3,
+  Other = 99,
+}
 export enum MeishiIllustrationType {
   Unknown = 0,
   Idol = 1,
   Sdcharacter = 2,
+  IdolSign = 3,
+  Logo = 4,
+  PictoIcon = 5,
   Other = 99,
 }
 export enum MeishiObjectType {
@@ -663,6 +692,16 @@ export enum MeishiObjectType {
   Comment = 6,
   TotalFanCount = 7,
   PvpRateGrade = 8,
+  IdolCardSkin = 9,
+  SupportCard = 10,
+  ProduceCard = 11,
+  ProduceItem = 12,
+  ProduceDrink = 13,
+  Photo = 14,
+  Memory = 15,
+  Movie = 16,
+  BaseAsset = 17,
+  Other = 999,
 }
 export enum MissionCategory {
   Unknown = 0,
@@ -712,6 +751,7 @@ export enum MissionType {
   IncrementUrlTransition = 165,
   IncrementProfileUpdateCount = 166,
   IncrementPvpRateCharacterExamBattleScoreCount = 167,
+  IncrementPhotoIdolCount = 168,
   IncrementProduceSupportCardDeckUpdateCount = 201,
   IncrementProduceMemoryDeckUpdateCount = 202,
   IncrementProduceTotalScore = 203,
@@ -801,11 +841,46 @@ export enum NoticeType {
   Maintenance = 7,
   Bug = 8,
 }
+export enum PhotoBackgroundCategory {
+  Unknown = 0,
+  Gakuen = 1,
+  Dormitory = 2,
+  Around = 3,
+  Other = 99,
+}
+export enum PhotoBackgroundTimeType {
+  Unknown = 0,
+  Morning = 1,
+  Noon = 2,
+  Evening = 3,
+  Night = 4,
+}
+export enum PhotoButtonExecuteType {
+  Unknown = 0,
+  Click = 1,
+  PressStart = 2,
+  PressEnd = 3,
+}
+export enum PhotoLookTargetType {
+  Unknown = 0,
+  Ng = 1,
+  Eye = 2,
+  FullBody = 3,
+}
+export enum PhotoPoseMotionType {
+  Unknown = 0,
+  Reaction = 1,
+  Wait = 2,
+}
 export enum PlatformType {
   Unknown = 0,
   Ios = 1,
   Android = 2,
   Other = 999,
+}
+export enum PreferenceType {
+  Unknown = 0,
+  PhotoButtonExecuteType = 1,
 }
 export enum ProduceAdvType {
   Unknown = 0,
@@ -849,7 +924,7 @@ export enum ProduceCardGrowEffectType {
   BlockAdd = 5,
   BlockReduce = 6,
   FullPowerPointAdd = 7,
-  FullPowerPointRecue = 8,
+  FullPowerPointReduce = 8,
   CostBuffReduce = 10,
   CostBuffAdd = 11,
   CostReduce = 12,
@@ -982,6 +1057,7 @@ export enum ProduceConditionType {
   ExamTriggerCount = 74,
   LessonExamTriggerCount = 75,
   AuditionExamTriggerCount = 76,
+  IdolCardProducePlanType = 77,
   Set = 998,
   NegativeSet = 999,
 }
@@ -1098,6 +1174,20 @@ export enum ProduceEffectType {
   DanceLimitUp = 92,
   VisualLimitUp = 93,
   SupportCardEventProduceCardUpgrade = 94,
+  ExamTurnUp = 95,
+  ExamTurnDown = 96,
+  AuditionNpcEnhance = 97,
+  ShopPriceUpMultiple = 98,
+  ShopProduceCardPriceUpMultiple = 99,
+  ShopProduceDrinkPriceUpMultiple = 100,
+  ShopProduceCardUpgradePriceUpMultiple = 101,
+  ShopProduceCardDeletePriceUpMultiple = 102,
+  EventSchoolStaminaUp = 103,
+  EventSchoolStaminaDown = 104,
+  EventActivityProducePointUp = 105,
+  EventActivityProducePointDown = 106,
+  BeforeAuditionRefreshStaminaUp = 107,
+  BeforeAuditionRefreshStaminaDown = 108,
 }
 export enum ProduceEventCharacterType {
   Unknown = 0,
@@ -1131,6 +1221,7 @@ export enum ProduceExamAutoCardSelectEvaluationType {
   Unknown = 0,
   LessonCoefficient = 1,
   FullPowerPointCoefficient = 2,
+  FullPowerPointValue2Coefficient = 3,
 }
 export enum ProduceExamAutoEvaluationType {
   Unknown = 0,
@@ -1254,6 +1345,12 @@ export enum ProduceExamEffectType {
   ExamDebuffRecover = 148,
   ExamAggressiveValueMultiple = 149,
   ExamItemFireLimitAdd = 150,
+  ExamReviewReduce = 151,
+  ExamAggressiveReduce = 152,
+  ExamLessonBuffReduce = 153,
+  ExamParameterBuffReduce = 154,
+  ExamLessonValueMultipleDown = 155,
+  ExamAddGrowEffect = 156,
 }
 export enum ProduceExamFieldStatusType {
   Unknown = 0,
@@ -1727,6 +1824,8 @@ export enum ResourceType {
   Story = 18,
   StoryEventPoint = 19,
   PvpRatePlayCount = 20,
+  PhotoBackground = 21,
+  PhotoPose = 22,
   JewelTotal = 1100,
   JewelPaidOnly = 1101,
   Set = 9999,
@@ -1798,6 +1897,17 @@ export enum SkillRarity {
   R = 1,
   Sr = 2,
   Ssr = 3,
+}
+export enum StartupNotificationDisplayType {
+  Unknown = 0,
+  Home = 1,
+  Shop = 2,
+  StoryEvent = 3,
+  ProduceHighScore = 4,
+  Tower = 5,
+  MissionPanel = 6,
+  MissionDailyRelease = 7,
+  StoryCampaign = 8,
 }
 export enum StartupNotificationEffectType {
   Unknown = 0,
@@ -1940,6 +2050,12 @@ export enum TutorialType {
   Tower = 19,
   Guild = 20,
   TutorialReceiveIdolCard = 21,
+  PhotoTop = 22,
+  PhotoIdol = 23,
+  PhotoPrepare = 24,
+  Photo = 25,
+  MeishiEditCustom = 26,
+  MeishiEditCustomManual = 27,
   ProduceIdolCardSelect = 100,
   ProduceSupportCardSelect = 101,
   ProduceMemorySelect = 102,
@@ -1961,11 +2077,13 @@ export enum TutorialType {
   ProduceStepLessonPresent = 118,
   ProduceBeforeAuditionRefresh = 119,
   ProduceBeforeLessonHard = 120,
+  ProduceChallenge = 121,
   MissionPanel = 200,
   ProduceHighScore = 201,
   StoryEvent = 202,
   StoryEventMainStroy = 203,
   StoryEventBoxGasha = 204,
+  StoryEventGuildMission = 205,
 }
 export enum ViewAreaType {
   Unknown = 0,
