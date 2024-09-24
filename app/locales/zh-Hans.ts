@@ -248,12 +248,11 @@ const translation = {
   "LessonLimitUp": "训练数值提升",
   "Contest Item": "可继承道具",
   "Produce Item": "不可继承道具",
-  "Produce Effect": "支援卡效果"
-  "Characters": "角色"
-  "Card Level": "S 卡等级"
-  "Reset": "重置"
-  "Has P-Level Precondition": "仅显示Plv提升解锁的技能卡"
-  
+  "Produce Effect": "支援卡效果",
+  "Characters": "角色",
+  "Card Level": "S 卡等级",
+  "Reset": "重置",
+  "Has P-Level Precondition": "仅显示Plv提升解锁的技能卡",
 }
 
 export default translation
