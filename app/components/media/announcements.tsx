@@ -86,7 +86,9 @@ function Notices({
   }>>,
   className?: string,
 }) {
-  return notices.slice(0, 15).map(notice => {
+  const { t } = useTranslation()
+  const [limitation, setLimitation] = useState(20)
+  const noticeElements = notices.slice(0, limitation).map(notice => {
     return (
       <li key={notice.id} className={`leading-8 list-none truncate ${className}`}>
         <span>[{dayjs(+notice.startTime).format("YYYY-MM-DD")}]&nbsp;</span>
@@ -98,4 +100,17 @@ function Notices({
       </li>
     )
   })
+  const moreElement = limitation >= notices.length
+    ? null
+    : <Anchor
+      onClick={() => setLimitation(prev => prev + 10)}
+    >
+      {t("More...")}
+    </Anchor>
+  return (
+    <>
+      {noticeElements}
+      {moreElement}
+    </>
+  )
 }
