@@ -10,16 +10,16 @@ import { getRoutes } from "~/data/routes";
 type RouteEntry = {
   route: string,
   label: string,
-  icon: string,
+  icon: ReturnType<typeof NavIcon>,
   disabled?: boolean,
 }
 
-function NavIcon({ route }: { route: RouteEntry }) {
+export function NavIcon({ src }: { src: string }) {
   const { preferenceConfig } = useContext(PreferenceContext)
   return (
     <img
-      src={route.icon}
-      alt={route.icon}
+      src={src}
+      alt={src}
       className={`h-auto w-5 opacity-80 ${preferenceConfig.colorScheme === "light" ? "invert" : ""} `}
     />
   )
@@ -41,7 +41,7 @@ export default function Navbar({ close }: { close: () => void }) {
             onClick={() => {
               new Promise(resolve => setTimeout(resolve, 100)).then(close)
             }}
-            leftSection={<NavIcon route={route} />}
+            leftSection={route.icon}
           />
         ))}
       </div>
