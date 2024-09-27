@@ -11,6 +11,7 @@ const translation = {
   "meta-character": "角色 - 初星资料库",
   "meta-pcard": "技能卡 - 初星资料库",
   "meta-about": "关于 - 初星资料库",
+  "meta-colors": "印象色 - 初星资料库",
   "route-produce": "偶像培育", // 网页暂未实装
   "route-tools": "评分图表",
   "route-cidol": "偶像卡",
@@ -18,7 +19,10 @@ const translation = {
   "route-character": "角色",
   "route-pcard": "技能卡",
   "route-evaluation": "容量计算",
+  "route-colors": "印象色",
   "route-about": "关于",
+  "Colors": "印象色",
+  "Sources from in-game data, arranged alphabetically.": "源自游戏内数据，按平假名首字母排序。",
   "Rarity": "稀有度",
   "Produce Plan": "计划",
   "Common": "不限", // 原网页中出现在评分图表中,图标和free一致,可以与下文一致取“不限”或译为“通用”
@@ -91,6 +95,7 @@ const translation = {
   "Bugs": "Bugs",
   "PR": "PR",
   "Element": "Element", // 无需翻译
+  "More...": "更多...",
   "Value": "Value", // 无需翻译
   "Contest Configurations": "竞技场配置",
   "Stage ": "阶段 ",
