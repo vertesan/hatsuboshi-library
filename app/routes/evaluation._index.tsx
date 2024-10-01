@@ -230,28 +230,57 @@ export default function Evaluation() {
                 <p className="text-4xl">{t("No results")}</p>
               </div>
             }
-            <div>
-              {
-                Object.entries(filteredCards).map(([eva, cards], idx) => {
-                  return (
-                    <Fragment key={idx}>
-                      <p className="pt-4">{t("Eva. ") + evaluationMap[+eva].text}</p>
-                      <div key={idx} className="grid grid-cols-[repeat(auto-fit,68px)]">
-                        {cards.map((card, idx) => {
-                          return (
-                            <DraggableProduceCard
-                              key={idx}
-                              card={card}
-                              character="kllj"
-                              className="flex-none relative h-[68px] w-[68px]"
-                            />
-                          )
-                        })}
-                      </div>
-                    </Fragment>
-                  )
-                })
-              }
+            <div className="grid grid-cols-[minmax(0,2fr),minmax(0,3fr)]">
+              <div>
+                {
+                  Object.entries(filteredCards)
+                    .filter(([eva, _]) => [1, 32].includes(+eva))
+                    .map(([eva, cards], idx) => {
+                      return (
+                        <div key={idx}>
+                          <p className="pt-4">{t("Eva. ") + evaluationMap[+eva].text}</p>
+                          <div key={idx} className="grid grid-cols-[repeat(auto-fit,68px)]">
+                            {cards.map((card, idx) => {
+                              return (
+                                <DraggableProduceCard
+                                  key={idx}
+                                  card={card}
+                                  character="kllj"
+                                  className="flex-none relative h-[68px] w-[68px]"
+                                />
+                              )
+                            })}
+                          </div>
+                        </div>
+                      )
+                    })
+                }
+              </div>
+              <div>
+                {
+                  Object.entries(filteredCards)
+                    .filter(([eva, _]) => ![1, 32].includes(+eva))
+                    .map(([eva, cards], idx) => {
+                      return (
+                        <div key={idx}>
+                          <p className="pt-4">{t("Eva. ") + evaluationMap[+eva].text}</p>
+                          <div key={idx} className="grid grid-cols-[repeat(auto-fit,68px)]">
+                            {cards.map((card, idx) => {
+                              return (
+                                <DraggableProduceCard
+                                  key={idx}
+                                  card={card}
+                                  character="kllj"
+                                  className="flex-none relative h-[68px] w-[68px]"
+                                />
+                              )
+                            })}
+                          </div>
+                        </div>
+                      )
+                    })
+                }
+              </div>
             </div>
           </div>
         </DndContext>
