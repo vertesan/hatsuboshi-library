@@ -155,7 +155,11 @@ export default function Evaluation() {
           const curr = [...prev] as MemorySlots
           const fromSlot = prev[activePosition]
           const toSlot = prev[overPosition]
-          if ((isToSupportSlot !== isFromSupportSlot) && toSlot) {
+          if (
+            toSlot &&
+            isToSupportSlot !== isFromSupportSlot &&
+            (xProduceCards[fromSlot!.cardId].originSupportCardId !== "") !== (xProduceCards[toSlot!.cardId].originSupportCardId !== "")
+          ) {
             setHintOpened('support2free')
             return prev
           }
