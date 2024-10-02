@@ -25,7 +25,7 @@ export function PulseImage({
   }, [])
 
   return (
-    <Skeleton visible={isLoading}>
+    <Skeleton className={`${className}`} visible={isLoading}>
       <img ref={imgRef} src={src} alt={alt} className={`${className}`} {...props} />
     </Skeleton>
   )

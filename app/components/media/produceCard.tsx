@@ -84,7 +84,7 @@ function _ProduceCardIcon({
       {card.upgradeCount
         ? <PlusIcon
           upgradeCount={card.upgradeCount}
-          className="absolute -right-[2px] h-full w-1/4"
+          className="absolute -right-[2px] h-full w-[30%]"
         />
         : null
       }

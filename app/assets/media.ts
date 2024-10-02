@@ -1,4 +1,4 @@
-import { ProduceExamEffectType } from "~/types/proto/penum"
+import { ProduceExamEffectType, ResultGrade } from "~/types/proto/penum"
 import {
   VITE_IMG_PREFIX,
 } from "~/utils/env"
@@ -12,6 +12,7 @@ export const routeCsprtIcon = "/img/icon_supportcard.webp"
 export const routeCharactersIcon = "/img/icon_idol.webp"
 export const routePCardIcon = "/img/icon_pdictionary.webp"
 export const routeEvaluationIcon = "/img/icon_memory.webp"
+export const routeMemoryIcon = "/img/icon_serch.webp"
 export const routeAboutIcon = "/img/icon_info.webp"
 export const supportAttrDanceIcon = "/img/img_general_icon_support-type_dance.webp"
 export const supportAttrVocalIcon = "/img/img_general_icon_support-type_vocal.webp"
@@ -44,6 +45,7 @@ export const numberMinus = "/img/ef_txt_minus.webp"
 export const contestIcon = "/img/icon_contest.webp"
 export const blockIcon = "/img/icon_block.webp"
 export const multiplier = "/img/text_multiplier.webp"
+export const onStartIcon = "/img/memory_skill_phase_start.webp"
 
 export const numberMap = {
   0: number0,
@@ -101,6 +103,9 @@ export function getCharaFullImgUrl(charaId: string) {
 }
 export function getCharaSignImgUrl(charaId: string) {
   return `${VITE_IMG_PREFIX}img_general_sign_${charaId}_00${extension}`
+}
+export function getResultGradeImgUrl(rank: ResultGrade) {
+  return `${VITE_IMG_PREFIX}img_general_icon_produce-rank-small_${ResultGrade[rank].toLowerCase()}`
 }
 
 export function getAssetImgUrl(assetId: string) {

@@ -27,6 +27,12 @@ import {
   MemorySlot,
   MemorySlots,
 } from "./data/evaluation"
+import {
+  XMemoryInspector,
+  XUserMemory,
+  UserMemoryFilter,
+  UserMemorySort,
+} from "./data/memory"
 
 export type {
   ApiData,
@@ -42,5 +48,9 @@ export type {
   ProduceCardFilter,
   MemorySlot,
   MemorySlots,
+  XMemoryInspector,
+  XUserMemory,
+  UserMemoryFilter,
+  UserMemorySort,
 }
 

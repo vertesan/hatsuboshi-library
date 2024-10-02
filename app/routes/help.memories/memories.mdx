@@ -1,0 +1,287 @@
+## Memory Inspector
+
+### Introductions
+
+For players who already have more than 500 Memories in their possessions, sorting them out can be a tough challenge because 
+they must carefully examine the inherited card, the effects and the contest cards of every single Memory to determine 
+if it's worth keeping or fine to discard.
+
+Sadly, the in-game 「メモリー変換」 UI is a nonsense which only provides us a little part of information about contest realated
+things at first level interface, resulting thousands of players repeatly long press the Memories to see details again and again 
+which imho should be considered a totally disregard of humanity that is intolerable. 
+
+> Honestly, QualiArts should fire their UX designer who made this shit.
+
+Having wasted a great bunch of time pressing my lovely smartphone again and again, I realized if there is a tool which can visualize 
+all information of all Memories, things would be much easier. 
+
+And that is why I made this Memory Inspector in the first place.
+
+### How to use
+
+Drag or click to select a JSON file complying with the structure of an array of 
+[Memory](https://github.com/vertesan/hatsuboshi-library/blob/453ba943f015c0f31e6e94c04224b024cd31dcd7/app/types/proto/pcommon.d.ts#L385-L407) 
+object.
+
+Usually you don't want to make such an array of that large objects from scratch, the simplest way is capturing the HTTPS traffic 
+from the game but that is not the content of this readme. 
+
+After selecting the file, Memories you possessed will show up on the screen then you can examine most of the useful information 
+on the first level interface. Note to make it more convenient to use we didn't design pagination for them, this comes at a 
+cost which greatly reduces the response speed of the page if you have hundreds of Memories because they are rendered conditionlessly 
+at the same time, we suggest users to use character filter to examine one character at a time.
+
+### Example
+
+Here is a valid example JSON file you can use to preview the effects.
+
+```json
+[
+  {
+    "userMemoryId": "6c8a35c2-f6d3-421c-8037-04aa4b385cc5",
+    "memoryTagId": "",
+    "isProtected": false,
+    "assetId": "",
+    "imagePath": "album/XXXXXX/6c8a35c2-f6d3-421c-8037-04aa4b385cc5.jpg",
+    "grade": 9,
+    "power": 11713,
+    "characterId": "hski",
+    "idolCardId": "i_card-hski-3-000",
+    "idolCardSkinId": "i_card-skin-hski-3-000",
+    "planType": 2,
+    "idolCardLevelLimitRank": 4,
+    "idolCardPotentialRank": 0,
+    "shotTime": "1726193859274",
+    "noProduceHistory": false,
+    "produceCard": {
+      "id": "p_card-01-act-1_023",
+      "upgradeCount": 1
+    },
+    "produceCardPhaseType": 2,
+    "abilities": [
+      {
+        "id": "ability-001-p_memory_skill-common-p_trigger-end_lesson-lesson_visual-stamina_recover_fix-03-001",
+        "level": 1
+      },
+      {
+        "id": "ability-p_cd-memory-dance-450-001-p_memory_skill-common-p_trigger-produce_start-initial-dance_addition-02-001",
+        "level": 1
+      },
+      {
+        "id": "ability-p_cd-memory-plan1-001-p_memory_skill-plan1-p_trigger-start_lesson-lesson_dance-exam_status_enchant-exam_turn_timer-exam_lesson_buff-01-001",
+        "level": 1
+      },
+      {
+        "id": "ability-p_cd-memory-plan1-001-p_memory_skill-plan1-p_trigger-start_lesson-lesson_visual-exam_status_enchant-exam_turn_timer-exam_parameter_buff-02-001",
+        "level": 1
+      },
+      {
+        "id": "ability-001-p_memory_skill-common-p_trigger-produce_start-initial-vocal_addition-01-001",
+        "level": 1
+      }
+    ],
+    "vocal": 622,
+    "dance": 1309,
+    "visual": 1312,
+    "stamina": 32,
+    "examBattleProduceCards": [
+      {
+        "id": "p_card-01-ido-3_013",
+        "upgradeCount": 1
+      },
+      {
+        "id": "p_card-01-act-1_002",
+        "upgradeCount": 1
+      },
+      {
+        "id": "p_card-00-men-1_005",
+        "upgradeCount": 1
+      },
+      {
+        "id": "p_card-01-act-2_001",
+        "upgradeCount": 1
+      },
+      {
+        "id": "p_card-01-men-2_035",
+        "upgradeCount": 1
+      },
+      {
+        "id": "p_card-01-act-3_030",
+        "upgradeCount": 1
+      }
+    ],
+    "examBattleProduceItemIds": [
+      "pitem_00-3-017-0",
+      "pitem_00-3-009-0"
+    ],
+    "produceLiveType": 0,
+    "liveCostumeId": "",
+    "liveCostumeHeadId": ""
+  },
+  {
+    "userMemoryId": "519498a7-9b8a-4616-8b75-1a8dea99abfc",
+    "memoryTagId": "",
+    "isProtected": false,
+    "assetId": "",
+    "imagePath": "album/XXXXXX/519498a7-9b8a-4616-8b75-1a8dea99abfc.jpg",
+    "grade": 10,
+    "power": 13317,
+    "characterId": "kcna",
+    "idolCardId": "i_card-kcna-3-000",
+    "idolCardSkinId": "i_card-skin-kcna-3-000",
+    "planType": 3,
+    "idolCardLevelLimitRank": 5,
+    "idolCardPotentialRank": 2,
+    "shotTime": "1726909035912",
+    "noProduceHistory": false,
+    "produceCard": {
+      "id": "p_card-02-act-1_004",
+      "upgradeCount": 1
+    },
+    "produceCardPhaseType": 1,
+    "abilities": [
+      {
+        "id": "ability-p_cd-memory-visual-450-001-p_memory_skill-common-p_trigger-produce_start-no_description-visual_growth_rate_addition-02-001",
+        "level": 1
+      },
+      {
+        "id": "ability-p_cd-memory-plan2-001-p_memory_skill-plan2-p_trigger-start_lesson-lesson_visual-exam_status_enchant-exam_turn_timer-exam_card_play_aggressive-02-001",
+        "level": 1
+      },
+      {
+        "id": "ability-p_cd-memory-plan2-001-p_memory_skill-plan2-p_trigger-start_lesson-lesson_visual_sp-exam_status_enchant-exam_turn_timer-exam_review-01-001",
+        "level": 1
+      },
+      {
+        "id": "ability-001-p_memory_skill-common-p_trigger-produce_start-initial-vocal_addition-01-001",
+        "level": 1
+      },
+      {
+        "id": "ability-001-p_memory_skill-common-p_trigger-produce_start-initial-dance_addition-01-001",
+        "level": 1
+      }
+    ],
+    "vocal": 431,
+    "dance": 1657,
+    "visual": 1681,
+    "stamina": 31,
+    "examBattleProduceCards": [
+      {
+        "id": "p_card-02-ido-3_021",
+        "upgradeCount": 1
+      },
+      {
+        "id": "p_card-02-act-1_003",
+        "upgradeCount": 0
+      },
+      {
+        "id": "p_card-02-men-1_031",
+        "upgradeCount": 0
+      },
+      {
+        "id": "p_card-02-men-2_054",
+        "upgradeCount": 1
+      },
+      {
+        "id": "p_card-02-men-2_056",
+        "upgradeCount": 1
+      },
+      {
+        "id": "p_card-02-act-3_039",
+        "upgradeCount": 1
+      }
+    ],
+    "examBattleProduceItemIds": [
+      "pitem_00-3-025-1",
+      "pitem_00-3-009-0",
+      "pitem_00-3-011-0"
+    ],
+    "produceLiveType": 1,
+    "liveCostumeId": "kcna-cstm-0008",
+    "liveCostumeHeadId": "costume_head_kcna-cstm-0008"
+  },
+  {
+    "userMemoryId": "4e81079a-58f0-429d-8fa7-2386994f0322",
+    "memoryTagId": "",
+    "isProtected": false,
+    "assetId": "",
+    "imagePath": "album/XXXXXX/4e81079a-58f0-429d-8fa7-2386994f0322.jpg",
+    "grade": 9,
+    "power": 11912,
+    "characterId": "fktn",
+    "idolCardId": "i_card-fktn-3-001",
+    "idolCardSkinId": "i_card-skin-fktn-3-001",
+    "planType": 2,
+    "idolCardLevelLimitRank": 4,
+    "idolCardPotentialRank": 0,
+    "shotTime": "1721963697082",
+    "noProduceHistory": false,
+    "produceCard": {
+      "id": "p_card-01-men-2_036",
+      "upgradeCount": 1
+    },
+    "produceCardPhaseType": 2,
+    "abilities": [
+      {
+        "id": "ability-p_cd-memory-plan1-001-p_memory_skill-plan1-p_trigger-start_lesson-lesson_vocal-exam_status_enchant-exam_turn_timer-exam_parameter_buff-02-001",
+        "level": 1
+      },
+      {
+        "id": "ability-001-p_memory_skill-common-p_trigger-start_lesson-lesson_visual-exam_status_enchant-exam_turn_timer-exam_stamina_consumption_down-02-001",
+        "level": 1
+      },
+      {
+        "id": "ability-p_cd-memory-vocal-450-001-p_memory_skill-common-p_trigger-produce_start-no_description-vocal_growth_rate_addition-02-001",
+        "level": 1
+      },
+      {
+        "id": "ability-001-p_memory_skill-common-p_trigger-produce_start-no_description-dance_growth_rate_addition-01-001",
+        "level": 1
+      },
+      {
+        "id": "ability-001-p_memory_skill-common-p_trigger-produce_start-no_description-visual_growth_rate_addition-01-001",
+        "level": 1
+      }
+    ],
+    "vocal": 588,
+    "dance": 1340,
+    "visual": 1402,
+    "stamina": 31,
+    "examBattleProduceCards": [
+      {
+        "id": "p_card-01-ido-3_066",
+        "upgradeCount": 1
+      },
+      {
+        "id": "p_card-00-sup-3_048",
+        "upgradeCount": 1
+      },
+      {
+        "id": "p_card-01-act-1_020",
+        "upgradeCount": 0
+      },
+      {
+        "id": "p_card-01-men-2_035",
+        "upgradeCount": 1
+      },
+      {
+        "id": "p_card-01-men-2_037",
+        "upgradeCount": 0
+      },
+      {
+        "id": "p_card-01-act-3_031",
+        "upgradeCount": 0
+      }
+    ],
+    "examBattleProduceItemIds": [
+      "pitem_01-3-030-0",
+      "pitem_00-3-010-0",
+      "pitem_00-3-009-0"
+    ],
+    "produceLiveType": 0,
+    "liveCostumeId": "",
+    "liveCostumeHeadId": ""
+  }
+]
+```
+

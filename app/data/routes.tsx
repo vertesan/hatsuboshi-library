@@ -6,6 +6,7 @@ import {
   routeCidolIcon,
   routeCsprtIcon,
   routeEvaluationIcon,
+  routeMemoryIcon,
   routePCardIcon,
   routeToolsIcon
 } from "~/assets/media";
@@ -49,6 +50,11 @@ export function getRoutes(t: TFunction<"translation", undefined>) {
       route: "/evaluation",
       label: t("route-evaluation"),
       icon: <NavIcon src={routeEvaluationIcon} />,
+    },
+    {
+      route: "/memories",
+      label: t("route-memories"),
+      icon: <NavIcon src={routeMemoryIcon} />,
       disable: false,
     },
     {
