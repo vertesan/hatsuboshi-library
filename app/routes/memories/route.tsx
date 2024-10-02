@@ -90,7 +90,11 @@ export default function MemoriesLayout() {
       let mList
       if ("userData" in obj) {
         mList = obj.userData.userMemoryList
-      } else if (Array.isArray(obj)) {
+      } else if (
+        Array.isArray(obj) &&
+        obj.length > 0 &&
+        "produceCard" in obj[0]
+      ) {
         mList = obj
       } else {
         throw Error("Cannot parse userMemory list")
