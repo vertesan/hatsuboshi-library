@@ -217,9 +217,11 @@ export default function MemoriesLayout() {
                     className="mt-2"
                   />
                 ))
-                : <div className="w-full h-[50vh] flex flex-row justify-center items-center">
-                  <p className="text-4xl">{t("No results")}</p>
-                </div>
+                : allMemories && allMemories.length > 0
+                  ? <div className="w-full h-[50vh] flex flex-row justify-center items-center">
+                    <p className="text-4xl">{t("No results")}</p>
+                  </div>
+                  : null
               }
             </div>
           </div>
