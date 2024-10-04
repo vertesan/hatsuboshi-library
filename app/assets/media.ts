@@ -46,6 +46,8 @@ export const contestIcon = "/img/icon_contest.webp"
 export const blockIcon = "/img/icon_block.webp"
 export const multiplier = "/img/text_multiplier.webp"
 export const onStartIcon = "/img/memory_skill_phase_start.webp"
+export const routeCharts = "/img/icon_audition_trend.webp"
+export const tableIcon = "/img/icon_effect_detail.webp"
 
 export const numberMap = {
   0: number0,

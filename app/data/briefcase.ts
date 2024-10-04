@@ -1,9 +1,7 @@
-import { produceEvaBorder } from "~/data/calculation"
-
 export const defaultScoreGraphPref: {
   // from: number,
   // to: number,
-  ranks: (keyof typeof produceEvaBorder)[],
+  ranks: string[],
   xreferenceLine: number,
   yreferenceLine: number,
   // ceiling: number,

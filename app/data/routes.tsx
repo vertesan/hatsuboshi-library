@@ -3,16 +3,16 @@ import { TFunction } from "i18next";
 import {
   routeAboutIcon,
   routeCharactersIcon,
+  routeCharts,
   routeCidolIcon,
   routeCsprtIcon,
   routeEvaluationIcon,
   routeMemoryIcon,
-  routePCardIcon,
-  routeToolsIcon
+  routePCardIcon
 } from "~/assets/media";
 import {
   NavIcon
-} from "~/components/general/navbar"
+} from "~/components/general/navbar";
 
 export function getRoutes(t: TFunction<"translation", undefined>) {
   return [
@@ -27,9 +27,9 @@ export function getRoutes(t: TFunction<"translation", undefined>) {
       icon: <IconPalette className="h-auto w-5 opacity-80" />,
     },
     {
-      route: "/briefcase",
+      route: "/charts",
       label: t("route-tools"),
-      icon: <NavIcon src={routeToolsIcon} />,
+      icon: <NavIcon src={routeCharts} />,
     },
     {
       route: "/cidol",

@@ -2,17 +2,17 @@
 
 ### Introductions
 
-For players who already have more than 500 Memories in their possessions, sorting them out can be a tough challenge because 
+For players who already have more than 500 Memories in their possession, sorting them out can be a tough challenge because 
 they must carefully examine the inherited card, the effects and the contest cards of every single Memory to determine 
 if it's worth keeping or fine to discard.
 
-Sadly, the in-game 「メモリー変換」 UI is a nonsense which only provides us a little part of information about contest realated
-things at first level interface, resulting thousands of players repeatly long press the Memories to see details again and again 
-which imho should be considered a totally disregard of humanity that is intolerable. 
+Sadly, the in-game 「メモリー変換」 UI makes nonsense, as it only provides us a small amount of information about contest-related
+things on the first-level interface, resulting thousands of players repeatly long-press the Memories to see details again and again 
+which imho should be considered a total disregard of humanity that is intolerable. 
 
 > Honestly, QualiArts should fire their UX designer who made this shit.
 
-Having wasted a great bunch of time pressing my lovely smartphone again and again, I realized if there is a tool which can visualize 
+Having wasted a great deal of time pressing my lovely smartphone over and over, I realized if there was a tool which could visualize 
 all information of all Memories, things would be much easier. 
 
 And that is why I made this Memory Inspector in the first place.
@@ -21,15 +21,15 @@ And that is why I made this Memory Inspector in the first place.
 
 Drag or click to select a JSON file complying with the structure of an array of 
 [`Memory`](https://github.com/vertesan/hatsuboshi-library/blob/453ba943f015c0f31e6e94c04224b024cd31dcd7/app/types/proto/pcommon.d.ts#L385-L407) 
-object.
+objects.
 
-Usually you don't want to make such an array of that large objects from scratch, the simplest way is capturing the HTTPS traffic 
+Usually you don't want to make such an array of that large objects from scratch, the simplest way is by capturing the HTTPS traffic 
 from the game but that is not the content of this readme. 
 
-After selecting the file, Memories you possessed will show up on the screen then you can examine most of the useful information 
-on the first level interface. Note to make it more convenient to use we didn't design pagination for them, this comes at a 
-cost which greatly reduces the response speed of the page if you have hundreds of Memories because they are rendered conditionlessly 
-at the same time, we suggest users to use character filter to examine one character at a time.
+After selecting the file, the Memories you possess will show up on the screen then you can examine most of the useful information 
+on the first-level interface. Note that, to make it more convenient to use, we didn't design pagination for them. This comes at a 
+cost, as it greatly reduces the response speed of the page if you have hundreds of Memories because they are rendered conditionlessly 
+at the same time, we suggest users use the character filter to examine one character at a time.
 
 ### Example
 

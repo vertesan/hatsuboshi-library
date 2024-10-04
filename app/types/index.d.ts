@@ -12,6 +12,7 @@ import {
 } from "./data/csprt"
 import {
   XMaster,
+  XResultGradePattern,
 } from "./data/master"
 import {
   Unarray,
@@ -52,5 +53,6 @@ export type {
   XUserMemory,
   UserMemoryFilter,
   UserMemorySort,
+  XResultGradePattern,
 }
 
