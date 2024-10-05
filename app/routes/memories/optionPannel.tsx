@@ -10,6 +10,7 @@ import {
 } from "~/assets/media";
 import { ChipGroup, IconChip } from "~/components/general/chips";
 import Ripple from "~/components/general/ripple";
+import { characterMultiSelectRenderOption } from "~/components/media/characterMultiSelectRenderOption";
 import { ProduceCardIcon } from "~/components/media/produceCard";
 import { constructCharacters } from "~/data/supportCardFilters";
 import { constructCards, defaultUserMemoryFilter, sortMemories } from "~/data/userMemory";
@@ -105,6 +106,7 @@ export function OptionPannel({
         data={charactersMultiSelectData}
         value={filter.characters}
         comboboxProps={{ transitionProps: { transition: 'fade-down', duration: 150, timingFunction: "ease-in-out" } }}
+        renderOption={characterMultiSelectRenderOption}
         onChange={(value) => onFilterChange("characters", value)}
       />
 

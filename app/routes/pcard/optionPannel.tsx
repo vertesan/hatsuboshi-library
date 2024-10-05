@@ -5,6 +5,7 @@ import { plan1Icon, plan2Icon, plan3Icon, planCommonIcon } from "~/assets/media"
 import { ChipGroup, IconChip } from "~/components/general/chips";
 import { MultiSelectEnum } from "~/components/general/multiSelect";
 import Ripple from "~/components/general/ripple";
+import { characterMultiSelectRenderOption } from "~/components/media/characterMultiSelectRenderOption";
 import { constructCharacters } from "~/data/idolCardFilters";
 import { defaultPCardFilter } from "~/data/pCardFilters";
 import { ProduceCardFilter, XMaster } from "~/types";
@@ -137,6 +138,7 @@ export function CardOptionPannel({
         data={charactersMultiSelectData}
         value={filter.characters}
         comboboxProps={{ transitionProps: { transition: 'fade-down', duration: 150, timingFunction: "ease-in-out" } }}
+        renderOption={characterMultiSelectRenderOption}
         onChange={(value) => onFilterChange("characters", value)}
       />
       <Divider labelPosition="left" my="sm" label={t("Misc")} />
