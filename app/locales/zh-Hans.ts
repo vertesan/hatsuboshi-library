@@ -11,7 +11,9 @@ const translation = {
   "meta-character": "角色 - 初星资料库",
   "meta-pcard": "技能卡 - 初星资料库",
   "meta-about": "关于 - 初星资料库",
+  "meta-memories": "记忆解析器 - 初星资料库",
   "meta-colors": "印象色 - 初星资料库",
+  "meta-help-memories": "使用帮助: 记忆解析器 - 初星资料库",
   "route-produce": "偶像培育", // 网页暂未实装
   "route-tools": "评分图表",
   "route-cidol": "偶像卡",
@@ -19,13 +21,14 @@ const translation = {
   "route-character": "角色",
   "route-pcard": "技能卡",
   "route-evaluation": "容量计算",
+  "route-memories": "Memories",
   "route-colors": "印象色",
   "route-about": "关于",
   "Colors": "印象色",
   "Sources from in-game data, arranged alphabetically.": "源自游戏内数据，按平假名首字母排序。",
   "Rarity": "稀有度",
   "Produce Plan": "计划",
-  "Common": "不限", // 原网页中出现在评分图表中,图标和free一致,可以与下文一致取“不限”或译为“通用”
+  "Common": "不限",
   "plan-free": "不限",
   "plan-sense": "感性",
   "plan-logic": "理性",
@@ -70,10 +73,10 @@ const translation = {
   "Count secondary attribute in": "加入副属性筛选",
   "produce-001": "Regular", // 无需翻译
   "produce-002": "Pro", // 无需翻译
-  "produce-003": "Master", // 游戏内暂未实装
-  "AuditionMid1": "期中考试 1", ////期中前追练？
-  "AuditionMid2": "期中考试 2", ////期末前追练？
-  "AuditionFinal": "期末考试",  ////虽然的确也是考试，不过按剧情感觉直接试镜更合适？（上下同）
+  "produce-003": "Master", // 无需翻译
+  "AuditionMid1": "期中考试 1", 
+  "AuditionMid2": "期中考试 2", 
+  "AuditionFinal": "期末考试",  
   "Terminates when score reaches ": "分数终止于 ",
   "Turn ": "回合 ",
   "Special Training Bonus": "特训提升",
@@ -149,6 +152,25 @@ const translation = {
   "GetProduceDrink": "获得 P 饮料",
   "UseProduceDrink": "使用 P 饮料",
   "GetProduceCard": "获得技能卡",
+  "Memory Inspector": "回忆解析器",
+  "What is this?": "这是什么？",
+  "Drop a file or click to select": "拖入文件或点此选择",
+  "Selected file must be a valid JSON file no more than 5 MiB": "选择小于 5MiB 的 .json 文件",
+  "Your data is processed locally on your device.": "数据在您的设备本地处理。",
+  "Save checked": "保存",
+  "Load checked": "加载",
+  "Protection": "保护锁",
+  "Protected": "已锁定",
+  "Non-Protected": "未锁定",
+  "All": "全部",
+  "Tagging": "标记",
+  "Tagged": "已标记",
+  "Non-Tagged": "未标记",
+  "Inherited Card": "继承卡",
+  "Sorting": "排序",
+  "Ascending": "升序",
+  "Date": "时间",
+  "Power": "体力",
   "UpgradeProduceCard": "强化技能卡",
   "DeleteProduceCard": "删除技能卡",
   "ProduceStart": "培育开始",
