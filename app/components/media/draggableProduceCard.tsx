@@ -26,7 +26,7 @@ export function DraggableProduceCard({
     zIndex: 999,
   } : undefined
   return (
-    <div className={isDragging && draggableId ? "fixed" : ""} ref={setNodeRef} style={style} {...listeners} {...attributes}>
+    <div className={isDragging && draggableId ? "absolute" : ""} ref={setNodeRef} style={style} {...listeners} {...attributes}>
       <ProduceCardIcon
         card={card}
         character={character}
