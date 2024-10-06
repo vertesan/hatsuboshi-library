@@ -9,6 +9,7 @@ const apiPaths: { [k in ApiType]: string } = {
   csprt: "/api/csprt",
   cidol: "/api/cidol",
   pcard: "/api/pcard",
+  memory: "/api/memory",
 }
 
 export async function getApiData<T extends ApiType>(type: T): Promise<ApiData<T>> {

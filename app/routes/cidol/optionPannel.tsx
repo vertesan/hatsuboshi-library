@@ -7,6 +7,7 @@ import { MultiSelectEnum } from "~/components/general/multiSelect";
 import NumberCompose from "~/components/general/numberCompose";
 import Ripple from "~/components/general/ripple";
 import { ExamEffectIcon } from "~/components/media/buffIcon";
+import { characterMultiSelectRenderOption } from "~/components/media/characterMultiSelectRenderOption";
 import { constructCharacters, defaultIdolCardFilter } from "~/data/idolCardFilters";
 import { XMaster } from "~/types";
 import { IdolCardFilter } from "~/types/data/cidol";
@@ -105,6 +106,7 @@ export function OptionPannel({
         data={charactersMultiSelectData}
         value={filter.characters}
         comboboxProps={{ transitionProps: { transition: 'fade-down', duration: 150, timingFunction: "ease-in-out" } }}
+        renderOption={characterMultiSelectRenderOption}
         onChange={(value) => onFilterChangeJump("characters", value)}
       />
       <Divider labelPosition="left" my="sm" label={t("Misc")} />

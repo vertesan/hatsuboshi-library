@@ -1,4 +1,4 @@
-import { Unarray, XIdolCard, XMaster } from "~/types";
+import { Unarray, XIdolCard, XMaster, XResultGradePattern } from "~/types";
 import { IdolCardLevelLimitEffectType, IdolCardLevelLimitRank, IdolCardPotentialEffectType, IdolCardPotentialRank, ProduceEffectType } from "~/types/proto/penum";
 import { ProduceExamBattleScoreConfig } from "~/types/proto/pmaster";
 
@@ -193,35 +193,35 @@ export function calcFinalAuditionEvaluation({
   return rankEva + attrEva + scoreEva
 }
 
-export const produceEvaBorder = {
-  "SS+": { evaluation: 18000, description: "SS+" },
-  "SS": { evaluation: 16000, description: "SS" },
-  "S+": { evaluation: 14500, description: "S+" },
-  "S": { evaluation: 13000, description: "S" },
-  "A+": { evaluation: 11500, description: "A+" },
-  "A": { evaluation: 10000, description: "A" },
-  "B+": { evaluation: 8000, description: "B+" },
-  "B": { evaluation: 6000, description: "B" },
-  "C+": { evaluation: 4500, description: "C+" },
-  "C": { evaluation: 3000, description: "C" },
-  "D": { evaluation: 2000, description: "D" },
-  "E": { evaluation: 1000, description: "E" },
-  "F": { evaluation: 0, description: "F" },
-}
+// export const produceEvaBorder = {
+//   "SS+": { evaluation: 18000, description: "SS+" },
+//   "SS": { evaluation: 16000, description: "SS" },
+//   "S+": { evaluation: 14500, description: "S+" },
+//   "S": { evaluation: 13000, description: "S" },
+//   "A+": { evaluation: 11500, description: "A+" },
+//   "A": { evaluation: 10000, description: "A" },
+//   "B+": { evaluation: 8000, description: "B+" },
+//   "B": { evaluation: 6000, description: "B" },
+//   "C+": { evaluation: 4500, description: "C+" },
+//   "C": { evaluation: 3000, description: "C" },
+//   "D": { evaluation: 2000, description: "D" },
+//   "E": { evaluation: 1000, description: "E" },
+//   "F": { evaluation: 0, description: "F" },
+// }
 
 export function calcFinalAuditionRequiredScore({
   rank = 1,
-  grades,
+  rankPatterns,
   totalAttr,
-  threshold = 99999,
+  threshold = 999999999,
 }: {
   rank?: keyof typeof rankEvaluations,
-  grades: (keyof typeof produceEvaBorder)[],
+  rankPatterns: XResultGradePattern[],
   totalAttr: number,
   threshold?: number,
-}): [keyof typeof produceEvaBorder, number][] {
+}): [string, number][] {
   const nonScoreEva = Math.floor(totalAttr * 23 / 10) + rankEvaluations[rank]
-  const results: [keyof typeof produceEvaBorder, number][] = []
+  const results: [string, number][] = []
 
   const calcRequiredScore = (
     scoreEva: number,
@@ -235,12 +235,12 @@ export function calcFinalAuditionRequiredScore({
     return requiredScore
   }
 
-  for (const gradeKey of grades) {
-    const evaBorder = produceEvaBorder[gradeKey].evaluation
+  for (const rankPattern of rankPatterns) {
+    const evaBorder = rankPattern.threshold
     const scoreEva = evaBorder - nonScoreEva
 
     if (scoreEva <= 0) {
-      results.push([gradeKey, 0])
+      results.push([rankPattern.description, 0])
       continue
     }
 
@@ -250,7 +250,7 @@ export function calcFinalAuditionRequiredScore({
       if (scoreEva <= level.acc) {
         const requiredScore = accScore + calcRequiredScore(scoreEva, level, prevAcc)
         if (requiredScore <= threshold) {
-          results.push([gradeKey, requiredScore])
+          results.push([rankPattern.description, requiredScore])
         }
         break
       }

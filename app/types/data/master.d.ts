@@ -29,7 +29,8 @@ import {
   ProduceItem,
   PvpRateConfig,
   PvpRateConfig_Stage,
-  StoryEvent
+  StoryEvent,
+  ResultGradePattern,
 } from "~/types/proto/pmaster"
 import { XProduceCard } from "./pcard"
 
@@ -68,5 +69,10 @@ export type XMaster = {
     }
   },
   characterDetails: { [id: string]: CharacterDetail[] },
-  achievements: { [id: string]: Achievement & { progress: AchievementProgress[] } }
+  achievements: { [id: string]: Achievement & { progress: AchievementProgress[] } },
+  resultGradePatterns: XResultGradePattern[],
+}
+
+export type XResultGradePattern = ResultGradePattern & {
+  description: string,
 }

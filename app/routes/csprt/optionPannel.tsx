@@ -1,4 +1,4 @@
-import { Button, Divider, MultiSelect, Switch } from "@mantine/core";
+import { Button, Divider, MultiSelect, MultiSelectProps, Switch } from "@mantine/core";
 import { Dispatch, SetStateAction, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -15,6 +15,8 @@ import { ChipGroup, IconChip } from "~/components/general/chips";
 import { MultiSelectEnum } from "~/components/general/multiSelect";
 import NumberCompose from "~/components/general/numberCompose";
 import Ripple from "~/components/general/ripple";
+import { characterMultiSelectRenderOption } from "~/components/media/characterMultiSelectRenderOption";
+import { ProduceEffectIcon } from "~/components/media/effectIcon";
 import { constructCharacters, constructProduceEffectTypes, constructProducePhaseTypes, defaultSupportCardFilter } from "~/data/supportCardFilters";
 import { SupportCardFilter, XMaster } from "~/types";
 import { ProduceEffectType, ProducePlanType, SupportCardRarity, SupportCardType } from "~/types/proto/penum";
@@ -60,6 +62,17 @@ export function OptionPannel({
       return { ...prev, [key]: val }
     })
   }
+
+  const effectMultiSelectRenderOption: MultiSelectProps['renderOption'] = ({ option }) => (
+    <div className="flex gap-2 justify-start items-center">
+      <div>
+        <ProduceEffectIcon className="flex-none relative h-8 w-8" effectType={+option.value} />
+      </div>
+      <div>
+        {option.label}
+      </div>
+    </div>
+  )
 
   return (
     <div>
@@ -125,6 +138,8 @@ export function OptionPannel({
         checkIconPosition="left"
         data={produceTypesMultiSelectData}
         value={filter.produceEffectTypes}
+        renderOption={effectMultiSelectRenderOption}
+        maxDropdownHeight={280}
         onChange={(value) => onFilterChangeJump("produceEffectTypes", value)}
       />
       <Divider labelPosition="left" my="sm" label={t("Produce Effect Trigger")} />
@@ -141,6 +156,7 @@ export function OptionPannel({
         checkIconPosition="left"
         data={charactersMultiSelectData}
         value={filter.characters}
+        renderOption={characterMultiSelectRenderOption}
         comboboxProps={{ transitionProps: { transition: 'fade-down', duration: 150, timingFunction: "ease-in-out" } }}
         onChange={(value) => onFilterChangeJump("characters", value)}
       />

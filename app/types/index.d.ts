@@ -12,6 +12,7 @@ import {
 } from "./data/csprt"
 import {
   XMaster,
+  XResultGradePattern,
 } from "./data/master"
 import {
   Unarray,
@@ -27,6 +28,12 @@ import {
   MemorySlot,
   MemorySlots,
 } from "./data/evaluation"
+import {
+  XMemoryInspector,
+  XUserMemory,
+  UserMemoryFilter,
+  UserMemorySort,
+} from "./data/memory"
 
 export type {
   ApiData,
@@ -42,5 +49,10 @@ export type {
   ProduceCardFilter,
   MemorySlot,
   MemorySlots,
+  XMemoryInspector,
+  XUserMemory,
+  UserMemoryFilter,
+  UserMemorySort,
+  XResultGradePattern,
 }
 

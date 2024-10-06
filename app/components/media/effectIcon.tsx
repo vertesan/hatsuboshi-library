@@ -20,13 +20,22 @@ const _ProduceEffectIcon = forwardRef(function _ProduceEffectIcon({
   const { produceEffectIcons } = useContext(MasterContext)
   const iconRecord = produceEffectIcons[effectType]
 
-  const bgUrl = getAssetImgUrl(iconRecord.backgroundAssetId)
-  const iconUrl = getAssetImgUrl(iconRecord.iconAssetId)
+  const assetUrls = iconRecord
+    ? {
+      bgUrl: getAssetImgUrl(iconRecord.backgroundAssetId),
+      iconUrl: getAssetImgUrl(iconRecord.iconAssetId),
+    }
+    : undefined
 
   return (
     <div className={`aspect-square overflow-hidden rounded-md ${className}`} ref={ref} {...props} >
-      <img src={bgUrl} alt="background" className="absolute object-fill" />
-      <img src={iconUrl} alt="icon" className="absolute object-fill" />
+      {assetUrls
+        ? <>
+          <img src={assetUrls.bgUrl} alt="background" className="absolute object-fill" />
+          <img src={assetUrls.iconUrl} alt="icon" className="absolute object-fill" />
+        </>
+        : null
+      }
     </div>
   )
 })

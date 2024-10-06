@@ -3,6 +3,7 @@ import {
   AppShell,
   Button,
   CSSVariablesResolver,
+  Checkbox,
   Chip,
   NavLink,
   Pagination,

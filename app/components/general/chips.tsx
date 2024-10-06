@@ -6,6 +6,7 @@ export function IconChip<T extends { [_: number]: string }>({
   iconSrc,
   iconComponent,
   enumObj,
+  noLabel = false,
   children,
   ...props
 }: {
@@ -13,6 +14,7 @@ export function IconChip<T extends { [_: number]: string }>({
   iconSrc?: string,
   iconComponent?: JSX.Element,
   enumObj?: T,
+  noLabel?: boolean,
 } & Partial<ChipProps>) {
   const { t } = useTranslation()
   const label = typeof value === "number" && enumObj
@@ -30,7 +32,10 @@ export function IconChip<T extends { [_: number]: string }>({
           )
           : null
       }
-      <span>{children ? children : label}</span>
+      {noLabel
+        ? null
+        : <span>{children ? children : label}</span>
+      }
     </Chip>
   )
 }

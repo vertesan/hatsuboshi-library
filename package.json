@@ -16,6 +16,7 @@
     "@mantine/charts": "^7.11.2",
     "@mantine/core": "^7.11.2",
     "@mantine/hooks": "^7.11.2",
+    "@mantine/dropzone": "^7.11.2",
     "@mdx-js/rollup": "^3.0.1",
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",

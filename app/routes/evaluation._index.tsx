@@ -1,5 +1,5 @@
 import { DndContext, DragEndEvent } from "@dnd-kit/core"
-import { Button, Popover } from "@mantine/core"
+import { Button, Divider, Popover } from "@mantine/core"
 import { useLocalStorage } from "@mantine/hooks"
 import { MetaFunction, useOutletContext } from "@remix-run/react"
 import { Fragment, useContext, useMemo, useState } from "react"
@@ -54,8 +54,11 @@ export default function Evaluation() {
     getInitialValueInEffect: false,
   })
   const [memorySlots, setMemorySlots] = useLocalStorage<MemorySlots>({
-    key: "evaluationSlots",
-    defaultValue: [null, null, null, null, null, null],
+    key: "evaluationSlots_v2",
+    defaultValue: [
+      null, null, null, null, null, null,
+      null, null, null, null, null, null,
+    ],
     getInitialValueInEffect: false,
   })
 
@@ -76,16 +79,21 @@ export default function Evaluation() {
 
   const onDrop = (event: DragEndEvent) => {
     const { over, active } = event
-    const regex = /-d\d$/
-    const realCardId = active.id.toString().replace(regex, "")
+    const regex = /-d(\d+)$/
+    const testResult = regex.exec(active.id.toString())
+    const isFromBox = testResult === null
+    let realCardId = active.id.toString()
+    if (!isFromBox) {
+      realCardId = realCardId.replace(regex, "")
+    }
 
-    const isFromBox = regex.exec(active.id.toString()) === null
     if (!over) {
       if (!isFromBox) {
         // remove from slot
         setMemorySlots(prev => {
           const curr = [...prev] as MemorySlots
-          const idx = curr.findIndex(slot => slot?.cardId === realCardId)
+          // const idx = curr.findIndex(slot => slot?.cardId === realCardId)
+          const idx = +testResult[1]
           curr[idx] = null
           return curr
         })
@@ -93,55 +101,83 @@ export default function Evaluation() {
       return
     }
 
-    const isDedicatedSlot = over.id === '0'
-    const isSupportSlot = over.id === '1'
+    const isToDedicatedSlot = over.id === '0' || over.id === '6'
+    const isToSupportSlot = over.id === '1' || over.id === '7'
+    const isFromSupportSlot = isFromBox ? false : testResult[1] === '1' || testResult[1] === '7' ? true : false
+    const offset = +over.id < 6 ? 0 : 6
     const card = xProduceCards[realCardId]
     if (!card) return
-    if (card.originIdolCardId && !isDedicatedSlot) {
+    if (card.originIdolCardId && !isToDedicatedSlot) {
       // trying to set dedicated card into non-dedicated slot
       setHintOpened('dedicate2free')
       return
     }
-    if (card.originSupportCardId && !isSupportSlot) {
+    if (card.originSupportCardId && !isToSupportSlot) {
       // trying to set support card into non-support card slot
       setHintOpened('support2free')
       return
     }
-    if (!card.originIdolCardId && !card.originSupportCardId && isDedicatedSlot) {
+    if (!card.originIdolCardId && !card.originSupportCardId && isToDedicatedSlot) {
       // trying to set normal card into dedicated slot
       setHintOpened('free2dedicate')
       return
     }
 
-    if (memorySlots.some(slot => slot?.cardId === realCardId)) {
-      // has duplicated card
-      if (isFromBox) {
+    const hasDuplication = (cardId?: string, _offset?: number) => {
+      if (cardId === undefined) return false
+      if (_offset === undefined) _offset = offset
+      const slots = memorySlots.slice(_offset, 6 + _offset)
+      return slots.some(slot => slot?.cardId === cardId)
+    }
+    const isSameGroup = (i1: number, i2: number) => {
+      return i1 < 6 && i2 < 6 || i1 >= 6 && i2 >= 6
+        ? true
+        : false
+    }
+
+    if (!isFromBox) {
+      const activePosition = +testResult[1]
+      const overPosition = +over.id
+      if (
+        !isSameGroup(activePosition, overPosition) &&
+        (
+          hasDuplication(memorySlots[activePosition]?.cardId, overPosition < 6 ? 0 : 6) ||
+          hasDuplication(memorySlots[overPosition]?.cardId, activePosition < 6 ? 0 : 6)
+        ) &&
+        memorySlots[activePosition]?.cardId !== memorySlots[overPosition]?.cardId
+      ) {
+        // has duplicated card
         setHintOpened('duplicated')
         return
-      }
-      // switch position
-      setMemorySlots(prev => {
-        const curr = [...prev] as MemorySlots
-        const fromIdx = prev.findIndex(slot => slot?.cardId === realCardId)
-        const fromSlot = prev[fromIdx]
-        const toSlot = prev[+over.id]
-        if (isSupportSlot && toSlot) {
-          // support card cannot be swithed
-          const toCard = xProduceCards[toSlot.cardId]
-          if (toCard.originSupportCardId) {
+      } else {
+        // switch position
+        setMemorySlots(prev => {
+          const curr = [...prev] as MemorySlots
+          const fromSlot = prev[activePosition]
+          const toSlot = prev[overPosition]
+          if (
+            toSlot &&
+            isToSupportSlot !== isFromSupportSlot &&
+            (xProduceCards[fromSlot!.cardId].originSupportCardId !== "") !== (xProduceCards[toSlot!.cardId].originSupportCardId !== "")
+          ) {
             setHintOpened('support2free')
             return prev
           }
-        }
-        curr[fromIdx] = toSlot
-        curr[+over.id] = fromSlot
-        return curr
-      })
+          curr[activePosition] = toSlot
+          curr[overPosition] = fromSlot
+          return curr
+        })
+      }
     } else {
+      if (hasDuplication(realCardId)) {
+        // has duplicated card
+        setHintOpened('duplicated')
+        return
+      }
       setMemorySlots(prev => {
         const curr = [...prev] as MemorySlots
         curr[+over.id] = {
-          cardId: isFromBox ? active.id.toString() : realCardId,
+          cardId: realCardId,
           enhanced: false,
         }
         return curr
@@ -167,13 +203,25 @@ export default function Evaluation() {
         <DndContext
           onDragEnd={onDrop}
         >
-          <div className="flex-[1_0_27rem]">
+          <div className="flex-[1_0_27rem] flex flex-col">
+            <div className="pb-4 w-max self-center">
+              <DroppableMemorySlots
+                memorySlots={memorySlots}
+                setMemorySlots={setMemorySlots}
+                offset={0}
+              />
+            </div>
             <Popover opened={opened}>
               <Popover.Target>
-                <DroppableMemorySlots
-                  memorySlots={memorySlots}
-                  setMemorySlots={setMemorySlots}
-                />
+                <div className="w-max self-center">
+                  <Divider />
+                  <DroppableMemorySlots
+                    className="pt-2"
+                    memorySlots={memorySlots}
+                    setMemorySlots={setMemorySlots}
+                    offset={6}
+                  />
+                </div>
               </Popover.Target>
               <Popover.Dropdown>
                 {popupHint}
@@ -186,28 +234,57 @@ export default function Evaluation() {
                 <p className="text-4xl">{t("No results")}</p>
               </div>
             }
-            <div>
-              {
-                Object.entries(filteredCards).map(([eva, cards], idx) => {
-                  return (
-                    <Fragment key={idx}>
-                      <p className="pt-4">{t("Eva. ") + evaluationMap[+eva].text}</p>
-                      <div key={idx} className="grid grid-cols-[repeat(auto-fit,68px)]">
-                        {cards.map((card, idx) => {
-                          return (
-                            <DraggableProduceCard
-                              key={idx}
-                              card={card}
-                              character="kllj"
-                              className="flex-none relative h-[68px] w-[68px]"
-                            />
-                          )
-                        })}
-                      </div>
-                    </Fragment>
-                  )
-                })
-              }
+            <div className="grid grid-cols-[minmax(0,2fr),minmax(0,3fr)]">
+              <div>
+                {
+                  Object.entries(filteredCards)
+                    .filter(([eva, _]) => [1, 32].includes(+eva))
+                    .map(([eva, cards], idx) => {
+                      return (
+                        <div key={idx}>
+                          <p className="pt-4">{t("Eva. ") + evaluationMap[+eva].text}</p>
+                          <div key={idx} className="grid grid-cols-[repeat(auto-fit,68px)]">
+                            {cards.map((card, idx) => {
+                              return (
+                                <DraggableProduceCard
+                                  key={idx}
+                                  card={card}
+                                  character="kllj"
+                                  className="flex-none relative h-[68px] w-[68px]"
+                                />
+                              )
+                            })}
+                          </div>
+                        </div>
+                      )
+                    })
+                }
+              </div>
+              <div>
+                {
+                  Object.entries(filteredCards)
+                    .filter(([eva, _]) => ![1, 32].includes(+eva))
+                    .map(([eva, cards], idx) => {
+                      return (
+                        <div key={idx}>
+                          <p className="pt-4">{t("Eva. ") + evaluationMap[+eva].text}</p>
+                          <div key={idx} className="grid grid-cols-[repeat(auto-fit,68px)]">
+                            {cards.map((card, idx) => {
+                              return (
+                                <DraggableProduceCard
+                                  key={idx}
+                                  card={card}
+                                  character="kllj"
+                                  className="flex-none relative h-[68px] w-[68px]"
+                                />
+                              )
+                            })}
+                          </div>
+                        </div>
+                      )
+                    })
+                }
+              </div>
             </div>
           </div>
         </DndContext>

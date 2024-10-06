@@ -11,24 +11,29 @@ import { MemorySlots, XProduceCard } from "~/types";
 export const DroppableMemorySlots = forwardRef(({
   memorySlots,
   setMemorySlots,
+  offset,
   className,
 }: {
   memorySlots: MemorySlots,
-  setMemorySlots: Dispatch<SetStateAction<MemorySlots>>
+  setMemorySlots: Dispatch<SetStateAction<MemorySlots>>,
+  offset: number,
   className?: string,
 }, ref: LegacyRef<HTMLDivElement>) => {
   const [_, xProduceCards, xEnhancedCards] = useOutletContext<
     [XProduceCard[], { [x: string]: XProduceCard }, { [x: string]: XProduceCard }]
   >()
   const { t } = useTranslation()
-  const cards = memorySlots.map(slot => {
-    if (!slot) return null
-    if (slot.enhanced) {
-      return xEnhancedCards[slot.cardId]
-    } else {
-      return xProduceCards[slot.cardId]
-    }
-  })
+  const getRealIndex = (idx: number) => idx + offset
+  const cards = memorySlots
+    .slice(offset, 6 + offset)
+    .map(slot => {
+      if (!slot) return null
+      if (slot.enhanced) {
+        return xEnhancedCards[slot.cardId]
+      } else {
+        return xProduceCards[slot.cardId]
+      }
+    })
   const totalEva = cards.reduce((acc, cur) => {
     acc += cur?.evaluation ?? 0
     return acc
@@ -42,7 +47,7 @@ export const DroppableMemorySlots = forwardRef(({
         </div>
         {cards.map((card, idx) => {
           return (
-            <div key={idx} className="text-center self-end">
+            <div key={getRealIndex(idx)} className="text-center self-end">
               {card?.evaluation}
             </div>
           )
@@ -53,27 +58,28 @@ export const DroppableMemorySlots = forwardRef(({
         {cards.map((card, idx) => {
           return (
             <DroppableMemorySlot
-              key={idx}
+              key={getRealIndex(idx)}
               card={card}
-              droppableId={idx.toString()}
+              droppableId={getRealIndex(idx).toString()}
             />
           )
         })}
         <div>
           {t("Enhance")}
         </div>
-        {memorySlots.map((slot, idx) => {
+        {memorySlots.slice(offset, 6 + offset).map((slot, idx) => {
           return (
-            <div key={idx} className="justify-self-center">
+            <div key={getRealIndex(idx)} className="justify-self-center">
               <Switch
                 disabled={slot === null}
                 checked={slot?.enhanced}
                 onChange={(event) => setMemorySlots(prev => {
-                  const targetSlot = prev[idx]
+                  const realIdx = getRealIndex(idx)
+                  const targetSlot = prev[realIdx]
                   if (!targetSlot) return prev
                   targetSlot.enhanced = event.currentTarget.checked
                   const curr = [...prev] as MemorySlots
-                  curr[idx] = targetSlot
+                  curr[realIdx] = targetSlot
                   return curr
                 })}
               />
@@ -110,9 +116,9 @@ function DroppableMemorySlot({
     id: droppableId,
   })
   const hintText =
-    droppableId === '0'
+    ['0', '6'].includes(droppableId)
       ? t("Dedicated")
-      : droppableId === '1'
+      : ['1', '7'].includes(droppableId)
         ? t("Support & Common")
         : null
   return (

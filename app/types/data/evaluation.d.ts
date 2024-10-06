@@ -15,4 +15,5 @@ export type MemorySlot = {
 
 export type MemorySlots = [
   MemorySlot | null, MemorySlot | null, MemorySlot | null, MemorySlot | null, MemorySlot | null, MemorySlot | null,
+  MemorySlot | null, MemorySlot | null, MemorySlot | null, MemorySlot | null, MemorySlot | null, MemorySlot | null,
 ]

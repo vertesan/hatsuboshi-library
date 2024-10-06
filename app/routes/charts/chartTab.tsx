@@ -4,12 +4,20 @@ import { useDisclosure, useLocalStorage } from "@mantine/hooks";
 import { memo, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ChipGroup, IconChip } from "~/components/general/chips";
-import NumberCompose from "~/components/general/numberCompose";
 import { defaultScoreGraphPref } from "~/data/briefcase";
-import { produceEvaBorder } from "~/data/calculation";
-import { displayRanks, filterOptions, getDefinedChatData } from "~/data/chats";
+import { filterOptions, getDefinedChatData } from "~/data/chats";
+import { XResultGradePattern } from "~/types";
 
-export function CommonTab() {
+export function ChartTab({
+  rankPatterns,
+  data,
+}: {
+  rankPatterns: XResultGradePattern[],
+  data: {
+    [x: string]: number;
+    totalAttr: number;
+  }[],
+}) {
   const { t } = useTranslation()
   const [graphOptions, setGraphOptions] = useLocalStorage({
     key: "briefcaseScoreGraphPref",
@@ -27,8 +35,6 @@ export function CommonTab() {
     })
   }
 
-  const data = useMemo(() => getDefinedChatData(), [])
-
   useEffect(() => {
     if (isLoading) {
       setTimeout(() => {
@@ -42,35 +48,17 @@ export function CommonTab() {
     <div className="pt-4">
       <p className="text-lg font-medium">{t("Final Audition Score-Attribute Chart")}</p>
       <div className="pt-4 w-[580px]">
-        <ChipGroup multiple isEnum={false} value={uiOptions.ranks} onChange={(value) => onPreferenceChange("ranks", value as (keyof typeof produceEvaBorder)[])}>
+        <ChipGroup multiple isEnum={false} value={uiOptions.ranks} onChange={(value) => onPreferenceChange("ranks", value)}>
           {
-            Object.entries(produceEvaBorder)
-              .filter(x => displayRanks.includes(x[0] as keyof typeof produceEvaBorder))
-              .map(([key, value]) => {
+            rankPatterns
+              // .filter(x => displayRanks.includes(x[0] as keyof typeof produceEvaBorder))
+              .map(rankPattern => {
                 return (
-                  <IconChip key={key} variant="outline" value={key}>{value.description}</IconChip>
+                  <IconChip key={rankPattern.grade} variant="outline" value={rankPattern.description}>{rankPattern.description}</IconChip>
                 )
               })
           }
         </ChipGroup>
-        <NumberCompose
-          className="pt-4"
-          width={70}
-          controlWidth={50}
-          max={5400} min={1500} step={100}
-          value={uiOptions.xreferenceLine}
-          label={t("X-Axis Reference Line")}
-          setValue={(value) => onPreferenceChange("xreferenceLine", value)}
-        />
-        <NumberCompose
-          className="pt-2"
-          width={78}
-          controlWidth={68}
-          max={80000} min={0} step={10000}
-          value={uiOptions.yreferenceLine}
-          label={t("Y-Axis Reference Line")}
-          setValue={(value) => onPreferenceChange("yreferenceLine", value)}
-        />
         <Button className="my-2" size="xs"
           loading={isLoading}
           onClick={() => {
@@ -123,10 +111,6 @@ const Chart = memo(({
       fillOpacity={0.3}
       strokeWidth={1}
       dotProps={{ r: 0.2 }}
-      referenceLines={[
-        { y: graphOptions.yreferenceLine, label: graphOptions.yreferenceLine.toString(), color: 'gray.6' },
-        { x: graphOptions.xreferenceLine, label: graphOptions.xreferenceLine.toString(), color: 'gray.6' },
-      ]}
     />
   )
 })
