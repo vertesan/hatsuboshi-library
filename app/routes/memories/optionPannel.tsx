@@ -86,7 +86,7 @@ export function OptionPannel({
         <IconChip variant="outline" value={ProducePlanType.Plan3} iconSrc={plan3Icon}>{t("plan-anomary")}</IconChip>
       </ChipGroup>
 
-      <Divider labelPosition="left" my="sm" label={t("Grade")} />
+      <Divider labelPosition="left" my="sm" label={t("Rank")} />
       <ChipGroup multiple isEnum value={filter.grades} onChange={(value) => onFilterChange("grades", value)}>
         {
           Object.entries(ResultGrade)
@@ -170,7 +170,7 @@ export function OptionPannel({
         onChange={(value) => onSortChange("sortKey", (value ?? "date") as UserMemorySort['sortKey'])}
       >
         <IconChip variant="outline" value="date">{t("Date")}</IconChip>
-        <IconChip variant="outline" value="power">{t("Power")}</IconChip>
+        <IconChip variant="outline" value="power">{t("Evaluation")}</IconChip>
       </ChipGroup>
     </div>
   )
