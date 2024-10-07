@@ -171,6 +171,7 @@ const translation = {
   "Ascending": "Ascending",
   "Date": "Date",
   "Power": "Power",
+  "Rank": "Rank",
   // produce phase
   "RecoveryStamina": "Stamina Recovered",
   "GetProducePoint": "P-Point Obtained",
