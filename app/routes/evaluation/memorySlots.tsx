@@ -123,7 +123,7 @@ function DroppableMemorySlot({
         : null
   return (
     <div className={`relative h-[68px] w-[68px] bg-zinc-300 dark:bg-zinc-700 rounded-lg aspect-square transition-[outline] ${isOver ? "outline" : null}`} ref={setNodeRef}>
-      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-min text-center text-xs">{hintText}</span>
+      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[62px] whitespace-pre-line text-center text-xs">{hintText}</span>
       {card
         ? <DraggableProduceCard
           card={card}

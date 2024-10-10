@@ -143,7 +143,7 @@ const translation = {
   "Evaluation": "Evaluation",
   "Slot": "Slot",
   "Dedicated": "Dedicated",
-  "Support & Common": "Support & Common",
+  "Support & Common": "Support\n&\nCommon",
   "Enhance": "Enhance",
   "Contest Item": "Contest Item",
   "Produce Item": "Produce Item",
