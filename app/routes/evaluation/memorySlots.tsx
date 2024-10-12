@@ -35,6 +35,9 @@ export const DroppableMemorySlots = forwardRef(({
       }
     })
   const totalEva = cards.reduce((acc, cur) => {
+    if (cur?.originIdolCardId) {
+      return acc
+    }
     acc += cur?.evaluation ?? 0
     return acc
   }, 0)
@@ -47,7 +50,7 @@ export const DroppableMemorySlots = forwardRef(({
         </div>
         {cards.map((card, idx) => {
           return (
-            <div key={getRealIndex(idx)} className="text-center self-end">
+            <div key={getRealIndex(idx)} className={`text-center self-end ${card?.originIdolCardId ? "text-[var(--mantine-color-dimmed)]" : ""}`}>
               {card?.evaluation}
             </div>
           )
