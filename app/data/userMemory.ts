@@ -1,4 +1,5 @@
 import { UserMemoryFilter, UserMemorySort, XMemoryInspector, XUserMemory } from "~/types";
+import { ProduceEffectType } from "~/types/proto/penum";
 import { UserMemory } from "~/types/proto/ptransaction";
 
 export const defaultUserMemoryFilter: UserMemoryFilter = {
@@ -15,6 +16,17 @@ export const defaultUserMemorySort: UserMemorySort = {
   sortKey: "date",
   ascending: false,
 }
+
+export const onScreenAbilities: ProduceEffectType[] = [
+  ProduceEffectType.VocalAddition,
+  ProduceEffectType.VocalGrowthRateAddition,
+  ProduceEffectType.DanceAddition,
+  ProduceEffectType.DanceGrowthRateAddition,
+  ProduceEffectType.VisualAddition,
+  ProduceEffectType.VisualGrowthRateAddition,
+  ProduceEffectType.ProducePointAdditionDisableTrigger,
+  ProduceEffectType.StaminaRecoverFix,
+]
 
 export function constructCards(xMemory: XMemoryInspector) {
   const cards = Object.entries(xMemory.produceCards)

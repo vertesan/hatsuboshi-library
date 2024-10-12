@@ -35,6 +35,9 @@ export const DroppableMemorySlots = forwardRef(({
       }
     })
   const totalEva = cards.reduce((acc, cur) => {
+    if (cur?.originIdolCardId) {
+      return acc
+    }
     acc += cur?.evaluation ?? 0
     return acc
   }, 0)
@@ -47,7 +50,7 @@ export const DroppableMemorySlots = forwardRef(({
         </div>
         {cards.map((card, idx) => {
           return (
-            <div key={getRealIndex(idx)} className="text-center self-end">
+            <div key={getRealIndex(idx)} className={`text-center self-end ${card?.originIdolCardId ? "text-[var(--mantine-color-dimmed)]" : ""}`}>
               {card?.evaluation}
             </div>
           )
@@ -123,7 +126,7 @@ function DroppableMemorySlot({
         : null
   return (
     <div className={`relative h-[68px] w-[68px] bg-zinc-300 dark:bg-zinc-700 rounded-lg aspect-square transition-[outline] ${isOver ? "outline" : null}`} ref={setNodeRef}>
-      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-min text-center text-xs">{hintText}</span>
+      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[62px] whitespace-pre-line text-center text-xs">{hintText}</span>
       {card
         ? <DraggableProduceCard
           card={card}

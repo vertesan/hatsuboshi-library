@@ -9,6 +9,7 @@ import { ProduceEffectIcon } from "~/components/media/effectIcon"
 import { PlanIcon } from "~/components/media/planIcon"
 import { ProduceCardIcon } from "~/components/media/produceCard"
 import { ProduceItemIcon } from "~/components/media/produceItem"
+import { onScreenAbilities } from "~/data/userMemory"
 import { XMemoryInspector, XUserMemory } from "~/types"
 import { ProduceEffectType, ProduceMemoryProduceCardPhaseType } from "~/types/proto/penum"
 import { ProduceEffect } from "~/types/proto/pmaster"
@@ -29,17 +30,20 @@ function _MemoryRow({
   dayjs.extend(utc)
   dayjs.extend(timezone)
 
-  const attrAbilities = useRef<[ProduceEffect | null, ProduceEffect | null, ProduceEffect | null]>([null, null, null])
+  const attrAbilities = useRef<ProduceEffect[]>([])
   useMemo(() => {
-    xUserMemory.abilities.forEach(a => {
-      const eff = xMemory.memoryAbilities[a.id]?.skill.produceEffects[0]
-      if ([ProduceEffectType.VocalAddition, ProduceEffectType.VocalGrowthRateAddition].includes(eff.produceEffectType)) {
-        attrAbilities.current[0] = eff
-      } else if ([ProduceEffectType.DanceAddition, ProduceEffectType.DanceGrowthRateAddition].includes(eff.produceEffectType)) {
-        attrAbilities.current[1] = eff
-      } else if ([ProduceEffectType.VisualAddition, ProduceEffectType.VisualGrowthRateAddition].includes(eff.produceEffectType)) {
-        attrAbilities.current[2] = eff
+    xUserMemory.abilities.forEach(ability => {
+      const eff = xMemory.memoryAbilities[ability.id]?.skill.produceEffects[0]
+      if (onScreenAbilities.includes(eff.produceEffectType)) {
+        attrAbilities.current.push(eff)
       }
+      // if ([ProduceEffectType.VocalAddition, ProduceEffectType.VocalGrowthRateAddition].includes(eff.produceEffectType)) {
+      //   attrAbilities.current[0] = eff
+      // } else if ([ProduceEffectType.DanceAddition, ProduceEffectType.DanceGrowthRateAddition].includes(eff.produceEffectType)) {
+      //   attrAbilities.current[1] = eff
+      // } else if ([ProduceEffectType.VisualAddition, ProduceEffectType.VisualGrowthRateAddition].includes(eff.produceEffectType)) {
+      //   attrAbilities.current[2] = eff
+      // }
     })
   }, [])
 
@@ -94,25 +98,26 @@ function _MemoryRow({
           </div>
         </div>
         <div className="w-[54px] h-16">
-          {attrAbilities.current.map((effect, idx) => {
-            if (effect === null) return (<div key={idx} className="h-[21px] w-[54px]"></div>)
-            return (
-              <div key={effect?.id} className="flex justify-start items-center gap-1">
-                <div className="h-[21px] w-[21px]">
-                  <ProduceEffectIcon
-                    className="relative h-[21px] w-[21px]"
-                    effectType={effect.produceEffectType}
-                  />
+          {attrAbilities.current.slice(0, 3)
+            .map((effect, idx) => {
+              if (effect === null) return (<div key={idx} className="h-[21px] w-[54px]"></div>)
+              return (
+                <div key={effect?.id} className="flex justify-start items-center gap-1">
+                  <div className="h-[21px] w-[21px]">
+                    <ProduceEffectIcon
+                      className="relative h-[21px] w-[21px]"
+                      effectType={effect.produceEffectType}
+                    />
+                  </div>
+                  <span className="text-sm leading-4 w-[32px]">
+                    {isPermil(effect)
+                      ? (effect.effectValueMin / 10.0).toString() + "%"
+                      : effect.effectValueMin
+                    }
+                  </span>
                 </div>
-                <span className="text-sm leading-4 w-[32px]">
-                  {isPermil(effect)
-                    ? (effect.effectValueMin / 10.0).toString() + "%"
-                    : effect.effectValueMin
-                  }
-                </span>
-              </div>
-            )
-          })}
+              )
+            })}
         </div>
         <span className="w-[65px] text-md">{dayjs(+xUserMemory.shotTime).tz("Asia/Tokyo").format("YY/MM/DD")}</span>
         <span className="w-[50px] font-medium text-lg">{xUserMemory.power}</span>

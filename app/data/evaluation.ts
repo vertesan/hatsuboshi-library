@@ -1,10 +1,10 @@
 export const rankEvaluation = {
-  "B": { from: 107, to: 126 },
-  "B+": { from: 107, to: 146 },
-  "A": { from: 152, to: 178 },
-  "A+": { from: 152, to: 203 },
-  "S": { from: 187, to: 219 },
-  "S+": {from: 187, to: 252},
+  "B": { from: 102, to: 121 },
+  "B+": { from: 102, to: 141 },
+  "A": { from: 147, to: 173 },
+  "A+": { from: 147, to: 198 },
+  "S": { from: 182, to: 214 },
+  "S+": {from: 182, to: 247},
 }
 
 export const evaluationMap: {
