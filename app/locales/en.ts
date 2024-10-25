@@ -32,7 +32,7 @@ const translation = {
   "plan-free": "Free",
   "plan-sense": "Sense",
   "plan-logic": "Logic",
-  "plan-anomary": "Anomary",
+  "plan-anomary": "Anomaly",
   "Attribute": "Attribute",
   "Stamina": "Stamina",
   "P-Point": "P-Point",
