@@ -74,12 +74,12 @@ function _ProduceCardIcon({
         alt={frameIcon}
         className="absolute object-fill"
       />
+      <PlayEffectsIcon card={card} className="absolute left-0 bottom-0 w-[29%] h-full" />
       <LessonIcon card={card} className="absolute left-0 top-0 h-1/4 opacity-70" />
       {blockValue !== undefined
         ? <BlockIcon blockValue={blockValue} className="absolute right-0 top-0 w-1/3 h-1/3" />
         : null
       }
-      <PlayEffectsIcon card={card} className="absolute left-0 bottom-0 w-[29%] h-full" />
       <CostIcon card={card} className="absolute right-0 bottom-0 w-1/3 h-1/3" />
       {card.upgradeCount
         ? <PlusIcon
@@ -146,23 +146,30 @@ function PlayEffectsIcon({
   card: XProduceCard,
   className?: string,
 }) {
-  const displayEffects = card.playEffects.filter(effect =>
-    !effect.hideIcon &&
-    effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamLesson &&
-    effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlock &&
-    effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount &&
-    effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive
-  )
+  const displayEffects = card.playEffects
+    .filter(effect =>
+      !effect.hideIcon &&
+      effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamLesson &&
+      effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlock &&
+      effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount &&
+      effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive &&
+      effect.produceExamEffect.effectType !== ProduceExamEffectType.StanceLock
+    ).map(effect =>
+      effect.produceExamEffect.effectType
+    )
+  if (card.produceCardStatusEnchantId) {
+    displayEffects.push(ProduceExamEffectType.ExamAddGrowEffect)
+  }
   return (
     displayEffects.length > 0
       ? <div className={`${className}`}>
         <div className="flex flex-col w-full h-full justify-end">
-          {displayEffects.map((effect, idx) => {
+          {displayEffects.map((effectType, idx) => {
             return (
               <ExamEffectIcon
                 key={idx}
                 className="aspect-square w-full object-contain"
-                effectType={effect.produceExamEffect.effectType}
+                effectType={effectType}
               />
             )
           })}

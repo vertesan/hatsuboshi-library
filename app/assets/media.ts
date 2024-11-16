@@ -79,6 +79,7 @@ export const cardTroubleFrame = "/img/card_frame_t.webp"
 export const buffBgBlue = "/img/buff_bg_blue.webp"
 export const buffBgYellow = "/img/buff_bg_yellow.webp"
 export const buffBgRed = "/img/buff_bg_red.webp"
+export const buffBgGreen = "/img/buff_bg_green.webp"
 export const buffPreservation = "/img/buff_base_preservation.webp"
 export const buffFullpower = "/img/buff_base_fullpower.webp"
 export const buffConcentration = "/img/buff_base_concentration.webp"
@@ -145,6 +146,9 @@ const extraEffectNameMap: { [x: number]: ProduceExamEffectType } = {
   [ProduceExamEffectType.ExamAggressiveReduce]: ProduceExamEffectType.ExamCardPlayAggressive,
   [ProduceExamEffectType.ExamLessonBuffReduce]: ProduceExamEffectType.ExamLessonBuff,
   [ProduceExamEffectType.ExamParameterBuffReduce]: ProduceExamEffectType.ExamParameterBuff,
+  [ProduceExamEffectType.ExamCardMove]: ProduceExamEffectType.ExamCardCreateId,
+  [ProduceExamEffectType.ExamStaminaRecoverMultiple]: ProduceExamEffectType.ExamStaminaRecoverFix,
+  [ProduceExamEffectType.ExamLessonFullPowerPoint]: ProduceExamEffectType.ExamLesson,
 }
 
 export const buffTypeBackground = {
@@ -237,7 +241,7 @@ export const buffTypeBackground = {
   [ProduceExamEffectType.ExamLessonAddMultipleParameterBuff]: buffBgBlue,
   [ProduceExamEffectType.ExamBlockPerUseCardCount]: buffBgBlue,
   [ProduceExamEffectType.ExamChainEffect]: buffBgBlue,
-  [ProduceExamEffectType.StanceLock]: buffBgBlue,
+  [ProduceExamEffectType.StanceLock]: buffBgRed,
   [ProduceExamEffectType.ExamLessonDependStamina]: buffBgBlue,
   [ProduceExamEffectType.ExamBlockAddMultipleAggressive]: buffBgBlue,
   [ProduceExamEffectType.ExamLessonDependStaminaConsumptionSum]: buffBgBlue,
@@ -252,5 +256,5 @@ export const buffTypeBackground = {
   [ProduceExamEffectType.ExamLessonBuffReduce]: buffBgRed,
   [ProduceExamEffectType.ExamParameterBuffReduce]: buffBgRed,
   [ProduceExamEffectType.ExamLessonValueMultipleDown]: buffBgRed,
-  [ProduceExamEffectType.ExamAddGrowEffect]: buffBgBlue,
+  [ProduceExamEffectType.ExamAddGrowEffect]: buffBgGreen,
 }
