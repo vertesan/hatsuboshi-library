@@ -73,18 +73,22 @@ export default function PCard() {
               paginatedCards.map((pCard, idx) => {
                 return (
                   <Card shadow="md" withBorder key={idx} className="p-2 w-full">
-                    <div className="flex-1 flex flex-row gap-2 justify-center sm:justify-start items-center">
-                      <ProduceCardIcon
-                        card={pCard}
-                        character="kllj"
-                        className="flex-none relative h-[68px] w-[68px]"
-                      />
+                    <div className="flex flex-col gap-2">
+                      <div className="flex-1 flex flex-row gap-4 justify-center sm:justify-start items-center">
+                        <ProduceCardIcon
+                          card={pCard}
+                          character="kllj"
+                          className="flex-none relative h-[68px] w-[68px]"
+                        />
+                        <div className="flex-1 text-sm self-start">
+                          <p className="text-lg">{pCard.name}</p>
+                          <p>{t("Eva. ") + pCard.evaluation}</p>
+                          {pCard.unlockProducerLevel > 0
+                            ? <p>{t("P-Lv. ") + pCard.unlockProducerLevel}</p>
+                            : null}
+                        </div>
+                      </div>
                       <div className="flex-1 text-sm self-start">
-                        <p className="text-md font-bold">{pCard.name}</p>
-                        <p>{t("Eva. ") + pCard.evaluation}</p>
-                        {pCard.unlockProducerLevel > 0
-                          ? <p>{t("P-Lv. ") + pCard.unlockProducerLevel}</p>
-                          : null}
                         <div className="pt-2"><EffectDescription descriptions={pCard.descriptions} /></div>
                       </div>
                     </div>
