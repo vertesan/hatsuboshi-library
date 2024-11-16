@@ -302,6 +302,19 @@ export type GuildMissionHistory = {
   phaseType: penum.GuildMissionPhaseType
   progressedTime: string
 }
+export type GvgRaidGuild = {
+  name: string
+  achievement: Achievement
+  point: number
+  rank: number
+}
+export type GvgRaidSetUpDeck = {
+  slots: GvgRaidSlot[]
+}
+export type GvgRaidSlot = {
+  mainUserMemoryId: string
+  subUserMemoryIds: string[]
+}
 export type HomeBanner = {
   assetId: string
   linkType: penum.LinkType
@@ -373,6 +386,7 @@ export type MeishiObject = {
   userMemoryId: string
   userMovieId: string
   meishiBaseAssetId: string
+  memoryAssetId: string
   meishiTextColorId: string
   positionX: number
   positionY: number

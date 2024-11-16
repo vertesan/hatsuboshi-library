@@ -63,7 +63,7 @@ export type XMaster = {
     {
       stages: (
         PvpRateConfig_Stage &
-        { produceItem?: ProduceItem } &
+        { produceItems?: ProduceItem[] } &
         { examGimmicks?: ProduceExamGimmickEffectGroup[] }
       )[]
     }

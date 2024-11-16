@@ -38,6 +38,10 @@ export type UserCharacterRoster = {
   characterId: string
   viewedPlayable: boolean
 }
+export type UserComeback = {
+  comebackId: string
+  endTime: string
+}
 export type UserCostume = {
   costumeId: string
   checked: boolean
@@ -130,6 +134,7 @@ export type UserMemory = {
   idolCardPotentialRank: penum.IdolCardPotentialRank
   shotTime: string
   noProduceHistory: boolean
+  inheritCount: number
   produceCard: pcommon.ProduceCard
   produceCardPhaseType: penum.ProduceMemoryProduceCardPhaseType
   abilities: UserMemory_MemoryAbility[]
@@ -142,10 +147,15 @@ export type UserMemory = {
   produceLiveType: penum.ProduceLiveType
   liveCostumeId: string
   liveCostumeHeadId: string
+  reshootingCount: number
 }
 type UserMemory_MemoryAbility = {
   id: string
   level: number
+}
+export type UserMemoryInherit = {
+  userMemoryId: string
+  examBattleProduceCards: pcommon.ProduceCard[]
 }
 export type UserMission = {
   missionId: string
@@ -224,6 +234,9 @@ export type UserProduceCard = {
   produceCardId: string
   produceCardUpgradeCount: number
 }
+export type UserProduceCardReward = {
+  produceCardId: string
+}
 export type UserProduceCharacter = {
   characterId: string
   produceId: string
@@ -249,6 +262,7 @@ export type UserProduceMemoryDeck = {
   produceType: penum.ProduceType
   number: number
   userMemoryIds: string[]
+  name: string
 }
 export type UserProduceProgress = {
   produceGroupId: string
@@ -307,6 +321,9 @@ export type UserProduceProgress = {
   idolCardProduceSkills: UserProduceProgress_ProduceSkill[]
   produceCardRemainSelectRerollCount: number
   hiddenProduceCardReroll: boolean
+  excludeProduceCardIds: string[]
+  produceCardRemainExcludeCount: number
+  hiddenProduceCardExclude: boolean
   produceItems: UserProduceProgress_ProduceItem[]
   produceItemGetDisableTurn: number
   produceDrinkIds: string[]
@@ -335,6 +352,8 @@ export type UserProduceProgress = {
   shopProduceCardDeleteDiscountPermils: number[]
   shopProduceCardDiscounts: UserProduceProgress_ShopProduceCardDiscount[]
   shopProduceDrinkDiscountPermils: number[]
+  shopRemainRerollCount: number
+  hiddenShopReroll: boolean
   satisfyProduceExamTriggerIds: string[]
 }
 type UserProduceProgress_ExamStatusEnchant = {
@@ -495,6 +514,7 @@ export type UserProduceSupportCardDeck = {
   produceType: penum.ProduceType
   number: number
   supportCardIds: string[]
+  name: string
 }
 export type UserProfile = {
   name: string

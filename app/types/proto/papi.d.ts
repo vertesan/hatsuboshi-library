@@ -187,6 +187,7 @@ export type ExchangeInfo = {
   startTime: string
   endTime: string
   nextResetTime: string
+  resetTimingType: penum.ResetTimingType
   items: ExchangeItem[]
   order: number
 }
@@ -199,6 +200,7 @@ export type ExchangeItem = {
   exchangeLimit: number
   exchangedCount: number
   nextResetTime: string
+  resetTimingType: penum.ResetTimingType
   viewConditionSetId: string
   unlockConditionSetId: string
   unlocked: boolean
@@ -633,6 +635,208 @@ export type GuildUpdateLeaderMessageReactionResponse = {
   reactionList: GuildReactionInfo[]
   commonResponse: papicommon.Response
 }
+export type GvgRaidDeck = {
+  slots: pcommon.GvgRaidSlot[]
+}
+export type GvgRaidEndRequest = {
+  stage: pcommon.ExamBattleAutoStageResult
+}
+export type GvgRaidEndResponse = {
+  beforeTotalScore: number
+  score: number
+  point: number
+  beforeUserTotalPoint: number
+  totalPointRewards: GvgRaidPointReward[]
+  challengeResults: pcommon.Reward[]
+  clearResults: pcommon.Reward[]
+  totalPointResults: pcommon.RewardResult[]
+  mvpUsers: GvgRaidUser[]
+  commonResponse: papicommon.Response
+}
+export type GvgRaidGetProgressResponse = {
+  examBattleAutoRequest: pcommon.ExamBattleAutoRequest
+  deck: GvgRaidDeck
+  stageNumber: number
+  name: string
+  planType: penum.ProducePlanType
+  produceItemIds: string[]
+  maxSubMemoryCounts: number[]
+  totalScore: number
+  clearScore: number
+  produceExamBattleScoreConfigId: string
+  startTimelineAssetId: string
+  examTimelineAssetId: string
+  resultTimelineAssetId: string
+  examBgmAssetId: string
+  timelineBackgroundAssetId: string
+  iconAssetId: string
+  iconSizeType: penum.GvgRaidStageIconSizeType
+  commonResponse: papicommon.Response
+}
+export type GvgRaidGuildRankReward = {
+  upperRank: number
+  lowerRank: number
+  rewards: pcommon.Reward[]
+}
+export type GvgRaidGuildRankingResponse = {
+  guildRanking: pcommon.GvgRaidGuild[]
+  selfGuildRank: pcommon.GvgRaidGuild
+  commonResponse: papicommon.Response
+}
+export type GvgRaidPlayTestRequest = {
+  stageNumber: number
+  loopCount: number
+}
+export type GvgRaidPlayTestResponse = {
+  examBattleAutoRequest: pcommon.ExamBattleAutoRequest
+  deck: GvgRaidDeck
+  examTimelineAssetId: string
+  examBgmAssetId: string
+  timelineBackgroundAssetId: string
+  commonResponse: papicommon.Response
+}
+export type GvgRaidPointReward = {
+  point: number
+  rewards: pcommon.Reward[]
+}
+export type GvgRaidSlot = {
+  mainMemory: pcommon.Memory
+  subMemories: pcommon.Memory[]
+  supportBonusPermyriad: number
+  isDefault: boolean
+}
+export type GvgRaidStageChallengeReward = {
+  lowerScore: number
+  rewards: pcommon.Reward[]
+}
+export type GvgRaidStartRequest = {
+  stageNumber: number
+  loopCount: number
+}
+export type GvgRaidStartResponse = {
+  examBattleAutoRequest: pcommon.ExamBattleAutoRequest
+  deck: GvgRaidDeck
+  startTimelineAssetId: string
+  examTimelineAssetId: string
+  resultTimelineAssetId: string
+  examBgmAssetId: string
+  timelineBackgroundAssetId: string
+  commonResponse: papicommon.Response
+}
+export type GvgRaidTopResponse = {
+  name: string
+  loopCount: number
+  stages: GvgRaidTopResponse_Stage[]
+  guild: pcommon.GvgRaidGuild
+  userTotalPointRewards: GvgRaidPointReward[]
+  stageClearRewards: GvgRaidTopResponse_StageClearReward[]
+  rankRewards: GvgRaidGuildRankReward[]
+  currentUserTotalPoint: number
+  nextUserTotalPoint: number
+  nextUserRewards: pcommon.Reward[]
+  stageResults: GvgRaidTopResponse_StageClearResult[]
+  rankResult: GvgRaidGuildRankReward
+  hasProgress: boolean
+  isChangedLoopCount: boolean
+  titleAssetId: string
+  colorCode: string
+  bgmAssetId: string
+  rewardAssetId: string
+  backgroundAssetId: string
+  storyGroupId: string
+  missionGroupId: string
+  exchangeId: string
+  consumptionItemId: string
+  minClearScore: number
+  maxClearScore: number
+  startupNotifications: pcommon.StartupNotification[]
+  maxDailyPlayCount: number
+  remainingDailyPlayCount: number
+  startTime: string
+  endTime: string
+  fixRankTime: string
+  closeTime: string
+  commonResponse: papicommon.Response
+}
+type GvgRaidTopResponse_Stage = {
+  number: number
+  name: string
+  vocal: number
+  dance: number
+  visual: number
+  turn: number
+  characterCount: number
+  characterIds: string[]
+  planType: penum.ProducePlanType
+  produceItemIds: string[]
+  produceExamGimmickEffectGroupId: string
+  maxSubMemoryCounts: number[]
+  totalScore: number
+  clearScore: number
+  isLimitLoop: boolean
+  mvpProfile: pcommon.SimpleProfile
+  mvpDeck: GvgRaidDeck
+  deck: pcommon.GvgRaidSetUpDeck
+  produceExamBattleScoreConfigId: string
+  challengeRewards: GvgRaidStageChallengeReward[]
+  clearRewards: pcommon.Reward[]
+  iconAssetId: string
+  iconX: string
+  iconY: string
+  mapVignetteIconAssetId: string
+  iconSizeType: penum.GvgRaidStageIconSizeType
+  bannerAssetId: string
+  backgroundAssetId: string
+}
+type GvgRaidTopResponse_StageClearResult = {
+  stageNumber: number
+  loopCount: number
+  rewards: pcommon.Reward[]
+}
+type GvgRaidTopResponse_StageClearReward = {
+  stageNumber: number
+  clearRewards: GvgRaidTopResponse_StageClearReward_ClearReward[]
+}
+type GvgRaidTopResponse_StageClearReward_ClearReward = {
+  leftLoopCount: number
+  rightLoopCount: number
+  rewards: pcommon.Reward[]
+}
+export type GvgRaidUpdateDeckRequest = {
+  stageNumber: number
+  loopCount: number
+  deck: pcommon.GvgRaidSetUpDeck
+  recommendType: penum.DeckRecommendType
+}
+export type GvgRaidUpdateDeckResponse = {
+  commonResponse: papicommon.Response
+}
+export type GvgRaidUser = {
+  profile: pcommon.SimpleProfile
+  point: number
+  deck: GvgRaidDeck
+}
+export type GvgRaidUserRankingResponse = {
+  userRankings: GvgRaidUserRankingResponse_StageRanking[]
+  stageMvps: GvgRaidUserRankingResponse_StageMvp[]
+  commonResponse: papicommon.Response
+}
+type GvgRaidUserRankingResponse_StageMvp = {
+  number: number
+  mvpUsers: GvgRaidUserRankingResponse_StageMvp_MvpUser[]
+}
+type GvgRaidUserRankingResponse_StageMvp_MvpUser = {
+  loopCount: number
+  user: GvgRaidUser
+}
+type GvgRaidUserRankingResponse_StageRanking = {
+  number: number
+  ranks: GvgRaidUserRankingResponse_StageRanking_Rank[]
+}
+type GvgRaidUserRankingResponse_StageRanking_Rank = {
+  rank: number
+  user: GvgRaidUser
+}
 export type HealthCheckRequest = {
   service: string
 }
@@ -946,6 +1150,28 @@ export type MemoryExchangeRequest = {
 export type MemoryExchangeResponse = {
   commonResponse: papicommon.Response
 }
+export type MemoryFixInheritRequest = {
+  selectAfter: boolean
+}
+export type MemoryFixInheritResponse = {
+  commonResponse: papicommon.Response
+}
+export type MemoryInheritRequest = {
+  baseUserMemoryId: string
+  materialUserMemoryId: string
+  changeProduceCardId: string
+}
+export type MemoryInheritResponse = {
+  beforeMemory: pcommon.Memory
+  afterMemory: pcommon.Memory
+  commonResponse: papicommon.Response
+}
+export type MemoryReshootingRequest = {
+  userMemoryId: string
+}
+export type MemoryReshootingResponse = {
+  commonResponse: papicommon.Response
+}
 export type MemoryUpdateProtectionRequest = {
   userMemoryId: string
   isProtected: boolean
@@ -1132,8 +1358,18 @@ export type PhotoCreateIdolRequest = {
   characterSettings: PhotoCreateIdolRequest_CharacterSetting[]
   userPhotoIds: string[]
   photoBackgroundId: string
+  photos: PhotoCreateIdolRequest_Photo[]
 }
 type PhotoCreateIdolRequest_CharacterSetting = {
+  characterId: string
+  costumeId: string
+  costumeHeadId: string
+}
+type PhotoCreateIdolRequest_Photo = {
+  characterSettings: PhotoCreateIdolRequest_Photo_CharacterSetting[]
+  userPhotoIds: string[]
+}
+type PhotoCreateIdolRequest_Photo_CharacterSetting = {
   characterId: string
   costumeId: string
   costumeHeadId: string
@@ -1231,6 +1467,13 @@ export type ProduceEndRequest = {
 }
 export type ProduceEndResponse = {
   memory: pcommon.Memory
+  commonResponse: papicommon.Response
+}
+export type ProduceExcludeProduceCardRequest = {
+  produceUuid: string
+  pickIndex: number
+}
+export type ProduceExcludeProduceCardResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceGrowthResult = {
@@ -1603,6 +1846,12 @@ export type ProduceStepShopEndResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
+export type ProduceStepShopRerollRequest = {
+  produceUuid: string
+}
+export type ProduceStepShopRerollResponse = {
+  commonResponse: papicommon.Response
+}
 export type ProduceStepShopStartRequest = {
   produceUuid: string
 }
@@ -1631,6 +1880,7 @@ export type ProduceUpdateMemoryDeck = {
   number: number
   userMemoryIds: string[]
   recommendType: penum.DeckRecommendType
+  name: string
 }
 export type ProduceUpdateMemoryDeckRequest = {
   decks: ProduceUpdateMemoryDeck[]
@@ -1643,6 +1893,7 @@ export type ProduceUpdateSupportCardDeck = {
   number: number
   supportCardIds: string[]
   recommendType: penum.DeckRecommendType
+  name: string
 }
 export type ProduceUpdateSupportCardDeckRequest = {
   decks: ProduceUpdateSupportCardDeck[]
@@ -1679,6 +1930,9 @@ export type ProfileGetResponse = {
   achievementCount: number
   mainTaskMainStoryClearCount: number
   mainTaskProducerClearCount: number
+  mainTaskProducer2ClearCount: number
+  mainTaskProducer3ClearCount: number
+  mainTaskProducer4ClearCount: number
   produceRecords: ProfileGetResponse_ProduceRecord[]
   maxPvpRateUnitPower: number
   pvpRateGrade: penum.PvpRateGrade
@@ -2136,6 +2390,7 @@ type StoryEventTopResponse_Motion = {
   bodyAssetId: string
   voiceAssetId: string
   text: string
+  modelAssetIds: string[]
 }
 export type StoryReadDearnessStoryRequest = {
   characterId: string
@@ -2165,6 +2420,12 @@ export type StoryReadRequest = {
 }
 export type StoryReadResponse = {
   rewardResults: pcommon.RewardResult[]
+  commonResponse: papicommon.Response
+}
+export type StoryUnlockProduceStoryRequest = {
+  produceStoryId: string
+}
+export type StoryUnlockProduceStoryResponse = {
   commonResponse: papicommon.Response
 }
 export type StoryUnlockRequest = {

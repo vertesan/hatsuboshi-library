@@ -40,6 +40,7 @@ export type UserData = {
   userCharacterList: ptransaction.UserCharacter[]
   userCharacterCostumeList: ptransaction.UserCharacterCostume[]
   userCharacterRosterList: ptransaction.UserCharacterRoster[]
+  userComebackList: ptransaction.UserComeback[]
   userCostumeList: ptransaction.UserCostume[]
   userCostumeHeadList: ptransaction.UserCostumeHead[]
   userCountList: ptransaction.UserCount[]
@@ -55,6 +56,7 @@ export type UserData = {
   userMeishiBaseAssetList: ptransaction.UserMeishiBaseAsset[]
   userMeishiIllustrationAssetList: ptransaction.UserMeishiIllustrationAsset[]
   userMemoryList: ptransaction.UserMemory[]
+  userMemoryInherit: ptransaction.UserMemoryInherit
   userMissionList: ptransaction.UserMission[]
   userMissionDailyReleaseGroupList: ptransaction.UserMissionDailyReleaseGroup[]
   userMissionGroupList: ptransaction.UserMissionGroup[]
@@ -71,6 +73,7 @@ export type UserData = {
   userProduceList: ptransaction.UserProduce[]
   userProduceAdvList: ptransaction.UserProduceAdv[]
   userProduceCardList: ptransaction.UserProduceCard[]
+  userProduceCardRewardList: ptransaction.UserProduceCardReward[]
   userProduceCharacterList: ptransaction.UserProduceCharacter[]
   userProduceDrinkList: ptransaction.UserProduceDrink[]
   userProduceIdolCardList: ptransaction.UserProduceIdolCard[]

@@ -24,13 +24,12 @@ export function PvpStage({
         <div className="flex-1">
           <p className="text-xl">{t("Stage ") + stage.stageType}</p>
 
-          {stage.produceItem
-            ? <div className="mt-2 flex flex-row gap-2 items-center">
-              <ProduceItemIcon withHoverDescription item={stage.produceItem} className="flex-none relative h-[68px] w-[68px]" />
-              <EffectDescription descriptions={stage.produceItem.descriptions} />
+          {stage.produceItems?.map(produceItem =>
+            <div key={produceItem.id} className="mt-2 flex flex-row gap-2 items-center">
+              <ProduceItemIcon withHoverDescription item={produceItem} className="flex-none relative h-[68px] w-[68px]" />
+              <EffectDescription descriptions={produceItem.descriptions} />
             </div>
-            : null
-          }
+          )}
 
           {cards[stage.planType]
             ? <>
