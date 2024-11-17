@@ -110,7 +110,9 @@ function LessonIcon({
   className?: string,
 }) {
   const lessonEffect = card.playEffects.find(
-    effect => effect.produceExamEffect.effectType === ProduceExamEffectType.ExamLesson
+    effect =>
+      effect.produceExamEffect.effectType === ProduceExamEffectType.ExamLesson &&
+      !effect.produceExamTriggerId
   )
   if (lessonEffect === undefined) return null
   const multiplier = lessonEffect.produceExamEffect.effectCount
@@ -149,7 +151,7 @@ function PlayEffectsIcon({
   const displayEffects = card.playEffects
     .filter(effect =>
       !effect.hideIcon &&
-      effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamLesson &&
+      (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamLesson || effect.produceExamTriggerId) &&
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlock &&
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount &&
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive &&
