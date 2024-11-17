@@ -32,7 +32,7 @@ const translation = {
   "plan-free": "不限",
   "plan-sense": "感性",
   "plan-logic": "理性",
-  "plan-anomary": "异常", // 游戏内暂未实装,暂译
+  "plan-anomary": "非凡", // 游戏内暂未实装,暂译
   "Attribute": "属性",
   "Stamina": "体力",
   "P-Point": "P 点数",
