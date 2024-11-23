@@ -14,7 +14,7 @@ export function CidolImage({
   assetSkinId,
   limitLevel,
   potentialLevel,
-  showIcons,
+  showIcons = true,
 }: {
   card: XIdolCard | undefined,
   assetId?: string,
