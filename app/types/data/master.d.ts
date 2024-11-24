@@ -31,6 +31,7 @@ import {
   PvpRateConfig_Stage,
   StoryEvent,
   ResultGradePattern,
+  GuildReaction,
 } from "~/types/proto/pmaster"
 import { XProduceCard } from "./pcard"
 
@@ -71,6 +72,7 @@ export type XMaster = {
   characterDetails: { [id: string]: CharacterDetail[] },
   achievements: { [id: string]: Achievement & { progress: AchievementProgress[] } },
   resultGradePatterns: XResultGradePattern[],
+  guildReactions: GuildReaction[],
 }
 
 export type XResultGradePattern = ResultGradePattern & {

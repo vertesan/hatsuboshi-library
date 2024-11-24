@@ -10,19 +10,21 @@ import { IdolCardLevelLimitRank, IdolCardPotentialRank } from "~/types/proto/pen
 
 export function CidolImage({
   card,
+  assetId,
   assetSkinId,
   limitLevel,
   potentialLevel,
   showIcons = true,
 }: {
-  card: XIdolCard,
+  card: XIdolCard | undefined,
+  assetId?: string,
   assetSkinId?: string,
   limitLevel?: IdolCardLevelLimitRank,
   potentialLevel?: IdolCardPotentialRank,
   showIcons?: boolean,
 }) {
-  const isDefaultSkin = assetSkinId === undefined || card.assetId === assetSkinId
-  const imgAssetId = assetSkinId ?? card.assetId
+  const isDefaultSkin = assetSkinId === undefined || card?.assetId === assetSkinId
+  const imgAssetId = assetSkinId ?? card?.assetId ?? assetId ?? ""
   let imgUrl = getCidolFullImgUrl0(imgAssetId)
   if (isDefaultSkin && limitLevel !== undefined && limitLevel >= IdolCardLevelLimitRank._4) {
     imgUrl = getCidolFullImgUrl1(imgAssetId)
@@ -32,10 +34,10 @@ export function CidolImage({
     <div className="relative aspect-[9/16] overflow-hidden max-h-full max-w-full">
       <PulseImage
         src={imgUrl}
-        alt={card.id}
+        alt={imgAssetId}
         className="object-fill z-0"
       />
-      {showIcons
+      {showIcons && card
         ? <>
           <div className="absolute left-2 top-2 gap-2 flex flex-col h-[30%] aspect-[1/3] justify-start content-center">
             <PlanIcon planType={card.planType} className="h-1/3" />

@@ -22,20 +22,22 @@ export default function Characters() {
   const scrollRef = useHorizontalScroll<HTMLDivElement>()
 
   return (
-    <div
-      className="h-[calc(100vh-220px)] p-4 flex flex-row overflow-x-auto no-scrollbar"
-      ref={scrollRef}
-    >
-      {
-        Object.entries(xMaster.characters)
-          .filter(([_, chara]) => chara.isPlayable)
-          .sort((a, b) => a[1].order - b[1].order)
-          .map(([id, chara]) => {
-            return (
-              <CharacterItem key={id} chara={chara} />
-            )
-          })
-      }
+    <div className="h-[calc(100vh-220px)]">
+      <div
+        className="h-[calc(100vh-220px)] p-4 flex flex-row overflow-x-auto no-scrollbar transition-transform duration-150 ease-linear horizontal-scroll"
+        ref={scrollRef}
+      >
+        {
+          Object.entries(xMaster.characters)
+            .filter(([_, chara]) => chara.isPlayable)
+            .sort((a, b) => a[1].order - b[1].order)
+            .map(([id, chara]) => {
+              return (
+                <CharacterItem key={id} chara={chara} />
+              )
+            })
+        }
+      </div>
     </div>
   )
 }

@@ -10,17 +10,19 @@ import { PulseImage } from "~/components/general/pulseImage";
 
 export function CsprtImage({
   card,
+  assetId,
   level,
   showIcons = false,
   showUpgraded = false,
 }: {
-  card: XSupportCard,
+  card: XSupportCard | undefined,
+  assetId?: string,
   level?: number,
   showIcons?: boolean,
   showUpgraded?: boolean,
 }) {
   let produceItem, produceCard, produceEvents
-  if (showIcons) {
+  if (showIcons && card) {
     produceItem = showUpgraded
       ? card.produceItems.at(-1)
       : card.produceItems.at(0)
@@ -36,11 +38,11 @@ export function CsprtImage({
   return (
     <div className="relative aspect-video overflow-hidden max-h-full max-w-full">
       <PulseImage
-        src={getCsprtFullImgUrl(card.assetId)}
-        alt={card.id}
+        src={getCsprtFullImgUrl(card?.assetId ?? assetId ?? "")}
+        alt={card?.id ?? assetId ?? "card image"}
         className="object-fill z-0"
       />
-      {showIcons
+      {showIcons && card
         ? <>
           <SupportCardTypeIcon cardType={card.type} className="w-[7%] absolute left-2 top-2" />
           <div className="h-[14%] absolute left-2 bottom-2 flex flex-row gap-2">

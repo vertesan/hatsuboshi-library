@@ -89,12 +89,16 @@ export const cssVariableResolver: CSSVariablesResolver = (theme) => ({
     '--color-filled-active': theme.colors[theme.primaryColor][8],
     '--mantine-primary-color-light-hover': rgba(theme.colors[theme.primaryColor][6], 0.2),
     '--color-light-active': rgba(theme.colors[theme.primaryColor][8], 0.2),
+    '--color-default-hover': theme.colors.gray[1],
+    '--color-default-active': theme.colors.gray[2],
   },
   dark: {
     '--mantine-primary-color-filled-hover': theme.colors[theme.primaryColor][6],
     '--color-filled-active': theme.colors[theme.primaryColor][5],
     '--mantine-primary-color-light-hover': rgba(theme.colors[theme.primaryColor][6], 0.2),
     '--color-light-active': rgba(theme.colors[theme.primaryColor][4], 0.2),
+    '--color-default-hover': theme.colors.dark[6],
+    '--color-default-active': theme.colors.dark[5],
   },
 });
 
