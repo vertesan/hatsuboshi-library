@@ -6,7 +6,7 @@ import {
 } from "@remix-run/react";
 import NotFoundPage from "~/components/general/404";
 import { XIdolCard, XMaster } from "~/types";
-import { CidolView } from "./cidol/cidolView";
+import { CidolView } from "../cidol/cidolView";
 import { getLocalString } from "~/i18n";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";

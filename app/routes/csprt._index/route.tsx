@@ -12,7 +12,7 @@ import { getLocalString } from "~/i18n"
 import { CsprtCard } from "~/routes/csprt/csprtCard"
 import { SupportCardFilter, XSupportCard } from "~/types"
 import { XMaster } from "~/types/data/master"
-import { OptionPannel } from "./csprt/optionPannel"
+import { OptionPannel } from "../csprt/optionPannel"
 import { useTranslation } from "react-i18next"
 
 export const meta: MetaFunction = () => {
