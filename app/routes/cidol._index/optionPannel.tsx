@@ -1,12 +1,10 @@
 import { Button, Divider, MultiSelect, Switch } from "@mantine/core";
 import { Dispatch, SetStateAction, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { getExamEffectImgUrl, plan1Icon, plan2Icon, plan3Icon, planCommonIcon, supportAttrDanceIcon, supportAttrVisualIcon, supportAttrVocalIcon } from "~/assets/media";
+import { getExamEffectImgUrl, plan1Icon, plan2Icon, plan3Icon, supportAttrDanceIcon, supportAttrVisualIcon, supportAttrVocalIcon } from "~/assets/media";
 import { ChipGroup, IconChip } from "~/components/general/chips";
-import { MultiSelectEnum } from "~/components/general/multiSelect";
 import NumberCompose from "~/components/general/numberCompose";
 import Ripple from "~/components/general/ripple";
-import { ExamEffectIcon } from "~/components/media/buffIcon";
 import { characterMultiSelectRenderOption } from "~/components/media/characterMultiSelectRenderOption";
 import { constructCharacters, defaultIdolCardFilter } from "~/data/idolCardFilters";
 import { XMaster } from "~/types";

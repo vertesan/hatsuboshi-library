@@ -7,7 +7,7 @@ import { GimmicksTimeline } from "~/components/media/gimmicksTimeline"
 import { LevelLimitUpView } from "~/components/media/levelLimitUpView"
 import { NpcScoreTable } from "~/components/media/npcScoreTable"
 import { PotentialLevelView } from "~/components/media/potentialLevelView"
-import { CidolCard } from "~/routes/cidol/cidolCard"
+import { CidolCard } from "~/routes/cidol._index/cidolCard"
 import { XIdolCard } from "~/types"
 import { ProduceStepType } from "~/types/proto/penum"
 
