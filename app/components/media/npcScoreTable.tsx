@@ -28,7 +28,7 @@ export function NpcScoreTable({
 
   return (
     <div className={`${className}`}>
-      <Table data={npcDatas} captionSide="top" classNames={tableClasses} />
+      <Table data={npcDatas} captionSide="top" variant="vertical" classNames={tableClasses} />
     </div>
   )
 }

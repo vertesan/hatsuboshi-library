@@ -79,7 +79,7 @@ const translation = {
   "AuditionFinal": "Final audition",
   "Terminates when score reaches ": "Terminates when score reaches ",
   "Turn ": "Turn ",
-  "Special Training Bonus": "Special Training Bonus",
+  "Special Training Bonus": "Training Level Bonus",
   "Potential Level Bonus": "Potential Level Bonus",
   "Initial": "Initial",
   "Default": "Default",
@@ -172,6 +172,8 @@ const translation = {
   "Date": "Date",
   "Power": "Power",
   "Rank": "Rank",
+  "Scenario: HAJIME": "Scenario: HAJIME",
+  "Scenario: N.I.A": "Scenario: N.I.A",
   // produce phase
   "RecoveryStamina": "Stamina Recovered",
   "GetProducePoint": "P-Point Obtained",

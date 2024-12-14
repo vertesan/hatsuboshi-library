@@ -92,6 +92,8 @@ const fullCsprtImgTemplate = `img_general_{id}_full${extension}`
 const fullCidolImgTemplate0 = `img_general_{id}_0-full${extension}`
 const fullCidolImgTemplate1 = `img_general_{id}_1-full${extension}`
 
+export const hajimeImg = "img_general_ui_produce-group-1_logo"
+
 export function getCsprtFullImgUrl(assetId: string) {
   return VITE_IMG_PREFIX + fullCsprtImgTemplate.replace("{id}", assetId)
 }
