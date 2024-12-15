@@ -82,7 +82,14 @@ export function OptionPannel({
         {t("Reset")}
         <Ripple targetRef={ref} />
       </Button>
-      <Divider labelPosition="left" my="sm" label={t("Rarity")} />
+      <Divider labelPosition="left" mt="sm" label={t("Rarity")} />
+      <Switch
+        checked={filter.welfareAsSr}
+        size="sm"
+        label={t("Treat welfare SSR as SR")}
+        className="py-2"
+        onChange={(event) => onFilterChange("welfareAsSr", event.currentTarget.checked)}
+      />
       <ChipGroup multiple isEnum value={filter.rarities} onChange={(value) => onFilterChangeJump("rarities", value)}>
         <IconChip variant="outline" value={SupportCardRarity.Ssr}>SSR</IconChip>
         <IconChip variant="outline" value={SupportCardRarity.Sr}>SR</IconChip>

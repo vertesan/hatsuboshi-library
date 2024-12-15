@@ -44,4 +44,5 @@ export type SupportCardFilter = {
   showEnhanced: boolean,
   producePhaseType: ProducePhaseType[],
   level: number,
+  welfareAsSr: boolean,
 }

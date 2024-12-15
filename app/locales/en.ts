@@ -1,6 +1,6 @@
 const translation = {
   "meta-name": "Hatsuboshi Library",
-  "meta-description": "A utility application for all junior Producers studying at the Faculty of Producing, Hatsuboshi Academy",
+  "meta-description": "A utility application for all junior Producers enrolled in the Faculty of Producing at Hatsuboshi Academy",
   "meta-name-suffix": " - Hatsuboshi Library",
   "meta-produce": "Produce - Hatsuboshi Library",
   "meta-briefcase": "Charts - Hatsuboshi Library",
@@ -174,6 +174,7 @@ const translation = {
   "Rank": "Rank",
   "Scenario: HAJIME": "Scenario: HAJIME",
   "Scenario: N.I.A": "Scenario: N.I.A",
+  "Treat welfare SSR as SR": "Treat welfare SSR as SR",
   // produce phase
   "RecoveryStamina": "Stamina Recovered",
   "GetProducePoint": "P-Point Obtained",
