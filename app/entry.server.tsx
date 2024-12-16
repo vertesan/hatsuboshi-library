@@ -143,7 +143,6 @@ function handleBrowserRequest(
           responseHeaders.set(
             "Content-Security-Policy",
             "connect-src 'self' *.idolism.org;" +
-            "script-src 'self' 'nonce-Gssv/TOwbkAUpOWyoftzJg==';" +
             "img-src 'self' blob: data: *.idolism.org res.cloudinary.com *.githubusercontent.com"
           );
           // responseHeaders.set('CDN-Cache-Control', 'public, max-age=600, stale-while-revalidate=1800');
