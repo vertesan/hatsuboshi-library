@@ -14,6 +14,7 @@
   [headers.values]
     "Cache-Control" = "public, no-transform, immutable, max-age=2592000"
 
+[[headers]]
   for = "/*"
   [headers.values]
     "Content-Security-Policy" = """\
