@@ -47,7 +47,7 @@ const translation = {
   "Produce Effect Trigger": "Produce Effect Trigger",
   "Misc": "Miscellaneous",
   "Show enhanced cards/items if available": "Show enhanced cards/items if available",
-  "Lesson support chance:": "Lesson support chance:",
+  "Lesson support chance:": "Support chance:",
   "attr-assist": "Assist",
   "attr-dance": "Dance",
   "attr-vocal": "Vocal",
