@@ -155,7 +155,8 @@ function PlayEffectsIcon({
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlock &&
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount &&
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive &&
-      effect.produceExamEffect.effectType !== ProduceExamEffectType.StanceLock
+      effect.produceExamEffect.effectType !== ProduceExamEffectType.StanceLock &&
+      (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamCardMove || card.playEffects.length <= 3)
     ).map(effect =>
       effect.produceExamEffect.effectType
     )
