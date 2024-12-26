@@ -53,7 +53,7 @@ export function ProduceItemIcon({
       <HoverCard.Target>{itemElement}</HoverCard.Target>
       <HoverCard.Dropdown onClick={(e) => { e.preventDefault() }}>
         <p className="font-medium pb-1 text-md dark:text-white">{item.name}</p>
-        <EffectDescription descriptions={item.descriptions} />
+        <EffectDescription descriptions={item.produceDescriptions} />
       </HoverCard.Dropdown>
     </HoverCard>
     : itemElement

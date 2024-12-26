@@ -9,6 +9,9 @@ function _ExamEffectIcon({
   effectType: ProduceExamEffectType
   className?: string
 }) {
+  if ([ProduceExamEffectType.ExamLessonAddMultipleParameterBuff].includes(effectType)) {
+    return null
+  }
   const bgImg = buffTypeBackground[effectType as keyof typeof buffTypeBackground]
   const iconImg = getExamEffectImgUrl(effectType)
   return (

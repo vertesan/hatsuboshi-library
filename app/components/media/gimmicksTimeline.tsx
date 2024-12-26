@@ -17,7 +17,7 @@ export function GimmicksTimeline({
         {gimmicks.map((gimmick, idx) => {
           return (
             <Timeline.Item key={idx} title={t("Turn ") + gimmick.startTurn}>
-              <EffectDescription descriptions={gimmick.descriptions} />
+              <EffectDescription descriptions={gimmick.produceDescriptions} />
             </Timeline.Item>
           )
         })}

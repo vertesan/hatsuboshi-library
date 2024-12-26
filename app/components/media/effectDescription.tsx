@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { buffTypeBackground, getExamEffectImgUrl } from "~/assets/media";
 import { MasterContext } from "~/contexts/masterContext";
-import { ProduceDescriptionElement } from "~/types/proto/pcommon";
+import { ProduceDescriptionSegment } from "~/types/proto/pcommon";
 import { ProduceDescriptionType } from "~/types/proto/penum";
 
 export function EffectDescription({
   descriptions,
   deepScan = false,
 }: {
-  descriptions: ProduceDescriptionElement[],
+  descriptions: ProduceDescriptionSegment[],
   deepScan?: boolean,
 }) {
   const {
@@ -18,17 +18,17 @@ export function EffectDescription({
 
   const targetIdSet = new Set()
 
-  const scanDescription = (descriptions: ProduceDescriptionElement[]) => {
+  const scanDescription = (descriptions: ProduceDescriptionSegment[]) => {
     const element = descriptions.reduce((acc, cur) => {
       let text = cur.text
       if (cur.changeColor) {
         text = `<span class='text-sky-500'>${text}</span>`
       }
-      if (cur.type === ProduceDescriptionType.ProduceDescription) {
+      if (cur.produceDescriptionType === ProduceDescriptionType.ProduceDescription) {
         text = `<span class='text-sky-600'>${text}</span>`
         targetIdSet.add(cur.targetId)
       }
-      if (cur.type === ProduceDescriptionType.ProduceExamEffectType) {
+      if (cur.produceDescriptionType === ProduceDescriptionType.ProduceExamEffectType) {
         const bgImg = buffTypeBackground[cur.examEffectType as keyof typeof buffTypeBackground]
         const iconImg = getExamEffectImgUrl(cur.examEffectType)
         const buffIcon =

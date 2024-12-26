@@ -27,7 +27,7 @@ export function PvpStage({
           {stage.produceItems?.map(produceItem =>
             <div key={produceItem.id} className="mt-2 flex flex-row gap-2 items-center">
               <ProduceItemIcon withHoverDescription item={produceItem} className="flex-none relative h-[68px] w-[68px]" />
-              <EffectDescription descriptions={produceItem.descriptions} />
+              <EffectDescription descriptions={produceItem.produceDescriptions} />
             </div>
           )}
 
