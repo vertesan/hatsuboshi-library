@@ -1100,6 +1100,7 @@ export type MeishiUpdateRequest = {
   objects: MeishiUpdateRequest_Object[]
   order: number
   meishiImageId: string
+  timeline: string
 }
 type MeishiUpdateRequest_MeishiBase = {
   layoutNumber: number
@@ -1429,6 +1430,14 @@ export type ProduceChangeCostumeRequest = {
 export type ProduceChangeCostumeResponse = {
   commonResponse: papicommon.Response
 }
+export type ProduceChangeForceLiveCommonRequest = {
+  produceGroupId: string
+  characterId: string
+  disableForceLiveCommon: boolean
+}
+export type ProduceChangeForceLiveCommonResponse = {
+  commonResponse: papicommon.Response
+}
 export type ProduceCheckProgressRequest = {
   produceUuid: string
   clientProduceUuid: string
@@ -1442,6 +1451,7 @@ export type ProduceCheckProgressResponse = {
 }
 export type ProduceContinueRequest = {
   produceUuid: string
+  auditionStepSelectNumber: number
 }
 export type ProduceContinueResponse = {
   commonResponse: papicommon.Response
@@ -1644,6 +1654,7 @@ export type ProduceReadDearnessStoryRequest = {
 export type ProduceReadDearnessStoryResponse = {
   isFirst: boolean
   rewardResults: pcommon.RewardResult[]
+  effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
 export type ProduceReportGuildMissionRequest = {
@@ -1746,6 +1757,7 @@ export type ProduceStepAuditionEndRequest = {
   produceUuid: string
 }
 export type ProduceStepAuditionEndResponse = {
+  rewardResults: pcommon.ProduceRewardResult[]
   memoryRewardResults: pcommon.ProduceMemoryRewardResult[]
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
@@ -1756,12 +1768,54 @@ export type ProduceStepAuditionRefreshRequest = {
 export type ProduceStepAuditionRefreshResponse = {
   beforeStamina: number
   afterStamina: number
+  effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
 export type ProduceStepAuditionStartRequest = {
   produceUuid: string
 }
 export type ProduceStepAuditionStartResponse = {
+  effectResults: pcommon.ProduceEffectResult[]
+  commonResponse: papicommon.Response
+}
+export type ProduceStepBusinessSelectRequest = {
+  produceUuid: string
+  businessType: penum.ProduceStepBusinessType
+}
+export type ProduceStepBusinessSelectResponse = {
+  consumptionResults: pcommon.ProduceConsumptionResult[]
+  effectResults: pcommon.ProduceEffectResult[]
+  commonResponse: papicommon.Response
+}
+export type ProduceStepBusinessStartRequest = {
+  produceUuid: string
+}
+export type ProduceStepBusinessStartResponse = {
+  effectResults: pcommon.ProduceEffectResult[]
+  commonResponse: papicommon.Response
+}
+export type ProduceStepCustomizeEndRequest = {
+  produceUuid: string
+}
+export type ProduceStepCustomizeEndResponse = {
+  effectResults: pcommon.ProduceEffectResult[]
+  commonResponse: papicommon.Response
+}
+export type ProduceStepCustomizeSelectRequest = {
+  produceUuid: string
+  deckProduceCardIndex: number
+  produceCardCustomizeId: string
+}
+export type ProduceStepCustomizeSelectResponse = {
+  beforeProducePoint: number
+  afterProducePoint: number
+  effectResults: pcommon.ProduceEffectResult[]
+  commonResponse: papicommon.Response
+}
+export type ProduceStepCustomizeStartRequest = {
+  produceUuid: string
+}
+export type ProduceStepCustomizeStartResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
@@ -1827,6 +1881,23 @@ export type ProduceStepRefreshResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
+export type ProduceStepSelfLessonEndRequest = {
+  produceUuid: string
+}
+export type ProduceStepSelfLessonEndResponse = {
+  rewardResults: pcommon.ProduceRewardResult[]
+  effectResults: pcommon.ProduceEffectResult[]
+  commonResponse: papicommon.Response
+}
+export type ProduceStepSelfLessonStartRequest = {
+  produceUuid: string
+}
+export type ProduceStepSelfLessonStartResponse = {
+  beforeStamina: number
+  afterStamina: number
+  effectResults: pcommon.ProduceEffectResult[]
+  commonResponse: papicommon.Response
+}
 export type ProduceStepShopBuyRequest = {
   produceUuid: string
   positionNumber: number
@@ -1857,6 +1928,14 @@ export type ProduceStepShopStartRequest = {
 }
 export type ProduceStepShopStartResponse = {
   effectResults: pcommon.ProduceEffectResult[]
+  commonResponse: papicommon.Response
+}
+export type ProduceStepSkipRequest = {
+  produceUuid: string
+}
+export type ProduceStepSkipResponse = {
+  beforeStamina: number
+  afterStamina: number
   commonResponse: papicommon.Response
 }
 export type ProduceTopResponse = {
