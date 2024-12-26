@@ -1,4 +1,10 @@
-import { IdolCardRarity, ProduceExamEffectType, ProducePlanType } from "../proto/penum"
+import {
+  IdolCardRarity,
+  ProduceExamEffectType,
+  ProducePlanType,
+  ProduceType,
+  ProduceStepType,
+} from "../proto/penum"
 import {
   IdolCard,
   IdolCardLevelLimit,
@@ -27,19 +33,23 @@ export type XIdolCard = IdolCard & {
     Omit<IdolCardLevelLimitStatusUp, 'id' | 'rank'> &
     { limitProduceSkill?: IdolCardLevelLimitProduceSkill } &
     { produceSkill?: ProduceSkill & { produceEffects: ProduceEffect[] } }
-  )[]
+  )[],
   potentials: (
     IdolCardPotential &
     { potentialProduceSkill?: IdolCardPotentialProduceSkill } &
     { produceSkill?: ProduceSkill & { produceEffects: ProduceEffect[] } }
-  )[]
-  auditionDifficulty: (
-    ProduceStepAuditionDifficulty &
-    { npcs: ProduceExamBattleNpcGroup[] } &
-    { examBattleConfig: ProduceExamBattleConfig } &
-    { examBattleScoreConfigs: ProduceExamBattleScoreConfig[] } &
-    { examGimmicks?: ProduceExamGimmickEffectGroup[] }
-  )[]
+  )[],
+  auditionScenarios: {
+    [scenario in ProduceType]: {
+      [stepType in ProduceStepType]: (
+        ProduceStepAuditionDifficulty &
+        { npcs: ProduceExamBattleNpcGroup[] } &
+        { examBattleConfig: ProduceExamBattleConfig } &
+        { examBattleScoreConfigs: ProduceExamBattleScoreConfig[] } &
+        { examGimmicks?: ProduceExamGimmickEffectGroup[] }
+      )[]
+    }
+  },
 }
 
 export type IdolCardFilter = {

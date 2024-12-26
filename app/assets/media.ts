@@ -1,4 +1,4 @@
-import { ProduceExamEffectType, ResultGrade } from "~/types/proto/penum"
+import { ProduceExamEffectType, ProduceStepAuditionType, ResultGrade } from "~/types/proto/penum"
 import {
   VITE_IMG_PREFIX,
 } from "~/utils/env"
@@ -93,6 +93,7 @@ const fullCidolImgTemplate0 = `img_general_{id}_0-full${extension}`
 const fullCidolImgTemplate1 = `img_general_{id}_1-full${extension}`
 
 export const hajimeImg = "img_general_ui_produce-group-1_logo"
+export const niaImg = "img_general_ui_produce-group-2_logo"
 
 export function getCsprtFullImgUrl(assetId: string) {
   return VITE_IMG_PREFIX + fullCsprtImgTemplate.replace("{id}", assetId)
@@ -115,11 +116,13 @@ export function getCharaSignImgUrl(charaId: string) {
 export function getResultGradeImgUrl(rank: ResultGrade) {
   return `${VITE_IMG_PREFIX}img_general_icon_produce-rank-small_${ResultGrade[rank].toLowerCase()}`
 }
+export function getNIAAuditionImgUrl(auditionType: ProduceStepAuditionType) {
+  return `${VITE_IMG_PREFIX}img_general_ui_produce-group-2_audition_select-list-cell-bg_${ProduceStepAuditionType[auditionType].toLowerCase()}`
+}
 
 export function getAssetImgUrl(assetId: string) {
   return `${VITE_IMG_PREFIX}${assetId}${extension}`
 }
-
 
 const examEffectTemplate = `img_general_icon_exam-effect_{id}${extension}`
 export function getExamEffectImgUrl(effectType: ProduceExamEffectType) {

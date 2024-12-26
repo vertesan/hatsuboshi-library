@@ -1,18 +1,19 @@
-import { Accordion, Alert, Card, Divider, Radio, Title } from "@mantine/core"
+import { Accordion, Alert, NumberFormatter, Radio, Title } from "@mantine/core"
+import { useLocalStorage } from "@mantine/hooks"
 import { IconInfoCircle } from "@tabler/icons-react"
 import { useContext, useState } from "react"
 import { useTranslation } from "react-i18next"
+import { getNIAAuditionImgUrl, limitIcon, potentialIcon } from "~/assets/media"
 import NumberCompose from "~/components/general/numberCompose"
 import { GimmicksTimeline } from "~/components/media/gimmicksTimeline"
-import { LevelLimitUpView } from "~/routes/cidol.$id/levelLimitUpView"
 import { NpcScoreTable } from "~/components/media/npcScoreTable"
-import { PotentialLevelView } from "~/routes/cidol.$id/potentialLevelView"
 import { MasterContext } from "~/contexts/masterContext"
+import { LevelLimitUpView } from "~/routes/cidol.$id/levelLimitUpView"
+import { PotentialLevelView } from "~/routes/cidol.$id/potentialLevelView"
+import { produceScenarioStrings } from "~/routes/cidol.$id/produceScenarios"
 import { CidolCard } from "~/routes/cidol._index/cidolCard"
 import { XIdolCard } from "~/types"
-import { ProduceStepType } from "~/types/proto/penum"
-import { getAssetImgUrl, hajimeImg, limitIcon, potentialIcon } from "~/assets/media"
-import { useLocalStorage } from "@mantine/hooks"
+import { ProduceStepAuditionType, ProduceStepType, ProduceType } from "~/types/proto/penum"
 
 export function CidolView({
   idolCard,
@@ -31,45 +32,92 @@ export function CidolView({
 
   const character = characters[idolCard.characterId]
 
-  const auditionViews = idolCard.auditionDifficulty.map((difficulty, idx) => {
-    return (
-      <div key={idx} className="mb-4 p-4 rounded-lg overflow-hidden">
-        {difficulty.stepType === ProduceStepType.AuditionFinal
-          ? <>
-            {idx === idolCard.auditionDifficulty.length - 1
-              ? null
-              : <Divider size="xs" className="py-4" />
+  const auditionViews = Object.entries(idolCard.auditionScenarios)
+    .sort((a, b) => +b[0] - +a[0])
+    .map(([produceType, steps]) => {
+      const produceScenario = produceScenarioStrings[+produceType]
+      const stepElements = Object.entries(steps)
+        .sort((a, b) => +b[0] - +a[0])
+        .map(([stepType, difficulties]) => {
+          difficulties.sort((a, b) => {
+            if (a.auditionType !== ProduceStepAuditionType.Unknown) {
+              return b.auditionType - a.auditionType
             }
-            <Title order={3} size="h3" className="text-center mb-6">
-              {`${t(difficulty.produceId)}`}
-            </Title>
-          </>
-          : null
-        }
-        <Title order={4} size="h4" className="text-center">
-          {`${t(ProduceStepType[difficulty.stepType])}`}
-        </Title>
-        {difficulty.forceEndScore
-          ? <div className="pt-4">
-            <Alert variant="light" color="blue" icon={<IconInfoCircle />} >
-              <p>{t("Terminates when score reaches ") + difficulty.forceEndScore}</p>
-            </Alert>
-          </div>
-          : null
-        }
-        {difficulty.examGimmicks
-          ? <div className="flex flex-col items-center">
-            <p className="pt-4 text-center font-medium text-[--mantine-color-dimmed]">{t("Audition gimmicks timeline")}</p>
-            <GimmicksTimeline gimmicks={difficulty.examGimmicks} />
-          </div>
-          : null
-        }
-        <div className="pt-8 w-full grid grid-cols-1 justify-items-center">
-          <NpcScoreTable npcGroup={difficulty.npcs} limit={3} className="w-full max-w-[560px]" />
-        </div>
-      </div>
-    )
-  }).reverse()
+            return b.produceId < a.produceId ? -1 : 1
+          })
+          const difficultyElements = difficulties.map(difficulty => {
+            return (
+              <div key={difficulty.baseScore} className="mb-4 p-4 rounded-lg overflow-hidden">
+                {+produceType === ProduceType.NextIdolAudition
+                  ? <><Title order={4} size="h4" className="text-center leading-8">
+                    {`${t(ProduceStepAuditionType[difficulty.auditionType])}`}
+                  </Title>
+                    <div className="flex justify-center">
+                      <div className="aspect-[6.046875] w-[242px]">
+                        <img
+                          src={getNIAAuditionImgUrl(difficulty.auditionType)}
+                          alt="audition type"
+                          className="object-contain"
+                        />
+                      </div>
+                    </div>
+                    <p className="text-center text-lg leading-10">
+                      {t("Required votes: ")}
+                      <NumberFormatter value={difficulty.voteCount} thousandSeparator />
+                    </p>
+                  </>
+                  : <Title order={4} size="h3" className="text-center">
+                    {`${t(difficulty.produceId)}`}
+                  </Title>
+                }
+                {difficulty.forceEndScore
+                  ? <div className="pt-4">
+                    <Alert variant="light" color="blue" icon={<IconInfoCircle />} >
+                      <p>{t("Terminates when score reaches ") + difficulty.forceEndScore}</p>
+                    </Alert>
+                  </div>
+                  : null
+                }
+                {difficulty.examGimmicks
+                  ? <div className="flex flex-col items-center">
+                    <p className="pt-4 text-center font-medium text-[--mantine-color-dimmed]">{t("Audition gimmicks timeline")}</p>
+                    <GimmicksTimeline gimmicks={difficulty.examGimmicks} />
+                  </div>
+                  : null
+                }
+                <div className="pt-8 w-full grid grid-cols-1 justify-items-center">
+                  <NpcScoreTable npcGroup={difficulty.npcs} limit={3} className="w-full max-w-[560px]" />
+                </div>
+              </div>
+            )
+          })
+          return (
+            <div key={stepType}>
+              <Title order={3} size="h3" className="text-center my-6">
+                {t(ProduceStepType[+stepType])}
+              </Title>
+              {difficultyElements}
+            </div>
+          )
+        })
+      return (
+        <Accordion.Item value={produceScenario.title} key={produceType}>
+          <Accordion.Control>
+            <div className="flex items-center gap-1">
+              <img
+                src={produceScenario.imgUrl}
+                alt="produce scenario"
+                className="object-contain w-6 h-6 aspect-square"
+              />
+              <p>{t(produceScenario.title)}</p>
+            </div>
+          </Accordion.Control>
+          <Accordion.Panel>
+            {stepElements}
+          </Accordion.Panel>
+        </Accordion.Item>
+      )
+    })
 
   return (
     <div className="p-4 2xl:grid 2xl:grid-cols-2">
@@ -147,23 +195,7 @@ export function CidolView({
               <PotentialLevelView potentials={idolCard.potentials} />
             </Accordion.Panel>
           </Accordion.Item>
-
-          <Accordion.Item value="Scenario: HAJIME">
-            <Accordion.Control>
-              <div className="flex items-center gap-1">
-                <img
-                  src={getAssetImgUrl(hajimeImg)}
-                  alt="hajime"
-                  className="object-contain w-6 h-6 aspect-square"
-                />
-                <p>{t("Scenario: HAJIME")}</p>
-              </div>
-            </Accordion.Control>
-            <Accordion.Panel>
-              {auditionViews}
-            </Accordion.Panel>
-          </Accordion.Item>
-
+          {auditionViews}
         </Accordion>
       </div>
     </div>
