@@ -21,7 +21,7 @@ export function EffectDescription({
   const scanDescription = (descriptions: ProduceDescriptionSegment[]) => {
     const element = descriptions.reduce((acc, cur) => {
       let text = cur.text
-      if (cur.changeColor) {
+      if (cur.changeColor || cur.produceDescriptionType === ProduceDescriptionType.ProduceCard) {
         text = `<span class='text-sky-500'>${text}</span>`
       }
       if (cur.produceDescriptionType === ProduceDescriptionType.ProduceDescription) {
