@@ -1,0 +1,23 @@
+[build]
+  base = "/"
+  publish = "build/client"
+  command = "pnpm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    "Cache-Control" = "public, no-transform, immutable, max-age=2592000"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    "Content-Security-Policy" = """\
+      connect-src 'self' *.idolism.org;\
+      img-src 'self' blob: data: *.idolism.org res.cloudinary.com *.githubusercontent.com\
+    """

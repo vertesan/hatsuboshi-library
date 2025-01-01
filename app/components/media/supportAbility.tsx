@@ -35,7 +35,7 @@ export function SupportAbility({
   return (
     <div className={`relative flex flex-row items-center gap-2 p-2 border-2 rounded-lg ${className}`} {...props}>
       <ProduceEffectIcon className="flex-none relative h-8 w-8" effectType={skill.produceSkill.produceEffects[0].produceEffectType} />
-      <EffectDescription descriptions={skill.produceSkill.descriptions} />
+      <EffectDescription descriptions={skill.produceSkill.produceDescriptions} />
       {skillLevel
         ? null
         : <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center rounded-lg backdrop-blur-[2px] dark:backdrop-brightness-[0.7]">

@@ -8,8 +8,8 @@ import { constructProduceExamEffectType, defaultIdolCardFilter, filterIdolCards 
 import { getLocalString } from "~/i18n"
 import { XIdolCard, XMaster } from "~/types"
 import { IdolCardFilter } from "~/types/data/cidol"
-import { CidolCard } from "~/routes/cidol/cidolCard"
-import { OptionPannel } from "~/routes/cidol/optionPannel"
+import { CidolCard } from "~/routes/cidol._index/cidolCard"
+import { OptionPannel } from "~/routes/cidol._index/optionPannel"
 
 export const meta: MetaFunction = () => {
   const title = getLocalString("meta-cidol")

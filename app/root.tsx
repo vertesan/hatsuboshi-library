@@ -70,13 +70,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
         <ColorSchemeScript
-          nonce="Gssv/TOwbkAUpOWyoftzJg=="
           forceColorScheme={prefConfig.colorScheme}
           defaultColorScheme='dark'
         />
         <script
           defer
-          nonce="Gssv/TOwbkAUpOWyoftzJg=="
           src={VITE_UMAMI_SRC}
           data-website-id={VITE_UMAMI_ID}
           data-domains={VITE_UMAMI_DOMAIN}
@@ -97,7 +95,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </PreferenceContext.Provider>
         </MantineProvider>
         <ScrollRestoration />
-        <Scripts nonce="Gssv/TOwbkAUpOWyoftzJg==" />
+        <Scripts />
       </body>
     </html>
   )

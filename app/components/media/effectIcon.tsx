@@ -58,7 +58,7 @@ export function ProduceEventEffectIcon({
           <ProduceEffectIcon key={effect.id} effectType={effect.produceEffectType} className={className} {...props} />
         </HoverCard.Target>
         <HoverCard.Dropdown onClick={(e) => { e.preventDefault() }}>
-          <EffectDescription descriptions={produceEvent.descriptions} />
+          <EffectDescription descriptions={produceEvent.produceDescriptions} />
         </HoverCard.Dropdown>
       </HoverCard>
     ))

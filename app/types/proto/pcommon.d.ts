@@ -184,6 +184,9 @@ export type ExamBattleResult = {
   produceDrinkIds: string[]
   produceItems: ProduceItem[]
   examTriggerCounts: ExamTriggerCount[]
+  vocalScore: number
+  danceScore: number
+  visualScore: number
 }
 export type ExamCommandLog = {
   commandType: penum.ExamCommandType
@@ -205,8 +208,11 @@ export type ExamTurnEndLog = {
   block: number
   additionBlock: number
   parameterType: penum.ProduceParameterType
+  idolStatusType: penum.ExamIdolStatusType
+  idolStatusStepCount: number
   startPlayHandProduceCards: ProduceCard[]
   startPlayStatuses: string[]
+  startPlayHoldProduceCards: ProduceCard[]
   commands: ExamCommandLog[]
 }
 export type Gasha = {
@@ -233,6 +239,7 @@ export type Gasha = {
   pickupSupportCardIds: string[]
   backgroundPickupIdolCardSkins: GashaBackgroundPickup[]
   backgroundPickupSupportCards: GashaBackgroundPickup[]
+  animationBackgroundAssetId: string
   startTime: string
   endTime: string
   order: number
@@ -342,6 +349,7 @@ export type Meishi = {
   meishiBase: MeishiBase
   objects: MeishiObject[]
   imagePath: string
+  timeline: string
 }
 export type MeishiBase = {
   layoutNumber: number
@@ -443,6 +451,18 @@ export type ProduceCampaign = {
 export type ProduceCard = {
   id: string
   upgradeCount: number
+  customizes: ProduceCardCustomize[]
+}
+export type ProduceCardCustomize = {
+  id: string
+  customizeCount: number
+}
+export type ProduceConsumptionResult = {
+  resourceType: penum.ProduceResourceType
+  resourceId: string
+  quantity: number
+  beforeQuantity: number
+  afterQuantity: number
 }
 export type ProduceDescriptionElement = {
   type: penum.ProduceDescriptionType
@@ -451,6 +471,30 @@ export type ProduceDescriptionElement = {
   targetLevel: number
   examEffectType: penum.ProduceExamEffectType
   produceCardCategory: penum.ProduceCardCategory
+  isOnlyOutGame: boolean
+  changeColor: boolean
+}
+export type ProduceDescriptionSegment = {
+  produceDescriptionType: penum.ProduceDescriptionType
+  examDescriptionType: penum.ExamDescriptionType
+  examEffectType: penum.ProduceExamEffectType
+  produceCardGrowEffectType: penum.ProduceCardGrowEffectType
+  produceCardCategory: penum.ProduceCardCategory
+  produceCardMovePositionType: penum.ProduceCardMovePositionType
+  produceStepType: penum.ProduceStepType
+  text: string
+  targetId: string
+  targetLevel: number
+  effectValue1: number
+  effectValue2: number
+  effectCount: number
+  turn: number
+  costValue: number
+  produceDescriptionSwapId: string
+  originProduceExamTriggerId: string
+  originProduceExamEffectId: string
+  originProduceCardStatusEnchantId: string
+  isCost: boolean
   isOnlyOutGame: boolean
   changeColor: boolean
 }
@@ -466,6 +510,8 @@ export type ProduceEffectResult = {
   afterStamina: number
   beforeProducePoint: number
   afterProducePoint: number
+  beforeVoteCount: number
+  afterVoteCount: number
   beforeVocal: number
   afterVocal: number
   beforeDance: number
@@ -501,6 +547,7 @@ export type ProduceHistory = {
   levelLimitRank: penum.IdolCardLevelLimitRank
   potentialRank: penum.IdolCardPotentialRank
   trueEndProduceTypes: penum.ProduceType[]
+  auditions: ProduceHistory_Audition[]
   deckSupportCards: ProduceHistory_DeckSupportCard[]
   deckMemories: ProduceHistory_DeckMemory[]
   produceCards: ProduceHistory_DeckProduceCard[]
@@ -513,6 +560,12 @@ export type ProduceHistory = {
   danceGrowthRatePermil: number
   visualGrowthRatePermil: number
   maxStamina: number
+  voteCount: number
+}
+type ProduceHistory_Audition = {
+  stepType: penum.ProduceStepType
+  stepSelectNumber: number
+  rank: number
 }
 type ProduceHistory_DeckMemory = {
   memory: Memory
@@ -552,6 +605,7 @@ export type ProduceRewardResult = {
   resourceId: string
   resourceLevel: number
   quantity: number
+  customizes: ProduceCardCustomize[]
 }
 export type ProduceTriggerOrigin = {
   originType: penum.ProduceTriggerOriginType

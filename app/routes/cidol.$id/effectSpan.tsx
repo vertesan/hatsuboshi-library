@@ -10,9 +10,9 @@ export function EffectSpan({
   className?: string,
 }) {
   return (
-    <div className={`relative flex flex-row justify-center items-center gap-2 rounded-lg ${className}`}>
+    <div className={`relative flex flex-row items-center gap-2 rounded-lg ${className}`}>
       <ProduceEffectIcon className="flex-none relative h-8 w-8" effectType={produceSkill.produceEffects[0].produceEffectType} />
-      <EffectDescription descriptions={produceSkill.descriptions} />
+      <EffectDescription descriptions={produceSkill.produceDescriptions} />
     </div>
   )
 }

@@ -15,6 +15,7 @@ export const defaultSupportCardFilter: SupportCardFilter = {
   showEnhanced: true,
   producePhaseType: [],
   level: 40,
+  welfareAsSr: false,
 }
 
 export const supportCardMaxLevel: { [r in SupportCardRarity]: number } = {
@@ -33,7 +34,13 @@ export function filterSupportCards(
     let matchedIndexes = new Set<number>()
     // rarity
     if (filter.rarities.length !== 0) {
-      if (!filter.rarities.includes(card.rarity)) return false
+      let virtualRarity = card.rarity
+      if (filter.welfareAsSr) {
+        if (card.rarity === SupportCardRarity.Ssr && card.exchangeReward.quantity < 50) {
+          virtualRarity = SupportCardRarity.Sr
+        }
+      }
+      if (!filter.rarities.includes(virtualRarity)) return false
     }
     // plan type
     if (filter.planTypes.length !== 0) {

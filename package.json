@@ -13,10 +13,10 @@
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
-    "@mantine/charts": "^7.11.2",
-    "@mantine/core": "^7.11.2",
-    "@mantine/hooks": "^7.11.2",
-    "@mantine/dropzone": "^7.11.2",
+    "@mantine/charts": "^7.15.1",
+    "@mantine/core": "^7.15.1",
+    "@mantine/hooks": "^7.15.1",
+    "@mantine/dropzone": "^7.15.1",
     "@mdx-js/rollup": "^3.0.1",
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",
@@ -30,7 +30,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.1.2",
-    "recharts": "2.13.0-alpha.4",
+    "recharts": "2.15.0",
     "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {

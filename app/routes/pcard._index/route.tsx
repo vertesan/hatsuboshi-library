@@ -11,7 +11,7 @@ import { constructProduceExamEffectType, defaultPCardFilter, filterPCards } from
 import { getLocalString } from "~/i18n"
 import { ProduceCardFilter, XProduceCard } from "~/types"
 import { ProduceCardCategory } from "~/types/proto/penum"
-import { OptionPannel } from "./pcard/optionPannel"
+import { OptionPannel } from "../pcard/optionPannel"
 
 export const meta: MetaFunction = () => {
   const title = getLocalString("meta-pcard")
@@ -89,7 +89,7 @@ export default function PCard() {
                         </div>
                       </div>
                       <div className="flex-1 text-sm self-start">
-                        <div className="pt-2"><EffectDescription descriptions={pCard.descriptions} /></div>
+                        <div className="pt-2"><EffectDescription descriptions={pCard.produceDescriptions} /></div>
                       </div>
                     </div>
                   </Card>

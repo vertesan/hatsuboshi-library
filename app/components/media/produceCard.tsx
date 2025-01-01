@@ -96,7 +96,7 @@ function _ProduceCardIcon({
       <HoverCard.Target>{cardElement}</HoverCard.Target>
       <HoverCard.Dropdown onClick={(e) => { e.preventDefault() }}>
         <p className="font-medium pb-1 text-md dark:text-white">{card.name}</p>
-        <EffectDescription descriptions={card.descriptions} />
+        <EffectDescription descriptions={card.produceDescriptions} />
       </HoverCard.Dropdown>
     </HoverCard>
     : cardElement
@@ -155,7 +155,8 @@ function PlayEffectsIcon({
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlock &&
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount &&
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive &&
-      effect.produceExamEffect.effectType !== ProduceExamEffectType.StanceLock
+      effect.produceExamEffect.effectType !== ProduceExamEffectType.StanceLock &&
+      (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamCardMove || card.playEffects.length <= 3)
     ).map(effect =>
       effect.produceExamEffect.effectType
     )

@@ -30,6 +30,11 @@ export type Response = {
   dearnessStoryUnlocks: DearnessStoryUnlock[]
   anotherCostumeIds: string[]
   anotherCostumeHeadIds: string[]
+  storyEventRewards: StoryEventReward[]
+}
+export type StoryEventReward = {
+  storyEventId: string
+  pointRewards: pcommon.StoryEventPointReward[]
 }
 export type UserData = {
   user: ptransaction.User
@@ -76,12 +81,14 @@ export type UserData = {
   userProduceCardRewardList: ptransaction.UserProduceCardReward[]
   userProduceCharacterList: ptransaction.UserProduceCharacter[]
   userProduceDrinkList: ptransaction.UserProduceDrink[]
+  userProduceGroupCharacterList: ptransaction.UserProduceGroupCharacter[]
   userProduceIdolCardList: ptransaction.UserProduceIdolCard[]
   userProduceItemList: ptransaction.UserProduceItem[]
   userProduceLiveList: ptransaction.UserProduceLive[]
   userProduceMemoryDeckList: ptransaction.UserProduceMemoryDeck[]
   userProduceProgress: ptransaction.UserProduceProgress
   userProduceProgressAudition: ptransaction.UserProduceProgressAudition
+  userProduceProgressBusinessList: ptransaction.UserProduceProgressBusiness[]
   userProduceProgressEffectList: ptransaction.UserProduceProgressEffect[]
   userProduceProgressEventList: ptransaction.UserProduceProgressEvent[]
   userProduceProgressMemoryList: ptransaction.UserProduceProgressMemory[]

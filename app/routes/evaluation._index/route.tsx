@@ -13,6 +13,7 @@ import { getLocalString } from "~/i18n"
 import { DroppableMemorySlots } from "~/routes/evaluation/memorySlots"
 import { OptionPannel } from "~/routes/evaluation/optionPannel"
 import { MemorySlots, ProduceCardFilter, XProduceCard } from "~/types"
+import { ProduceCardCategory, ProduceCardRarity } from "~/types/proto/penum"
 
 export const meta: MetaFunction = () => {
   const title = getLocalString("meta-evaluation")
@@ -72,7 +73,12 @@ export default function Evaluation() {
         if (acc[cur.evaluation] === undefined) {
           acc[cur.evaluation] = []
         }
-        acc[cur.evaluation].push(cur)
+        if (
+          cur.category !== ProduceCardCategory.Trouble &&
+          cur.rarity !== ProduceCardRarity.N
+        ) {
+          acc[cur.evaluation].push(cur)
+        }
         return acc
       }, {} as { [x: number]: XProduceCard[] })
   }, [filter])
@@ -265,9 +271,10 @@ export default function Evaluation() {
                   Object.entries(filteredCards)
                     .filter(([eva, _]) => ![1, 32].includes(+eva))
                     .map(([eva, cards], idx) => {
+                      if (!evaluationMap[+eva]) return null
                       return (
                         <div key={idx}>
-                          <p className="pt-4">{t("Eva. ") + evaluationMap[+eva].text}</p>
+                          <p className="pt-4">{t("Eva. ") + evaluationMap[+eva]?.text}</p>
                           <div key={idx} className="grid grid-cols-[repeat(auto-fit,68px)]">
                             {cards.map((card, idx) => {
                               return (

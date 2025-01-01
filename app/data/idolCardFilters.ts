@@ -60,7 +60,7 @@ export function filterIdolCards(
       if (!filter.planTypes.includes(card.planType)) return false
     }
     if (filter.attributes.length !== 0) {
-      const battleConfig = card.auditionDifficulty.at(-1)?.examBattleConfig
+      const battleConfig = card.auditionScenarios[1][18].at(-1)?.examBattleConfig
       if (!battleConfig) return false
       const sortedAttr = determineAceAttr(battleConfig)
       if (!filter.countSecondaryAttr) {
