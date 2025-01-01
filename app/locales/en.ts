@@ -90,6 +90,8 @@ const translation = {
   "Required votes: ": "Required votes: ",
   "Terminates when score reaches ": "Terminates when score reaches ",
   "Turn ": "Turn ",
+  "Turns: ": "Turns: ",
+  "Criteria: ": "Criteria: ",
   "Special Training Bonus": "Training Level Bonus",
   "Potential Level Bonus": "Potential Level Bonus",
   "Initial": "Initial",

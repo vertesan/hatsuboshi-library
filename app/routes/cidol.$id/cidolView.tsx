@@ -5,6 +5,7 @@ import { useContext, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { getNIAAuditionImgUrl, limitIcon, potentialIcon } from "~/assets/media"
 import NumberCompose from "~/components/general/numberCompose"
+import { AttributeIcon } from "~/components/media/attributeIcon"
 import { GimmicksTimeline } from "~/components/media/gimmicksTimeline"
 import { NpcScoreTable } from "~/components/media/npcScoreTable"
 import { MasterContext } from "~/contexts/masterContext"
@@ -13,7 +14,7 @@ import { PotentialLevelView } from "~/routes/cidol.$id/potentialLevelView"
 import { produceScenarioStrings } from "~/routes/cidol.$id/produceScenarios"
 import { CidolCard } from "~/routes/cidol._index/cidolCard"
 import { XIdolCard } from "~/types"
-import { ProduceStepAuditionType, ProduceStepType, ProduceType } from "~/types/proto/penum"
+import { ProduceParameterType, ProduceStepAuditionType, ProduceStepType, ProduceType } from "~/types/proto/penum"
 
 export function CidolView({
   idolCard,
@@ -70,9 +71,32 @@ export function CidolView({
                     {`${t(difficulty.produceId)}`}
                   </Title>
                 }
+                <p className="text-center">
+                  {
+                    t("Criteria: ")
+                  }
+                  <span className="px-2 sm:px-2 text-center">
+                    <AttributeIcon attribute={ProduceParameterType.Vocal}
+                      className="inline-block align-text-bottom h-4 w-4 mr-1"
+                    />
+                    {difficulty.examBattleConfig.vocal}
+                  </span>
+                  <span className="px-2 sm:px-2 text-center">
+                    <AttributeIcon attribute={ProduceParameterType.Dance}
+                      className="inline-block align-text-bottom h-4 w-4 mr-1"
+                    />
+                    {difficulty.examBattleConfig.dance}
+                  </span>
+                  <span className="px-2 sm:px-2 text-center">
+                    <AttributeIcon attribute={ProduceParameterType.Visual}
+                      className="inline-block align-text-bottom h-4 w-4 mr-1"
+                    />
+                    {difficulty.examBattleConfig.visual}
+                  </span>
+                </p>
                 {difficulty.forceEndScore
                   ? <div className="pt-4">
-                    <Alert variant="light" color="blue" icon={<IconInfoCircle />} >
+                    <Alert variant="light" color="blue" icon={<IconInfoCircle />} className="max-w-[560px] mx-auto" >
                       <p>{t("Terminates when score reaches ") + difficulty.forceEndScore}</p>
                     </Alert>
                   </div>
@@ -81,6 +105,7 @@ export function CidolView({
                 {difficulty.examGimmicks
                   ? <div className="flex flex-col items-center">
                     <p className="pt-4 text-center font-medium text-[--mantine-color-dimmed]">{t("Audition gimmicks timeline")}</p>
+                    <p className="pt-2 text-center font-medium">{t("Turns: ")}{difficulty.examBattleConfig.turn}</p>
                     <GimmicksTimeline gimmicks={difficulty.examGimmicks} />
                   </div>
                   : null
