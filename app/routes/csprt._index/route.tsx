@@ -44,14 +44,14 @@ export default function Csprt() {
   const [filteredCards, matchedSkills] = filterSupportCards(filter, xSupportCards)
   filteredCards.sort((a, b) => +a.order - +b.order)
 
-  const paginatedCards = filteredCards.slice(((activePage - 1) * 10), activePage * 10)
+  const paginatedCards = filteredCards.slice(((activePage - 1) * 12), activePage * 12)
 
   return (
     <>
       <div className="p-4 flex relative">
-        <div className="flex-[1_0_100%] sm:flex-[1_0_27rem] xl:pr-4">
+        <div className="flex-[1_0_100%] sm:flex-[1_0_27rem] xl:pr-[476px]">
           <Pagination value={activePage} onChange={setPage}
-            total={(filteredCards.length - 1) / 10 + 1} siblings={1}
+            total={(filteredCards.length - 1) / 12 + 1} siblings={1}
             className={`pb-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
           />
           {filteredCards.length
@@ -82,10 +82,10 @@ export default function Csprt() {
           />
         </div>
         <div
-          className={`fixed xl:static z-[102] px-2 pb-24 top-2 left-0 right-0 h-screen w-screen overflow-x-hidden overflow-y-auto
+          className={`fixed z-[102] px-2 pb-24 top-2 left-0 right-0 h-screen w-screen overflow-x-hidden overflow-y-auto
             bg-[--mantine-color-body] ${opened ? "" : "translate-x-full"} sm:z-[111]
-            xl:top-auto xl:left-auto xl:z-[0] xl:flex-none xl:w-[460px] xl:block xl:translate-x-0 xl:h-auto
-            transition-transform duration-150 ease-in-out`
+            xl:top-auto xl:left-auto xl:z-[0] xl:flex-none xl:w-[460px] xl:block xl:translate-x-0
+            transition-transform duration-150 ease-in-out scroll`
           }
         >
           <OptionPannel
