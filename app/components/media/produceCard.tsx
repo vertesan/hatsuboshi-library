@@ -154,25 +154,32 @@ function PlayEffectsIcon({
       (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamLesson || effect.produceExamTriggerId) &&
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlock &&
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount &&
-      effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive &&
-      effect.produceExamEffect.effectType !== ProduceExamEffectType.StanceLock &&
-      (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamCardMove || card.playEffects.length <= 3)
+      effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive
     ).map(effect =>
       effect.produceExamEffect.effectType
-    )
+    ).reverse()
   if (card.produceCardStatusEnchantId) {
     displayEffects.push(ProduceExamEffectType.ExamAddGrowEffect)
+  }
+  let mbPercentage = 0
+  if (displayEffects.length > 3) {
+    mbPercentage = 4 * (30 * displayEffects.length - 100) / (displayEffects.length - 1)
   }
   return (
     displayEffects.length > 0
       ? <div className={`${className}`}>
-        <div className="flex flex-col w-full h-full justify-end">
+        <div className="flex flex-col-reverse w-full h-full justify-start">
           {displayEffects.map((effectType, idx) => {
             return (
               <ExamEffectIcon
                 key={idx}
                 className="aspect-square w-full object-contain"
                 effectType={effectType}
+                style={
+                  displayEffects.length > 3 && idx > 0
+                    ? { "marginBottom": `-${mbPercentage}%` }
+                    : undefined
+                }
               />
             )
           })}
