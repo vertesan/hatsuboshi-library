@@ -42,14 +42,14 @@ export default function Cidol() {
 
   const filteredCards = filterIdolCards(filter, xIdolCards)
   filteredCards.sort((a, b) => +a.order - +b.order)
-  const paginatedCards = filteredCards.slice(((activePage - 1) * 10), activePage * 10)
+  const paginatedCards = filteredCards.slice(((activePage - 1) * 12), activePage * 12)
 
   return (
     <>
       <div className="p-4 flex flex-row relative">
         <div className="flex-[1_0_100%] sm:flex-[1_0_27rem] xl:pr-[456px]">
           <Pagination value={activePage} onChange={setPage}
-            total={(filteredCards.length - 1) / 10 + 1} siblings={1}
+            total={(filteredCards.length - 1) / 12 + 1} siblings={1}
             className={`pb-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
           />
           {filteredCards.length

@@ -1,13 +1,19 @@
 import { Chip, ChipGroupProps, ChipProps } from "@mantine/core";
+import { forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 
-export function IconChip<T extends { [_: number]: string }>({
+export const IconChip = forwardRef(_IconChip)
+_IconChip.displayName = "IconChip"
+
+function _IconChip<T extends { [_: number]: string }>({
   value,
   iconSrc,
   iconComponent,
   enumObj,
   noLabel = false,
+  iconType = "default",
   children,
+  className,
   ...props
 }: {
   value: string | number,
@@ -15,28 +21,34 @@ export function IconChip<T extends { [_: number]: string }>({
   iconComponent?: JSX.Element,
   enumObj?: T,
   noLabel?: boolean,
-} & Partial<ChipProps>) {
+  iconType?: "default" | "chara",
+  className?: string,
+} & Partial<ChipProps>, ref: React.Ref<HTMLDivElement>) {
   const { t } = useTranslation()
   const label = typeof value === "number" && enumObj
     ? t(enumObj[value])
     : t(value.toString())
   return (
-    <Chip size="sm" value={value.toString()} {...props}>
-      {iconComponent
-        ? iconComponent
-        : iconSrc
-          ? (
-            <div className="relative aspect-square w-4 mr-0.5 inline-block align-[-3px]">
-              <img src={iconSrc} alt={label} />
-            </div>
-          )
-          : null
-      }
-      {noLabel
-        ? null
-        : <span>{children ? children : label}</span>
-      }
-    </Chip>
+    <div ref={ref}>
+      <Chip size={iconType === "chara" ? "sm" : "sm"} value={value.toString()} className={`flex items-center justify-center overflow-visible ${className}`} {...props}>
+        <div className="flex justify-center items-center gap-[2px]">
+          {iconComponent
+            ? iconComponent
+            : iconSrc
+              ? (
+                <div className={`relative aspect-square ${iconType === "chara" ? "w-8" : "w-4"}`}>
+                  <img src={iconSrc} alt={label} className="object-fill" />
+                </div>
+              )
+              : null
+          }
+          {noLabel
+            ? null
+            : <span>{children ? children : label}</span>
+          }
+        </div>
+      </Chip>
+    </div>
   )
 }
 

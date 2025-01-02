@@ -1,19 +1,18 @@
-import { Button, Divider, MultiSelect, MultiSelectProps, Switch } from "@mantine/core";
-import { Dispatch, SetStateAction, useMemo, useRef } from "react";
+import { Button, Divider, MultiSelect, MultiSelectProps, Switch, Tooltip } from "@mantine/core";
+import { Dispatch, SetStateAction, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import {
   getResultGradeImgUrl,
+  getSDFaceImgUrl,
   plan1Icon,
   plan2Icon,
-  plan3Icon,
-  planCommonIcon
+  plan3Icon
 } from "~/assets/media";
 import { ChipGroup, IconChip } from "~/components/general/chips";
 import Ripple from "~/components/general/ripple";
-import { characterMultiSelectRenderOption } from "~/components/media/characterMultiSelectRenderOption";
 import { ProduceCardIcon } from "~/components/media/produceCard";
-import { constructCharacters } from "~/data/supportCardFilters";
-import { constructCards, defaultUserMemoryFilter, sortMemories } from "~/data/userMemory";
+import { filterPlayables } from "~/data/characters";
+import { constructCards, defaultUserMemoryFilter } from "~/data/userMemory";
 import { UserMemoryFilter, UserMemorySort, XMaster, XMemoryInspector } from "~/types";
 import { ProducePlanType, ResultGrade } from "~/types/proto/penum";
 
@@ -40,9 +39,6 @@ export function OptionPannel({
 }) {
   const { t } = useTranslation()
   const ref = useRef(null)
-  const charactersMultiSelectData = useMemo(() => {
-    return constructCharacters(characters)
-  }, [])
 
   const onFilterChange = <T extends keyof UserMemoryFilter>(key: T, val: UserMemoryFilter[T]) => {
     setFilter(prev => {
@@ -100,15 +96,23 @@ export function OptionPannel({
       </ChipGroup>
 
       <Divider labelPosition="left" my="sm" label={t("Characters")} />
-      <MultiSelect
-        clearable
-        checkIconPosition="left"
-        data={charactersMultiSelectData}
-        value={filter.characters}
-        comboboxProps={{ transitionProps: { transition: 'fade-down', duration: 150, timingFunction: "ease-in-out" } }}
-        renderOption={characterMultiSelectRenderOption}
-        onChange={(value) => onFilterChange("characters", value)}
-      />
+      <ChipGroup multiple isEnum={false} value={filter.characters} onChange={(value) => onFilterChange("characters", value)}>
+        {
+          Object.entries(filterPlayables(characters))
+            .map(([charaId, chara]) =>
+              <Tooltip key={charaId} label={chara.lastName + chara.firstName}>
+                <IconChip
+                  key={charaId}
+                  noLabel
+                  variant="outline"
+                  value={charaId}
+                  iconSrc={getSDFaceImgUrl(charaId)}
+                  iconType="chara"
+                />
+              </Tooltip>
+            )
+        }
+      </ChipGroup>
 
       <Divider labelPosition="left" my="sm" label={t("Protection")} />
       <ChipGroup

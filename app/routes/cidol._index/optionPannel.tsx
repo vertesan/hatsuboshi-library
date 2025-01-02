@@ -1,12 +1,12 @@
-import { Button, Divider, MultiSelect, Switch } from "@mantine/core";
-import { Dispatch, SetStateAction, useMemo, useRef } from "react";
+import { Button, Divider, Switch, Tooltip } from "@mantine/core";
+import { Dispatch, SetStateAction, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { getExamEffectImgUrl, plan1Icon, plan2Icon, plan3Icon, supportAttrDanceIcon, supportAttrVisualIcon, supportAttrVocalIcon } from "~/assets/media";
+import { getExamEffectImgUrl, getSDFaceImgUrl, plan1Icon, plan2Icon, plan3Icon, supportAttrDanceIcon, supportAttrVisualIcon, supportAttrVocalIcon } from "~/assets/media";
 import { ChipGroup, IconChip } from "~/components/general/chips";
 import NumberCompose from "~/components/general/numberCompose";
 import Ripple from "~/components/general/ripple";
-import { characterMultiSelectRenderOption } from "~/components/media/characterMultiSelectRenderOption";
-import { constructCharacters, defaultIdolCardFilter } from "~/data/idolCardFilters";
+import { filterPlayables } from "~/data/characters";
+import { defaultIdolCardFilter } from "~/data/idolCardFilters";
 import { XMaster } from "~/types";
 import { IdolCardFilter } from "~/types/data/cidol";
 import { IdolCardRarity, ProduceExamEffectType, ProducePlanType } from "~/types/proto/penum";
@@ -40,10 +40,6 @@ export function OptionPannel({
       return { ...prev, [key]: val }
     })
   }
-
-  const charactersMultiSelectData = useMemo(() => {
-    return constructCharacters(characters)
-  }, [])
 
   return (
     <div>
@@ -98,15 +94,24 @@ export function OptionPannel({
         })}
       </ChipGroup>
       <Divider labelPosition="left" my="sm" label={t("Characters")} />
-      <MultiSelect
-        clearable
-        checkIconPosition="left"
-        data={charactersMultiSelectData}
-        value={filter.characters}
-        comboboxProps={{ transitionProps: { transition: 'fade-down', duration: 150, timingFunction: "ease-in-out" } }}
-        renderOption={characterMultiSelectRenderOption}
-        onChange={(value) => onFilterChangeJump("characters", value)}
-      />
+      <ChipGroup multiple isEnum={false} value={filter.characters} onChange={(value) => onFilterChangeJump("characters", value)}>
+        {
+          Object.entries(filterPlayables(characters))
+            .map(([charaId, chara]) =>
+              <Tooltip key={charaId} label={chara.lastName + chara.firstName}>
+                <IconChip
+                  key={charaId}
+                  noLabel
+                  variant="outline"
+                  value={charaId}
+                  iconSrc={getSDFaceImgUrl(charaId)}
+                  iconType="chara"
+                />
+              </Tooltip>
+            )
+        }
+      </ChipGroup>
+
       <Divider labelPosition="left" my="sm" label={t("Misc")} />
       <NumberCompose className="pb-2" readOnly width={35} max={6} min={0} step={1} value={filter.limitLevel} label={t("Training Level ")}
         setValue={(value) => onFilterChange("limitLevel", value)}
