@@ -11,10 +11,10 @@ export function EffectDescription({
   descriptions: ProduceDescriptionSegment[],
   deepScan?: boolean,
 }) {
-  const {
-    produceDescriptions,
-    produceDescriptionExamEffectType
-  } = useContext(MasterContext)
+  // const {
+  //   produceDescriptions,
+  //   produceDescriptionExamEffectType
+  // } = useContext(MasterContext)
 
   const targetIdSet = new Set()
 
