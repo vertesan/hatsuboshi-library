@@ -15,6 +15,8 @@ import { XMaster } from "~/types/data/master"
 import { OptionPannel } from "../csprt/optionPannel"
 import { useTranslation } from "react-i18next"
 
+const ITEMS_PER_PAGE = 12
+
 export const meta: MetaFunction = () => {
   const title = getLocalString("meta-csprt")
   return [
@@ -44,14 +46,14 @@ export default function Csprt() {
   const [filteredCards, matchedSkills] = filterSupportCards(filter, xSupportCards)
   filteredCards.sort((a, b) => +a.order - +b.order)
 
-  const paginatedCards = filteredCards.slice(((activePage - 1) * 12), activePage * 12)
+  const paginatedCards = filteredCards.slice(((activePage - 1) * ITEMS_PER_PAGE), activePage * ITEMS_PER_PAGE)
 
   return (
     <>
       <div className="p-4 flex relative">
         <div className="flex-[1_0_100%] sm:flex-[1_0_27rem] xl:pr-[476px]">
           <Pagination value={activePage} onChange={setPage}
-            total={(filteredCards.length - 1) / 12 + 1} siblings={1}
+            total={(filteredCards.length - 1) / ITEMS_PER_PAGE + 1} siblings={1}
             className={`pb-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
           />
           {filteredCards.length
@@ -77,7 +79,7 @@ export default function Csprt() {
             }
           </div>
           <Pagination value={activePage} onChange={setPage}
-            total={(filteredCards.length - 1) / 10 + 1} siblings={1}
+            total={(filteredCards.length - 1) / ITEMS_PER_PAGE + 1} siblings={1}
             className={`pt-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
           />
         </div>
