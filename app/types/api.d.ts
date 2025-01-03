@@ -1,16 +1,19 @@
 import { XIdolCard } from "./data/cidol"
 import {
-  XProduceIdol,
   XSupportCard
 } from "./data/csprt"
 import { XMaster } from "./data/master"
 import { XMemoryInspector } from "./data/memory"
+import {
+  XCustProduceCard,
+  XProduceCard
+} from "./data/pcard"
 
 type ApiTypes = {
   master: XMaster,
   csprt: XSupportCard[],
   cidol: XIdolCard[],
-  pcard: XProduceCard[],
+  pcard: XCustProduceCard[],
   memory: XMemoryInspector,
 }
 

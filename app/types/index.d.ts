@@ -15,7 +15,7 @@ import {
   XResultGradePattern,
 } from "./data/master"
 import {
-  Unarray,
+  UnArray,
 } from "./utils"
 import {
   XIdolCard,
@@ -23,6 +23,7 @@ import {
 import {
   XProduceCard,
   ProduceCardFilter,
+  XCustProduceCard,
 } from "./data/pcard"
 import {
   MemorySlot,
@@ -43,7 +44,7 @@ export type {
   SupportCardFilter,
   XSupportCard,
   XMaster,
-  Unarray,
+  UnArray,
   XIdolCard,
   XProduceCard,
   ProduceCardFilter,
@@ -54,5 +55,6 @@ export type {
   UserMemoryFilter,
   UserMemorySort,
   XResultGradePattern,
+  XCustProduceCard,
 }
 

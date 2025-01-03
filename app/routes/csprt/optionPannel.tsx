@@ -169,6 +169,13 @@ export function OptionPannel({
       />
       <Divider labelPosition="left" my="sm" label={t("Misc")} />
       <Switch
+        checked={filter.showCustom}
+        size="sm"
+        label={t("Show card customization")}
+        onChange={(event) => onFilterChange("showCustom", event.currentTarget.checked)}
+      />
+      <Switch
+        className="pt-2"
         checked={filter.showEnhanced}
         size="sm"
         label={t("Show enhanced cards/items if available")}

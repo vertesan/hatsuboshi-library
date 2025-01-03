@@ -10,23 +10,27 @@ import { ExamCostType, ProduceCardCategory, ProduceCardRarity, ProduceExamEffect
 import { BlockIcon } from "./blockIcon"
 import { ExamEffectIcon } from "./buffIcon"
 import { CostNumberIcon } from "./costNumberIcon"
+import { XCustProduceCard } from "~/types/data/pcard"
+import { CustomizationView } from "~/components/media/cardCustomization"
 
 export const ProduceCardIcon = memo(_ProduceCardIcon)
 
 /** Remember to set position (relative or absolute) attribute */
-function _ProduceCardIcon({
+function _ProduceCardIcon<C extends boolean>({
   card,
   character = "kllj",
   withHoverDescription,
   closeDelay = 50,
   className,
+  showCustom = false as C,
   ...props
 }: {
-  card: XProduceCard,
+  card: C extends true ? XCustProduceCard : XProduceCard,
   character?: string,
   withHoverDescription?: boolean,
   closeDelay?: number,
   className?: string,
+  showCustom?: C,
 } & Omit<React.ComponentPropsWithoutRef<'div'>, 'className'>) {
 
   const applyedAssetId = card.isCharacterAsset
@@ -97,6 +101,11 @@ function _ProduceCardIcon({
       <HoverCard.Dropdown onClick={(e) => { e.preventDefault() }}>
         <p className="font-medium pb-1 text-md dark:text-white">{card.name}</p>
         <EffectDescription descriptions={card.produceDescriptions} />
+        {
+          showCustom
+            ? <CustomizationView pCard={card as XCustProduceCard} hideEva />
+            : null
+        }
       </HoverCard.Dropdown>
     </HoverCard>
     : cardElement

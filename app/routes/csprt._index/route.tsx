@@ -30,7 +30,7 @@ export default function Csprt() {
   const [opened, handlers] = useDisclosure(false)
   const [activePage, setPage] = useState(1)
   const [filter, setFilter] = useLocalStorage<SupportCardFilter>({
-    key: "supportCardFilter",
+    key: "supportCardFilter2",
     defaultValue: defaultSupportCardFilter,
     getInitialValueInEffect: false,
   })
@@ -73,6 +73,7 @@ export default function Csprt() {
                     showEnhanced={filter.showEnhanced}
                     matchedSkills={matchedSkills[card.id]}
                     level={filter.level}
+                    showCustom={filter.showCustom}
                   />
                 )
               })

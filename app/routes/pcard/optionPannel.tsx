@@ -1,4 +1,5 @@
-import { Button, Divider, MultiSelect, Switch } from "@mantine/core";
+import { Button, Divider, MultiSelect, Switch, useMantineTheme } from "@mantine/core";
+import { IconCheck, IconX } from "@tabler/icons-react";
 import { Dispatch, SetStateAction, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { plan1Icon, plan2Icon, plan3Icon, planCommonIcon } from "~/assets/media";
@@ -61,6 +62,7 @@ export function CardOptionPannel({
   noJump?: boolean,
 }) {
   const { t } = useTranslation()
+  const theme = useMantineTheme()
   const ref = useRef(null)
   const onFilterChange = <T extends keyof ProduceCardFilter>(key: T, val: ProduceCardFilter[T]) => {
     if (noJump) {
@@ -86,6 +88,21 @@ export function CardOptionPannel({
         {t("Reset")}
         <Ripple targetRef={ref} />
       </Button>
+      <Switch
+        className="mt-4"
+        checked={filter.displayCustomization}
+        size="md"
+        label={t("Show Customization")}
+        onChange={(event) => onFilterChange("displayCustomization", event.currentTarget.checked)}
+        color="teal"
+        thumbIcon={
+          filter.displayCustomization ? (
+            <IconCheck className="w-3 h-3" color={theme.colors.teal[6]} stroke={3} />
+          ) : (
+            <IconX className="w-3 h-3" color={theme.colors.red[6]} stroke={3} />
+          )
+        }
+      />
       <Divider labelPosition="left" my="sm" label={t("Rarity")} />
       <ChipGroup multiple isEnum value={filter.rarities} onChange={(value) => onFilterChange("rarities", value)}>
         <IconChip variant="outline" value={ProduceCardRarity.Ssr}>SSR</IconChip>
@@ -116,8 +133,8 @@ export function CardOptionPannel({
         ? <>
           <Divider labelPosition="left" my="sm" label={t("Grades")} />
           <ChipGroup multiple isEnum value={filter.grades} onChange={(value) => onFilterChange("grades", value)}>
-            <IconChip variant="outline" value={0}>{t("Normal")}</IconChip>
-            <IconChip variant="outline" value={1}>{t("Enhanced")}</IconChip>
+            <IconChip variant="outline" value={0} disabled={filter.displayCustomization}>{t("Normal")}</IconChip>
+            <IconChip variant="outline" value={1} disabled={filter.displayCustomization}>{t("Enhanced")}</IconChip>
           </ChipGroup>
         </>
         : null

@@ -38,7 +38,6 @@ import { XProduceCard } from "./pcard"
 export type XMaster = {
   version: string,
   characters: { [id: string]: Character },
-  produceDescriptions: { [id: string]: ProduceDescription },
   produceEffectIcons: { [type in ProduceEffectType]: ProduceEffectIcon },
   produces: { [id: string]: Produce },
   examInitialDecks: { [id: string]: ExamInitialDeck },
@@ -73,6 +72,7 @@ export type XMaster = {
   achievements: { [id: string]: Achievement & { progress: AchievementProgress[] } },
   resultGradePatterns: XResultGradePattern[],
   guildReactions: GuildReaction[],
+  produceDescriptionLabels: { [id: string]: ProduceDescriptionLabel },
 }
 
 export type XResultGradePattern = ResultGradePattern & {

@@ -13,8 +13,8 @@ export async function clientLoader({
 }
 
 export default function PCardLayout() {
-  const xProduceCards = useLoaderData<typeof clientLoader>()
+  const xCustProduceCards = useLoaderData<typeof clientLoader>()
   return (
-    <Outlet context={[xProduceCards]} />
+    <Outlet context={[xCustProduceCards]} />
   )
 }

@@ -188,6 +188,10 @@ const translation = {
   "Scenario: HAJIME": "Scenario: HAJIME",
   "Scenario: N.I.A": "Scenario: N.I.A",
   "Treat welfare SSR as SR": "Treat welfare SSR as SR",
+  "Show Customization": "Show Customization",
+  "Show card customization": "Show card customization",
+  "Customizable Limits": "Customizable Limits",
+  "Customization Eva": "Customization Eva.",
   // produce phase
   "RecoveryStamina": "Stamina Recovered",
   "GetProducePoint": "P-Point Obtained",

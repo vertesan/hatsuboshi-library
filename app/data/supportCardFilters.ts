@@ -16,6 +16,7 @@ export const defaultSupportCardFilter: SupportCardFilter = {
   producePhaseType: [],
   level: 40,
   welfareAsSr: false,
+  showCustom: true,
 }
 
 export const supportCardMaxLevel: { [r in SupportCardRarity]: number } = {

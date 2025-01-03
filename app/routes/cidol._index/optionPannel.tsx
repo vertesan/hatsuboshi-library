@@ -9,7 +9,7 @@ import { filterPlayables } from "~/data/characters";
 import { defaultIdolCardFilter } from "~/data/idolCardFilters";
 import { XMaster } from "~/types";
 import { IdolCardFilter } from "~/types/data/cidol";
-import { IdolCardRarity, ProduceExamEffectType, ProducePlanType } from "~/types/proto/penum";
+import { IdolCardRarity, ProduceDescriptionType, ProduceExamEffectType, ProducePlanType } from "~/types/proto/penum";
 
 export function OptionPannel({
   filter,
@@ -81,10 +81,10 @@ export function OptionPannel({
           return (
             <IconChip key={idx} variant="outline"
               value={effectType.value}
-              iconSrc={getExamEffectImgUrl(effectType.value)}
+              iconSrc={getExamEffectImgUrl(effectType.value, ProduceDescriptionType.ProduceExamEffectType)}
               iconComponent={
                 <div className="relative aspect-square w-4 mr-0.5 inline-block align-[-3px]">
-                  <img className="invert dark:invert-0" src={getExamEffectImgUrl(effectType.value)} alt={effectType.label} />
+                  <img className="invert dark:invert-0" src={getExamEffectImgUrl(effectType.value, ProduceDescriptionType.ProduceExamEffectType)} alt={effectType.label} />
                 </div>
               }
             >
