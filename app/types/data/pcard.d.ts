@@ -3,7 +3,8 @@ import {
   ProduceCardCustomize,
   ProduceCardGrowEffect,
   ProduceDescriptionProduceCardGrowEffect,
-  ProduceExamEffect
+  ProduceExamEffect,
+  ProduceCardStatusEnchant,
 } from "~/types/proto/pmaster"
 import { UnArray } from "~/types/utils"
 import {
@@ -25,6 +26,7 @@ export type XCustProduceCard = XProduceCard & {
     growEffects: (ProduceCardGrowEffect & {
       examEffect?: ProduceExamEffect
       growEffectDescription: ProduceDescriptionProduceCardGrowEffect
+      produceCardStatusEnchant?: ProduceCardStatusEnchant
     })[]
   })[][]
 }

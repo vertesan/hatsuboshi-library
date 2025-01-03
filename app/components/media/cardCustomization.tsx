@@ -2,6 +2,7 @@ import { Badge, Divider, List } from "@mantine/core"
 import { useTranslation } from "react-i18next"
 import { pPoint } from "~/assets/media"
 import { EffectDescription } from "~/components/media/effectDescription"
+import { permilGrowEffects } from "~/data/permilGrowEffects"
 import { UnArray } from "~/types"
 import { XCustProduceCard } from "~/types/data/pcard"
 
@@ -58,8 +59,19 @@ export function CustomizationRow({
                       {growEffect.examEffect
                         ? <EffectDescription descriptions={growEffect.examEffect.produceDescriptions} />
                         : <p className="text-sm whitespace-pre-wrap">
-                          {growEffect.growEffectDescription.produceCardCustomizeDescription.replaceAll("\\n", "\n")}
-                          {growEffect.value}
+                          {
+                            growEffect.produceCardStatusEnchant
+                              ? <EffectDescription descriptions={growEffect.produceCardStatusEnchant.produceDescriptions} />
+                              : customizeEffect.description !== ""
+                                ? customizeEffect.description.replaceAll("\\n", "")
+                                : growEffect.growEffectDescription.produceCardCustomizeDescription.replaceAll("\\n", "")
+                          }
+                          {growEffect.value !== 0
+                            ? permilGrowEffects.includes(growEffect.effectType)
+                              ? growEffect.value / 10 + "%"
+                              : growEffect.value
+                            : null
+                          }
                         </p>
                       }
                     </div>
