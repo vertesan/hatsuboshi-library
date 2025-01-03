@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { buffTypeBackground, getExamEffectImgUrl } from "~/assets/media";
-import { ProduceExamEffectType } from "~/types/proto/penum";
+import { ProduceDescriptionType, ProduceExamEffectType } from "~/types/proto/penum";
 
 function _ExamEffectIcon({
   effectType,
@@ -14,7 +14,7 @@ function _ExamEffectIcon({
     return null
   }
   const bgImg = buffTypeBackground[effectType as keyof typeof buffTypeBackground]
-  const iconImg = getExamEffectImgUrl(effectType)
+  const iconImg = getExamEffectImgUrl(effectType, ProduceDescriptionType.ProduceExamEffectType)
   return (
     <div className={`relative aspect-square overflow-visible ${className}`} {...props}>
       <img src={bgImg} alt={bgImg} className="object-contain absolute inset-0" />

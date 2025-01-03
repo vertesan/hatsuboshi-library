@@ -1,4 +1,4 @@
-import { ProduceExamEffectType, ProduceStepAuditionType, ResultGrade } from "~/types/proto/penum"
+import { ProduceCardGrowEffectType, ProduceDescriptionType, ProduceExamEffectType, ProduceStepAuditionType, ResultGrade } from "~/types/proto/penum"
 import {
   VITE_IMG_PREFIX,
 } from "~/utils/env"
@@ -86,6 +86,7 @@ export const buffConcentration = "/img/buff_base_concentration.webp"
 export const arrowVoUp = "/img/score_up_arrow_vo_up.webp"
 export const arrowDaUp = "/img/score_up_arrow_da_up.webp"
 export const arrowViUp = "/img/score_up_arrow_vi_up.webp"
+export const pPoint = "/img/img_general_event_circle-mission_panel_icon_open_producepoint.webp"
 
 const extension = ".webp"
 const fullCsprtImgTemplate = `img_general_{id}_full${extension}`
@@ -125,10 +126,30 @@ export function getAssetImgUrl(assetId: string) {
 }
 
 const examEffectTemplate = `img_general_icon_exam-effect_{id}${extension}`
-export function getExamEffectImgUrl(effectType: ProduceExamEffectType) {
-  let iconEffectType = effectType
-  if (extraEffectNameMap[effectType] !== undefined) {
-    iconEffectType = extraEffectNameMap[effectType]
+
+export function getExamEffectImgUrl(
+  effectType: ProduceExamEffectType,
+  descriptionType: ProduceDescriptionType.ProduceExamEffectType,
+): string
+export function getExamEffectImgUrl(
+  effectType: ProduceCardGrowEffectType,
+  descriptionType: ProduceDescriptionType.ProduceCardGrowEffectType,
+): string
+export function getExamEffectImgUrl(
+  effectType: ProduceExamEffectType | ProduceCardGrowEffectType,
+  descriptionType: ProduceDescriptionType.ProduceExamEffectType | ProduceDescriptionType.ProduceCardGrowEffectType = ProduceDescriptionType.ProduceExamEffectType,
+) {
+  let iconEffectType: ProduceExamEffectType = effectType as number
+  if (descriptionType === ProduceDescriptionType.ProduceExamEffectType) {
+    if (extraEffectNameMap[effectType] !== undefined) {
+      iconEffectType = extraEffectNameMap[effectType]
+    }
+  } else if (descriptionType === ProduceDescriptionType.ProduceCardGrowEffectType) {
+    if (extraGrowEffectNameMap[effectType] !== undefined) {
+      iconEffectType = extraGrowEffectNameMap[effectType]
+    } else {
+      iconEffectType = ProduceExamEffectType.Unknown
+    }
   }
   const effectName = ProduceExamEffectType[iconEffectType]?.toLowerCase()
   return VITE_IMG_PREFIX + examEffectTemplate.replace(("{id}"), effectName)
@@ -154,6 +175,61 @@ const extraEffectNameMap: { [x: number]: ProduceExamEffectType } = {
   [ProduceExamEffectType.ExamCardMove]: ProduceExamEffectType.ExamCardCreateId,
   [ProduceExamEffectType.ExamStaminaRecoverMultiple]: ProduceExamEffectType.ExamStaminaRecoverFix,
   [ProduceExamEffectType.ExamLessonFullPowerPoint]: ProduceExamEffectType.ExamLesson,
+}
+
+const extraGrowEffectNameMap: { [x: number]: ProduceExamEffectType } = {
+  [ProduceCardGrowEffectType.Unknown]: ProduceExamEffectType.Unknown,
+  [ProduceCardGrowEffectType.LessonAdd]: ProduceExamEffectType.ExamLesson,
+  [ProduceCardGrowEffectType.LessonReduce]: ProduceExamEffectType.ExamLesson,
+  [ProduceCardGrowEffectType.LessonCountAdd]: ProduceExamEffectType.ExamLesson,
+  [ProduceCardGrowEffectType.LessonCountReduce]: ProduceExamEffectType.ExamLesson,
+  [ProduceCardGrowEffectType.BlockAdd]: ProduceExamEffectType.ExamBlock,
+  [ProduceCardGrowEffectType.BlockReduce]: ProduceExamEffectType.ExamBlock,
+  [ProduceCardGrowEffectType.FullPowerPointAdd]: ProduceExamEffectType.ExamFullPowerPoint,
+  [ProduceCardGrowEffectType.FullPowerPointReduce]: ProduceExamEffectType.ExamFullPowerPoint,
+  // [ProduceCardGrowEffectType.CostBuffReduce]: 0,
+  // [ProduceCardGrowEffectType.CostBuffAdd]: 0,
+  // [ProduceCardGrowEffectType.CostReduce]: 0,
+  // [ProduceCardGrowEffectType.CostAdd]: 0,
+  // [ProduceCardGrowEffectType.CostPenetrateReduce]: 0,
+  // [ProduceCardGrowEffectType.CostPenetrateAdd]: 0,
+  // [ProduceCardGrowEffectType.ParameterBuffTurnAdd]: 0,
+  // [ProduceCardGrowEffectType.ParameterBuffTurnReduce]: 0,
+  [ProduceCardGrowEffectType.LessonBuffAdd]: ProduceExamEffectType.ExamLessonBuff,
+  [ProduceCardGrowEffectType.LessonBuffReduce]: ProduceExamEffectType.ExamLessonBuff,
+  [ProduceCardGrowEffectType.ReviewAdd]: ProduceExamEffectType.ExamReview,
+  [ProduceCardGrowEffectType.ReviewReduce]: ProduceExamEffectType.ExamReview,
+  [ProduceCardGrowEffectType.AggressiveAdd]: ProduceExamEffectType.ExamCardPlayAggressive,
+  [ProduceCardGrowEffectType.AggressiveReduce]: ProduceExamEffectType.ExamCardPlayAggressive,
+  [ProduceCardGrowEffectType.CardDrawAdd]: ProduceExamEffectType.ExamCardCreateId,
+  [ProduceCardGrowEffectType.CardDrawReduce]: ProduceExamEffectType.ExamCardCreateId,
+  // [ProduceCardGrowEffectType.ParameterBuffMultiplePerTurnAdd]: 0,
+  // [ProduceCardGrowEffectType.ParameterBuffMultiplePerTurnReduce]: 0,
+  // [ProduceCardGrowEffectType.StaminaConsumptionDownTurnAdd]: 0,
+  // [ProduceCardGrowEffectType.StaminaConsumptionDownTurnReduce]: 0,
+  // [ProduceCardGrowEffectType.StaminaConsumptionAddTurnAdd]: 0,
+  // [ProduceCardGrowEffectType.StaminaConsumptionAddTurnReduce]: 0,
+  // [ProduceCardGrowEffectType.EffectAdd]: 0,
+  // [ProduceCardGrowEffectType.EffectDelete]: 0,
+  // [ProduceCardGrowEffectType.EffectChange]: 0,
+  // [ProduceCardGrowEffectType.CardStatusEnchantChange]: 0,
+  // [ProduceCardGrowEffectType.PlayTriggerChange]: 0,
+  // [ProduceCardGrowEffectType.PlayEffectTriggerChange]: 0,
+  // [ProduceCardGrowEffectType.PlayMovePositionTypeChange]: 0,
+  // [ProduceCardGrowEffectType.InitialAdd]: 0,
+  // [ProduceCardGrowEffectType.CostLessonBuffReduce]: 0,
+  // [ProduceCardGrowEffectType.CostLessonBuffAdd]: 0,
+  // [ProduceCardGrowEffectType.CostReviewReduce]: 0,
+  // [ProduceCardGrowEffectType.CostReviewAdd]: 0,
+  // [ProduceCardGrowEffectType.CostAggressiveReduce]: 0,
+  // [ProduceCardGrowEffectType.CostAggressiveAdd]: 0,
+  // [ProduceCardGrowEffectType.CostParameterBuffReduce]: 0,
+  // [ProduceCardGrowEffectType.CostParameterBuffAdd]: 0,
+  // [ProduceCardGrowEffectType.CostFullPowerPointReduce]: 0,
+  // [ProduceCardGrowEffectType.CostFullPowerPointAdd]: 0,
+  [ProduceCardGrowEffectType.LessonDependBlockAdd]: ProduceExamEffectType.ExamLesson,
+  [ProduceCardGrowEffectType.LessonDependExamCardPlayAggressiveAdd]: ProduceExamEffectType.ExamLesson,
+  [ProduceCardGrowEffectType.LessonDependExamReviewAdd]: ProduceExamEffectType.ExamLesson,
 }
 
 export const buffTypeBackground = {
@@ -262,4 +338,59 @@ export const buffTypeBackground = {
   [ProduceExamEffectType.ExamParameterBuffReduce]: buffBgRed,
   [ProduceExamEffectType.ExamLessonValueMultipleDown]: buffBgRed,
   [ProduceExamEffectType.ExamAddGrowEffect]: buffBgGreen,
+}
+
+export const growBuffTypeBackground = {
+  // [ProduceCardGrowEffectType.Unknown]: buffBgBlue,
+  [ProduceCardGrowEffectType.LessonAdd]: buffBgBlue,
+  [ProduceCardGrowEffectType.LessonReduce]: buffBgRed,
+  [ProduceCardGrowEffectType.LessonCountAdd]: buffBgBlue,
+  [ProduceCardGrowEffectType.LessonCountReduce]: buffBgRed,
+  [ProduceCardGrowEffectType.BlockAdd]: buffBgBlue,
+  [ProduceCardGrowEffectType.BlockReduce]: buffBgRed,
+  [ProduceCardGrowEffectType.FullPowerPointAdd]: buffBgBlue,
+  [ProduceCardGrowEffectType.FullPowerPointReduce]: buffBgRed,
+  // [ProduceCardGrowEffectType.CostBuffReduce]: 0,
+  // [ProduceCardGrowEffectType.CostBuffAdd]: 0,
+  // [ProduceCardGrowEffectType.CostReduce]: 0,
+  // [ProduceCardGrowEffectType.CostAdd]: 0,
+  // [ProduceCardGrowEffectType.CostPenetrateReduce]: 0,
+  // [ProduceCardGrowEffectType.CostPenetrateAdd]: 0,
+  // [ProduceCardGrowEffectType.ParameterBuffTurnAdd]: 0,
+  // [ProduceCardGrowEffectType.ParameterBuffTurnReduce]: 0,
+  [ProduceCardGrowEffectType.LessonBuffAdd]: buffBgBlue,
+  [ProduceCardGrowEffectType.LessonBuffReduce]: buffBgRed,
+  [ProduceCardGrowEffectType.ReviewAdd]: buffBgBlue,
+  [ProduceCardGrowEffectType.ReviewReduce]: buffBgRed,
+  [ProduceCardGrowEffectType.AggressiveAdd]: buffBgBlue,
+  [ProduceCardGrowEffectType.AggressiveReduce]: buffBgRed,
+  [ProduceCardGrowEffectType.CardDrawAdd]: buffBgBlue,
+  [ProduceCardGrowEffectType.CardDrawReduce]: buffBgRed,
+  // [ProduceCardGrowEffectType.ParameterBuffMultiplePerTurnAdd]: 0,
+  // [ProduceCardGrowEffectType.ParameterBuffMultiplePerTurnReduce]: 0,
+  // [ProduceCardGrowEffectType.StaminaConsumptionDownTurnAdd]: 0,
+  // [ProduceCardGrowEffectType.StaminaConsumptionDownTurnReduce]: 0,
+  // [ProduceCardGrowEffectType.StaminaConsumptionAddTurnAdd]: 0,
+  // [ProduceCardGrowEffectType.StaminaConsumptionAddTurnReduce]: 0,
+  // [ProduceCardGrowEffectType.EffectAdd]: 0,
+  // [ProduceCardGrowEffectType.EffectDelete]: 0,
+  // [ProduceCardGrowEffectType.EffectChange]: 0,
+  // [ProduceCardGrowEffectType.CardStatusEnchantChange]: 0,
+  // [ProduceCardGrowEffectType.PlayTriggerChange]: 0,
+  // [ProduceCardGrowEffectType.PlayEffectTriggerChange]: 0,
+  // [ProduceCardGrowEffectType.PlayMovePositionTypeChange]: 0,
+  // [ProduceCardGrowEffectType.InitialAdd]: 0,
+  // [ProduceCardGrowEffectType.CostLessonBuffReduce]: 0,
+  // [ProduceCardGrowEffectType.CostLessonBuffAdd]: 0,
+  // [ProduceCardGrowEffectType.CostReviewReduce]: 0,
+  // [ProduceCardGrowEffectType.CostReviewAdd]: 0,
+  // [ProduceCardGrowEffectType.CostAggressiveReduce]: 0,
+  // [ProduceCardGrowEffectType.CostAggressiveAdd]: 0,
+  // [ProduceCardGrowEffectType.CostParameterBuffReduce]: 0,
+  // [ProduceCardGrowEffectType.CostParameterBuffAdd]: 0,
+  // [ProduceCardGrowEffectType.CostFullPowerPointReduce]: 0,
+  // [ProduceCardGrowEffectType.CostFullPowerPointAdd]: 0,
+  [ProduceCardGrowEffectType.LessonDependBlockAdd]: buffBgBlue,
+  [ProduceCardGrowEffectType.LessonDependExamCardPlayAggressiveAdd]: buffBgBlue,
+  [ProduceCardGrowEffectType.LessonDependExamReviewAdd]: buffBgBlue,
 }
