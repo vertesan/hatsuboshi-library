@@ -7,9 +7,11 @@ import { ProduceCardGrowEffectType, ProduceDescriptionType } from "~/types/proto
 export function EffectDescription({
   descriptions,
   deepScan = false,
+  className,
 }: {
   descriptions: ProduceDescriptionSegment[],
   deepScan?: boolean,
+  className?: string,
 }) {
   // const {
   //   produceDescriptions,
@@ -54,7 +56,7 @@ export function EffectDescription({
 
   return (
     <p
-      className="whitespace-pre-wrap text-xs sm:text-sm"
+      className={`whitespace-pre-wrap ${className ? className : "text-xs sm:text-sm"}`}
       dangerouslySetInnerHTML={{ __html: htmlString }}
     >
     </p>
