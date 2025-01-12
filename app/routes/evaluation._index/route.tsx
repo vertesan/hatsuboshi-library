@@ -12,7 +12,8 @@ import { constructProduceExamEffectType } from "~/data/pCardFilters"
 import { getLocalString } from "~/i18n"
 import { DroppableMemorySlots } from "~/routes/evaluation/memorySlots"
 import { OptionPannel } from "~/routes/evaluation/optionPannel"
-import { MemorySlots, ProduceCardFilter, XCustProduceCard } from "~/types"
+import { MemorySlots, XCustProduceCard } from "~/types"
+import { EvaluationCardFilter } from "~/types/data/evaluation"
 import { ProduceCardCategory, ProduceCardRarity } from "~/types/proto/penum"
 
 export const meta: MetaFunction = () => {
@@ -49,8 +50,8 @@ export default function Evaluation() {
     defaultValue: false,
     getInitialValueInEffect: false,
   })
-  const [filter, setFilter] = useLocalStorage<ProduceCardFilter>({
-    key: "evaluationFilter",
+  const [filter, setFilter] = useLocalStorage<EvaluationCardFilter>({
+    key: "evaluationFilter2",
     defaultValue: defaultEvaluationFilter,
     getInitialValueInEffect: false,
   })
@@ -215,6 +216,7 @@ export default function Evaluation() {
                 memorySlots={memorySlots}
                 setMemorySlots={setMemorySlots}
                 offset={0}
+                displayUnderX={filter.displayUnderX}
               />
             </div>
             <Popover opened={opened}>
@@ -226,6 +228,7 @@ export default function Evaluation() {
                     memorySlots={memorySlots}
                     setMemorySlots={setMemorySlots}
                     offset={6}
+                    displayUnderX={filter.displayUnderX}
                   />
                 </div>
               </Popover.Target>

@@ -192,6 +192,7 @@ const translation = {
   "Show card customization": "Show card customization",
   "Customizable Limits": "Customizable Limits",
   "Customization Eva": "Customization Eva.",
+  "Display Evaluations Under S": "Display Evaluations Under S",
   // produce phase
   "RecoveryStamina": "Stamina Recovered",
   "GetProducePoint": "P-Point Obtained",

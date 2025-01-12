@@ -28,6 +28,7 @@ import {
 import {
   MemorySlot,
   MemorySlots,
+  EvaluationCardFilter,
 } from "./data/evaluation"
 import {
   XMemoryInspector,
@@ -56,5 +57,6 @@ export type {
   UserMemorySort,
   XResultGradePattern,
   XCustProduceCard,
+  EvaluationCardFilter,
 }
 

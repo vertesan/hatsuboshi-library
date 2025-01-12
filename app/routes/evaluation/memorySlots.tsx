@@ -12,11 +12,13 @@ export const DroppableMemorySlots = forwardRef(({
   memorySlots,
   setMemorySlots,
   offset,
+  displayUnderX,
   className,
 }: {
   memorySlots: MemorySlots,
   setMemorySlots: Dispatch<SetStateAction<MemorySlots>>,
   offset: number,
+  displayUnderX?: boolean,
   className?: string,
 }, ref: LegacyRef<HTMLDivElement>) => {
   const [_, xProduceCards, xEnhancedCards] = useOutletContext<
@@ -94,14 +96,16 @@ export const DroppableMemorySlots = forwardRef(({
         <div className="text-center">
           {totalEva}
         </div>
-        {Object.entries(rankEvaluation).map(([k, v]) => {
-          const inRange = totalEva >= v.from && totalEva <= v.to
-          return (
-            <div key={k} className={`text-right ${inRange ? "text-emerald-600" : ""}`}>
-              {`${k} [${v.from}, ${v.to}]`}
-            </div>
-          )
-        })}
+        {Object.entries(rankEvaluation)
+          .filter(x => displayUnderX || x[1].from >= rankEvaluation.S.from)
+          .map(([k, v]) => {
+            const inRange = totalEva >= v.from && totalEva <= v.to
+            return (
+              <div key={k} className={`text-right ${inRange ? "text-emerald-600" : ""}`}>
+                {`${k} [${v.from}, ${v.to}]`}
+              </div>
+            )
+          })}
       </div>
     </div>
   )

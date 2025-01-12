@@ -1,12 +1,10 @@
-import { ProduceCard, ProduceExamEffect } from "~/types/proto/pmaster"
-import { UnArray } from "~/types/utils"
 import {
-  ProduceCardRarity,
-  ProducePlanType,
   ProduceCardCategory,
+  ProduceCardRarity,
   ProduceExamEffectType,
+  ProducePlanType,
 } from "~/types/proto/penum"
-import { XProduceCard } from "./pcard"
+import { ProduceCardFilter } from "./pcard"
 
 export type MemorySlot = {
   cardId: string,
@@ -17,3 +15,7 @@ export type MemorySlots = [
   MemorySlot | null, MemorySlot | null, MemorySlot | null, MemorySlot | null, MemorySlot | null, MemorySlot | null,
   MemorySlot | null, MemorySlot | null, MemorySlot | null, MemorySlot | null, MemorySlot | null, MemorySlot | null,
 ]
+
+export type EvaluationCardFilter = ProduceCardFilter & {
+  displayUnderX: boolean,
+}

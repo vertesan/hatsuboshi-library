@@ -1,7 +1,8 @@
 import { ProduceCardFilter, XCustProduceCard, XProduceCard } from "~/types";
 import { filterCustPCards } from "./pCardFilters";
+import { EvaluationCardFilter } from "~/types/data/evaluation";
 
-export const defaultEvaluationFilter: ProduceCardFilter = {
+export const defaultEvaluationFilter: EvaluationCardFilter = {
   rarities: [],
   planTypes: [],
   categories: [],
@@ -11,10 +12,11 @@ export const defaultEvaluationFilter: ProduceCardFilter = {
   characters: [],
   requirePLevel: false,
   displayCustomization: false,
+  displayUnderX: false,
 }
 
 export function filterEvaCards(
-  filter: ProduceCardFilter,
+  filter: EvaluationCardFilter,
   cards: XCustProduceCard[]
 ): XCustProduceCard[] {
   return filterCustPCards(
