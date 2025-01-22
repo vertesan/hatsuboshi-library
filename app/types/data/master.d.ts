@@ -20,9 +20,6 @@ import {
   ExamInitialDeck,
   ExamSetting,
   Produce,
-  ProduceDescription,
-  ProduceDescriptionProduceEffectType,
-  ProduceDescriptionProduceExamEffectType,
   ProduceEffectIcon,
   ProduceExamBattleScoreConfig,
   ProduceExamGimmickEffectGroup,
@@ -32,6 +29,9 @@ import {
   StoryEvent,
   ResultGradePattern,
   GuildReaction,
+  ProduceDescriptionLabel,
+  ProduceDescriptionProduceEffect,
+  ProduceDescriptionExamEffect,
 } from "~/types/proto/pmaster"
 import { XProduceCard } from "./pcard"
 
@@ -41,8 +41,8 @@ export type XMaster = {
   produceEffectIcons: { [type in ProduceEffectType]: ProduceEffectIcon },
   produces: { [id: string]: Produce },
   examInitialDecks: { [id: string]: ExamInitialDeck },
-  produceDescriptionEffectTypes: { [type in ProduceEffectType]: ProduceDescriptionProduceEffectType },
-  produceDescriptionExamEffectType: { [type in ProduceExamEffectType]: ProduceDescriptionProduceExamEffectType },
+  produceDescriptionEffectTypes: { [type in ProduceEffectType]: ProduceDescriptionProduceEffect },
+  produceDescriptionExamEffectType: { [type in ProduceExamEffectType]: ProduceDescriptionExamEffect },
   characterTrueEndBonus: { [id: string]: CharacterTrueEndBonus },
   noticeList: {
     infoList: NoticeInfo[]

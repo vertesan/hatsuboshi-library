@@ -31,7 +31,7 @@ export function constructProduceExamEffectType(
     .filter(x => descriptionDb[x] !== undefined)
     .map(effectType => ({
       value: effectType,
-      label: descriptionDb[effectType].swapName,
+      label: descriptionDb[effectType].name,
     }))
 }
 

@@ -276,6 +276,7 @@ export enum ErrorCode {
   ShopExceedMaxJewelQuantityOnRecover = 2036,
   ShopExceedPurchaseLimit = 2037,
   UserDataUpdated = 2038,
+  DmmgamesIdduplicated = 2039,
   ProduceOutdatedRentalSupportCard = 2301,
   ProduceOutdatedRentalMemory = 2302,
   ProduceHistoryNotFound = 2303,
@@ -861,6 +862,7 @@ export enum MissionType {
   AbsoluteLoginCount = 302,
   AbsoluteAchievementCount = 303,
   AbsoluteCharacterIdolAchievementCount = 304,
+  AbsoluteMainTaskCount = 305,
   AbsoluteProducerLevel = 310,
   AbsoluteIdolCardCount = 311,
   AbsoluteIdolCardLevelLimitRank = 312,
@@ -886,6 +888,11 @@ export enum MissionType {
   AbsoluteTowerTotalClearRank = 371,
   AbsoluteTowerCharacterTotalClearRank = 372,
   AbsoluteTowerClearRank = 373,
+  AbsoluteIdolCardSkin = 374,
+  AbsoluteSupportCard = 375,
+  AbsoluteTowerLayerClear = 376,
+  AbsolutePvpRateCurrentGrade = 377,
+  AbsoluteLinkSmartphoneWithDmm = 378,
   AbsoluteProduceIdolCardHighScore = 401,
   AbsoluteProducePlanTotalHighScore = 402,
   AbsoluteProducePictureBookProduceCardCount = 410,
@@ -957,6 +964,7 @@ export enum PlatformType {
   Unknown = 0,
   Ios = 1,
   Android = 2,
+  Dmm = 3,
   Other = 999,
 }
 export enum PreferenceType {
@@ -1959,6 +1967,7 @@ export enum PushType {
   MoneyFull = 2,
   DailyMission = 3,
   Login = 4,
+  PvpRateRemainingPlayCount = 5,
   WorkMiniLiveFinish = 101,
   WorkLiveStreamingFinish = 102,
 }
@@ -2065,9 +2074,7 @@ export enum ResultGrade {
 export enum ResultGradeType {
   Unknown = 0,
   ProduceScore = 1,
-  MemoryEvaluation = 2,
   MemoryParameter = 3,
-  ProduceAuditionLiveBattleScore = 4,
   ProduceIdolCardParameter = 5,
   ProduceVoteCount = 6,
 }
