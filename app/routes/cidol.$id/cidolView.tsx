@@ -71,7 +71,7 @@ export function CidolView({
                     {`${t(difficulty.produceId)}`}
                   </Title>
                 }
-                <p className="text-center">
+                <div className="text-center">
                   {
                     t("Criteria: ")
                   }
@@ -93,7 +93,7 @@ export function CidolView({
                     />
                     {difficulty.examBattleConfig.visual}
                   </span>
-                </p>
+                </div>
                 {difficulty.forceEndScore
                   ? <div className="pt-4">
                     <Alert variant="light" color="blue" icon={<IconInfoCircle />} className="max-w-[560px] mx-auto" >
