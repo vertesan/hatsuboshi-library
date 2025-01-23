@@ -19,12 +19,13 @@ export function PotentialLevelView({
   const tableRows: React.ReactNode[] = []
 
   potentials.forEach((potential, idx) => {
-    let tableData: React.ReactNode
+    const tableData: React.ReactNode[] = []
     potential.effectTypes.forEach((effectType, idx) => {
       switch (effectType) {
         case IdolCardPotentialEffectType.ProduceVoDaViGrowthRatePermil:
-          tableData = (
+          tableData.push(
             <AttributeGrowthRow
+              key={`${idx}_${effectType}`}
               vo={potential.produceVocalGrowthRatePermil}
               da={potential.produceDanceGrowthRatePermil}
               vi={potential.produceVisualGrowthRatePermil}
@@ -32,24 +33,24 @@ export function PotentialLevelView({
           )
           break
         case IdolCardPotentialEffectType.ProduceSkill:
-          tableData = (
-            <div>
+          tableData.push(
+            <div key={`${idx}_${effectType}`}>
               <EffectSpan className="pl-2" produceSkill={potential.produceSkill!} />
             </div>
           )
           break
         case IdolCardPotentialEffectType.InitialProduceItemChange:
-          tableData = (
-            <div className={`relative flex flex-row pl-2 items-center gap-2 rounded-lg ${className}`}>
+          tableData.push(
+            <div key={`${idx}_${effectType}`} className={`relative flex flex-row pl-2 items-center gap-2 rounded-lg ${className}`}>
               <ProduceEffectIcon className="flex-none relative h-8 w-8" effectType={ProduceEffectType.ProduceCardUpgrade} />
               <p className="whitespace-pre-wrap text-xs sm:text-sm">固有Pアイテム強化</p>
             </div>
           )
           break
         case IdolCardPotentialEffectType.ProduceStamina:
-          tableData = (
-            <div className="flex flex-row">
-              <span className="flex-1 text-center">
+          tableData.push(
+            <div key={`${idx}_${effectType}`} className="flex flex-row">
+              <span className="px-2 text-center">
                 <img src={staminaIcon} alt="" className="inline-block align-text-bottom h-4 w-4 mr-1" />
                 {t("Stamina") + ` + ${potential.effectValue}`}
               </span>
@@ -59,8 +60,14 @@ export function PotentialLevelView({
     })
     tableRows.push(
       <Table.Tr key={idx}>
-        <Table.Th w={80} h={55} className="text-center">{t("Level ") + potential.rank}</Table.Th>
-        <Table.Td>{tableData}</Table.Td>
+        <Table.Th w={80} h={55} className="text-center">
+          {t("Level ") + potential.rank}
+        </Table.Th>
+        <Table.Td>
+          <div className="flex flex-col gap-2 items-start justify-center">
+            {tableData}
+          </div>
+        </Table.Td>
       </Table.Tr>
     )
   })
