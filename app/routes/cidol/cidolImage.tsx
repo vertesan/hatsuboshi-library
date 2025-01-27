@@ -26,7 +26,7 @@ export function CidolImage({
   const isDefaultSkin = assetSkinId === undefined || card?.assetId === assetSkinId
   const imgAssetId = assetSkinId ?? card?.assetId ?? assetId ?? ""
   let imgUrl = getCidolFullImgUrl0(imgAssetId)
-  if (isDefaultSkin && limitLevel !== undefined && limitLevel >= IdolCardLevelLimitRank._4) {
+  if (isDefaultSkin && limitLevel !== undefined && limitLevel >= IdolCardLevelLimitRank._3) {
     imgUrl = getCidolFullImgUrl1(imgAssetId)
   }
 

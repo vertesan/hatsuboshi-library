@@ -43,7 +43,7 @@ export function CidolCard({
   const daGrowthPercentage = getGrowthPercentage(growthRates.da)
   const viGrowthPercentage = getGrowthPercentage(growthRates.vi)
 
-  const pCard = card.produceCards[limitLevel < 4 ? 0 : 1]
+  const pCard = card.produceCards[limitLevel < 3 ? 0 : 1]
   const pItem = card.produceItems[potentialLevel < 2 ? 0 : 1]
 
   const cidolImageComponent = <CidolImage limitLevel={limitLevel} potentialLevel={potentialLevel} card={card} assetSkinId={assetSkinId} showIcons />
