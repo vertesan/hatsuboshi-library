@@ -59,7 +59,8 @@ export function PvpStage({
       </div>
 
       {stage.examGimmicks
-        ? <div className="mt-2">
+        ? <div className="mt-4">
+          <p className="text-lg">{t("Gimmicks Timeline")}</p>
           <GimmicksTimeline gimmicks={stage.examGimmicks} />
         </div>
         : null
