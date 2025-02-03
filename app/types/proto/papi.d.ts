@@ -2316,6 +2316,8 @@ export type ShopPurchaseJewelRequest = {
   currencyCode: string
   localizedPricePermyriad: string
   storeTransactionId: string
+  accountId: string
+  accountSignature: string
 }
 export type ShopPurchaseJewelResponse = {
   rewardResults: pcommon.RewardResult[]
@@ -2335,6 +2337,8 @@ export type ShopRecoverPurchaseJewelRequest = {
   currencyCode: string
   localizedPricePermyriad: string
   storeTransactionId: string
+  accountId: string
+  accountSignature: string
 }
 export type ShopRecoverPurchaseJewelResponse = {
   rewardResults: pcommon.RewardResult[]
@@ -2561,6 +2565,8 @@ export type SystemCheckResponse = {
   inquiryUrl: string
   userDeleteInquiryUrl: string
   playIntegrityEnabled: boolean
+  shopProductIds: string[]
+  dmmGamesReceiptApiToken: string
 }
 type SystemCheckResponse_MaintenanceInfo = {
   inMaintenance: boolean

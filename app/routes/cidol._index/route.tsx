@@ -11,6 +11,8 @@ import { IdolCardFilter } from "~/types/data/cidol"
 import { CidolCard } from "~/routes/cidol._index/cidolCard"
 import { OptionPannel } from "~/routes/cidol._index/optionPannel"
 
+const ITEMS_PER_PAGE = 12
+
 export const meta: MetaFunction = () => {
   const title = getLocalString("meta-cidol")
   return [
@@ -42,14 +44,14 @@ export default function Cidol() {
 
   const filteredCards = filterIdolCards(filter, xIdolCards)
   filteredCards.sort((a, b) => +a.order - +b.order)
-  const paginatedCards = filteredCards.slice(((activePage - 1) * 12), activePage * 12)
+  const paginatedCards = filteredCards.slice(((activePage - 1) * ITEMS_PER_PAGE), activePage * ITEMS_PER_PAGE)
 
   return (
     <>
       <div className="p-4 flex flex-row relative">
         <div className="flex-[1_0_100%] sm:flex-[1_0_27rem] xl:pr-[456px]">
           <Pagination value={activePage} onChange={setPage}
-            total={(filteredCards.length - 1) / 12 + 1} siblings={1}
+            total={(filteredCards.length - 1) / ITEMS_PER_PAGE + 1} siblings={1}
             className={`pb-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
           />
           {filteredCards.length
@@ -73,7 +75,7 @@ export default function Cidol() {
             }
           </div>
           <Pagination value={activePage} onChange={setPage}
-            total={(filteredCards.length - 1) / 10 + 1} siblings={1}
+            total={(filteredCards.length - 1) / ITEMS_PER_PAGE + 1} siblings={1}
             className={`pt-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
           />
         </div>

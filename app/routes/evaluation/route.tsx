@@ -4,7 +4,7 @@ import {
   useLoaderData
 } from "@remix-run/react";
 import { getApiData } from "~/api";
-import { XProduceCard } from "~/types";
+import { XCustProduceCard } from "~/types";
 
 export async function clientLoader({
   request,
@@ -21,7 +21,7 @@ export default function EvaluationLayout() {
     .sort((a, b) => +a.order - +b.order)
   // use hash table to accelerate computing
   const xProduceCards = level0Cards
-    .reduce<{ [x: string]: XProduceCard }>((acc, cur) => {
+    .reduce<{ [x: string]: XCustProduceCard }>((acc, cur) => {
       if (acc[cur.id] === undefined) {
         return {
           ...acc,
@@ -32,7 +32,7 @@ export default function EvaluationLayout() {
     }, {})
   const xEnhancedCards = cards
     .filter(card => card.upgradeCount === 1)
-    .reduce<{ [x: string]: XProduceCard }>((acc, cur) => {
+    .reduce<{ [x: string]: XCustProduceCard }>((acc, cur) => {
       if (acc[cur.id] === undefined) {
         return {
           ...acc,

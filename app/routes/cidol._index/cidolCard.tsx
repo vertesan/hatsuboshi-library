@@ -8,6 +8,7 @@ import { ProduceCardIcon } from "~/components/media/produceCard";
 import { ProduceItemIcon } from "~/components/media/produceItem";
 import { MasterContext } from "~/contexts/masterContext";
 import { calcAttribute, calcGrowthPermils } from "~/data/calculation";
+import { getGrowthPercentage, getProgressPercentage } from "~/data/cidol";
 import { CidolImage } from "~/routes/cidol/cidolImage";
 import { XIdolCard } from "~/types";
 import { IdolCardLevelLimitRank, IdolCardPotentialRank } from "~/types/proto/penum";
@@ -30,19 +31,19 @@ export function CidolCard({
   const { t } = useTranslation()
   const xMaster = useContext(MasterContext)
 
-  const attrs = calcAttribute({ card, limitLevel, potentialLevel, countTEBonus, trueEndBonus: xMaster.characterTrueEndBonus })
-  const growthRates = calcGrowthPermils({ card, limitLevel, potentialLevel, countTEBonus, trueEndBonus: xMaster.characterTrueEndBonus })
+  const attrs = calcAttribute({ card, limitLevel, potentialLevel, countTEBonus, trueEndBonus: xMaster.characterTrueEndBonuses })
+  const growthRates = calcGrowthPermils({ card, limitLevel, potentialLevel, countTEBonus, trueEndBonus: xMaster.characterTrueEndBonuses })
 
   const max = Math.max(attrs.vo, attrs.da, attrs.vi)
-  const voProgressPercentage = attrs.vo / max * 100 + "%"
-  const daProgressPercentage = attrs.da / max * 100 + "%"
-  const viProgressPercentage = attrs.vi / max * 100 + "%"
+  const voProgressPercentage = getProgressPercentage(attrs.vo, max)
+  const daProgressPercentage = getProgressPercentage(attrs.da, max)
+  const viProgressPercentage = getProgressPercentage(attrs.vi, max)
 
-  const voGrowthPercentage = (growthRates.vo / 10).toFixed(1) + "%"
-  const daGrowthPercentage = (growthRates.da / 10).toFixed(1) + "%"
-  const viGrowthPercentage = (growthRates.vi / 10).toFixed(1) + "%"
+  const voGrowthPercentage = getGrowthPercentage(growthRates.vo)
+  const daGrowthPercentage = getGrowthPercentage(growthRates.da)
+  const viGrowthPercentage = getGrowthPercentage(growthRates.vi)
 
-  const pCard = card.produceCards[limitLevel < 4 ? 0 : 1]
+  const pCard = card.produceCards[limitLevel < 3 ? 0 : 1]
   const pItem = card.produceItems[potentialLevel < 2 ? 0 : 1]
 
   const cidolImageComponent = <CidolImage limitLevel={limitLevel} potentialLevel={potentialLevel} card={card} assetSkinId={assetSkinId} showIcons />
@@ -91,11 +92,11 @@ export function CidolCard({
         <div className="flex-1 flex flex-row sm:flex-col">
           <div className="flex-1 flex flex-row gap-2 justify-center sm:justify-start items-center">
             <ProduceCardIcon withHoverDescription card={pCard} className="flex-none relative h-[68px] w-[68px]" />
-            <div className="hidden sm:block flex-1 md:text-sm"><EffectDescription descriptions={pCard.produceDescriptions} /></div>
+            <div className="hidden sm:line-clamp-6 flex-1"><EffectDescription descriptions={pCard.produceDescriptions} /></div>
           </div>
           <div className="flex-1 flex flex-row gap-2 justify-center sm:justify-start items-center">
             <ProduceItemIcon withHoverDescription item={pItem} className="flex-none relative h-[68px] w-[68px]" />
-            <div className="hidden sm:block flex-1 md:text-sm"><EffectDescription descriptions={pItem.produceDescriptions} /></div>
+            <div className="hidden sm:line-clamp-6 flex-1"><EffectDescription descriptions={pItem.produceDescriptions} /></div>
           </div>
         </div>
 

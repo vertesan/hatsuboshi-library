@@ -1,4 +1,4 @@
-import { ActionIcon, Card, Pagination } from "@mantine/core"
+import { ActionIcon, Card, Divider, List, Pagination, Table } from "@mantine/core"
 import { useDisclosure, useLocalStorage } from "@mantine/hooks"
 import { MetaFunction, useOutletContext } from "@remix-run/react"
 import { IconZoom } from "@tabler/icons-react"
@@ -7,11 +7,15 @@ import { useTranslation } from "react-i18next"
 import { EffectDescription } from "~/components/media/effectDescription"
 import { ProduceCardIcon } from "~/components/media/produceCard"
 import { MasterContext } from "~/contexts/masterContext"
-import { constructProduceExamEffectType, defaultPCardFilter, filterPCards } from "~/data/pCardFilters"
+import { constructProduceExamEffectType, defaultPCardFilter, filterCustPCards } from "~/data/pCardFilters"
 import { getLocalString } from "~/i18n"
-import { ProduceCardFilter, XProduceCard } from "~/types"
+import { ProduceCardFilter } from "~/types"
+import { XCustProduceCard } from "~/types/data/pcard"
 import { ProduceCardCategory } from "~/types/proto/penum"
-import { OptionPannel } from "../pcard/optionPannel"
+import { OptionPannel } from "~/routes/pcard/optionPannel"
+import { CustomizationRow, CustomizationView } from "~/components/media/cardCustomization"
+
+const ITEMS_PER_PAGE = 20
 
 export const meta: MetaFunction = () => {
   const title = getLocalString("meta-pcard")
@@ -22,11 +26,11 @@ export const meta: MetaFunction = () => {
 
 export default function PCard() {
   const xMaster = useContext(MasterContext)
-  const [xProduceCards] = useOutletContext<[XProduceCard[]]>()
+  const [xCustProduceCards] = useOutletContext<[XCustProduceCard[]]>()
   const [opened, handlers] = useDisclosure(false)
   const [activePage, setPage] = useState(1)
   const [filter, setFilter] = useLocalStorage<ProduceCardFilter>({
-    key: "produceCardFilter",
+    key: "produceCardFilter2",
     defaultValue: defaultPCardFilter,
     getInitialValueInEffect: false,
   })
@@ -37,11 +41,11 @@ export default function PCard() {
   const { t } = useTranslation()
 
   const examEffectTypes = useMemo(() => {
-    return constructProduceExamEffectType(xProduceCards, xMaster.produceDescriptionExamEffectType)
-  }, [xProduceCards, xMaster.produceDescriptionExamEffectType])
+    return constructProduceExamEffectType(xCustProduceCards, xMaster.produceDescriptionExamEffectType)
+  }, [xCustProduceCards, xMaster.produceDescriptionExamEffectType])
 
   const filteredCards = useMemo(() => {
-    return filterPCards(filter, xProduceCards)
+    return filterCustPCards(filter, xCustProduceCards)
   }, [filter])
 
   filteredCards.sort((a, b) => {
@@ -50,15 +54,14 @@ export default function PCard() {
     }
     return +a.order - +b.order
   })
-  const onePageNum = 32
-  const paginatedCards = filteredCards.slice(((activePage - 1) * onePageNum), activePage * onePageNum)
+  const paginatedCards = filteredCards.slice(((activePage - 1) * ITEMS_PER_PAGE), activePage * ITEMS_PER_PAGE)
 
   return (
     <>
       <div className="p-4 flex flex-row relative">
         <div className="flex-[1_0_100%] sm:flex-[1_0_27rem] xl:pr-[396px]">
           <Pagination value={activePage} onChange={setPage} size="md"
-            total={(filteredCards.length - 1) / onePageNum + 1} siblings={1} boundaries={1}
+            total={(filteredCards.length - 1) / ITEMS_PER_PAGE + 1} siblings={1} boundaries={1}
             className={`pb-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
           />
 
@@ -91,6 +94,11 @@ export default function PCard() {
                       <div className="flex-1 text-sm self-start">
                         <div className="pt-2"><EffectDescription descriptions={pCard.produceDescriptions} /></div>
                       </div>
+                      {
+                        filter.displayCustomization
+                          ? <CustomizationView pCard={pCard} />
+                          : null
+                      }
                     </div>
                   </Card>
                 )
@@ -99,7 +107,7 @@ export default function PCard() {
           </div>
 
           <Pagination value={activePage} onChange={setPage} size="md"
-            total={(filteredCards.length - 1) / onePageNum + 1} siblings={1} boundaries={1}
+            total={(filteredCards.length - 1) / ITEMS_PER_PAGE + 1} siblings={1} boundaries={1}
             className={`pt-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
           />
         </div>

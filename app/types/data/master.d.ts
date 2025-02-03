@@ -20,9 +20,6 @@ import {
   ExamInitialDeck,
   ExamSetting,
   Produce,
-  ProduceDescription,
-  ProduceDescriptionProduceEffectType,
-  ProduceDescriptionProduceExamEffectType,
   ProduceEffectIcon,
   ProduceExamBattleScoreConfig,
   ProduceExamGimmickEffectGroup,
@@ -32,19 +29,21 @@ import {
   StoryEvent,
   ResultGradePattern,
   GuildReaction,
+  ProduceDescriptionLabel,
+  ProduceDescriptionProduceEffect,
+  ProduceDescriptionExamEffect,
 } from "~/types/proto/pmaster"
 import { XProduceCard } from "./pcard"
 
 export type XMaster = {
   version: string,
   characters: { [id: string]: Character },
-  produceDescriptions: { [id: string]: ProduceDescription },
   produceEffectIcons: { [type in ProduceEffectType]: ProduceEffectIcon },
   produces: { [id: string]: Produce },
   examInitialDecks: { [id: string]: ExamInitialDeck },
-  produceDescriptionEffectTypes: { [type in ProduceEffectType]: ProduceDescriptionProduceEffectType },
-  produceDescriptionExamEffectType: { [type in ProduceExamEffectType]: ProduceDescriptionProduceExamEffectType },
-  characterTrueEndBonus: { [id: string]: CharacterTrueEndBonus },
+  produceDescriptionEffectTypes: { [type in ProduceEffectType]: ProduceDescriptionProduceEffect },
+  produceDescriptionExamEffectType: { [type in ProduceExamEffectType]: ProduceDescriptionExamEffect },
+  characterTrueEndBonuses: { [id: string]: CharacterTrueEndBonus[] },
   noticeList: {
     infoList: NoticeInfo[]
     bugList: NoticeInfo[]
@@ -73,6 +72,7 @@ export type XMaster = {
   achievements: { [id: string]: Achievement & { progress: AchievementProgress[] } },
   resultGradePatterns: XResultGradePattern[],
   guildReactions: GuildReaction[],
+  produceDescriptionLabels: { [id: string]: ProduceDescriptionLabel },
 }
 
 export type XResultGradePattern = ResultGradePattern & {

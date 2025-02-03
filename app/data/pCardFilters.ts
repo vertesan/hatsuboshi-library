@@ -1,5 +1,6 @@
 import { ProduceCardFilter, XMaster, XProduceCard } from "~/types";
-import { ProduceExamEffectType } from "~/types/proto/penum";
+import { XCustProduceCard } from "~/types/data/pcard";
+import { ProduceCardRarity, ProduceExamEffectType } from "~/types/proto/penum";
 
 export const defaultPCardFilter: ProduceCardFilter = {
   rarities: [],
@@ -10,10 +11,11 @@ export const defaultPCardFilter: ProduceCardFilter = {
   grades: [],
   characters: [],
   requirePLevel: false,
+  displayCustomization: true,
 }
 
 export function constructProduceExamEffectType(
-  cards: XProduceCard[],
+  cards: XCustProduceCard[],
   descriptionDb: XMaster['produceDescriptionExamEffectType']
 ) {
   const effectTypes = new Set<ProduceExamEffectType>()
@@ -29,15 +31,19 @@ export function constructProduceExamEffectType(
     .filter(x => descriptionDb[x] !== undefined)
     .map(effectType => ({
       value: effectType,
-      label: descriptionDb[effectType].swapName,
+      label: descriptionDb[effectType].name,
     }))
 }
 
-export function filterPCards(
+export function filterCustPCards(
   filter: ProduceCardFilter,
-  cards: XProduceCard[]
-): XProduceCard[] {
+  cards: XCustProduceCard[]
+): XCustProduceCard[] {
   const results = cards.filter(card => {
+    // customization count
+    if (filter.displayCustomization) {
+      if (card.maxCustomizeCount === 0) return false
+    }
     // rarity
     if (filter.rarities.length > 0) {
       if (!filter.rarities.includes(card.rarity)) return false
@@ -65,8 +71,12 @@ export function filterPCards(
     }
 
     // grade
-    if (filter.grades.length > 0) {
-      if (!filter.grades.includes(card.upgradeCount)) return false
+    if (filter.displayCustomization) {
+      if (card.upgradeCount === 0) return false
+    } else {
+      if (filter.grades.length > 0) {
+        if (!filter.grades.includes(card.upgradeCount)) return false
+      }
     }
 
     // effect type

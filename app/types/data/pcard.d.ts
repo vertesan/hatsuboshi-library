@@ -1,4 +1,11 @@
-import { ProduceCard, ProduceExamEffect } from "~/types/proto/pmaster"
+import {
+  ProduceCard,
+  ProduceCardCustomize,
+  ProduceCardGrowEffect,
+  ProduceDescriptionProduceCardGrowEffect,
+  ProduceExamEffect,
+  ProduceCardStatusEnchant,
+} from "~/types/proto/pmaster"
 import { UnArray } from "~/types/utils"
 import {
   ProduceCardRarity,
@@ -13,6 +20,17 @@ export type XProduceCard = Omit<ProduceCard, 'playEffects'> & {
   })[]
 }
 
+export type XCustProduceCard = XProduceCard & {
+  customizeEvaluation: number,
+  customizeEffects: (ProduceCardCustomize & {
+    growEffects: (ProduceCardGrowEffect & {
+      examEffect?: ProduceExamEffect
+      growEffectDescription: ProduceDescriptionProduceCardGrowEffect
+      produceCardStatusEnchant?: ProduceCardStatusEnchant
+    })[]
+  })[][]
+}
+
 export type ProduceCardFilter = {
   rarities: ProduceCardRarity[],
   planTypes: ProducePlanType[],
@@ -22,4 +40,5 @@ export type ProduceCardFilter = {
   effectTypes: ProduceExamEffectType[],
   characters: string[],
   requirePLevel: boolean,
+  displayCustomization: boolean,
 }

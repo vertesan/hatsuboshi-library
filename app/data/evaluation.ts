@@ -5,7 +5,8 @@ export const rankEvaluation = {
   "A+": { from: 147, to: 198 },
   "S": { from: 182, to: 214 },
   "S+": { from: 182, to: 247 },
-  "SS": {from: 217, to: 268},
+  "SS": { from: 217, to: 268 },
+  "SS+": {from: 217, to: 286},
 }
 
 export const evaluationMap: {

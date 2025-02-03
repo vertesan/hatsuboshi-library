@@ -1,4 +1,4 @@
-import { Unarray, XIdolCard, XMaster, XResultGradePattern } from "~/types";
+import { UnArray, XIdolCard, XMaster, XResultGradePattern } from "~/types";
 import { IdolCardLevelLimitEffectType, IdolCardLevelLimitRank, IdolCardPotentialEffectType, IdolCardPotentialRank, ProduceEffectType } from "~/types/proto/penum";
 import { ProduceExamBattleScoreConfig } from "~/types/proto/pmaster";
 
@@ -13,7 +13,7 @@ export function calcAttribute({
   countTEBonus: boolean,
   limitLevel: IdolCardLevelLimitRank,
   potentialLevel: IdolCardPotentialRank,
-  trueEndBonus?: XMaster['characterTrueEndBonus'],
+  trueEndBonus?: XMaster['characterTrueEndBonuses'],
 }) {
   const status = {
     vo: card.produceVocal,
@@ -42,11 +42,11 @@ export function calcAttribute({
   }
 
   if (countTEBonus && trueEndBonus) {
-    const teBonus = trueEndBonus[`character_true_end_bonus-${card.characterId}`]
-    status.vo += teBonus.produceVocal
-    status.da += teBonus.produceDance
-    status.vi += teBonus.produceVisual
-    status.st += teBonus.produceStamina
+    const teBonuses = trueEndBonus[`character_true_end_bonus-${card.characterId}`]
+    status.vo += teBonuses.reduce((acc, cur) => acc + cur.produceVocal, 0)
+    status.da += teBonuses.reduce((acc, cur) => acc + cur.produceDance, 0)
+    status.vi += teBonuses.reduce((acc, cur) => acc + cur.produceVisual, 0)
+    status.st += teBonuses.reduce((acc, cur) => acc + cur.produceStamina, 0)
   }
 
   return status
@@ -63,7 +63,7 @@ export function calcGrowthPermils({
   countTEBonus: boolean,
   limitLevel: IdolCardLevelLimitRank,
   potentialLevel: IdolCardPotentialRank,
-  trueEndBonus?: XMaster['characterTrueEndBonus'],
+  trueEndBonus?: XMaster['characterTrueEndBonuses'],
 }) {
   const rates = {
     vo: card.produceVocalGrowthRatePermil,
@@ -71,26 +71,26 @@ export function calcGrowthPermils({
     vi: card.produceVisualGrowthRatePermil,
   }
 
-  let limitEffect = {
-    vo: 0, da: 0, vi: 0,
-  }
-  for (let i = 1; i <= limitLevel; i++) {
-    const level = card.levelLimits[i - 1]
-    if (level.produceSkill) {
-      level.produceSkill.produceEffects.forEach(effect => {
-        if (effect.produceEffectType === ProduceEffectType.LessonSpChangeRatePermilAddition) {
-          limitEffect = {
-            vo: effect.effectValueMin,
-            da: effect.effectValueMin,
-            vi: effect.effectValueMin,
-          }
-        }
-      })
-    }
-  }
-  rates.vo += limitEffect.vo
-  rates.da += limitEffect.da
-  rates.vi += limitEffect.vi
+  // let limitEffect = {
+  //   vo: 0, da: 0, vi: 0,
+  // }
+  // for (let i = 1; i <= limitLevel; i++) {
+  //   const level = card.levelLimits[i - 1]
+  //   if (level.produceSkill) {
+  //     level.produceSkill.produceEffects.forEach(effect => {
+  //       if (effect.produceEffectType === ProduceEffectType.LessonSpChangeRatePermilAddition) {
+  //         limitEffect = {
+  //           vo: effect.effectValueMin,
+  //           da: effect.effectValueMin,
+  //           vi: effect.effectValueMin,
+  //         }
+  //       }
+  //     })
+  //   }
+  // }
+  // rates.vo += limitEffect.vo
+  // rates.da += limitEffect.da
+  // rates.vi += limitEffect.vi
 
   for (let i = 1; i <= potentialLevel; i++) {
     const potential = card.potentials[i - 1]
@@ -103,9 +103,9 @@ export function calcGrowthPermils({
 
   if (countTEBonus && trueEndBonus) {
     const teBonus = trueEndBonus[`character_true_end_bonus-${card.characterId}`]
-    rates.vo += teBonus.produceVocalGrowthRatePermil
-    rates.da += teBonus.produceDanceGrowthRatePermil
-    rates.vi += teBonus.produceVisualGrowthRatePermil
+    rates.vo += teBonus.reduce((acc, cur) => acc + cur.produceVocalGrowthRatePermil, 0)
+    rates.da += teBonus.reduce((acc, cur) => acc + cur.produceDanceGrowthRatePermil, 0)
+    rates.vi += teBonus.reduce((acc, cur) => acc + cur.produceVisualGrowthRatePermil, 0)
   }
 
   return rates
@@ -225,7 +225,7 @@ export function calcFinalAuditionRequiredScore({
 
   const calcRequiredScore = (
     scoreEva: number,
-    level: Unarray<typeof evaluationSteps>,
+    level: UnArray<typeof evaluationSteps>,
     acc: number,
   ) => {
     const requiredScore = Math.ceil((scoreEva - acc) / level.multiplier * 100)

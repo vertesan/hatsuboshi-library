@@ -10,23 +10,27 @@ import { ExamCostType, ProduceCardCategory, ProduceCardRarity, ProduceExamEffect
 import { BlockIcon } from "./blockIcon"
 import { ExamEffectIcon } from "./buffIcon"
 import { CostNumberIcon } from "./costNumberIcon"
+import { XCustProduceCard } from "~/types/data/pcard"
+import { CustomizationView } from "~/components/media/cardCustomization"
 
 export const ProduceCardIcon = memo(_ProduceCardIcon)
 
 /** Remember to set position (relative or absolute) attribute */
-function _ProduceCardIcon({
+function _ProduceCardIcon<C extends boolean>({
   card,
   character = "kllj",
   withHoverDescription,
   closeDelay = 50,
   className,
+  showCustom = false as C,
   ...props
 }: {
-  card: XProduceCard,
+  card: C extends true ? XCustProduceCard : XProduceCard,
   character?: string,
   withHoverDescription?: boolean,
   closeDelay?: number,
   className?: string,
+  showCustom?: C,
 } & Omit<React.ComponentPropsWithoutRef<'div'>, 'className'>) {
 
   const applyedAssetId = card.isCharacterAsset
@@ -97,6 +101,11 @@ function _ProduceCardIcon({
       <HoverCard.Dropdown onClick={(e) => { e.preventDefault() }}>
         <p className="font-medium pb-1 text-md dark:text-white">{card.name}</p>
         <EffectDescription descriptions={card.produceDescriptions} />
+        {
+          showCustom
+            ? <CustomizationView pCard={card as XCustProduceCard} hideEva />
+            : null
+        }
       </HoverCard.Dropdown>
     </HoverCard>
     : cardElement
@@ -154,25 +163,32 @@ function PlayEffectsIcon({
       (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamLesson || effect.produceExamTriggerId) &&
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlock &&
       effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount &&
-      effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive &&
-      effect.produceExamEffect.effectType !== ProduceExamEffectType.StanceLock &&
-      (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamCardMove || card.playEffects.length <= 3)
+      effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive
     ).map(effect =>
       effect.produceExamEffect.effectType
-    )
+    ).reverse()
   if (card.produceCardStatusEnchantId) {
     displayEffects.push(ProduceExamEffectType.ExamAddGrowEffect)
+  }
+  let mbPercentage = 0
+  if (displayEffects.length > 3) {
+    mbPercentage = 4 * (30 * displayEffects.length - 100) / (displayEffects.length - 1)
   }
   return (
     displayEffects.length > 0
       ? <div className={`${className}`}>
-        <div className="flex flex-col w-full h-full justify-end">
+        <div className="flex flex-col-reverse w-full h-full justify-start">
           {displayEffects.map((effectType, idx) => {
             return (
               <ExamEffectIcon
                 key={idx}
                 className="aspect-square w-full object-contain"
                 effectType={effectType}
+                style={
+                  displayEffects.length > 3 && idx > 0
+                    ? { "marginBottom": `-${mbPercentage}%` }
+                    : undefined
+                }
               />
             )
           })}

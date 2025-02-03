@@ -464,16 +464,6 @@ export type ProduceConsumptionResult = {
   beforeQuantity: number
   afterQuantity: number
 }
-export type ProduceDescriptionElement = {
-  type: penum.ProduceDescriptionType
-  text: string
-  targetId: string
-  targetLevel: number
-  examEffectType: penum.ProduceExamEffectType
-  produceCardCategory: penum.ProduceCardCategory
-  isOnlyOutGame: boolean
-  changeColor: boolean
-}
 export type ProduceDescriptionSegment = {
   produceDescriptionType: penum.ProduceDescriptionType
   examDescriptionType: penum.ExamDescriptionType
@@ -522,6 +512,7 @@ export type ProduceEffectResult = {
   afterProduceCards: ProduceCard[]
   providedRewards: ProduceRewardResult[]
   effectNumbers: number[]
+  ineffective: boolean
 }
 export type ProduceExamEndResult = {
   stepType: penum.ProduceStepType

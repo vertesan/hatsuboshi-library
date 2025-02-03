@@ -14,10 +14,10 @@ import {
   SupportCard,
   SupportCardProduceSkillLevelAssist
 } from "../proto/pmaster"
-import { XProduceCard } from "./pcard"
+import { XCustProduceCard } from "./pcard"
 
 export type XSupportCard = SupportCard & {
-  produceCards: XProduceCard[],
+  produceCards: XCustProduceCard[],
   produceItems: ProduceItem[],
   produceEvents: (
     ProduceEventSupportCard &
@@ -45,4 +45,5 @@ export type SupportCardFilter = {
   producePhaseType: ProducePhaseType[],
   level: number,
   welfareAsSr: boolean,
+  showCustom: boolean,
 }

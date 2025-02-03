@@ -12,19 +12,21 @@ export function CsprtCard({
   matchedSkills,
   showEnhanced = false,
   disableLink = false,
+  showCustom = false,
   level,
 }: {
   card: XSupportCard,
   matchedSkills?: Set<number>,
   showEnhanced?: boolean,
   disableLink?: boolean,
+  showCustom?: boolean,
   level?: number,
 }) {
   const { t } = useTranslation()
   if (level && level > supportCardMaxLevel[card.rarity]) {
     level = supportCardMaxLevel[card.rarity]
   }
-  const csprtImageComponent = <CsprtImage level={level} card={card} showIcons showUpgraded={showEnhanced} />
+  const csprtImageComponent = <CsprtImage level={level} card={card} showCustom={showCustom} showIcons showUpgraded={showEnhanced} />
   return (
     <Card
       className="w-full max-w-[600px] xl:w-[580px] shadow-sm"

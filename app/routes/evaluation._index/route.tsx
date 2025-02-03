@@ -2,7 +2,7 @@ import { DndContext, DragEndEvent } from "@dnd-kit/core"
 import { Button, Divider, Popover } from "@mantine/core"
 import { useLocalStorage } from "@mantine/hooks"
 import { MetaFunction, useOutletContext } from "@remix-run/react"
-import { Fragment, useContext, useMemo, useState } from "react"
+import { useContext, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { DraggableProduceCard } from "~/components/media/draggableProduceCard"
 import { MasterContext } from "~/contexts/masterContext"
@@ -12,7 +12,8 @@ import { constructProduceExamEffectType } from "~/data/pCardFilters"
 import { getLocalString } from "~/i18n"
 import { DroppableMemorySlots } from "~/routes/evaluation/memorySlots"
 import { OptionPannel } from "~/routes/evaluation/optionPannel"
-import { MemorySlots, ProduceCardFilter, XProduceCard } from "~/types"
+import { MemorySlots, XCustProduceCard } from "~/types"
+import { EvaluationCardFilter } from "~/types/data/evaluation"
 import { ProduceCardCategory, ProduceCardRarity } from "~/types/proto/penum"
 
 export const meta: MetaFunction = () => {
@@ -26,7 +27,7 @@ export default function Evaluation() {
   const xMaster = useContext(MasterContext)
   const { t } = useTranslation()
   const [level0Cards, xProduceCards, xEnhancedCards] = useOutletContext<
-    [XProduceCard[], { [x: string]: XProduceCard }, { [x: string]: XProduceCard }]
+    [XCustProduceCard[], { [x: string]: XCustProduceCard }, { [x: string]: XCustProduceCard }]
   >()
   const [opened, setOpened] = useState(false)
   const [popupHint, setPopupHint] = useState("")
@@ -49,8 +50,8 @@ export default function Evaluation() {
     defaultValue: false,
     getInitialValueInEffect: false,
   })
-  const [filter, setFilter] = useLocalStorage<ProduceCardFilter>({
-    key: "evaluationFilter",
+  const [filter, setFilter] = useLocalStorage<EvaluationCardFilter>({
+    key: "evaluationFilter2",
     defaultValue: defaultEvaluationFilter,
     getInitialValueInEffect: false,
   })
@@ -80,7 +81,7 @@ export default function Evaluation() {
           acc[cur.evaluation].push(cur)
         }
         return acc
-      }, {} as { [x: number]: XProduceCard[] })
+      }, {} as { [x: number]: XCustProduceCard[] })
   }, [filter])
 
   const onDrop = (event: DragEndEvent) => {
@@ -215,6 +216,7 @@ export default function Evaluation() {
                 memorySlots={memorySlots}
                 setMemorySlots={setMemorySlots}
                 offset={0}
+                displayUnderX={filter.displayUnderX}
               />
             </div>
             <Popover opened={opened}>
@@ -226,6 +228,7 @@ export default function Evaluation() {
                     memorySlots={memorySlots}
                     setMemorySlots={setMemorySlots}
                     offset={6}
+                    displayUnderX={filter.displayUnderX}
                   />
                 </div>
               </Popover.Target>

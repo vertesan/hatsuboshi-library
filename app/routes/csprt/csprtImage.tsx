@@ -14,12 +14,14 @@ export function CsprtImage({
   level,
   showIcons = false,
   showUpgraded = false,
+  showCustom = false,
 }: {
   card: XSupportCard | undefined,
   assetId?: string,
   level?: number,
   showIcons?: boolean,
   showUpgraded?: boolean,
+  showCustom?: boolean,
 }) {
   let produceItem, produceCard, produceEvents
   if (showIcons && card) {
@@ -70,6 +72,7 @@ export function CsprtImage({
             {
               produceCard
                 ? <ProduceCardIcon
+                  showCustom={showCustom}
                   card={produceCard}
                   withHoverDescription
                   onClick={(e) => { e.preventDefault() }}

@@ -8,6 +8,7 @@ export type User = {
   publicUserId: string
   tutorialClearedTime: string
   receivedTutorialRewardIdolCard: boolean
+  dmmGamesId: string
 }
 export type UserActionPoint = {
   quantity: number
