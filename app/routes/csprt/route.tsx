@@ -1,10 +1,13 @@
+import { Title } from "@mantine/core";
 import {
   ClientLoaderFunctionArgs,
   Outlet,
-  useLoaderData
+  useLoaderData,
+  useRouteError
 } from "@remix-run/react";
 import { useContext } from "react";
 import { getApiData } from "~/api";
+import { ErrorMessage } from "~/components/general/errorMessage";
 import { MasterContext } from "~/contexts/masterContext";
 
 export async function clientLoader({
@@ -12,6 +15,16 @@ export async function clientLoader({
 }: ClientLoaderFunctionArgs) {
   const data = await getApiData("csprt")
   return data
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  console.error(error);
+  return (
+    <div className="p-4">
+      <ErrorMessage />
+    </div>
+  );
 }
 
 export default function CsprtLayout() {
