@@ -1,10 +1,12 @@
 import {
   ClientLoaderFunctionArgs,
   Outlet,
-  useLoaderData
+  useLoaderData,
+  useRouteError
 } from "@remix-run/react";
 import { useContext } from "react";
 import { getApiData } from "~/api";
+import { ErrorBoundaryMessage } from "~/components/general/ErrorBoundaryMessage";
 import { MasterContext } from "~/contexts/masterContext";
 
 export async function clientLoader({
@@ -12,6 +14,16 @@ export async function clientLoader({
 }: ClientLoaderFunctionArgs) {
   const data = await getApiData("cidol")
   return data
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  console.error(error);
+  return (
+    <div className="p-4">
+      <ErrorBoundaryMessage />
+    </div>
+  );
 }
 
 export default function CidolLayout() {

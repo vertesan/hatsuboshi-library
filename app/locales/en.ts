@@ -193,6 +193,10 @@ const translation = {
   "Customizable Limits": "Customizable Limits",
   "Customization Eva": "Customization Eva.",
   "Display Evaluations Under S": "Display Evaluations Under S",
+  "Oops!": "Oops!",
+  "Our server is currently too busy to handle your request this time, please try again after a few minutes.": "Our server is currently too busy to handle your request this time, please try again after a few minutes.",
+  "If you are really in hurry, try to disable cache on your developer tools pannel to facilitate recovery because this error is cached for 150 seconds.": "If you are really in hurry, try to disable cache on your developer tools pannel to facilitate recovery because this error is cached for 150 seconds.",
+  "We apologize for any inconvenience potentially caused.": "We apologize for any inconvenience potentially caused.",
   // produce phase
   "RecoveryStamina": "Stamina Recovered",
   "GetProducePoint": "P-Point Obtained",

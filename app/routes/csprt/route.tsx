@@ -1,4 +1,3 @@
-import { Title } from "@mantine/core";
 import {
   ClientLoaderFunctionArgs,
   Outlet,
@@ -7,7 +6,7 @@ import {
 } from "@remix-run/react";
 import { useContext } from "react";
 import { getApiData } from "~/api";
-import { ErrorMessage } from "~/components/general/errorMessage";
+import { ErrorBoundaryMessage } from "~/components/general/ErrorBoundaryMessage";
 import { MasterContext } from "~/contexts/masterContext";
 
 export async function clientLoader({
@@ -22,7 +21,7 @@ export function ErrorBoundary() {
   console.error(error);
   return (
     <div className="p-4">
-      <ErrorMessage />
+      <ErrorBoundaryMessage />
     </div>
   );
 }
