@@ -46,6 +46,9 @@ type AuthLoginResponse_Term = {
   name: string
   url: string
 }
+export type AuthMigrateDmmGamesIdResponse = {
+  token: string
+}
 export type AuthMigrateRequest = {
   onetimeToken: string
   publicUserId: string
@@ -863,6 +866,7 @@ export type HomeEnterResponse = {
   hasProduceCampaign: boolean
   hasExpireGashaPoint: boolean
   towerNoti: boolean
+  personalMessageCount: number
   commonResponse: papicommon.Response
 }
 type HomeEnterResponse_FeatureMaintenance = {
@@ -1383,6 +1387,7 @@ export type PhotoCreateRequest = {
   userPhotoIds: string[]
   costumeId: string
   costumeHeadId: string
+  characterId: string
 }
 export type PhotoCreateResponse = {
   commonResponse: papicommon.Response
@@ -1502,6 +1507,7 @@ export type ProduceHighScoreCharacter = {
   highScoreRewards: ProduceHighScoreReward[]
 }
 export type ProduceHighScoreGetResponse = {
+  produceHighScoreEventType: penum.ProduceHighScoreEventType
   titleAssetId: string
   rank: number
   highScore: number
@@ -1511,6 +1517,8 @@ export type ProduceHighScoreGetResponse = {
   missionGroupId: string
   dailyMissionGroupId: string
   missionDailyReleaseGroupId: string
+  coinGasha: pcommon.CoinGasha
+  consumptionItemId: string
   result: ProduceHighScoreResult
   startupNotifications: pcommon.StartupNotification[]
   startTime: string
@@ -1566,6 +1574,9 @@ export type ProduceHistoryRequest = {
 export type ProduceHistoryResponse = {
   produceHistory: pcommon.ProduceHistory
   commonResponse: papicommon.Response
+}
+export type ProduceListRentalMemoryRequest = {
+  isHighScoreRush: boolean
 }
 export type ProduceListRentalMemoryResponse = {
   memories: ProduceListRentalMemoryResponse_RentalMemory[]
@@ -1685,6 +1696,7 @@ export type ProduceResultRequest = {
   isMemoryProtected: boolean
   memoryTagId: string
   memoryNumber: number
+  isMemoryExchanged: boolean
 }
 export type ProduceResultResponse = {
   rewardResults: pcommon.RewardResult[]
@@ -1704,6 +1716,7 @@ type ProduceResultResponse_HighScoreUpdateResult = {
   characterHighScoreRewards: ProduceResultResponse_HighScoreReward[]
   highScoreRewardResults: pcommon.RewardResult[]
   characterHighScoreRewardResults: pcommon.RewardResult[]
+  highScoreRushGoldRewardResults: pcommon.RewardResult[]
 }
 type ProduceResultResponse_HighScoreReward = {
   score: number
@@ -1729,6 +1742,7 @@ export type ProduceStartRequest = {
   isChangeCostumeLive: boolean
   isChangeCostumeTraining: boolean
   challengeProduceItemIds: string[]
+  isHighScoreRush: boolean
   clientProduceUuid: string
 }
 type ProduceStartRequest_Memory = {
@@ -1852,6 +1866,7 @@ export type ProduceStepPresentEndRequest = {
   produceUuid: string
 }
 export type ProduceStepPresentEndResponse = {
+  rewardResults: pcommon.ProduceRewardResult[]
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
@@ -1945,8 +1960,17 @@ export type ProduceTopResponse = {
   storyEventType: penum.StoryEventType
   storyEventConsumptionItemId: string
   storyEventBonus: pcommon.StoryEventBonus
+  produceHighScore: ProduceTopResponse_ProduceHighScore
   produceHighScoreCharacterIds: string[]
   commonResponse: papicommon.Response
+}
+type ProduceTopResponse_ProduceHighScore = {
+  eventType: penum.ProduceHighScoreEventType
+  characterIds: string[]
+  produceGroupIds: string[]
+  produceItemIds: string[]
+  startTime: string
+  endTime: string
 }
 export type ProduceUnlockPictureBookLiveRequest = {
   musicId: string
@@ -2067,6 +2091,7 @@ export type PvpRateEndResponse = {
   fanCount: number
   playReward: pcommon.RewardResult
   rateRewards: PvpRateRateReward[]
+  isRateProvideDisable: boolean
   commonResponse: papicommon.Response
 }
 export type PvpRateGetHistoryRequest = {
@@ -2623,6 +2648,23 @@ export type TowerEndResponse = {
   results: pcommon.RewardResult[]
   commonResponse: papicommon.Response
 }
+export type TowerGetLayerIdolCardRankingRequest = {
+  towerId: string
+  number: number
+  idolCardId: string
+}
+export type TowerGetLayerIdolCardRankingResponse = {
+  towerRankingResult: TowerRankingResult
+  commonResponse: papicommon.Response
+}
+export type TowerGetLayerIdolCardRankingTopRequest = {
+  towerId: string
+  number: number
+}
+export type TowerGetLayerIdolCardRankingTopResponse = {
+  rankingCaches: TowerRankingCache[]
+  commonResponse: papicommon.Response
+}
 export type TowerGetLayerRequest = {
   towerId: string
   number: number
@@ -2634,6 +2676,7 @@ export type TowerGetLayerResponse = {
   winTimelineAssetId: string
   loseTimelineAssetId: string
   examTimelineAssetId: string
+  rankingHighestScore: string
   commonResponse: papicommon.Response
 }
 type TowerGetLayerResponse_Exam = {
@@ -2644,6 +2687,54 @@ type TowerGetLayerResponse_Exam = {
   produceExamGimmickEffectGroupId: string
   produceExamBattleConfigId: string
   produceExamBattleNpcGroupId: string
+}
+export type TowerGetPastSeasonLayerIdolCardRankingRequest = {
+  seasonStartYear: string
+  seasonStartMonth: string
+  towerId: string
+  number: number
+  idolCardId: string
+}
+export type TowerGetPastSeasonLayerIdolCardRankingResponse = {
+  towerRankingResult: TowerRankingResult
+  commonResponse: papicommon.Response
+}
+export type TowerGetPastSeasonLayerIdolCardRankingTopRequest = {
+  seasonStartYear: string
+  seasonStartMonth: string
+  towerId: string
+  number: number
+}
+export type TowerGetPastSeasonLayerIdolCardRankingTopResponse = {
+  rankingCaches: TowerRankingCache[]
+  commonResponse: papicommon.Response
+}
+export type TowerGetPastSeasonRankingRequest = {
+  seasonStartYear: string
+  seasonStartMonth: string
+  towerId: string
+}
+export type TowerGetPastSeasonRankingResponse = {
+  towerRankingResult: TowerRankingResult
+  commonResponse: papicommon.Response
+}
+export type TowerGetRankingDeckRequest = {
+  towerId: string
+  number: number
+  idolCardId: string
+  publicUserId: string
+}
+export type TowerGetRankingDeckResponse = {
+  memories: pcommon.Memory[]
+  isDefaultMemory: boolean
+  commonResponse: papicommon.Response
+}
+export type TowerGetRankingRequest = {
+  towerId: string
+}
+export type TowerGetRankingResponse = {
+  towerRankingResult: TowerRankingResult
+  commonResponse: papicommon.Response
 }
 export type TowerListLayerPlayerHistoriesRequest = {
   towerId: string
@@ -2658,6 +2749,7 @@ export type TowerListLayersRequest = {
 }
 export type TowerListLayersResponse = {
   layers: TowerListLayersResponse_TowerLayer[]
+  towerRankingSeasons: TowerRankingSeason[]
   commonResponse: papicommon.Response
 }
 type TowerListLayersResponse_TowerLayer = {
@@ -2672,6 +2764,29 @@ type TowerListLayersResponse_TowerLayerRank = {
   examBattleRank: number
   examTriggerCounts: pcommon.ExamTriggerCount[]
   reward: pcommon.Reward
+}
+export type TowerRank = {
+  profile: pcommon.SimpleProfile
+  rank: number
+  score: string
+}
+export type TowerRankingCache = {
+  idolCardId: string
+  ranks: TowerRank[]
+  selfHighestScore: string
+  selfHighestRank: number
+}
+export type TowerRankingResult = {
+  towerRanks: TowerRank[]
+  selfRank: number
+  selfHighestRank: number
+  selfHighestScore: string
+}
+export type TowerRankingSeason = {
+  startTime: string
+  endTime: string
+  aggregationEndTime: string
+  inAggregation: boolean
 }
 export type TowerReceiveLayerCountRewardRequest = {
   targetTowerId: string
@@ -2709,6 +2824,7 @@ export type TowerTopResponse = {
   nextTotalClearRank: number
   nextReward: pcommon.Reward
   startupNotifications: pcommon.StartupNotification[]
+  towerRankingSeasons: TowerRankingSeason[]
   commonResponse: papicommon.Response
 }
 type TowerTopResponse_Tower = {
@@ -2818,6 +2934,26 @@ export type TutorialUnlockFeatureResponse = {
 }
 export type UserGetResponse = {
   userData: papicommon.UserData
+}
+export type UserListMessageRequest = {
+  offset: number
+}
+export type UserListMessageResponse = {
+  personalMessages: UserListMessageResponse_PersonalMessage[]
+  count: number
+  offset: number
+  hasNext: boolean
+  commonResponse: papicommon.Response
+}
+type UserListMessageResponse_PersonalMessage = {
+  userPersonalMessageId: string
+  message: string
+}
+export type UserReadMessageRequest = {
+  userPersonalMessageIds: string[]
+}
+export type UserReadMessageResponse = {
+  commonResponse: papicommon.Response
 }
 export type WorkFinishResponse = {
   finishResults: WorkFinishResult[]

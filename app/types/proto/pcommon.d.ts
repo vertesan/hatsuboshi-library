@@ -6,19 +6,13 @@ export type Achievement = {
   achievementId: string
   threshold: number
 }
-export type AntiCheatAnalysisResult = {
-  lines: string[]
-}
-export type AntiCheatCacheResult = {
-  results: AntiCheatCacheResult_CacheResult[]
-}
-type AntiCheatCacheResult_CacheResult = {
-  id: string
-  summary: AntiCheatSummaryResult
-  critical: AntiCheatCriticalResult
-}
 export type AntiCheatCriticalResult = {
   records: AntiCheatCriticalResult_Record[]
+  logs: AntiCheatCriticalResult_Log[]
+}
+type AntiCheatCriticalResult_Log = {
+  id: string
+  lines: string[]
 }
 type AntiCheatCriticalResult_Record = {
   tag: string
@@ -417,6 +411,7 @@ export type Memory = {
   idolCardLevelLimitRank: penum.IdolCardLevelLimitRank
   idolCardPotentialRank: penum.IdolCardPotentialRank
   noProduceHistory: boolean
+  isHighScoreRush: boolean
   produceCard: ProduceCard
   produceCardPhaseType: penum.ProduceMemoryProduceCardPhaseType
   abilities: MemoryAbility[]
@@ -511,6 +506,8 @@ export type ProduceEffectResult = {
   beforeProduceCards: ProduceCard[]
   afterProduceCards: ProduceCard[]
   providedRewards: ProduceRewardResult[]
+  beforeHighScoreGold: number
+  afterHighScoreGold: number
   effectNumbers: number[]
   ineffective: boolean
 }
@@ -552,6 +549,8 @@ export type ProduceHistory = {
   visualGrowthRatePermil: number
   maxStamina: number
   voteCount: number
+  isHighScoreRush: boolean
+  highScoreGold: number
 }
 type ProduceHistory_Audition = {
   stepType: penum.ProduceStepType
@@ -677,6 +676,12 @@ export type StoryEventBonus = {
 }
 type StoryEventBonus_CharacterBonus = {
   characterIds: string[]
+  permil: number
+  idolCardRarities: penum.IdolCardRarity[]
+  potentialRankBonusPermils: StoryEventBonus_CharacterBonus_PotentialRankBonusPermil[]
+}
+type StoryEventBonus_CharacterBonus_PotentialRankBonusPermil = {
+  potentialRank: penum.IdolCardPotentialRank
   permil: number
 }
 type StoryEventBonus_IdolCardBonus = {

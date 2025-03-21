@@ -79,6 +79,7 @@ export type Character = {
   masterAchievementId: string
   idolCardIds: string[]
   supportCardIds: string[]
+  changeCostumeConditionSetId: string
   viewConditionSetId: string
   normalCostumeHeadId: string
   trainingCostumeHeadId: string
@@ -98,6 +99,8 @@ export type Character = {
   storyPositionY: number
   produceHighScorePositionX: number
   produceHighScorePositionY: number
+  produceHighScoreRushPositionX: number
+  produceHighScoreRushPositionY: number
   order: number
 }
 export type CharacterAdv = {
@@ -116,6 +119,8 @@ export type CharacterColor = {
   gradientColor2: string
   textColor: string
   labelTextColor: string
+  transitionGradientColor1: string
+  transitionGradientColor2: string
 }
 export type CharacterColorList = {
   list: CharacterColor[]
@@ -337,7 +342,10 @@ export type EffectGroup = {
   name: string
   examEffectType: penum.ProduceExamEffectType
   produceEffectType: penum.ProduceEffectType
+  examEffectTypes: penum.ProduceExamEffectType[]
+  produceEffectTypes: penum.ProduceEffectType[]
   hiddenFilter: boolean
+  produceCardGrowEffectTypes: penum.ProduceCardGrowEffectType[]
   order: number
 }
 export type EffectGroupList = {
@@ -438,6 +446,13 @@ export type ExamSetting = {
   examDrawCountLimitFixed: boolean
   examAutoPlayEnableVersion: number
   examAutoPlaySearchCommandLimit: number
+  overPreservationReleasePlayableValueAdd: number
+  overPreservationReleaseBlockAdd: number
+  overPreservationReleaseEnthusiastic: number
+  examOverPreservationLessonValueMultiplePermil: number
+  examOverPreservationStaminaMultiplePermil: number
+  overPreservationReleaseToFullPowerGrowEffectLessonAdd: number
+  examAutoPlaySearchCommandPlanLimits: number[]
 }
 export type ExamSettingList = {
   list: ExamSetting[]
@@ -473,20 +488,6 @@ export type ForceAppVersion = {
 }
 export type ForceAppVersionList = {
   list: ForceAppVersion[]
-}
-export type GashaAnimation = {
-  rarity: penum.GashaAnimationRarity
-  keepRatio: number
-  ratio1: number
-  ratio2: number
-  ratio3: number
-  ratio4: number
-  freezeRatio: number
-  freezeRatio1: number
-  freezeRatio2: number
-}
-export type GashaAnimationList = {
-  list: GashaAnimation[]
 }
 export type GashaAnimationStep = {
   rarity: penum.GashaAnimationRarity
@@ -853,6 +854,7 @@ export type Item = {
   coinGashaId: string
   shopCoinGashaId: string
   storyEventId: string
+  produceHighScoreEventId: string
   idolCardRarity: penum.IdolCardRarity
   supportCardRarity: penum.SupportCardRarity
   gashas: Item_Gasha[]
@@ -1499,6 +1501,7 @@ export type ProduceCardRandomPoolList = {
 }
 export type ProduceCardSearch = {
   id: string
+  cardRarities: penum.ProduceCardRarity[]
   produceCardIds: string[]
   upgradeCounts: number[]
   planType: penum.ProducePlanType
@@ -1683,6 +1686,9 @@ export type ProduceDrink = {
   produceDescriptions: pcommon.ProduceDescriptionSegment[]
   unlockProducerLevel: number
   effectGroupIds: string[]
+  originSupportCardId: string
+  libraryHidden: boolean
+  viewStartTime: string
   order: string
 }
 export type ProduceDrinkEffect = {
@@ -1806,6 +1812,7 @@ export type ProduceExamAutoTriggerEvaluation = {
   type: penum.ExamPlayType
   examStatusEnchantProduceExamTriggerId: string
   coefficientPermil: number
+  count: number
 }
 export type ProduceExamAutoTriggerEvaluationList = {
   list: ProduceExamAutoTriggerEvaluation[]
@@ -1973,6 +1980,7 @@ export type ProduceGroupLiveCommonList = {
 export type ProduceHighScore = {
   id: string
   name: string
+  produceHighScoreEventType: penum.ProduceHighScoreEventType
   order: number
 }
 export type ProduceHighScoreList = {
@@ -1998,6 +2006,7 @@ export type ProduceItem = {
   isUpgraded: boolean
   effectGroupIds: string[]
   isChallenge: boolean
+  isHighScoreRush: boolean
   viewStartTime: string
   isLimited: boolean
   order: string
@@ -2048,6 +2057,7 @@ export type ProduceList = {
 export type ProduceLive = {
   musicId: string
   type: penum.ProduceLiveType
+  forceUnlockConditionSetId: string
   unlockConditionSetId: string
   thumbnailAssetId: string
   environmentAssetId: string
@@ -2208,6 +2218,7 @@ export type ProduceStepEventDetail = {
   produceStepEventSuggestionIds: string[]
   supportCardId: string
   eventType: penum.ProduceEventType
+  eventCharacterType: penum.ProduceEventCharacterType
   isBusinessExcellent: boolean
   produceDescriptions: pcommon.ProduceDescriptionSegment[]
 }
@@ -2546,6 +2557,8 @@ export type Setting = {
   meishiEditCustomUpdateUnlockConditionSetID: string
   dmmGamesFaqURL: string
   dmmGamesInquiryURL: string
+  towerRankingDisplayCount: number
+  towerRankingDeckDisplayCount: number
   produceDailyMemoryRentalLimit: number
   produceDailyFreeContinueCount: number
   produceContinueItemID: string
@@ -2573,6 +2586,7 @@ export type Setting = {
   produceDeckNameLengthLimit: number
   produceDescriptionProduceStepCategoryEnable: boolean
   produceCardEffectCancelEnable: boolean
+  produceMemoryProduceCardProducerLevelLimitDisable: boolean
   gashaPickupStoryCampaignCharacterDearnessLevel: number
   gashaAnimationReversalSsrPermil: number
   gashaAnimationReversalPickUpProduceIdolSsrPermil: number
@@ -2585,6 +2599,7 @@ export type Setting = {
   jewelMaxQuantityForFree: number
   shopPurchasableLimitAgeThreshold1: number
   shopPurchasableLimitAgeThreshold2: number
+  shopExpireEmphasisHour: number
   guildMemberLimitCount: number
   guildJoinRequestLimitCount: number
   guildJoinRequestReceiveLimitCount: number
@@ -2616,6 +2631,8 @@ export type Setting = {
   pushPvpRateRemainingPlayCountNotifyHour: number
   pushPvpRateRemainingPlayCountNotifyMinutes: number
   pushPvpRateRemainingPlayCountDoNotNotifyNoLoginDay: number
+  aprilFool2025TransitionStoryID: string
+  aprilFool2025ProduceLiveMusicID: string
 }
 export type SettingList = {
   list: Setting[]
@@ -2707,6 +2724,7 @@ export type StoryGroup = {
   storyType: penum.StoryType
   storyEventType: penum.StoryEventType
   isCampaign: boolean
+  eventStoryFilterType: penum.EventStoryFilterType
   title: string
   headerAssetId: string
   storyThumbnailAssetId: string
