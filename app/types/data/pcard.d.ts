@@ -27,6 +27,7 @@ export type XCustProduceCard = XProduceCard & {
       examEffect?: ProduceExamEffect
       growEffectDescription: ProduceDescriptionProduceCardGrowEffect
       produceCardStatusEnchant?: ProduceCardStatusEnchant
+      addDescriptions?: ProduceDescriptionSegment[]
     })[]
   })[][]
 }

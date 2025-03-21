@@ -64,7 +64,9 @@ export function CustomizationRow({
                               ? <EffectDescription descriptions={growEffect.produceCardStatusEnchant.produceDescriptions} />
                               : customizeEffect.description !== ""
                                 ? customizeEffect.description.replaceAll("\\n", "")
-                                : growEffect.growEffectDescription.produceCardCustomizeDescription.replaceAll("\\n", "")
+                                : growEffect.addDescriptions
+                                  ? <EffectDescription descriptions={growEffect.addDescriptions} />
+                                  : growEffect.growEffectDescription.produceCardCustomizeDescription.replaceAll("\\n", "")
                           }
                           {growEffect.value !== 0
                             ? permilGrowEffects.includes(growEffect.effectType)
