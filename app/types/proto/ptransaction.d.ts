@@ -153,6 +153,7 @@ export type UserMemory = {
   liveCostumeHeadId: string
   reshootingCount: number
   musicId: string
+  isHighScoreRush: boolean
 }
 type UserMemory_MemoryAbility = {
   id: string
@@ -292,6 +293,7 @@ export type UserProduceProgress = {
   trueEndProduceTypes: penum.ProduceType[]
   hasForceLiveCommonIdolCard: boolean
   disableForceLiveCommon: boolean
+  produceHighScoreId: string
   produceCampaigns: pcommon.ProduceCampaign[]
   status: penum.ProduceProgressStatus
   produceScore: number
@@ -333,6 +335,7 @@ export type UserProduceProgress = {
   producePointReduceValueRatePermil: number
   producePointGetDisableTurn: number
   voteCount: number
+  highScoreGold: number
   characterProduceSkills: UserProduceProgress_ProduceSkill[]
   dearnessStoryDearnessLevel: number
   idolCardProduceSkills: UserProduceProgress_ProduceSkill[]
@@ -510,6 +513,7 @@ export type UserProduceProgressSchedule = {
   refreshStamina: number
   auditionRank: number
   stepSelectNumber: number
+  maxAuditionStepSelectNumber: number
 }
 export type UserProduceProgressShop = {
   positionNumber: number
@@ -523,6 +527,7 @@ export type UserProduceProgressShop = {
   effectResourceDiscountPermils: number[]
   nextPrice: number
   lock: boolean
+  highScoreReward: boolean
 }
 export type UserProduceProgressSupportCard = {
   number: number

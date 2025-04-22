@@ -49,6 +49,7 @@ export enum AssetKind {
 export enum AuthProviderType {
   Unknown = 0,
   BandaiNamcoId = 1,
+  DmmgamesId = 2,
 }
 export enum CharacterDetailType {
   Unknown = 0,
@@ -122,6 +123,7 @@ export enum ConditionType {
   SupportCardLevelLimitRank = 21,
   MemoryCount = 22,
   ProduceCard = 23,
+  Music = 24,
   CharacterProducePlayCount = 26,
   CharacterProduceClearCount = 27,
   ProduceClearCount = 28,
@@ -276,7 +278,9 @@ export enum ErrorCode {
   ShopExceedMaxJewelQuantityOnRecover = 2036,
   ShopExceedPurchaseLimit = 2037,
   UserDataUpdated = 2038,
-  DmmgamesIdduplicated = 2039,
+  DmmGamesIdDuplicated = 2039,
+  DmmGamesIdLinkAccountAlreadyExists = 2040,
+  DmmGamesIdLocalUserDataNotLinked = 2041,
   ProduceOutdatedRentalSupportCard = 2301,
   ProduceOutdatedRentalMemory = 2302,
   ProduceHistoryNotFound = 2303,
@@ -286,6 +290,12 @@ export enum ErrorCode {
   GvgRaidStageAlreadyCleared = 3000,
   BnidlinkUserNotFound = 5000,
   BnidlinkMasterDataInvalid = 5001,
+}
+export enum EventStoryFilterType {
+  Unknown = 0,
+  StoryEvent = 1,
+  SeasonEvent = 2,
+  GvgRaid = 3,
 }
 export enum EventType {
   Unknown = 0,
@@ -325,6 +335,7 @@ export enum ExamCostType {
   ExamCardPlayAggressive = 3,
   ExamParameterBuff = 4,
   ExamFullPowerPoint = 5,
+  ExamParameterBuffMultiplePerTurn = 6,
 }
 export enum ExamDescriptionType {
   Unknown = 0,
@@ -361,6 +372,7 @@ export enum ExamIdolStatusType {
   Concentration = 1,
   Preservation = 2,
   FullPower = 3,
+  OverPreservation = 4,
 }
 export enum ExamMotionTargetType {
   Unknown = 0,
@@ -721,6 +733,7 @@ export enum LinkType {
   PhotoIdol = 34,
   GvgRaid = 35,
   ShopCostume = 36,
+  PhotoLiveSelect = 37,
 }
 export enum LoginBonusType {
   Unknown = 0,
@@ -1063,6 +1076,8 @@ export enum ProduceCardGrowEffectType {
   LessonDependBlockAdd = 50,
   LessonDependExamCardPlayAggressiveAdd = 51,
   LessonDependExamReviewAdd = 52,
+  CostParameterBuffMultiplePerTurnAdd = 53,
+  CostParameterBuffMultiplePerTurnReduce = 54,
 }
 export enum ProduceCardMoveEffectTriggerType {
   Unknown = 0,
@@ -1343,6 +1358,7 @@ export enum ProduceEffectType {
   AuditionVoteCountDown = 120,
   SelfLessonStaminaUp = 121,
   SelfLessonStaminaDown = 122,
+  HighScoreGoldAddition = 123,
 }
 export enum ProduceEventCharacterType {
   Unknown = 0,
@@ -1414,6 +1430,21 @@ export enum ProduceExamAutoEvaluationType {
   DrawCardCount = 28,
   RemainTurn = 29,
   ExamAntiDebuff = 30,
+  StanceLock = 31,
+  ExamBlockRestriction = 32,
+  ExamLessonValueMultiple = 33,
+  ExamReviewMultiple = 34,
+  ExamEnthusiasticAdditive = 35,
+  ExamEnthusiasticMultiple = 36,
+  ExamFullPowerLessonMultipleAdditive = 37,
+  ExamConcentrationLessonMultipleAdditive = 38,
+  ExamLessonBuffAdditive = 39,
+  ExamParameterBuffAdditive = 40,
+  ExamAggressiveAdditive = 41,
+  ExamReviewAdditive = 42,
+  ExamFullPowerPointAdditive = 43,
+  ExamGrowEffectLessonAddAdditive = 44,
+  ExamLessonValueMultipleDependReviewOrAggressive = 45,
 }
 export enum ProduceExamEffectType {
   Unknown = 0,
@@ -1522,6 +1553,35 @@ export enum ProduceExamEffectType {
   ExamParameterBuffReduce = 154,
   ExamLessonValueMultipleDown = 155,
   ExamAddGrowEffect = 156,
+  ExamParameterBuffPerSearchCount = 157,
+  ExamLessonBuffPerSearchCount = 158,
+  ExamReviewPerSearchCount = 159,
+  ExamAggressivePerSearchCount = 160,
+  ExamBlockPerSearchCount = 161,
+  ExamFullPowerPointPerSearchCount = 162,
+  ExamLessonDependBlockAndSearchCount = 163,
+  ExamLessonDependAggressiveAndSearchCount = 164,
+  ExamLessonDependReviewAndSearchCount = 165,
+  ExamEffectPerSearchCount = 166,
+  ExamOverPreservation = 167,
+  ExamParameterBuffDependLessonBuff = 168,
+  ExamAggressiveDependReview = 169,
+  ExamEnthusiasticAdditive = 170,
+  ExamEnthusiasticMultiple = 171,
+  ExamFullPowerLessonMultipleAdditive = 172,
+  ExamConcentrationLessonMultipleAdditive = 173,
+  ExamLessonBuffAdditive = 174,
+  ExamParameterBuffAdditive = 175,
+  ExamAggressiveAdditive = 176,
+  ExamReviewAdditive = 177,
+  ExamFullPowerPointAdditive = 178,
+  ExamGrowEffectLessonAddAdditive = 179,
+  ExamParameterBuffMultiplePerTurnReduce = 180,
+  ExamLessonValueMultipleDependReviewOrAggressive = 181,
+  ExamReviewMultiple = 182,
+  ExamMultipleEnthusiasticLesson = 183,
+  ExamMultipleConcentrationLesson = 184,
+  ExamMultipleFullPowerLesson = 185,
 }
 export enum ProduceExamFieldStatusType {
   Unknown = 0,
@@ -1560,6 +1620,8 @@ export enum ProduceExamFieldStatusType {
   FullPowerChangeCountUp = 50,
   CardSearchCountUp = 51,
   PlayCardSearch = 52,
+  ParameterBuffMultiplePerTurnUp = 53,
+  EnthusiasticUp = 54,
 }
 export enum ProduceExamPhaseType {
   Unknown = 0,
@@ -1600,6 +1662,12 @@ export enum ProduceExamPhaseType {
   ExamStanceChangeFullPower = 39,
   ExamStanceReset = 40,
   ExamTurnSkip = 41,
+  ExamEndTurnTimer = 42,
+  ExamEndTurnInterval = 43,
+  ExamPlayCountIntervalAfter = 44,
+  ExamStanceChangeFromConcentration = 45,
+  ExamStanceChangeFromPreservation = 46,
+  ExamStanceChangeFromFullPower = 47,
   None = 999,
 }
 export enum ProduceExamResultType {
@@ -1611,6 +1679,11 @@ export enum ProduceExamResultType {
 export enum ProduceExamTriggerCheckType {
   Unknown = 0,
   Not = 1,
+}
+export enum ProduceHighScoreEventType {
+  Unknown = 0,
+  Normal = 1,
+  Rush = 2,
 }
 export enum ProduceItemEffectType {
   Unknown = 0,
@@ -1775,6 +1848,7 @@ export enum ProduceResourceType {
   ParameterDance = 7,
   ParameterVisual = 8,
   Vote = 9,
+  HighScoreGold = 100,
   CardUpgrade = 997,
   CardDelete = 998,
   Set = 999,
@@ -2175,6 +2249,7 @@ export enum StoryType {
   Birthday = 3,
   ExtraDearnessStory = 4,
   DearnessStory = 5,
+  AprilFool = 6,
   StoryEvent = 9,
   GvgRaid = 10,
   ProduceHighScore = 11,
