@@ -175,6 +175,10 @@ const extraEffectNameMap: { [x: number]: ProduceExamEffectType } = {
   [ProduceExamEffectType.ExamCardMove]: ProduceExamEffectType.ExamCardCreateId,
   [ProduceExamEffectType.ExamStaminaRecoverMultiple]: ProduceExamEffectType.ExamStaminaRecoverFix,
   [ProduceExamEffectType.ExamLessonFullPowerPoint]: ProduceExamEffectType.ExamLesson,
+  [ProduceExamEffectType.ExamBlockValueMultiple]: ProduceExamEffectType.ExamBlock,
+  [ProduceExamEffectType.ExamReviewValueMultiple]: ProduceExamEffectType.ExamReview,
+  [ProduceExamEffectType.ExamLessonValueMultiple]: ProduceExamEffectType.ExamLesson,
+  [ProduceExamEffectType.ExamAggressiveValueMultiple]: ProduceExamEffectType.ExamCardPlayAggressive,
 }
 
 const extraGrowEffectNameMap: { [x: number]: ProduceExamEffectType } = {
