@@ -85,6 +85,8 @@ export type Event = {
   missionPanelSheetGroupId: string
   storyGroupId: string
   itemId: string
+  characterIds: string[]
+  dearnessMissionPanelSheetGroupIds: string[]
   startTime: string
   endTime: string
   fixRankTime: string
@@ -359,6 +361,8 @@ export type MeishiBase = {
   userPhotoId: string
   userMovieId: string
   meishiBaseColorId: string
+  beforeIdolCardSkinId: string
+  afterIdolCardSkinId: string
 }
 export type MeishiObject = {
   type: penum.MeishiObjectType
@@ -438,6 +442,7 @@ export type ProduceCampaign = {
   remainingCount: number
   isHalf: boolean
   memoryRentalCount: number
+  appealRewards: Reward[]
   memoryRerollCount: number
   startTime: string
   endTime: string
@@ -585,6 +590,9 @@ export type ProduceLessonGrowthResult = {
   growthRateBonusVocal: number
   growthRateBonusDance: number
   growthRateBonusVisual: number
+  auditionParameterGrowthRateVocal: number
+  auditionParameterGrowthRateDance: number
+  auditionParameterGrowthRateVisual: number
 }
 export type ProduceMemoryRewardResult = {
   providedRewards: ProduceRewardResult[]

@@ -882,12 +882,23 @@ export type HomeListEventResponse = {
 export type HomeLoginResponse = {
   friendResult: HomeLoginResponse_FriendResult
   producerLevelUnlocks: pcommon.ProducerLevelUnlock[]
+  produceNextIdolAuditionMasterSeasonResult: HomeLoginResponse_ProduceNextIdolAuditionMasterSeasonResult
   commonResponse: papicommon.Response
 }
 type HomeLoginResponse_FriendResult = {
   receivedFriendCoinQuantity: number
   supportCardRentalCount: number
   memoryRentalCount: number
+}
+type HomeLoginResponse_ProduceNextIdolAuditionMasterSeasonResult = {
+  produceNextIdolAuditionMasterRankingSeasonId: string
+  characterResults: HomeLoginResponse_ProduceNextIdolAuditionMasterSeasonResult_CharacterResult[]
+}
+type HomeLoginResponse_ProduceNextIdolAuditionMasterSeasonResult_CharacterResult = {
+  characterId: string
+  rank: number
+  score: number
+  rewards: pcommon.Reward[]
 }
 export type HomeSetCharactersRequest = {
   characters: HomeSetCharactersRequest_HomeCharacter[]
@@ -911,6 +922,7 @@ export type IdolCardProbability = {
   tenPermyriadProbability: number
   rewards: pcommon.Reward[]
   isPickup: boolean
+  isProbabilityUp: boolean
 }
 export type IdolCardRarityProbability = {
   rarity: penum.IdolCardRarity
@@ -1117,6 +1129,8 @@ type MeishiUpdateRequest_MeishiBase = {
   userPhotoId: string
   userMovieId: string
   meishiBaseColorId: string
+  beforeIdolCardSkinId: string
+  afterIdolCardSkinId: string
 }
 type MeishiUpdateRequest_Object = {
   objectType: penum.MeishiObjectType
@@ -1388,6 +1402,12 @@ export type PhotoCreateRequest = {
   costumeId: string
   costumeHeadId: string
   characterId: string
+  unitCharacters: PhotoCreateRequest_UnitCharacter[]
+}
+type PhotoCreateRequest_UnitCharacter = {
+  characterId: string
+  costumeId: string
+  costumeHeadId: string
 }
 export type PhotoCreateResponse = {
   commonResponse: papicommon.Response
@@ -1431,6 +1451,7 @@ export type ProduceChangeCostumeRequest = {
   produce: boolean
   live: boolean
   training: boolean
+  changeCostumeLiveUnitCharacterIds: string[]
 }
 export type ProduceChangeCostumeResponse = {
   commonResponse: papicommon.Response
@@ -1503,6 +1524,7 @@ export type ProduceHighScoreCharacter = {
   characterId: string
   rank: number
   highScore: number
+  receivedRewardScore: number
   rankRewards: ProduceHighScoreRankReward[]
   highScoreRewards: ProduceHighScoreReward[]
 }
@@ -1511,6 +1533,7 @@ export type ProduceHighScoreGetResponse = {
   titleAssetId: string
   rank: number
   highScore: number
+  receivedRewardScore: number
   highScoreRewards: ProduceHighScoreReward[]
   rankRewards: ProduceHighScoreRankReward[]
   characters: ProduceHighScoreCharacter[]
@@ -1606,6 +1629,36 @@ type ProduceListRentalSupportCardResponse_RentalSupportCard = {
   followedBy: boolean
   isGuildMember: boolean
 }
+export type ProduceNextIdolAuditionMasterListRankRewardRequest = {
+  characterId: string
+}
+export type ProduceNextIdolAuditionMasterListRankRewardResponse = {
+  rank: number
+  rankRewards: ProduceNextIdolAuditionMasterListRankRewardResponse_Reward[]
+  commonResponse: papicommon.Response
+}
+type ProduceNextIdolAuditionMasterListRankRewardResponse_Reward = {
+  upperRank: number
+  lowerRank: number
+  borderScore: number
+  rewards: pcommon.Reward[]
+}
+export type ProduceNextIdolAuditionMasterRankingRequest = {
+  characterId: string
+}
+export type ProduceNextIdolAuditionMasterRankingResponse = {
+  selfRank: ProduceNextIdolAuditionMasterRankingResponse_Rank
+  ranks: ProduceNextIdolAuditionMasterRankingResponse_Rank[]
+  commonResponse: papicommon.Response
+}
+type ProduceNextIdolAuditionMasterRankingResponse_Rank = {
+  rank: number
+  score: number
+  grade: penum.ResultGrade
+  idolCardSkinId: string
+  userMemoryId: string
+  profile: pcommon.SimpleProfile
+}
 export type ProduceNextRequest = {
   produceUuid: string
   stepType: penum.ProduceStepType
@@ -1668,6 +1721,16 @@ export type ProduceReadDearnessStoryResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
+export type ProduceReportDearnessBoostEventRequest = {
+  produceUuid: string
+}
+export type ProduceReportDearnessBoostEventResponse = {
+  missionPanelSheetGroupId: string
+  missions: pmaster.Mission[]
+  groupRewardResults: pcommon.RewardResult[]
+  rewardResults: pcommon.RewardResult[]
+  commonResponse: papicommon.Response
+}
 export type ProduceReportGuildMissionRequest = {
   produceUuid: string
 }
@@ -1697,6 +1760,7 @@ export type ProduceResultRequest = {
   memoryTagId: string
   memoryNumber: number
   isMemoryExchanged: boolean
+  useCharacterFocusCamera: boolean
 }
 export type ProduceResultResponse = {
   rewardResults: pcommon.RewardResult[]
@@ -1743,6 +1807,7 @@ export type ProduceStartRequest = {
   isChangeCostumeTraining: boolean
   challengeProduceItemIds: string[]
   isHighScoreRush: boolean
+  changeCostumeLiveUnitCharacterIds: string[]
   clientProduceUuid: string
 }
 type ProduceStartRequest_Memory = {
@@ -2009,6 +2074,7 @@ export type ProduceUseDrinkResponse = {
 }
 export type ProduceViewPictureBookLiveRequest = {
   musicId: string
+  characterId: string
 }
 export type ProduceViewPictureBookLiveResponse = {
   commonResponse: papicommon.Response
@@ -2315,6 +2381,17 @@ export type ShopCheckPurchaseJewelResponse = {
   isUnderage: boolean
   commonResponse: papicommon.Response
 }
+export type ShopGetPurchasePlatformTransactionRequest = {
+  storeTransactionIds: string[]
+}
+export type ShopGetPurchasePlatformTransactionResponse = {
+  platformTransactions: ShopGetPurchasePlatformTransactionResponse_PlatformTransaction[]
+  commonResponse: papicommon.Response
+}
+type ShopGetPurchasePlatformTransactionResponse_PlatformTransaction = {
+  storeTransactionId: string
+  paymentPendingReceiptDialogTimingType: penum.PaymentPendingReceiptDialogTimingType
+}
 export type ShopItem = {
   shopId: string
   id: string
@@ -2477,6 +2554,7 @@ export type StoryEventTopResponse = {
   idolCardSkinBeforeAssetId: string
   idolCardSkinAfterAssetId: string
   maxIdolCardPotentialRank: penum.IdolCardPotentialRank
+  appealImageAssetId: string
   consumptionItemId: string
   storyEventPointRewards: pcommon.StoryEventPointReward[]
   currentPoint: string
@@ -2530,6 +2608,13 @@ export type StoryReadResponse = {
   rewardResults: pcommon.RewardResult[]
   commonResponse: papicommon.Response
 }
+export type StoryUnlockDearnessStoryRequest = {
+  characterId: string
+  dearnessLevel: number
+}
+export type StoryUnlockDearnessStoryResponse = {
+  commonResponse: papicommon.Response
+}
 export type StoryUnlockProduceStoryRequest = {
   produceStoryId: string
 }
@@ -2559,11 +2644,24 @@ type SupportCardExchangeRequest_Parameter = {
 export type SupportCardExchangeResponse = {
   commonResponse: papicommon.Response
 }
+export type SupportCardListDeckRankingResponse = {
+  rankings: SupportCardListDeckRankingResponse_Ranking[]
+  commonResponse: papicommon.Response
+}
+type SupportCardListDeckRankingResponse_Ranking = {
+  produceGroupId: string
+  supportCardRanks: SupportCardListDeckRankingResponse_SupportCardRank[]
+}
+type SupportCardListDeckRankingResponse_SupportCardRank = {
+  supportCardId: string
+  rank: number
+}
 export type SupportCardProbability = {
   supportCardId: string
   tenPermyriadProbability: number
   rewards: pcommon.Reward[]
   isPickup: boolean
+  isProbabilityUp: boolean
 }
 export type SupportCardRarityProbability = {
   rarity: penum.SupportCardRarity

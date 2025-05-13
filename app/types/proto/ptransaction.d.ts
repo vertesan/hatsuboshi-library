@@ -28,6 +28,7 @@ export type UserCharacter = {
   characterId: string
   fanCount: string
   trueEndProduceTypes: penum.ProduceType[]
+  dearnessPoint: number
 }
 export type UserCharacterCostume = {
   characterId: string
@@ -61,7 +62,9 @@ export type UserDearnessStory = {
   characterId: string
   dearnessLevel: number
   satisfyDearnessProduceConditionSet: boolean
+  readTime: string
   read: boolean
+  itemUnlocked: boolean
 }
 export type UserGashaButton = {
   gashaId: string
@@ -72,6 +75,8 @@ export type UserGashaButton = {
   discountTodayDrawCount: number
   discountTotalDrawCount: number
   redrawCount: number
+  dailyLoginAccumulateCount: number
+  discountDailyLoginAccumulateCount: number
 }
 export type UserGuild = {
   joinType: penum.GuildJoinType
@@ -154,10 +159,17 @@ export type UserMemory = {
   reshootingCount: number
   musicId: string
   isHighScoreRush: boolean
+  unitCharacters: UserMemory_UnitCharacter[]
+  useCharacterFocusCamera: boolean
 }
 type UserMemory_MemoryAbility = {
   id: string
   level: number
+}
+type UserMemory_UnitCharacter = {
+  characterId: string
+  liveCostumeId: string
+  liveCostumeHeadId: string
 }
 export type UserMemoryInherit = {
   userMemoryId: string
@@ -247,6 +259,8 @@ export type UserProduceCardReward = {
 export type UserProduceCharacter = {
   characterId: string
   produceId: string
+  playCount: number
+  clearCount: number
   unlockChallengeSlotNumber: number
 }
 export type UserProduceDrink = {
@@ -262,6 +276,7 @@ export type UserProduceGroupCharacter = {
 export type UserProduceIdolCard = {
   produceId: string
   idolCardId: string
+  clearCount: number
   challengeProduceItemIds: string[]
   liveType: penum.ProduceLiveType
 }
@@ -272,6 +287,8 @@ export type UserProduceLive = {
   musicId: string
   liveType: penum.ProduceLiveType
   viewed: boolean
+  unlockCharacterIds: string[]
+  viewedCharacterIds: string[]
 }
 export type UserProduceMemoryDeck = {
   produceType: penum.ProduceType
@@ -316,6 +333,7 @@ export type UserProduceProgress = {
   isChangeCostumeLive: boolean
   isChangeCostumeTraining: boolean
   rentalPublicUserId: string
+  changeCostumeLiveUnitCharacterIds: string[]
   vocal: number
   dance: number
   visual: number
@@ -350,6 +368,7 @@ export type UserProduceProgress = {
   produceDrinkGetDisableTurn: number
   auditionEffectParameterBonusPermil: number
   auditionNpcEnhancePermil: number
+  auditionParameterGrowthRatePermil: number
   eventSchoolStaminaPermil: number
   eventActivityProducePointPermil: number
   eventBusinessVoteCountPermil: number
@@ -369,6 +388,7 @@ export type UserProduceProgress = {
   lessonPresentAdditionalProduceCardRewardCount: number
   customizeAdditionalProduceCardCount: number
   customizeDiscountPermils: number[]
+  enableIdolCardProduceCardCustomize: boolean
   shopProduceCardUpgradePrice: number
   shopProduceCardDeletePrice: number
   shopDiscountPermils: number[]
@@ -390,6 +410,7 @@ type UserProduceProgress_ExamStatusEnchant = {
 type UserProduceProgress_ProduceItem = {
   produceItemId: string
   fireCount: number
+  reactionCount: number
 }
 type UserProduceProgress_ProduceSkill = {
   id: string

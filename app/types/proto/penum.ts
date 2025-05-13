@@ -226,6 +226,18 @@ export enum CountType {
   MainTaskProducer3 = 101,
   MainTaskProducer4 = 102,
 }
+export enum DearnessMotionType {
+  Unknown = 0,
+  Wait1 = 1,
+  Wait2 = 2,
+  Reaction = 3,
+  ReactionOnce = 4,
+  WaitLookAround = 5,
+  MultipleTaps = 6,
+  Transition = 7,
+  WaitOnce = 8,
+  WaitLoop = 9,
+}
 export enum DeckRecommendType {
   Unknown = 0,
   Manual = 1,
@@ -308,6 +320,7 @@ export enum EventType {
   StoryEventBoxGasha = 7,
   StoryEventGuildMission = 8,
   GvgRaid = 9,
+  DearnessBoost = 10,
 }
 export enum ExamCommandType {
   Unknown = 0,
@@ -422,6 +435,13 @@ export enum ExamPlayType {
   ManualPlayLessonHard = 3,
   ManualPlayAudition = 4,
 }
+export enum ExchangeItemCategoryType {
+  Unknown = 0,
+  All = 1,
+  ResourceType = 2,
+  ItemType = 3,
+  Other = 999,
+}
 export enum ExchangeItemResetCheckStatus {
   Unknown = 0,
   Open = 1,
@@ -454,6 +474,7 @@ export enum FeatureMaintenanceType {
   MissionDailyRelease = 17,
   StoryCampaign = 18,
   GvgRaid = 19,
+  Dearness = 20,
 }
 export enum FriendStatusType {
   Unknown = 0,
@@ -489,6 +510,7 @@ export enum GashaButtonAppealType {
   DrawableCount = 2,
   CurrentStep = 3,
   FixSsr = 4,
+  DiscountDrawableCount = 5,
 }
 export enum GashaButtonType {
   Unknown = 0,
@@ -509,6 +531,7 @@ export enum GashaLimitType {
   Total = 2,
   Daily = 3,
   DailyAccumulation = 4,
+  DailyLoginAccumulation = 5,
 }
 export enum GashaType {
   Unknown = 0,
@@ -688,6 +711,7 @@ export enum ItemType {
   IdolCardPotentialRankUpgrade = 17,
   SupportCardLevelLimitRankUpgrade = 18,
   MemoryInherit = 19,
+  DearnessStoryUnlock = 20,
   ProduceBoostRewardSupportCardEnhancePoint = 102,
   ProduceBoostRewardIdolCardLevelLimitMaterial = 103,
 }
@@ -919,6 +943,12 @@ export enum MissionType {
   ProduceConditionClear = 999,
   ProduceConditionClearBeforeLiveEvaluation = 1000,
 }
+export enum MusicType {
+  Unknown = 0,
+  Music = 1,
+  Instrumental = 2,
+  Bgm = 3,
+}
 export enum MusicWishListRequesterType {
   Unknown = 0,
   Self = 1,
@@ -941,6 +971,11 @@ export enum NoticeType {
   Information = 6,
   Maintenance = 7,
   Bug = 8,
+}
+export enum PaymentPendingReceiptDialogTimingType {
+  Unknown = 0,
+  Skip = 1,
+  Daily = 2,
 }
 export enum PhotoBackgroundCategory {
   Unknown = 0,
@@ -1205,6 +1240,7 @@ export enum ProduceConditionType {
   LatestAuditionStepSelectNumber = 79,
   CurrentAuditionStepType = 80,
   CurrentAuditionStepSelectNumber = 81,
+  DearnessPoint = 82,
   Set = 998,
   NegativeSet = 999,
 }
@@ -1359,6 +1395,7 @@ export enum ProduceEffectType {
   SelfLessonStaminaUp = 121,
   SelfLessonStaminaDown = 122,
   HighScoreGoldAddition = 123,
+  IdolCardProduceCardCustomizeEnable = 124,
 }
 export enum ProduceEventCharacterType {
   Unknown = 0,
@@ -1760,6 +1797,8 @@ export enum ProducePhaseType {
   BuyShopItemProduceItem = 55,
   BuyShopItemUpgradeProduceCard = 56,
   BuyShopItemDeleteProduceCard = 57,
+  EndPresent = 58,
+  EndShop = 59,
 }
 export enum ProducePickRangeType {
   Unknown = 0,
@@ -1821,6 +1860,7 @@ export enum ProduceProgressStatus {
   Result = 31,
   GuildMission = 32,
   EndingCharacterDearnessStory = 33,
+  DearnessBoost = 34,
   Finished = 99,
 }
 export enum ProduceResourceOriginType {
@@ -2125,6 +2165,7 @@ export enum ResourceType {
   PvpRatePlayCount = 20,
   PhotoBackground = 21,
   PhotoPose = 22,
+  DearnessPoint = 23,
   JewelTotal = 1100,
   JewelPaidOnly = 1101,
   Set = 9999,
@@ -2144,6 +2185,8 @@ export enum ResultGrade {
   SPlus = 11,
   Ss = 12,
   SsPlus = 13,
+  Sss = 14,
+  SssPlus = 15,
 }
 export enum ResultGradeType {
   Unknown = 0,
@@ -2196,6 +2239,7 @@ export enum SkillRarity {
   R = 1,
   Sr = 2,
   Ssr = 3,
+  Ur = 4,
 }
 export enum StartupNotificationDisplayType {
   Unknown = 0,
@@ -2223,6 +2267,7 @@ export enum StartupNotificationType {
   Image = 3,
   Notice = 4,
   Shop = 5,
+  ProfileReport = 6,
 }
 export enum StoryCampaignType {
   Unknown = 0,
@@ -2361,6 +2406,9 @@ export enum TutorialType {
   Photo = 25,
   MeishiEditCustom = 26,
   MeishiEditCustomManual = 27,
+  IdolCardSkinUnit = 28,
+  DearnessTop = 29,
+  DearnessPoint = 30,
   ProduceIdolCardSelect = 100,
   ProduceSupportCardSelect = 101,
   ProduceMemorySelect = 102,
@@ -2398,6 +2446,8 @@ export enum TutorialType {
   StoryEventBoxGasha = 204,
   StoryEventGuildMission = 205,
   GvgRaid = 206,
+  ProduceNextIdolAuditionMaster = 207,
+  ProduceNextIdolAuditionMasterRanking = 208,
 }
 export enum ViewAreaType {
   Unknown = 0,
