@@ -81,6 +81,7 @@ export const buffBgYellow = "/img/buff_bg_yellow.webp"
 export const buffBgRed = "/img/buff_bg_red.webp"
 export const buffBgGreen = "/img/buff_bg_green.webp"
 export const buffPreservation = "/img/buff_base_preservation.webp"
+export const buffOverPreservation = "/img/buff_base_overpreservation.webp"
 export const buffFullpower = "/img/buff_base_fullpower.webp"
 export const buffConcentration = "/img/buff_base_concentration.webp"
 export const arrowVoUp = "/img/score_up_arrow_vo_up.webp"
@@ -352,7 +353,7 @@ export const buffTypeBackground = {
   [ProduceExamEffectType.ExamLessonDependAggressiveAndSearchCount]: buffBgBlue,
   [ProduceExamEffectType.ExamLessonDependReviewAndSearchCount]: buffBgBlue,
   [ProduceExamEffectType.ExamEffectPerSearchCount]: buffBgBlue,
-  [ProduceExamEffectType.ExamOverPreservation]: buffBgBlue,
+  [ProduceExamEffectType.ExamOverPreservation]: buffOverPreservation,
   [ProduceExamEffectType.ExamParameterBuffDependLessonBuff]: buffBgBlue,
   [ProduceExamEffectType.ExamAggressiveDependReview]: buffBgBlue,
   [ProduceExamEffectType.ExamEnthusiasticAdditive]: buffBgBlue,
