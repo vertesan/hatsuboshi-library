@@ -157,14 +157,18 @@ function PlayEffectsIcon({
   card: XProduceCard,
   className?: string,
 }) {
+  let blockCount = 0
   const displayEffects = card.playEffects
-    .filter(effect =>
-      !effect.hideIcon &&
-      (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamLesson || effect.produceExamTriggerId) &&
-      effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlock &&
-      effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount &&
-      effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive
-    ).map(effect =>
+    .filter(effect => {
+      if (effect.produceExamEffect.effectType === ProduceExamEffectType.ExamBlock) {
+        blockCount += 1
+      }
+      return !effect.hideIcon &&
+        (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamLesson || effect.produceExamTriggerId) &&
+        (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlock || blockCount >= 2) &&
+        effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount &&
+        effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive
+    }).map(effect =>
       effect.produceExamEffect.effectType
     ).reverse()
   if (card.produceCardStatusEnchantId) {

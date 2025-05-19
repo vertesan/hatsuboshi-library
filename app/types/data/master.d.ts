@@ -43,6 +43,7 @@ export type XMaster = {
   examInitialDecks: { [id: string]: ExamInitialDeck },
   produceDescriptionEffectTypes: { [type in ProduceEffectType]: ProduceDescriptionProduceEffect },
   produceDescriptionExamEffectType: { [type in ProduceExamEffectType]: ProduceDescriptionExamEffect },
+  characterTrueEndBonus: { [id: string]: CharacterTrueEndBonus },
   characterTrueEndBonuses: { [id: string]: CharacterTrueEndBonus[] },
   noticeList: {
     infoList: NoticeInfo[]
@@ -73,6 +74,7 @@ export type XMaster = {
   resultGradePatterns: XResultGradePattern[],
   guildReactions: GuildReaction[],
   produceDescriptionLabels: { [id: string]: ProduceDescriptionLabel },
+  produceGroups: ProduceGroup[],
 }
 
 export type XResultGradePattern = ResultGradePattern & {

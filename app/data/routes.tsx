@@ -26,11 +26,11 @@ export function getRoutes(t: TFunction<"translation", undefined>) {
       label: t("route-colors"),
       icon: <IconPalette className="h-auto w-5 opacity-80" />,
     },
-    {
-      route: "/charts",
-      label: t("route-tools"),
-      icon: <NavIcon src={routeCharts} />,
-    },
+    // {
+    //   route: "/charts",
+    //   label: t("route-tools"),
+    //   icon: <NavIcon src={routeCharts} />,
+    // },
     {
       route: "/cidol",
       label: t("route-cidol"),

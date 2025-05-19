@@ -96,7 +96,7 @@ export default function PCard() {
                       </div>
                       {
                         filter.displayCustomization
-                          ? <CustomizationView pCard={pCard} />
+                          ? <CustomizationView pCard={pCard} hideEva />
                           : null
                       }
                     </div>

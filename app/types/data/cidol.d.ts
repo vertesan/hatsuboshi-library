@@ -22,10 +22,10 @@ import {
   ProduceSkill,
   ProduceStepAuditionDifficulty
 } from "../proto/pmaster"
-import { XProduceCard } from "./pcard"
+import { XProduceCard, XCustProduceCard } from "./pcard"
 
 export type XIdolCard = IdolCard & {
-  produceCards: XProduceCard[],
+  produceCards: XCustProduceCard[],
   produceItems: ProduceItem[],
   idolCardSkins: IdolCardSkin[],
   levelLimits: (
@@ -40,7 +40,7 @@ export type XIdolCard = IdolCard & {
     { produceSkill?: ProduceSkill & { produceEffects: ProduceEffect[] } }
   )[],
   auditionScenarios: {
-    [scenario in ProduceType]: {
+    [produceId: string]: {
       [stepType in ProduceStepType]: (
         ProduceStepAuditionDifficulty &
         { npcs: ProduceExamBattleNpcGroup[] } &

@@ -11,7 +11,7 @@ import { NpcScoreTable } from "~/components/media/npcScoreTable"
 import { MasterContext } from "~/contexts/masterContext"
 import { LevelLimitUpView } from "~/routes/cidol.$id/levelLimitUpView"
 import { PotentialLevelView } from "~/routes/cidol.$id/potentialLevelView"
-import { produceScenarioStrings } from "~/routes/cidol.$id/produceScenarios"
+import { getProduceScenarioStrings } from "~/routes/cidol.$id/produceScenarios"
 import { CidolCard } from "~/routes/cidol._index/cidolCard"
 import { XIdolCard } from "~/types"
 import { ProduceParameterType, ProduceStepAuditionType, ProduceStepType, ProduceType } from "~/types/proto/penum"
@@ -34,11 +34,11 @@ export function CidolView({
   const character = characters[idolCard.characterId]
 
   const auditionViews = Object.entries(idolCard.auditionScenarios)
-    .sort((a, b) => +b[0] - +a[0])
-    .map(([produceType, steps]) => {
-      const produceScenario = produceScenarioStrings[+produceType]
+    .sort().reverse()
+    .map(([produceId, steps]) => {
+      const produceScenario = getProduceScenarioStrings(produceId)
       const stepElements = Object.entries(steps)
-        .sort((a, b) => +b[0] - +a[0])
+        .sort((stepType1, stepType2) => +stepType2[0] - +stepType1[0])
         .map(([stepType, difficulties]) => {
           difficulties.sort((a, b) => {
             if (a.auditionType !== ProduceStepAuditionType.Unknown) {
@@ -47,9 +47,11 @@ export function CidolView({
             return b.produceId < a.produceId ? -1 : 1
           })
           const difficultyElements = difficulties.map(difficulty => {
+
+
             return (
               <div key={difficulty.baseScore} className="mb-4 p-4 rounded-lg overflow-hidden">
-                {+produceType === ProduceType.NextIdolAudition
+                {produceScenario.produceType === ProduceType.NextIdolAudition
                   ? <><Title order={4} size="h4" className="text-center leading-8">
                     {`${t(ProduceStepAuditionType[difficulty.auditionType])}`}
                   </Title>
@@ -67,9 +69,7 @@ export function CidolView({
                       <NumberFormatter value={difficulty.voteCount} thousandSeparator />
                     </p>
                   </>
-                  : <Title order={4} size="h3" className="text-center">
-                    {`${t(difficulty.produceId)}`}
-                  </Title>
+                  : null
                 }
                 <div className="text-center">
                   {
@@ -126,7 +126,7 @@ export function CidolView({
           )
         })
       return (
-        <Accordion.Item value={produceScenario.title} key={produceType}>
+        <Accordion.Item value={produceId} key={produceId}>
           <Accordion.Control>
             <div className="flex items-center gap-1">
               <img
@@ -134,7 +134,7 @@ export function CidolView({
                 alt="produce scenario"
                 className="object-contain w-6 h-6 aspect-square"
               />
-              <p>{t(produceScenario.title)}</p>
+              <p>{`${t(produceScenario.title)} (${t(produceScenario.difficulty)})`}</p>
             </div>
           </Accordion.Control>
           <Accordion.Panel>
