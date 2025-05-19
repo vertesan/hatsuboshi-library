@@ -30,7 +30,7 @@ export type XIdolCard = IdolCard & {
   idolCardSkins: IdolCardSkin[],
   levelLimits: (
     IdolCardLevelLimit &
-    Omit<IdolCardLevelLimitStatusUp, 'id' | 'rank'> &
+    Partial<Omit<IdolCardLevelLimitStatusUp, 'id' | 'rank'>> &
     { limitProduceSkill?: IdolCardLevelLimitProduceSkill } &
     { produceSkill?: ProduceSkill & { produceEffects: ProduceEffect[] } }
   )[],

@@ -1,7 +1,6 @@
 import { Table } from "@mantine/core";
 import { t } from "i18next";
 import { staminaIcon } from "~/assets/media";
-import { AttributeIcon } from "~/components/media/attributeIcon";
 import { ProduceEffectIcon } from "~/components/media/effectIcon";
 import { EffectSpan } from "~/routes/cidol.$id/effectSpan";
 import { XIdolCard } from "~/types";
@@ -19,15 +18,15 @@ export function LevelLimitUpView({
 
   levelLimits.forEach((levelLimit, idx) => {
     const tableData: React.ReactNode[] = []
-    levelLimit.effectTypes.forEach((effectType, idx) => {
+    levelLimit.effectTypes?.forEach((effectType, idx) => {
       switch (effectType) {
         case IdolCardLevelLimitEffectType.ProduceVoDaVi:
           tableData.push(
             <AttributeRow
               key={`${idx}_${effectType}`}
-              vo={levelLimit.produceVocal}
-              da={levelLimit.produceDance}
-              vi={levelLimit.produceVisual}
+              vo={levelLimit?.produceVocal ?? 0}
+              da={levelLimit?.produceDance ?? 0}
+              vi={levelLimit?.produceVisual ?? 0}
             />
           )
           break
