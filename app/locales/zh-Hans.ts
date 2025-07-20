@@ -192,7 +192,7 @@ const translation = {
   "Show card customization": "显示卡片附魔",
   "Customizable Limits": "可附魔次数",
   "Customization Eva": "附魔容量",
-  "Display Evaluations Under S": "显示 S 评级下的结果",
+  "Display Evaluations Under S": "显示 S+ 评级下的结果",
   "Oops!": "糟糕！",
   "Our server is currently too busy to handle your request this time, please try again after a few minutes.": "目前服务器太过繁忙，请稍后再试。",
   "If you are really in hurry, try to disable cache on your developer tools pannel to facilitate recovery because this error is cached for 150 seconds.": "如果您急需，可尝试在开发者工具面板中禁用缓存以加速恢复，此错误会被缓存150秒。",

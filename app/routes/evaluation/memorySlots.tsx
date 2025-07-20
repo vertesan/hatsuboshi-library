@@ -97,7 +97,7 @@ export const DroppableMemorySlots = forwardRef(({
           {totalEva}
         </div>
         {Object.entries(rankEvaluation)
-          .filter(x => displayUnderX || x[1].from >= rankEvaluation.S.from)
+          .filter(x => displayUnderX || x[1].from >= rankEvaluation["S+"].from)
           .map(([k, v]) => {
             const inRange = totalEva >= v.from && totalEva <= v.to
             return (
