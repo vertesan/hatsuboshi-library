@@ -1,4 +1,5 @@
-import { Title } from "@mantine/core"
+import { CopyButton, Title } from "@mantine/core"
+import { IconChecks, IconCopy } from "@tabler/icons-react"
 import { useContext } from "react"
 import { useTranslation } from "react-i18next"
 import { getSDFaceImgUrl } from "~/assets/media"
@@ -33,7 +34,16 @@ function ColorSquare({ character }: { character: Character }) {
       <div className={`group border-neutral-200 border-[min(8px,2vw)] rounded-xl bg-${colorString} aspect-square h-[min(144px,26vw)] w-[min(144px,26vw)]`} >
         <div className="w-full h-full flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-[400ms]">
           <img alt='icon' src={getSDFaceImgUrl(character.id)} className='h-12 w-12' />
-          <span className="rounded-sm text-white bg-neutral-600">{`#${colors.mainColor}`}</span>
+          <div className="flex items-center rounded-sm text-white bg-neutral-600">
+            <CopyButton value={`#${colors.mainColor}`}>
+              {({ copied, copy }) => (
+                copied
+                  ? <IconChecks className="w-[70%] h-[70%] text-green-500" stroke={1.5} />
+                  : <IconCopy className="w-[70%] h-[70%] text-white cursor-pointer" stroke={1.5} onClick={copy} />
+              )}
+            </CopyButton>
+            <span>{`#${colors.mainColor}`}</span>
+          </div>
         </div>
       </div>
       <p className="text-md">{character.lastName + " " + character.firstName}</p>
