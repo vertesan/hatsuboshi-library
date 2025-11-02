@@ -180,9 +180,9 @@ const extraEffectNameMap: { [x: number]: ProduceExamEffectType } = {
   [ProduceExamEffectType.ExamReviewValueMultiple]: ProduceExamEffectType.ExamReview,
   [ProduceExamEffectType.ExamLessonValueMultiple]: ProduceExamEffectType.ExamLesson,
   [ProduceExamEffectType.ExamAggressiveValueMultiple]: ProduceExamEffectType.ExamCardPlayAggressive,
-  [ProduceExamEffectType.ExamLessonAddMultipleLessonBuff]: ProduceExamEffectType.ExamLesson,
+  [ProduceExamEffectType.ExamLessonAddMultipleLessonBuff]: ProduceExamEffectType.ExamLessonBuff,
   [ProduceExamEffectType.ExamReviewPerSearchCount]: ProduceExamEffectType.ExamReview,
-  [ProduceExamEffectType.ExamLessonBuffDependParameterBuff]: ProduceExamEffectType.ExamLesson,
+  [ProduceExamEffectType.ExamLessonBuffDependParameterBuff]: ProduceExamEffectType.ExamLessonBuff,
 }
 
 const extraGrowEffectNameMap: { [x: number]: ProduceExamEffectType } = {
