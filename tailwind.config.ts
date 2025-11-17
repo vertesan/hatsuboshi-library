@@ -6,7 +6,7 @@ export default {
     "./node_modules/primereact/**/*.{js,ts,jsx,tsx}",
   ],
   safelist: [{
-    pattern: /(from|to|bg)-(amao|fktn|hmsz|hrnm|hski|hume|jkno|jsna|kcna|kllj|nasr|other|shro|ssmk|ttmr|user)-(main|acc2)/,
+    pattern: /(from|to|bg)-(amao|atbm|fktn|hmsz|hrnm|hski|hume|jkno|jsna|kcna|kllj|nasr|other|shro|ssmk|ttmr|user)-(main|acc2)/,
   }],
   theme: {
     extend: {
@@ -16,6 +16,8 @@ export default {
         visual: '#ffaa00',
         'amao-main': '#C45DC8',
         'amao-acc2': '#FDAFA6',
+        'atbm-main': '#8874FF',
+        'atbm-acc2': '#C8BAFF',
         'fktn-main': '#FFD203',
         'fktn-acc2': '#FFB5DA',
         'hmsz-main': '#6EA3FC',

@@ -6,6 +6,13 @@ export const charaColors = {
     textColor: "E14DCB",
     labelTextColor: "FFFFFF",
   },
+  atbm: {
+    mainColor: "8874FF",
+    gradientColor1: "8874FF",
+    gradientColor2: "C8BAFF",
+    textColor: "8874FF",
+    labelTextColor: "FFFFFF",
+  },
   fktn: {
     mainColor: "FFD203",
     gradientColor1: "F8D721",
