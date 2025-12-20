@@ -5,6 +5,23 @@ import * as pcommon from './pcommon.d.ts';
 import * as ptransaction from './ptransaction.d.ts';
 import * as pmaster from './pmaster.d.ts';
 
+export type CompetitionPreSeasonResult = {
+  seasonStartTime: string
+  seasonEndTime: string
+  beforeGrade: penum.CompetitionGrade
+  rank: string
+  totalHighScore: string
+  rewards: pcommon.Reward[]
+}
+export type CompetitionSeasonTop = {
+  statusType: penum.CompetitionSeasonStatusType
+  rank: number
+  highScore: string
+  remainingDailyPlayCount: number
+  startTime: string
+  endTime: string
+  isPreSeason: boolean
+}
 export type DearnessStoryUnlock = {
   characterId: string
   storyId: string
@@ -12,6 +29,23 @@ export type DearnessStoryUnlock = {
 export type Mission = {
   missionId: string
   threshold: number
+}
+export type ProduceHighScoreRushExternalProduceReward = {
+  examEffectType: penum.ProduceExamEffectType
+  produceCardIds: string[]
+  produceItemIds: string[]
+  produceDrinkIds: string[]
+}
+export type PvpRateSeasonResult = {
+  seasonStartTime: string
+  seasonEndTime: string
+  beforeGrade: penum.PvpRateGrade
+  afterGrade: penum.PvpRateGrade
+  rank: number
+  rate: number
+  rewards: pcommon.Reward[]
+  prevSeasonGrade: penum.PvpRateGrade
+  isNotPlayPrevSeason: boolean
 }
 export type PvpRateSeasonTop = {
   statusType: penum.PvpRateSeasonStatusType
@@ -21,6 +55,13 @@ export type PvpRateSeasonTop = {
   remainingDailyPlayCount: number
   currentSeasonStartTime: string
   currentSeasonEndTime: string
+  nextSeasonPrepareStartTime: string
+}
+export type RankReward = {
+  upperRank: number
+  lowerRank: number
+  borderScore: string
+  rewards: pcommon.Reward[]
 }
 export type Response = {
   updatedData: UserData
@@ -40,12 +81,16 @@ export type UserData = {
   user: ptransaction.User
   userActionPoint: ptransaction.UserActionPoint
   userAuthProviderList: ptransaction.UserAuthProvider[]
+  userBadgeList: ptransaction.UserBadge[]
   userBalance: ptransaction.UserBalance
   userBanWarning: ptransaction.UserBanWarning
   userCharacterList: ptransaction.UserCharacter[]
   userCharacterCostumeList: ptransaction.UserCharacterCostume[]
   userCharacterRosterList: ptransaction.UserCharacterRoster[]
   userComebackList: ptransaction.UserComeback[]
+  userCompetition: ptransaction.UserCompetition
+  userCompetitionDeckList: ptransaction.UserCompetitionDeck[]
+  userCompetitionSeasonDeckList: ptransaction.UserCompetitionSeasonDeck[]
   userCostumeList: ptransaction.UserCostume[]
   userCostumeHeadList: ptransaction.UserCostumeHead[]
   userCountList: ptransaction.UserCount[]
@@ -78,6 +123,7 @@ export type UserData = {
   userProduceList: ptransaction.UserProduce[]
   userProduceAdvList: ptransaction.UserProduceAdv[]
   userProduceCardList: ptransaction.UserProduceCard[]
+  userProduceCardConversionList: ptransaction.UserProduceCardConversion[]
   userProduceCardRewardList: ptransaction.UserProduceCardReward[]
   userProduceCharacterList: ptransaction.UserProduceCharacter[]
   userProduceDrinkList: ptransaction.UserProduceDrink[]
@@ -110,6 +156,7 @@ export type UserData = {
   userTimeList: ptransaction.UserTime[]
   userTowerList: ptransaction.UserTower[]
   userTutorialList: ptransaction.UserTutorial[]
+  userWebStore: ptransaction.UserWebStore
   userWorkList: ptransaction.UserWork[]
   userWorkCharacterList: ptransaction.UserWorkCharacter[]
 }

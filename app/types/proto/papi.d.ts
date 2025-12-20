@@ -123,6 +123,220 @@ export type CoinGashaResetBoxResponse = {
   coinGasha: pcommon.CoinGasha
   commonResponse: papicommon.Response
 }
+export type CompetitionContinueRequest = {
+  clientUuid: string
+}
+export type CompetitionContinueResponse = {
+  examContestSituation: pcommon.ExamContestSituation
+  commonResponse: papicommon.Response
+}
+export type CompetitionEndRequest = {
+  clientUuid: string
+  seed: string
+  examContestResult: pcommon.ExamContestResult
+}
+export type CompetitionEndResponse = {
+  commonResponse: papicommon.Response
+}
+export type CompetitionGetRequest = {
+  clientUuid: string
+}
+export type CompetitionGetResponse = {
+  startTime: string
+  endTime: string
+  examSettingId: string
+  examContestEmbedProduceCardId: string
+  maxGroupMemberCount: number
+  isPreSeason: boolean
+  rank: number
+  winCountRank: number
+  highScore: string
+  winCount: number
+  gradeUpScore: string
+  gradeUpRank: number
+  gradeKeepScore: string
+  gradeKeepRank: number
+  gradeUpWinCount: number
+  remainingDailyPlayCount: number
+  meishi: pcommon.Meishi
+  nextWinCountReward: CompetitionWinCountReward
+  totalFinishCount: number
+  stages: CompetitionGetResponse_Stage[]
+  playTestStages: CompetitionGetResponse_PlayTestStage[]
+  isCurrentClientUuid: boolean
+  examContestSituation: pcommon.ExamContestSituation
+  commonResponse: papicommon.Response
+}
+type CompetitionGetResponse_PlayTestStage = {
+  stageType: penum.CompetitionStageType
+  highScore: number
+  isPlayTest: boolean
+}
+type CompetitionGetResponse_Stage = {
+  stageType: penum.CompetitionStageType
+  planType: penum.ProducePlanType
+  turn: number
+  produceItemIds: string[]
+  produceExamGimmickEffectGroupId: string
+  produceExamBattleConfigId: string
+  examEffectType: penum.ProduceExamEffectType
+  highScore: number
+  rivalProfile: pcommon.SimpleProfile
+  rivalSections: pcommon.ExamContestSection[]
+  sections: CompetitionGetResponse_Section[]
+}
+type CompetitionGetResponse_Section = {
+  sectionType: penum.CompetitionStageSectionType
+  turn: number
+}
+export type CompetitionInitializeResponse = {
+  previousSeasonResult: CompetitionSeasonResult
+  isDeckChanged: boolean
+  commonResponse: papicommon.Response
+}
+export type CompetitionListDeckProduceCardRankingResponse = {
+  rankings: CompetitionListDeckProduceCardRankingResponse_Ranking[]
+  commonResponse: papicommon.Response
+}
+type CompetitionListDeckProduceCardRankingResponse_Ranking = {
+  stageType: penum.CompetitionStageType
+  sectionType: penum.CompetitionStageSectionType
+  produceCardRanks: CompetitionListDeckProduceCardRankingResponse_ProduceCardRank[]
+}
+type CompetitionListDeckProduceCardRankingResponse_ProduceCardRank = {
+  produceCardId: string
+  rank: number
+}
+export type CompetitionListHighScoreRankingResponse = {
+  ranks: CompetitionRank[]
+  selfRank: CompetitionRank
+  commonResponse: papicommon.Response
+}
+export type CompetitionListHistoryResponse = {
+  histories: CompetitionListHistoryResponse_History[]
+  stages: CompetitionListHistoryResponse_Stage[]
+  commonResponse: papicommon.Response
+}
+type CompetitionListHistoryResponse_History = {
+  playTimeUnixMilli: string
+  stageType: penum.CompetitionStageType
+  isWin: boolean
+  score: number
+  isHighScore: boolean
+  rivalProfile: pcommon.SimpleProfile
+  rivalScore: number
+  examContestSituation: pcommon.ExamContestSituation
+}
+type CompetitionListHistoryResponse_Stage = {
+  stageType: penum.CompetitionStageType
+  highScore: number
+  isPlayTest: boolean
+  examContestSituation: pcommon.ExamContestSituation
+}
+export type CompetitionListRewardResponse = {
+  winCountRewards: CompetitionWinCountReward[]
+  rankingRewards: CompetitionRankingReward[]
+  commonResponse: papicommon.Response
+}
+export type CompetitionListWinCountRankingResponse = {
+  ranks: CompetitionRank[]
+  selfRank: CompetitionRank
+  commonResponse: papicommon.Response
+}
+export type CompetitionPlayTestRequest = {
+  clientUuid: string
+  stageType: penum.CompetitionStageType
+}
+export type CompetitionPlayTestResponse = {
+  examContestSituation: pcommon.ExamContestSituation
+  commonResponse: papicommon.Response
+}
+export type CompetitionRank = {
+  profile: pcommon.SimpleProfile
+  rank: number
+  score: string
+  deck: pcommon.CompetitionDeck
+}
+export type CompetitionRankingReward = {
+  upperRank: number
+  lowerRank: number
+  borderScore: number
+  rewards: pcommon.Reward[]
+}
+export type CompetitionResultPlayTestRequest = {
+  clientUuid: string
+  examContestResult: pcommon.ExamContestResult
+}
+export type CompetitionResultPlayTestResponse = {
+  commonResponse: papicommon.Response
+}
+export type CompetitionResultRequest = {
+  clientUuid: string
+}
+export type CompetitionResultResponse = {
+  beforeHighScore: number
+  afterHighScore: number
+  beforeTotalHighScore: string
+  afterTotalHighScore: string
+  beforeTotalWinCount: number
+  afterTotalWinCount: number
+  totalHighScoreRank: number
+  fanCount: number
+  playRewards: pcommon.RewardResult[]
+  winRewards: pcommon.RewardResult[]
+  winCountRewards: pcommon.RewardResult[]
+  commonResponse: papicommon.Response
+}
+export type CompetitionRetireResponse = {
+  commonResponse: papicommon.Response
+}
+export type CompetitionSeasonResult = {
+  seasonStartTime: string
+  seasonEndTime: string
+  beforeGrade: penum.CompetitionGrade
+  afterGrade: penum.CompetitionGrade
+  prevSeasonGrade: penum.CompetitionGrade
+  isNotPlayPrevSeason: boolean
+  rank: string
+  totalHighScore: string
+  rewards: pcommon.Reward[]
+}
+export type CompetitionSelectAutoRequest = {
+  clientUuid: string
+  isAuto: boolean
+}
+export type CompetitionSelectAutoResponse = {
+  commonResponse: papicommon.Response
+}
+export type CompetitionStartRequest = {
+  clientUuid: string
+  stageType: penum.CompetitionStageType
+}
+export type CompetitionStartResponse = {
+  examContestSituation: pcommon.ExamContestSituation
+  commonResponse: papicommon.Response
+}
+export type CompetitionUpdateDeckRequest = {
+  number: number
+  name: string
+  memorySlots: pcommon.CompetitionDeckSetupMemorySlot[]
+  recommendType: penum.DeckRecommendType
+}
+export type CompetitionUpdateDeckResponse = {
+  commonResponse: papicommon.Response
+}
+export type CompetitionUpdateSeasonDeckRequest = {
+  stageType: penum.CompetitionStageType
+  memorySlots: pcommon.CompetitionDeckSetupMemorySlot[]
+  recommendType: penum.DeckRecommendType
+}
+export type CompetitionUpdateSeasonDeckResponse = {
+  commonResponse: papicommon.Response
+}
+export type CompetitionWinCountReward = {
+  winCount: number
+  rewards: pcommon.Reward[]
+}
 export type Consent = {
   consentType: penum.ConsentType
   agreementType: penum.ConsentAgreementType
@@ -133,6 +347,19 @@ export type CostumeCheckRequest = {
   costumeId: string
 }
 export type CostumeCheckResponse = {
+  commonResponse: papicommon.Response
+}
+export type CostumeSetRandomRequest = {
+  setType: penum.CostumeSetType
+  randomCharacterCostumes: CostumeSetRandomRequest_RandomCharacterCostume[]
+}
+type CostumeSetRandomRequest_RandomCharacterCostume = {
+  characterId: string
+  useDefaultCostumeHead: boolean
+  excludeCostumeIds: string[]
+  excludeCostumeHeadIds: string[]
+}
+export type CostumeSetRandomResponse = {
   commonResponse: papicommon.Response
 }
 export type CostumeSetRequest = {
@@ -271,10 +498,41 @@ export type FriendUnFollowRequest = {
 export type FriendUnFollowResponse = {
   commonResponse: papicommon.Response
 }
+export type GashaContinueDrawContinuousRequest = {
+  gashaId: string
+}
+export type GashaContinueDrawContinuousResponse = {
+  stepType: penum.GashaContinuousStepType
+  drawResults: GashaDrawResult[]
+  commonResponse: papicommon.Response
+}
+export type GashaContinuousProgress = {
+  advAssetId: string
+  continuedCount: number
+  continuedDrawRewardCount: number
+  nextDrawRewardCount: number
+  isSharedUpdated: boolean
+}
+export type GashaDrawContinuousRequest = {
+  gashaId: string
+  gashaButtonId: string
+  consumeResourceType: penum.ResourceType
+  consumeResourceId: string
+  consumeResourceQuantity: number
+}
+export type GashaDrawContinuousResponse = {
+  stepType: penum.GashaContinuousStepType
+  drawResults: GashaDrawResult[]
+  gashaButton: pcommon.GashaButton
+  commonResponse: papicommon.Response
+}
 export type GashaDrawRequest = {
   gashaId: string
   gashaButtonId: string
   drawCount: number
+  consumeResourceType: penum.ResourceType
+  consumeResourceId: string
+  consumeResourceQuantity: number
 }
 export type GashaDrawResponse = {
   drawResults: GashaDrawResult[]
@@ -292,6 +550,9 @@ export type GashaDrawResult = {
 export type GashaDrawSelectPickupRequest = {
   gashaId: string
   gashaButtonId: string
+  consumeResourceType: penum.ResourceType
+  consumeResourceId: string
+  consumeResourceQuantity: number
 }
 export type GashaDrawSelectPickupResponse = {
   drawResults: GashaDrawResult[]
@@ -303,6 +564,9 @@ export type GashaDrawSelectPickupResponse = {
 export type GashaDrawStepUpRequest = {
   gashaId: string
   gashaButtonId: string
+  consumeResourceType: penum.ResourceType
+  consumeResourceId: string
+  consumeResourceQuantity: number
 }
 export type GashaDrawStepUpResponse = {
   drawResults: GashaDrawResult[]
@@ -337,6 +601,21 @@ type GashaExpirePointResponse_GashaBanner = {
   bannerAssetId: string
   order: number
 }
+export type GashaFinishContinuousRequest = {
+  gashaId: string
+}
+export type GashaFinishContinuousResponse = {
+  stepType: penum.GashaContinuousStepType
+  commonResponse: papicommon.Response
+}
+export type GashaGetContinuousProbabilityRequest = {
+  gashaId: string
+  gashaButtonId: string
+}
+export type GashaGetContinuousProbabilityResponse = {
+  probability: DefaultGashaProbability
+  commonResponse: papicommon.Response
+}
 export type GashaGetPointExchangeRequest = {
   gashaPointId: string
 }
@@ -365,6 +644,7 @@ export type GashaGetPrecautionResponse = {
 }
 export type GashaGetProbabilityRequest = {
   gashaId: string
+  gashaButtonId: string
 }
 export type GashaGetProbabilityResponse = {
   probability: DefaultGashaProbability
@@ -372,6 +652,7 @@ export type GashaGetProbabilityResponse = {
 }
 export type GashaGetSelectPickupProbabilityRequest = {
   gashaId: string
+  gashaButtonId: string
 }
 export type GashaGetSelectPickupProbabilityResponse = {
   probability: DefaultGashaProbability
@@ -389,6 +670,15 @@ export type GashaListResponse = {
   hasExpireGashaPoint: boolean
   commonResponse: papicommon.Response
 }
+export type GashaPickContinuousDrawRewardCountRequest = {
+  gashaId: string
+}
+export type GashaPickContinuousDrawRewardCountResponse = {
+  stepType: penum.GashaContinuousStepType
+  continuousProgress: GashaContinuousProgress
+  shareRewards: pcommon.Reward[]
+  commonResponse: papicommon.Response
+}
 export type GashaProbability = {
   gashaRarityProbabilities: GashaRarityProbability[]
   idolCardRarityProbabilities: IdolCardRarityProbability[]
@@ -397,6 +687,22 @@ export type GashaProbability = {
 export type GashaRarityProbability = {
   rarity: number
   tenPermyriadProbability: number
+}
+export type GashaReportShareSnsContinuousMissionRequest = {
+  gashaId: string
+}
+export type GashaReportShareSnsContinuousMissionResponse = {
+  commonResponse: papicommon.Response
+}
+export type GashaResumeContinuousRequest = {
+  gashaId: string
+}
+export type GashaResumeContinuousResponse = {
+  stepType: penum.GashaContinuousStepType
+  drawResults: GashaDrawResult[]
+  continuousProgress: GashaContinuousProgress
+  shareRewards: pcommon.Reward[]
+  commonResponse: papicommon.Response
 }
 export type GashaSelectPickupRequest = {
   gashaId: string
@@ -856,6 +1162,7 @@ export type HomeEnterResponse = {
   gashas: pcommon.Gasha[]
   pvpRateSeasonTop: papicommon.PvpRateSeasonTop
   events: pcommon.Event[]
+  competitionSeasonTop: papicommon.CompetitionSeasonTop
   giftCount: number
   shopItemLabelType: penum.ShopItemLabelType
   homeShopNoti: boolean
@@ -867,6 +1174,8 @@ export type HomeEnterResponse = {
   hasExpireGashaPoint: boolean
   towerNoti: boolean
   personalMessageCount: number
+  competitionPreSeasonResult: papicommon.CompetitionPreSeasonResult
+  pvpRateSeasonResult: papicommon.PvpRateSeasonResult
   commonResponse: papicommon.Response
 }
 type HomeEnterResponse_FeatureMaintenance = {
@@ -883,6 +1192,7 @@ export type HomeLoginResponse = {
   friendResult: HomeLoginResponse_FriendResult
   producerLevelUnlocks: pcommon.ProducerLevelUnlock[]
   produceNextIdolAuditionMasterSeasonResult: HomeLoginResponse_ProduceNextIdolAuditionMasterSeasonResult
+  producerRankingResult: HomeLoginResponse_ProducerRankingResult
   commonResponse: papicommon.Response
 }
 type HomeLoginResponse_FriendResult = {
@@ -898,6 +1208,16 @@ type HomeLoginResponse_ProduceNextIdolAuditionMasterSeasonResult_CharacterResult
   characterId: string
   rank: number
   score: number
+  rewards: pcommon.Reward[]
+}
+type HomeLoginResponse_ProducerRankingResult = {
+  producerRankingId: string
+  characterResults: HomeLoginResponse_ProducerRankingResult_CharacterResult[]
+}
+type HomeLoginResponse_ProducerRankingResult_CharacterResult = {
+  characterId: string
+  rank: number
+  point: string
   rewards: pcommon.Reward[]
 }
 export type HomeSetCharactersRequest = {
@@ -1198,6 +1518,13 @@ export type MemoryUpdateProtectionRequest = {
 export type MemoryUpdateProtectionResponse = {
   commonResponse: papicommon.Response
 }
+export type MemoryUpdateResearchFavoriteRequest = {
+  userMemoryId: string
+  isResearchFavorite: boolean
+}
+export type MemoryUpdateResearchFavoriteResponse = {
+  commonResponse: papicommon.Response
+}
 export type MemoryUpdateTagSettingRequest = {
   userMemoryId: string
   memoryTagId: string
@@ -1434,14 +1761,15 @@ export type PhotoUpdateProtectionResponse = {
 }
 export type PreferenceUpdateRequest = {
   photoButtonExecuteType: penum.PhotoButtonExecuteType
+  produceDisableForceLiveCommon: boolean
   preferenceTypes: penum.PreferenceType[]
 }
 export type PreferenceUpdateResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceActivateEffectRequest = {
-  produceUuid: string
   pickIndexes: number[]
+  deviceProduceUuid: string
 }
 export type ProduceActivateEffectResponse = {
   effectResults: pcommon.ProduceEffectResult[]
@@ -1464,50 +1792,60 @@ export type ProduceChangeForceLiveCommonRequest = {
 export type ProduceChangeForceLiveCommonResponse = {
   commonResponse: papicommon.Response
 }
+export type ProduceChangeProduceCardConversionRequest = {
+  beforeProduceCardId: string
+  afterProduceCardId: string
+  enable: boolean
+}
+export type ProduceChangeProduceCardConversionResponse = {
+  commonResponse: papicommon.Response
+}
 export type ProduceCheckProgressRequest = {
-  produceUuid: string
   clientProduceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceCheckProgressResponse = {
   isCurrentProduce: boolean
   needForceReset: boolean
   forceResetDescription: string
   produceUuid: string
+  deviceProduceUuid: string
+  isInterrupted: boolean
   commonResponse: papicommon.Response
 }
 export type ProduceContinueRequest = {
-  produceUuid: string
   auditionStepSelectNumber: number
+  deviceProduceUuid: string
 }
 export type ProduceContinueResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceDiscardDrinkRequest = {
-  produceUuid: string
   drinkIndexes: number[]
+  deviceProduceUuid: string
 }
 export type ProduceDiscardDrinkResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
 export type ProduceEndBeforeLiveEvaluationRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceEndBeforeLiveEvaluationResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceEndRequest = {
-  produceUuid: string
   userMemoryId: string
   isDefaultImageMemory: boolean
+  deviceProduceUuid: string
 }
 export type ProduceEndResponse = {
   memory: pcommon.Memory
   commonResponse: papicommon.Response
 }
 export type ProduceExcludeProduceCardRequest = {
-  produceUuid: string
   pickIndex: number
+  deviceProduceUuid: string
 }
 export type ProduceExcludeProduceCardResponse = {
   commonResponse: papicommon.Response
@@ -1542,6 +1880,9 @@ export type ProduceHighScoreGetResponse = {
   missionDailyReleaseGroupId: string
   coinGasha: pcommon.CoinGasha
   consumptionItemId: string
+  bgmAssetId: string
+  externalProduceRewards: papicommon.ProduceHighScoreRushExternalProduceReward[]
+  produceItemIds: string[]
   result: ProduceHighScoreResult
   startupNotifications: pcommon.StartupNotification[]
   startTime: string
@@ -1596,10 +1937,12 @@ export type ProduceHistoryRequest = {
 }
 export type ProduceHistoryResponse = {
   produceHistory: pcommon.ProduceHistory
+  profile: pcommon.SimpleProfile
   commonResponse: papicommon.Response
 }
 export type ProduceListRentalMemoryRequest = {
   isHighScoreRush: boolean
+  isResearch: boolean
 }
 export type ProduceListRentalMemoryResponse = {
   memories: ProduceListRentalMemoryResponse_RentalMemory[]
@@ -1660,9 +2003,9 @@ type ProduceNextIdolAuditionMasterRankingResponse_Rank = {
   profile: pcommon.SimpleProfile
 }
 export type ProduceNextRequest = {
-  produceUuid: string
   stepType: penum.ProduceStepType
   selectNumber: number
+  deviceProduceUuid: string
 }
 export type ProduceNextResponse = {
   effectResults: pcommon.ProduceEffectResult[]
@@ -1704,16 +2047,16 @@ type ProduceRankingTopResponse_Ranking = {
   selfHighestUserMemoryId: string
 }
 export type ProduceReadAdvRequest = {
-  produceUuid: string
   assetId: string
+  deviceProduceUuid: string
 }
 export type ProduceReadAdvResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceReadDearnessStoryRequest = {
-  produceUuid: string
   isAuto: boolean
   isSkip: boolean
+  deviceProduceUuid: string
 }
 export type ProduceReadDearnessStoryResponse = {
   isFirst: boolean
@@ -1722,7 +2065,7 @@ export type ProduceReadDearnessStoryResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceReportDearnessBoostEventRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceReportDearnessBoostEventResponse = {
   missionPanelSheetGroupId: string
@@ -1732,7 +2075,7 @@ export type ProduceReportDearnessBoostEventResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceReportGuildMissionRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceReportGuildMissionResponse = {
   guildMissions: pcommon.GuildMission[]
@@ -1741,19 +2084,22 @@ export type ProduceReportGuildMissionResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceRerollMemoryRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceRerollMemoryResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceRerollSelectProduceCardRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceRerollSelectProduceCardResponse = {
   commonResponse: papicommon.Response
 }
+export type ProduceRestartResponse = {
+  deviceProduceUuid: string
+  commonResponse: papicommon.Response
+}
 export type ProduceResultRequest = {
-  produceUuid: string
   isSkipLive: boolean
   manualPhotoCount: number
   isMemoryProtected: boolean
@@ -1761,12 +2107,16 @@ export type ProduceResultRequest = {
   memoryNumber: number
   isMemoryExchanged: boolean
   useCharacterFocusCamera: boolean
+  isMemoryResearchFavorite: boolean
+  deviceProduceUuid: string
 }
 export type ProduceResultResponse = {
   rewardResults: pcommon.RewardResult[]
   storyEventProduceResult: pcommon.StoryEventProduceResult
   highScoreUpdateResult: ProduceResultResponse_HighScoreUpdateResult
   unlockChallengeSlotNumbers: number[]
+  researchResult: ProduceResultResponse_ResearchResult
+  producerRankingResult: pcommon.ProducerRankingResult
   commonResponse: papicommon.Response
 }
 type ProduceResultResponse_HighScoreUpdateResult = {
@@ -1781,6 +2131,12 @@ type ProduceResultResponse_HighScoreUpdateResult = {
   highScoreRewardResults: pcommon.RewardResult[]
   characterHighScoreRewardResults: pcommon.RewardResult[]
   highScoreRushGoldRewardResults: pcommon.RewardResult[]
+  characterCount: number
+}
+type ProduceResultResponse_ResearchResult = {
+  auditionScore: number
+  auditionScoreRewardResults: pcommon.RewardResult[]
+  produceGradeRewardResults: pcommon.RewardResult[]
 }
 type ProduceResultResponse_HighScoreReward = {
   score: number
@@ -1789,8 +2145,62 @@ type ProduceResultResponse_HighScoreReward = {
 export type ProduceRetireResponse = {
   commonResponse: papicommon.Response
 }
+export type ProduceSaveRequest = {
+  deviceProduceUuid: string
+}
+export type ProduceSaveResponse = {
+  commonResponse: papicommon.Response
+}
+export type ProduceSeasonRank = {
+  profile: pcommon.SimpleProfile
+  rank: number
+  score: number
+  grade: penum.ResultGrade
+  userMemoryId: string
+}
+export type ProduceSeasonRanking = {
+  idolCardId: string
+  selfRank: ProduceSeasonRank
+  topRanks: ProduceSeasonRank[]
+}
+export type ProduceSeasonRankingHistoryRequest = {
+  produceSeasonId: string
+  produceGroupId: string
+  idolCardId: string
+}
+export type ProduceSeasonRankingHistoryResponse = {
+  selfRank: ProduceSeasonRank
+  ranks: ProduceSeasonRank[]
+  commonResponse: papicommon.Response
+}
+export type ProduceSeasonRankingRequest = {
+  produceGroupId: string
+  idolCardId: string
+}
+export type ProduceSeasonRankingResponse = {
+  selfRank: ProduceSeasonRank
+  ranks: ProduceSeasonRank[]
+  commonResponse: papicommon.Response
+}
+export type ProduceSeasonRankingTopHistoryRequest = {
+  produceSeasonId: string
+  produceGroupId: string
+  characterId: string
+}
+export type ProduceSeasonRankingTopHistoryResponse = {
+  rankings: ProduceSeasonRanking[]
+  commonResponse: papicommon.Response
+}
+export type ProduceSeasonRankingTopRequest = {
+  produceGroupId: string
+  characterId: string
+}
+export type ProduceSeasonRankingTopResponse = {
+  rankings: ProduceSeasonRanking[]
+  commonResponse: papicommon.Response
+}
 export type ProduceStartBeforeLiveEvaluationRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStartBeforeLiveEvaluationResponse = {
   commonResponse: papicommon.Response
@@ -1808,6 +2218,7 @@ export type ProduceStartRequest = {
   challengeProduceItemIds: string[]
   isHighScoreRush: boolean
   changeCostumeLiveUnitCharacterIds: string[]
+  isResearch: boolean
   clientProduceUuid: string
 }
 type ProduceStartRequest_Memory = {
@@ -1820,20 +2231,21 @@ type ProduceStartRequest_SupportCard = {
 }
 export type ProduceStartResponse = {
   produceUuid: string
+  deviceProduceUuid: string
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
 export type ProduceStepAuditionEndExamBattleRequest = {
-  produceUuid: string
   result: pcommon.ExamBattleResult
   turnEndLogs: pcommon.ExamTurnEndLog[]
+  deviceProduceUuid: string
 }
 export type ProduceStepAuditionEndExamBattleResponse = {
   shouldTransitionSeminar: boolean
   commonResponse: papicommon.Response
 }
 export type ProduceStepAuditionEndRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepAuditionEndResponse = {
   rewardResults: pcommon.ProduceRewardResult[]
@@ -1842,7 +2254,7 @@ export type ProduceStepAuditionEndResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepAuditionRefreshRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepAuditionRefreshResponse = {
   beforeStamina: number
@@ -1851,15 +2263,15 @@ export type ProduceStepAuditionRefreshResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepAuditionStartRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepAuditionStartResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
 export type ProduceStepBusinessSelectRequest = {
-  produceUuid: string
   businessType: penum.ProduceStepBusinessType
+  deviceProduceUuid: string
 }
 export type ProduceStepBusinessSelectResponse = {
   consumptionResults: pcommon.ProduceConsumptionResult[]
@@ -1867,23 +2279,23 @@ export type ProduceStepBusinessSelectResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepBusinessStartRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepBusinessStartResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
 export type ProduceStepCustomizeEndRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepCustomizeEndResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
 export type ProduceStepCustomizeSelectRequest = {
-  produceUuid: string
   deckProduceCardIndex: number
   produceCardCustomizeId: string
+  deviceProduceUuid: string
 }
 export type ProduceStepCustomizeSelectResponse = {
   beforeProducePoint: number
@@ -1892,17 +2304,17 @@ export type ProduceStepCustomizeSelectResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepCustomizeStartRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepCustomizeStartResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
 export type ProduceStepEventRequest = {
-  produceUuid: string
   suggestionIndex: number
   isSkip: boolean
   isFastForward: boolean
+  deviceProduceUuid: string
 }
 export type ProduceStepEventResponse = {
   success: boolean
@@ -1911,7 +2323,7 @@ export type ProduceStepEventResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepLessonEndRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
   examEndResult: pcommon.ProduceExamEndResult
   turnEndLogs: pcommon.ExamTurnEndLog[]
 }
@@ -1921,14 +2333,14 @@ export type ProduceStepLessonEndResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepLessonStartRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepLessonStartResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
 export type ProduceStepPresentEndRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepPresentEndResponse = {
   rewardResults: pcommon.ProduceRewardResult[]
@@ -1936,9 +2348,9 @@ export type ProduceStepPresentEndResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepPresentReceiveRequest = {
-  produceUuid: string
   positionNumber: number
   rewardIndexes: number[]
+  deviceProduceUuid: string
 }
 export type ProduceStepPresentReceiveResponse = {
   providedRewards: pcommon.ProduceRewardResult[]
@@ -1946,14 +2358,14 @@ export type ProduceStepPresentReceiveResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepPresentStartRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepPresentStartResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
 export type ProduceStepRefreshRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepRefreshResponse = {
   beforeStamina: number
@@ -1962,7 +2374,7 @@ export type ProduceStepRefreshResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepSelfLessonEndRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepSelfLessonEndResponse = {
   rewardResults: pcommon.ProduceRewardResult[]
@@ -1970,7 +2382,7 @@ export type ProduceStepSelfLessonEndResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepSelfLessonStartRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepSelfLessonStartResponse = {
   beforeStamina: number
@@ -1979,9 +2391,9 @@ export type ProduceStepSelfLessonStartResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepShopBuyRequest = {
-  produceUuid: string
   positionNumber: number
   deckProduceCardIndex: number
+  deviceProduceUuid: string
 }
 export type ProduceStepShopBuyResponse = {
   providedRewards: pcommon.ProduceRewardResult[]
@@ -1991,27 +2403,27 @@ export type ProduceStepShopBuyResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepShopEndRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepShopEndResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
 export type ProduceStepShopRerollRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepShopRerollResponse = {
   commonResponse: papicommon.Response
 }
 export type ProduceStepShopStartRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepShopStartResponse = {
   effectResults: pcommon.ProduceEffectResult[]
   commonResponse: papicommon.Response
 }
 export type ProduceStepSkipRequest = {
-  produceUuid: string
+  deviceProduceUuid: string
 }
 export type ProduceStepSkipResponse = {
   beforeStamina: number
@@ -2027,12 +2439,23 @@ export type ProduceTopResponse = {
   storyEventBonus: pcommon.StoryEventBonus
   produceHighScore: ProduceTopResponse_ProduceHighScore
   produceHighScoreCharacterIds: string[]
+  research: ProduceTopResponse_Research
   commonResponse: papicommon.Response
 }
 type ProduceTopResponse_ProduceHighScore = {
   eventType: penum.ProduceHighScoreEventType
   characterIds: string[]
   produceGroupIds: string[]
+  produceItemIds: string[]
+  startTime: string
+  endTime: string
+  externalProduceRewards: papicommon.ProduceHighScoreRushExternalProduceReward[]
+}
+type ProduceTopResponse_Research = {
+  produceGroupIds: string[]
+  playableExamEffectTypes: penum.ProduceExamEffectType[]
+  externalProduceCardIds: string[]
+  memoryPickupProduceCardIds: string[]
   produceItemIds: string[]
   startTime: string
   endTime: string
@@ -2069,15 +2492,120 @@ export type ProduceUpdateSupportCardDeckRequest = {
 export type ProduceUpdateSupportCardDeckResponse = {
   commonResponse: papicommon.Response
 }
-export type ProduceUseDrinkResponse = {
-  effectResults: pcommon.ProduceEffectResult[]
-}
 export type ProduceViewPictureBookLiveRequest = {
   musicId: string
   characterId: string
 }
 export type ProduceViewPictureBookLiveResponse = {
   commonResponse: papicommon.Response
+}
+export type ProducerRankingCharacter = {
+  characterId: string
+  rank: number
+  point: string
+  produce: ProducerRankingCharacterProduce
+  towers: ProducerRankingCharacterTower[]
+}
+export type ProducerRankingCharacterHistoryRequest = {
+  producerRankingId: string
+  characterId: string
+  publicUserId: string
+}
+export type ProducerRankingCharacterHistoryResponse = {
+  character: pmaster.ProducerRankingCharacter
+  profile: pcommon.SimpleProfile
+  commonResponse: papicommon.Response
+}
+export type ProducerRankingCharacterProduce = {
+  characterId: string
+  idolCardId: string
+  idolCardSkinId: string
+  produceGroupId: string
+  userMemoryId: string
+  highScore: number
+  point: string
+}
+export type ProducerRankingCharacterRequest = {
+  characterId: string
+  publicUserId: string
+}
+export type ProducerRankingCharacterResponse = {
+  character: pmaster.ProducerRankingCharacter
+  profile: pcommon.SimpleProfile
+  commonResponse: papicommon.Response
+}
+export type ProducerRankingCharacterTower = {
+  characterId: string
+  towerId: string
+  layers: ProducerRankingTowerLayer[]
+}
+export type ProducerRankingGetTowerLayerRequest = {
+  characterId: string
+  towerId: string
+  number: number
+}
+export type ProducerRankingGetTowerLayerResponse = {
+  producerRankingId: string
+  idolCardId: string
+  highScore: number
+  commonResponse: papicommon.Response
+}
+export type ProducerRankingListRankRewardRequest = {
+  characterId: string
+}
+export type ProducerRankingListRankRewardResponse = {
+  characterId: string
+  selfRank: number
+  rankRewards: papicommon.RankReward[]
+  commonResponse: papicommon.Response
+}
+export type ProducerRankingRank = {
+  rank: number
+  point: string
+  profile: pcommon.SimpleProfile
+}
+export type ProducerRankingRankingHistoryRequest = {
+  producerRankingId: string
+  characterId: string
+}
+export type ProducerRankingRankingHistoryResponse = {
+  characterId: string
+  selfRank: ProducerRankingRank
+  ranks: ProducerRankingRank[]
+  commonResponse: papicommon.Response
+}
+export type ProducerRankingRankingRequest = {
+  characterId: string
+}
+export type ProducerRankingRankingResponse = {
+  characterId: string
+  selfRank: ProducerRankingRank
+  ranks: ProducerRankingRank[]
+  commonResponse: papicommon.Response
+}
+export type ProducerRankingTopHistoryRequest = {
+  producerRankingId: string
+}
+export type ProducerRankingTopHistoryResponse = {
+  name: string
+  characters: pmaster.ProducerRankingCharacter[]
+  startTime: string
+  endTime: string
+  fixRankTime: string
+  commonResponse: papicommon.Response
+}
+export type ProducerRankingTopResponse = {
+  name: string
+  characters: pmaster.ProducerRankingCharacter[]
+  startTime: string
+  endTime: string
+  fixRankTime: string
+  commonResponse: papicommon.Response
+}
+export type ProducerRankingTowerLayer = {
+  layerNumber: number
+  highScore: number
+  point: string
 }
 export type ProfileBirthday = {
   month: number
@@ -2105,6 +2633,9 @@ export type ProfileGetResponse = {
   produceRecords: ProfileGetResponse_ProduceRecord[]
   maxPvpRateUnitPower: number
   pvpRateGrade: penum.PvpRateGrade
+  maxCompetitionDeckPower: number
+  competitionGrade: penum.CompetitionGrade
+  badgeId: string
   supportCard: pcommon.SupportCard
   memory: pcommon.Memory
   meishi: pcommon.Meishi
@@ -2114,6 +2645,12 @@ type ProfileGetResponse_ProduceRecord = {
   produceType: penum.ProduceType
   trueEndCount: number
   highScore: number
+}
+export type ProfileUpdateBadgeRequest = {
+  badgeId: string
+}
+export type ProfileUpdateBadgeResponse = {
+  commonResponse: papicommon.Response
 }
 export type ProfileUpdateBirthdayRequest = {
   month: number
@@ -2189,7 +2726,7 @@ export type PvpRateGetResponse = {
   commonResponse: papicommon.Response
 }
 export type PvpRateInitializeResponse = {
-  previousSeasonResult: PvpRateSeasonResult
+  previousSeasonResult: papicommon.PvpRateSeasonResult
   isChangedFormation: boolean
   commonResponse: papicommon.Response
 }
@@ -2270,12 +2807,54 @@ type PvpRateUnitStageFormation_Slot = {
   subMemory: pcommon.Memory
   supportBonusPermyriad: number
   isDefault: boolean
+  produceCardConversions: pcommon.ProduceCardConversion[]
 }
 export type PvpRateUpdateUserPvpRateUnitRequest = {
   stageFormations: pcommon.PvpRateSetupUnitStageFormation[]
   recommendType: penum.DeckRecommendType
 }
 export type PvpRateUpdateUserPvpRateUnitResponse = {
+  commonResponse: papicommon.Response
+}
+export type ResearchGetResponse = {
+  researchId: string
+  titleAssetId: string
+  bgmAssetId: string
+  missionGroupId: string
+  rerollItemId: string
+  ignoreMemoryAbilityRarity: penum.SkillRarity
+  maxMemoryAbilityLockCount: number
+  produceGroupIds: string[]
+  playableExamEffectTypes: penum.ProduceExamEffectType[]
+  externalProduceCardIds: string[]
+  memoryPickupProduceCardIds: string[]
+  produceItemIds: string[]
+  startTime: string
+  endTime: string
+  closeTime: string
+  commonResponse: papicommon.Response
+}
+export type ResearchRankingRequest = {
+  characterId: string
+}
+export type ResearchRankingResponse = {
+  selfRank: ResearchRankingResponse_Rank
+  ranks: ResearchRankingResponse_Rank[]
+  commonResponse: papicommon.Response
+}
+type ResearchRankingResponse_Rank = {
+  rank: number
+  auditionScore: number
+  produceGroupId: string
+  idolCardSkinId: string
+  userMemoryId: string
+  profile: pcommon.SimpleProfile
+}
+export type ResearchRerollMemoryRequest = {
+  userMemoryId: string
+  memoryAbilityRerollLocks: boolean[]
+}
+export type ResearchRerollMemoryResponse = {
   commonResponse: papicommon.Response
 }
 export type SeminarEndExamRequest = {
@@ -2370,6 +2949,10 @@ export type ShopCancelPurchaseTransactionRequest = {
 export type ShopCancelPurchaseTransactionResponse = {
   commonResponse: papicommon.Response
 }
+export type ShopCheckBirthdayResponse = {
+  registered: boolean
+  commonResponse: papicommon.Response
+}
 export type ShopCheckPurchaseJewelRequest = {
   shopItemId: string
 }
@@ -2432,6 +3015,12 @@ export type ShopPurchaseResponse = {
   rewardResults: pcommon.RewardResult[]
   commonResponse: papicommon.Response
 }
+export type ShopReadWebStoreUserPurchaseTransactionRequest = {
+  userPurchaseTransactionId: string
+}
+export type ShopReadWebStoreUserPurchaseTransactionResponse = {
+  commonResponse: papicommon.Response
+}
 export type ShopRecoverPurchaseJewelRequest = {
   productId: string
   receipt: string
@@ -2463,6 +3052,7 @@ export type ShopRegisterDelayPurchaseTransactionResponse = {
 }
 export type ShopRegisterPurchaseTransactionRequest = {
   shopItemId: string
+  force: boolean
 }
 export type ShopRegisterPurchaseTransactionResponse = {
   transactionId: string
@@ -2730,6 +3320,211 @@ export type TicketExchangeListItemsResponse = {
   items: TicketExchangeItem[]
   commonResponse: papicommon.Response
 }
+export type TourContinueRequest = {
+  clientUuid: string
+}
+export type TourContinueResponse = {
+  seed: string
+  commonResponse: papicommon.Response
+}
+export type TourDeck = {
+  mainMemory: pcommon.Memory
+  subMemories: pcommon.Memory[]
+  supportBonusPermyriad: number
+  isDefault: boolean
+  produceCardConversions: pcommon.ProduceCardConversion[]
+}
+export type TourEndRequest = {
+  seed: string
+  result: pcommon.ExamContestResult
+}
+export type TourEndResponse = {
+  beforeTotalScore: number
+  score: number
+  grade: penum.TourScoreGrade
+  beforeLevel: number
+  afterLevel: number
+  levels: TourStageLevel[]
+  remainingContinueCount: number
+  commonResponse: papicommon.Response
+}
+export type TourGetProgressRequest = {
+  clientUuid: string
+}
+export type TourGetProgressResponse = {
+  stageNumber: number
+  name: string
+  phase: penum.TourProgressPhaseType
+  progress: TourGetProgressResponse_Progress
+  examEnd: TourGetProgressResponse_ExamEnd
+  commonResponse: papicommon.Response
+}
+type TourGetProgressResponse_ExamEnd = {
+  beforeTotalScore: number
+  score: number
+  grade: penum.TourScoreGrade
+  beforeLevel: number
+  afterLevel: number
+  levels: TourStageLevel[]
+  remainingRetryCount: number
+}
+type TourGetProgressResponse_Progress = {
+  examContestSituation: pcommon.ExamContestSituation
+  deck: TourDeck
+  scoreGradePatterns: TourScoreGradePattern[]
+}
+export type TourPlayTestRequest = {
+  stageNumber: number
+}
+export type TourPlayTestResponse = {
+  examContestSituation: pcommon.ExamContestSituation
+  deck: TourDeck
+  scoreGradePatterns: TourScoreGradePattern[]
+  commonResponse: papicommon.Response
+}
+export type TourResultRequest = {
+  clientUuid: string
+}
+export type TourResultResponse = {
+  beforeTotalPoint: number
+  basePoint: number
+  scoreBonusPoint: number
+  scoreGradeBonusPoint: number
+  totalPointRewards: TourTotalPointReward[]
+  totalPointRewardResult: TourResultResponse_TotalPointRewardResult
+  stageLevelClearRewardResults: pcommon.RewardResult[]
+  commonResponse: papicommon.Response
+}
+type TourResultResponse_TotalPointRewardResult = {
+  totalPointRewardResults: pcommon.RewardResult[]
+  totalPointRewardRanges: TourTotalPointReward[]
+}
+export type TourRetireResponse = {
+  commonResponse: papicommon.Response
+}
+export type TourScoreGradePattern = {
+  grade: penum.TourScoreGrade
+  threshold: number
+}
+export type TourSetUpDeck = {
+  mainUserMemoryId: string
+  subUserMemoryIds: string[]
+}
+export type TourStageLevel = {
+  level: number
+  scoreThreshold: number
+}
+export type TourStageRankingResponse = {
+  stageRankings: TourStageRankingResponse_StageRanking[]
+  selfStageRanks: TourStageRankingResponse_SelfStageRank[]
+  commonResponse: papicommon.Response
+}
+type TourStageRankingResponse_SelfStageRank = {
+  number: number
+  userRank: TourStageRankingResponse_UserRank
+}
+type TourStageRankingResponse_StageRanking = {
+  number: number
+  userRanks: TourStageRankingResponse_UserRank[]
+}
+type TourStageRankingResponse_UserRank = {
+  rank: number
+  score: number
+  profile: pcommon.SimpleProfile
+  deck: TourDeck
+}
+export type TourStartRequest = {
+  clientUuid: string
+  stageNumber: number
+  isAuto: boolean
+}
+export type TourStartResponse = {
+  examContestSituation: pcommon.ExamContestSituation
+  deck: TourDeck
+  scoreGradePatterns: TourScoreGradePattern[]
+  commonResponse: papicommon.Response
+}
+export type TourTopRequest = {
+  clientUuid: string
+}
+export type TourTopResponse = {
+  tourId: string
+  name: string
+  titleAssetId: string
+  rewardAssetId: string
+  colorCode: string
+  bgmAssetId: string
+  backgroundAssetId: string
+  storyGroupId: string
+  missionGroupId: string
+  exchangeId: string
+  exchangeConsumptionItemId: string
+  playItemId: string
+  totalPointRewards: TourTotalPointReward[]
+  currentTotalPoint: number
+  stages: TourTopResponse_Stage[]
+  inProgress: boolean
+  isCurrentClientUuid: boolean
+  minStageScoreThreshold: number
+  maxStageScoreThreshold: number
+  maxIdolCardPotentialRank: penum.IdolCardPotentialRank
+  idolCardPieceItemId: string
+  maxContinueCount: number
+  gradationColor1: string
+  gradationColor2: string
+  liveTicketName: string
+  initialPlayItemCount: number
+  dailyPlayItemCount: number
+  startTime: string
+  endTime: string
+  closeTime: string
+  commonResponse: papicommon.Response
+}
+type TourTopResponse_Stage = {
+  number: number
+  name: string
+  turn: number
+  vocal: number
+  dance: number
+  visual: number
+  planType: penum.ProducePlanType
+  characterIds: string[]
+  produceExamBattleScoreConfigId: string
+  produceItemIds: string[]
+  produceExamGimmickEffectGroupId: string
+  maxSubMemoryCount: number
+  deck: TourSetUpDeck
+  currentTotalScore: number
+  currentLevel: number
+  highScore: number
+  highScoreGrade: penum.TourScoreGrade
+  levels: TourTopResponse_Stage_StageLevelReward[]
+  iconAssetId: string
+  iconX: string
+  iconY: string
+  iconSizeType: penum.TourStageIconSizeType
+  sceneLayoutHeightCorrection: string
+  nameLogoAssetId: string
+}
+type TourTopResponse_Stage_StageLevelReward = {
+  level: number
+  scoreThreshold: number
+  rewards: pcommon.Reward[]
+}
+export type TourTotalPointReward = {
+  point: number
+  rewards: pcommon.Reward[]
+  repeat: boolean
+  repeatPoint: number
+}
+export type TourUpdateDeckRequest = {
+  stageNumber: number
+  deck: TourSetUpDeck
+  recommendType: penum.DeckRecommendType
+}
+export type TourUpdateDeckResponse = {
+  commonResponse: papicommon.Response
+}
 export type TowerCheckRequest = {
   seed: string
 }
@@ -2744,6 +3539,7 @@ export type TowerEndRequest = {
 }
 export type TowerEndResponse = {
   results: pcommon.RewardResult[]
+  producerRankingResult: pcommon.ProducerRankingResult
   commonResponse: papicommon.Response
 }
 export type TowerGetLayerIdolCardRankingRequest = {
@@ -2825,6 +3621,7 @@ export type TowerGetRankingDeckRequest = {
 export type TowerGetRankingDeckResponse = {
   memories: pcommon.Memory[]
   isDefaultMemory: boolean
+  produceCardConversions: pcommon.ProduceCardConversion[]
   commonResponse: papicommon.Response
 }
 export type TowerGetRankingRequest = {
@@ -3030,6 +3827,12 @@ export type TutorialUnlockFeatureRequest = {
 export type TutorialUnlockFeatureResponse = {
   commonResponse: papicommon.Response
 }
+export type UserGetBalanceResponse = {
+  freeBalance: number
+  paidBalance: number
+  webStorePaidBalance: number
+  commonResponse: papicommon.Response
+}
 export type UserGetResponse = {
   userData: papicommon.UserData
 }
@@ -3046,6 +3849,12 @@ export type UserListMessageResponse = {
 type UserListMessageResponse_PersonalMessage = {
   userPersonalMessageId: string
   message: string
+}
+export type UserReadForceTitleTransitionTimeRequest = {
+  readForceTitleTransitionTime: string
+}
+export type UserReadForceTitleTransitionTimeResponse = {
+  commonResponse: papicommon.Response
 }
 export type UserReadMessageRequest = {
   userPersonalMessageIds: string[]
