@@ -90,6 +90,7 @@ export function EvaOptionPannel({
       </Button>
       <Divider labelPosition="left" my="sm" label={t("Rarity")} />
       <ChipGroup multiple isEnum value={filter.rarities} onChange={(value) => onFilterChange("rarities", value)}>
+        <IconChip variant="outline" value={ProduceCardRarity.Legend}>LR</IconChip>
         <IconChip variant="outline" value={ProduceCardRarity.Ssr}>SSR</IconChip>
         <IconChip variant="outline" value={ProduceCardRarity.Sr}>SR</IconChip>
         <IconChip variant="outline" value={ProduceCardRarity.R}>R</IconChip>

@@ -41,6 +41,7 @@ function _ProduceCardIcon<C extends boolean>({
     switch (card.category) {
       case ProduceCardCategory.ActiveSkill:
         switch (card.rarity) {
+          case ProduceCardRarity.Legend: return media.cardActiveFrameLr
           case ProduceCardRarity.Ssr: return media.cardActiveFrameSsr
           case ProduceCardRarity.Sr: return media.cardActiveFrameSr
           case ProduceCardRarity.R: return media.cardActiveFrameR
@@ -48,6 +49,7 @@ function _ProduceCardIcon<C extends boolean>({
         }
       case ProduceCardCategory.MentalSkill:
         switch (card.rarity) {
+          case ProduceCardRarity.Legend: return media.cardMentalFrameLr
           case ProduceCardRarity.Ssr: return media.cardMentalFrameSsr
           case ProduceCardRarity.Sr: return media.cardMentalFrameSr
           case ProduceCardRarity.R: return media.cardMentalFrameR
