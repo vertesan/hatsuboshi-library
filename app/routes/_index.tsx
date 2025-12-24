@@ -1,4 +1,4 @@
-import { Alert, Divider } from "@mantine/core";
+import { Alert, Divider, ScrollArea } from "@mantine/core";
 import { IconInfoCircle } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { useContext } from "react";
@@ -19,17 +19,20 @@ export default function Index() {
 
   return (
     <div className="p-4">
-      <div className="mx-auto grid grid-cols-1 lg:grid-cols-[minmax(440px,2fr)_minmax(0,3fr)] gap-4">
+      <div className="mx-auto grid grid-cols-1 lg:grid-cols-[minmax(440px,2fr)_minmax(0,3fr)] gap-4 max-w-[1280px]">
         <div className="">
           <div>
             <h2 className="text-2xl font-medium">{t("Ongoing Events")}</h2>
             <Divider my="sm" />
             {ongoingEvents.length
-              ? <ul> {ongoingEvents.map(event =>
-                <li key={event.eventId} >
-                  <EventView event={event} className="" />
-                </li>
-              )}
+              ? <ul>
+                <ScrollArea.Autosize mah={530}>
+                  {ongoingEvents.map(event =>
+                    <li key={event.eventId} >
+                      <EventView event={event} className="" />
+                    </li>
+                  )}
+                </ScrollArea.Autosize>
               </ul>
               : <Alert className="" color="red" variant="light" icon={<IconInfoCircle />}>
                 {t("Currently no events are going on")}

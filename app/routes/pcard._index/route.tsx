@@ -15,7 +15,7 @@ import { ProduceCardCategory } from "~/types/proto/penum"
 import { OptionPannel } from "~/routes/pcard/optionPannel"
 import { CustomizationRow, CustomizationView } from "~/components/media/cardCustomization"
 
-const ITEMS_PER_PAGE = 20
+const ITEMS_PER_PAGE = 24
 
 export const meta: MetaFunction = () => {
   const title = getLocalString("meta-pcard")
@@ -60,56 +60,58 @@ export default function PCard() {
     <>
       <div className="p-4 flex flex-row relative">
         <div className="flex-[1_0_100%] sm:flex-[1_0_27rem] xl:pr-[396px]">
-          <Pagination value={activePage} onChange={setPage} size="md"
-            total={(filteredCards.length - 1) / ITEMS_PER_PAGE + 1} siblings={1} boundaries={1}
-            className={`pb-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
-          />
+          <div className="max-w-[1680px] justify-self-center">
+            <Pagination value={activePage} onChange={setPage} size="md"
+              total={(filteredCards.length - 1) / ITEMS_PER_PAGE + 1} siblings={1} boundaries={1}
+              className={`pb-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
+            />
 
-          {filteredCards.length
-            ? null
-            : <div className="w-full h-[80vh] flex flex-row justify-center items-center">
-              <p className="text-4xl">{t("No results")}</p>
-            </div>
-          }
-          <div className="grid grid-cols-1 md:grid-cols-2 3xl:grid-cols-4 gap-4 justify-items-start">
-            {
-              paginatedCards.map((pCard, idx) => {
-                return (
-                  <Card shadow="md" withBorder key={idx} className="p-2 w-full">
-                    <div className="flex flex-col gap-2">
-                      <div className="flex-1 flex flex-row gap-4 justify-center sm:justify-start items-center">
-                        <ProduceCardIcon
-                          card={pCard}
-                          character="kllj"
-                          className="flex-none relative h-[68px] w-[68px]"
-                        />
-                        <div className="flex-1 text-sm self-start">
-                          <p className="text-lg">{pCard.name}</p>
-                          <p>{t("Eva. ") + pCard.evaluation}</p>
-                          {pCard.unlockProducerLevel > 0
-                            ? <p>{t("P-Lv. ") + pCard.unlockProducerLevel}</p>
-                            : null}
-                        </div>
-                      </div>
-                      <div className="flex-1 text-sm self-start">
-                        <div className="pt-2"><EffectDescription descriptions={pCard.produceDescriptions} /></div>
-                      </div>
-                      {
-                        filter.displayCustomization
-                          ? <CustomizationView pCard={pCard} hideEva />
-                          : null
-                      }
-                    </div>
-                  </Card>
-                )
-              })
+            {filteredCards.length
+              ? null
+              : <div className="w-full h-[80vh] flex flex-row justify-center items-center">
+                <p className="text-4xl">{t("No results")}</p>
+              </div>
             }
-          </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 3xl:grid-cols-4 4xl:grid-cols-6 gap-4 justify-items-start">
+              {
+                paginatedCards.map((pCard, idx) => {
+                  return (
+                    <Card shadow="md" withBorder key={idx} className="p-2 w-full">
+                      <div className="flex flex-col gap-2">
+                        <div className="flex-1 flex flex-row gap-4 justify-center sm:justify-start items-center">
+                          <ProduceCardIcon
+                            card={pCard}
+                            character="kllj"
+                            className="flex-none relative h-[68px] w-[68px]"
+                          />
+                          <div className="flex-1 text-sm self-start">
+                            <p className="text-lg">{pCard.name}</p>
+                            <p>{t("Eva. ") + pCard.evaluation}</p>
+                            {pCard.unlockProducerLevel > 0
+                              ? <p>{t("P-Lv. ") + pCard.unlockProducerLevel}</p>
+                              : null}
+                          </div>
+                        </div>
+                        <div className="flex-1 text-sm self-start">
+                          <div className="pt-2"><EffectDescription descriptions={pCard.produceDescriptions} /></div>
+                        </div>
+                        {
+                          filter.displayCustomization
+                            ? <CustomizationView pCard={pCard} hideEva />
+                            : null
+                        }
+                      </div>
+                    </Card>
+                  )
+                })
+              }
+            </div>
 
-          <Pagination value={activePage} onChange={setPage} size="md"
-            total={(filteredCards.length - 1) / ITEMS_PER_PAGE + 1} siblings={1} boundaries={1}
-            className={`pt-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
-          />
+            <Pagination value={activePage} onChange={setPage} size="md"
+              total={(filteredCards.length - 1) / ITEMS_PER_PAGE + 1} siblings={1} boundaries={1}
+              className={`pt-4 flex flex-row justify-center ${filteredCards.length ? "block" : "hidden"}`}
+            />
+          </div>
         </div>
 
         <div className={`fixed z-[102] px-2 pb-24 top-2 left-0 right-0 h-screen w-screen overflow-x-hidden overflow-y-auto
