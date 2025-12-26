@@ -178,7 +178,7 @@ function PlayEffectsIcon({
   }
   let mbPercentage = 0
   if (displayEffects.length > 3) {
-    mbPercentage = 4 * (30 * displayEffects.length - 100) / (displayEffects.length - 1)
+    mbPercentage = 4 * (30 * displayEffects.length - 100) / (displayEffects.length - 0.2)
   }
   return (
     displayEffects.length > 0
