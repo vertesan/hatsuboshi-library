@@ -42,7 +42,7 @@ export function filterCustPCards(
   const results = cards.filter(card => {
     // customization count
     if (filter.displayCustomization) {
-      if (card.maxCustomizeCount === 0) return false
+      if (card.maxCustomizeCount === 0 && card.rarity !== ProduceCardRarity.Legend) return false
     }
     // rarity
     if (filter.rarities.length > 0) {
@@ -72,7 +72,7 @@ export function filterCustPCards(
 
     // grade
     if (filter.displayCustomization) {
-      if (card.upgradeCount === 0) return false
+      if (card.upgradeCount === 0 && card.rarity !== ProduceCardRarity.Legend) return false
     } else {
       if (filter.grades.length > 0) {
         if (!filter.grades.includes(card.upgradeCount)) return false
