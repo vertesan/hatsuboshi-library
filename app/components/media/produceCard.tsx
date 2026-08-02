@@ -122,7 +122,10 @@ function LessonIcon({
 }) {
   const lessonEffect = card.playEffects.find(
     effect =>
-      effect.produceExamEffect.effectType === ProduceExamEffectType.ExamLesson &&
+      (
+        effect.produceExamEffect.effectType === ProduceExamEffectType.ExamLesson
+        || effect.produceExamEffect.effectType === ProduceExamEffectType.ExamMultipleEnthusiasticLesson
+      ) &&
       !effect.produceExamTriggerId
   )
   if (lessonEffect === undefined) return null
@@ -167,6 +170,7 @@ function PlayEffectsIcon({
       }
       return !effect.hideIcon &&
         (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamLesson || effect.produceExamTriggerId) &&
+        (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamLessonAddMultipleParameterBuff || effect.produceExamTriggerId) &&
         (effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlock || blockCount >= 2) &&
         effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockPerUseCardCount &&
         effect.produceExamEffect.effectType !== ProduceExamEffectType.ExamBlockAddMultipleAggressive
