@@ -3,6 +3,7 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 import en from '~/locales/en'
 import zh_Hans from '~/locales/zh-Hans'
+import ja from '~/locales/ja'
 import { readLocalStorage } from '~/utils/localStorage'
 
 export type Translation = typeof en
@@ -20,6 +21,7 @@ export function getLocalString(key: keyof typeof en) {
   switch (readLocaleLng()) {
     case "en": locale = en; break;
     case "zh-Hans": locale = zh_Hans; break;
+    case "ja": locale = ja; break;
     // add new cases for new languages
     default: break;
   }
@@ -38,6 +40,7 @@ i18n
     resources: {
       en: { translation: en },
       "zh-Hans": { translation: zh_Hans },
+      "ja": { translation: ja },
       // add new languages
     },
     interpolation: {
