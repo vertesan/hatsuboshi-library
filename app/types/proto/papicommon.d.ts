@@ -36,6 +36,11 @@ export type ProduceHighScoreRushExternalProduceReward = {
   produceItemIds: string[]
   produceDrinkIds: string[]
 }
+export type ProduceHighScoreRushOverrideExternalProduceReward = {
+  examEffectType: penum.ProduceExamEffectType
+  produceId: string
+  produceItemIds: string[]
+}
 export type PvpRateSeasonResult = {
   seasonStartTime: string
   seasonEndTime: string
@@ -63,6 +68,13 @@ export type RankReward = {
   borderScore: string
   rewards: pcommon.Reward[]
 }
+export type Refine = {
+  refineId: string
+  refineName: string
+  startTime: string
+  endTime: string
+  closeTime: string
+}
 export type Response = {
   updatedData: UserData
   deletedData: UserData
@@ -72,10 +84,15 @@ export type Response = {
   anotherCostumeIds: string[]
   anotherCostumeHeadIds: string[]
   storyEventRewards: StoryEventReward[]
+  clearTrailMissions: TrailMission[]
 }
 export type StoryEventReward = {
   storyEventId: string
   pointRewards: pcommon.StoryEventPointReward[]
+}
+export type TrailMission = {
+  name: string
+  threshold: number
 }
 export type UserData = {
   user: ptransaction.User
@@ -107,6 +124,8 @@ export type UserData = {
   userMeishiIllustrationAssetList: ptransaction.UserMeishiIllustrationAsset[]
   userMemoryList: ptransaction.UserMemory[]
   userMemoryInherit: ptransaction.UserMemoryInherit
+  userMemoryRemake: ptransaction.UserMemoryRemake
+  userMemoryRemakeResultList: ptransaction.UserMemoryRemakeResult[]
   userMissionList: ptransaction.UserMission[]
   userMissionDailyReleaseGroupList: ptransaction.UserMissionDailyReleaseGroup[]
   userMissionGroupList: ptransaction.UserMissionGroup[]
@@ -119,12 +138,15 @@ export type UserData = {
   userPhotoList: ptransaction.UserPhoto[]
   userPhotoBackgroundList: ptransaction.UserPhotoBackground[]
   userPhotoPoseList: ptransaction.UserPhotoPose[]
+  userPlayGames: ptransaction.UserPlayGames
   userPreference: ptransaction.UserPreference
   userProduceList: ptransaction.UserProduce[]
   userProduceAdvList: ptransaction.UserProduceAdv[]
   userProduceCardList: ptransaction.UserProduceCard[]
   userProduceCardConversionList: ptransaction.UserProduceCardConversion[]
   userProduceCardRewardList: ptransaction.UserProduceCardReward[]
+  userProduceCardSkinList: ptransaction.UserProduceCardSkin[]
+  userProduceCardSkinPreferenceList: ptransaction.UserProduceCardSkinPreference[]
   userProduceCharacterList: ptransaction.UserProduceCharacter[]
   userProduceDrinkList: ptransaction.UserProduceDrink[]
   userProduceGroupCharacterList: ptransaction.UserProduceGroupCharacter[]
@@ -154,6 +176,16 @@ export type UserData = {
   userPvpRate: ptransaction.UserPvpRate
   userPvpRateDeckList: ptransaction.UserPvpRateDeck[]
   userPvpRateUnit: ptransaction.UserPvpRateUnit
+  userRefineAdvList: ptransaction.UserRefineAdv[]
+  userRefineMemoryDeckList: ptransaction.UserRefineMemoryDeck[]
+  userRefineProgress: ptransaction.UserRefineProgress
+  userRefineProgressEffectList: ptransaction.UserRefineProgressEffect[]
+  userRefineProgressExamMissionList: ptransaction.UserRefineProgressExamMission[]
+  userRefineProgressPresentList: ptransaction.UserRefineProgressPresent[]
+  userRefineProgressProduceCardList: ptransaction.UserRefineProgressProduceCard[]
+  userRefineProgressSectionStepList: ptransaction.UserRefineProgressSectionStep[]
+  userRefineProgressSetupList: ptransaction.UserRefineProgressSetup[]
+  userRefineProgressSubProduceCardList: ptransaction.UserRefineProgressSubProduceCard[]
   userShopItemList: ptransaction.UserShopItem[]
   userStoryList: ptransaction.UserStory[]
   userSupportCardList: ptransaction.UserSupportCard[]

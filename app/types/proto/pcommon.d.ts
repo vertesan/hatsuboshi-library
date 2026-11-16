@@ -242,6 +242,7 @@ export type ExamBattleResult = {
   vocalScore: number
   danceScore: number
   visualScore: number
+  examActions: ExamAction[]
 }
 export type ExamCommandLog = {
   commandType: penum.ExamCommandType
@@ -278,6 +279,9 @@ export type ExamContestPlayer = {
   produceCards: ProduceCard[]
   produceItems: ProduceItem[]
   produceCustomizeItemIds: string[]
+  produceDrinkIds: string[]
+  supportCards: ExamSupportCard[]
+  stamina: number
   examActions: ExamAction[]
 }
 export type ExamContestPlayerResult = {
@@ -303,6 +307,7 @@ export type ExamContestSituation = {
   imageVersion: string
   masterVersion: string
   masterHash: string
+  isStaticTurnParameterType: boolean
   vocal: number
   dance: number
   visual: number
@@ -313,8 +318,15 @@ export type ExamContestStage = {
   planType: penum.ProducePlanType
   produceExamGimmickEffectGroupId: string
   stageProduceItems: ProduceItem[]
+  produceExamBattleNpcGroupId: string
+  forceEndScore: number
+  excludeProduceCardIds: string[]
   selfSections: ExamContestSection[]
   rivalSections: ExamContestSection[]
+  researchExternalProduceCardIds: string[]
+  examStatusEnchants: ExamStatusEnchant[]
+  examPermanentStatusEnchants: ExamStatusEnchant[]
+  examMissions: ExamMission[]
 }
 export type ExamContestStageResult = {
   selfSections: ExamContestSectionResult[]
@@ -337,11 +349,31 @@ export type ExamContestTurn = {
   startPlayHoldProduceCards: ProduceCard[]
   startPlayStatuses: ExamStatusEffect[]
 }
+export type ExamMission = {
+  produceExamTriggerId: string
+  thresholdTriggerCount: number
+  iconAssetId: string
+  backgroundColor: string
+  resourceType: penum.ProduceResourceType
+  resourceId: string
+  quantity: number
+}
 export type ExamStatusEffect = {
   statusEffectType: penum.ExamStatusEffectType
   value: number
   turn: number
   isPassingTurnStart: boolean
+}
+export type ExamStatusEnchant = {
+  originType: penum.ProduceTriggerOriginType
+  originOwnerId: string
+  originId: string
+  originLevel: number
+  id: string
+}
+export type ExamSupportCard = {
+  supportCardId: string
+  produceCardUpgradePermil: number
 }
 export type ExamTriggerCount = {
   produceExamTriggerId: string
@@ -371,6 +403,7 @@ export type Gasha = {
   gashaStepUp: GashaStepUp
   gashaSelectPickup: GashaSelectPickup
   gashaContinuous: GashaContinuous
+  gashaStepUpSelectPickup: GashaStepUpSelectPickup
   gashaCardBonusId: string
   gashaPoint: GashaPoint
   bonusRewards: Reward[]
@@ -385,8 +418,10 @@ export type Gasha = {
   hasIdolCard: boolean
   pickupIdolCardSkinIds: string[]
   pickupSupportCardIds: string[]
+  pickupProduceCardSkinIds: string[]
   backgroundPickupIdolCardSkins: GashaBackgroundPickup[]
   backgroundPickupSupportCards: GashaBackgroundPickup[]
+  backgroundPickupProduceCardSkins: GashaBackgroundPickup[]
   animationBackgroundAssetId: string
   bgmAssetId: string
   startTime: string
@@ -396,6 +431,7 @@ export type Gasha = {
 export type GashaBackgroundPickup = {
   idolCardSkinId: string
   supportCardId: string
+  produceCardSkinId: string
   movieAssetId: string
   screenAssetId: string
   rewards: Reward[]
@@ -429,6 +465,7 @@ export type GashaPoint = {
 export type GashaSelectPickup = {
   idolCardSkinIds: string[]
   supportCardIds: string[]
+  produceCardSkinIds: string[]
   pickupRewards: Reward[]
   pickupCount: number
   drawCount: number
@@ -437,6 +474,25 @@ export type GashaStepUp = {
   number: number
   isLimited: boolean
   steps: GashaStepUpStep[]
+}
+export type GashaStepUpSelectPickup = {
+  number: number
+  isLimited: boolean
+  isCommon: boolean
+  steps: GashaStepUpSelectPickupStep[]
+}
+export type GashaStepUpSelectPickupStep = {
+  number: number
+  gashaButtonId: string
+  stepLabelColor: string
+  appealAssetId: string
+  isFeature: boolean
+  bonusRewards: Reward[]
+  pickupRewards: Reward[]
+  pickupCount: number
+  idolCardSkinIds: string[]
+  supportCardIds: string[]
+  produceCardSkinIds: string[]
 }
 export type GashaStepUpStep = {
   number: number
@@ -622,6 +678,8 @@ export type ProduceCard = {
   id: string
   upgradeCount: number
   customizes: ProduceCardCustomize[]
+  freeCustomizes: ProduceCardCustomize[]
+  produceCardSkinId: string
 }
 export type ProduceCardConversion = {
   beforeProduceCardId: string
@@ -630,6 +688,9 @@ export type ProduceCardConversion = {
 export type ProduceCardCustomize = {
   id: string
   customizeCount: number
+}
+export type ProduceCards = {
+  produceCards: ProduceCard[]
 }
 export type ProduceConsumptionResult = {
   resourceType: penum.ProduceResourceType
@@ -659,6 +720,9 @@ export type ProduceDescriptionSegment = {
   originProduceExamTriggerId: string
   originProduceExamEffectId: string
   originProduceCardStatusEnchantId: string
+  originProduceCardMoveEffectTriggerType: penum.ProduceCardMoveEffectTriggerType
+  originMoveProduceExamTriggerId: string
+  originMoveProduceExamEffectId: string
   isCost: boolean
   isOnlyOutGame: boolean
   changeColor: boolean
@@ -734,8 +798,10 @@ export type ProduceHistory = {
   voteCount: number
   star: number
   produceCustomizeItemIds: string[]
+  schedules: ProduceSchedule[]
   isHighScoreRush: boolean
   highScoreGold: number
+  produceHighScoreId: string
   researchId: string
 }
 type ProduceHistory_Audition = {
@@ -743,6 +809,7 @@ type ProduceHistory_Audition = {
   stepSelectNumber: number
   rank: number
   score: number
+  examContestSituation: ExamContestSituation
 }
 type ProduceHistory_DeckMemory = {
   memory: Memory
@@ -757,6 +824,11 @@ type ProduceHistory_DeckSupportCard = {
   level: number
   levelLimitRank: penum.SupportCardLevelLimitRank
   isRental: boolean
+}
+export type ProduceHistoryCache = {
+  userIdBytes: string
+  userMemoryIdBytes: string
+  score: number
 }
 export type ProduceItem = {
   produceItemId: string
@@ -839,6 +911,54 @@ export type PvpRateSetupUnitStageFormation = {
 type PvpRateSetupUnitStageFormation_Slot = {
   mainUserMemoryId: string
   subUserMemoryId: string
+}
+export type RefineAction = {
+  actionType: penum.RefineActionType
+  actionId: string
+}
+export type RefineHistory = {
+  refineId: string
+  refineName: string
+  halfSectionNumber: number
+  refineGradeType: penum.RefineGradeType
+  gradeNumber: number
+  refineScore: string
+  clearedTime: string
+  producerLevel: number
+  idolCardId: string
+  idolCardSkinId: string
+  levelLimitRank: penum.IdolCardLevelLimitRank
+  potentialRank: penum.IdolCardPotentialRank
+  isPrimaStella: boolean
+  produceCards: ProduceCard[]
+  produceItemIds: string[]
+  refineParkIds: string[]
+  vocalPermil: number
+  dancePermil: number
+  visualPermil: number
+  maxStamina: number
+  sections: RefineHistory_Section[]
+}
+type RefineHistory_Section = {
+  sectionNumber: number
+  auditionRank: number
+  auditionScore: number
+  refineScore: number
+  examContestSituation: ExamContestSituation
+}
+export type RefineLesson = {
+  stepType: penum.RefineStepType
+  limitTurn: number
+  successThreshold: number
+  perfectThreshold: number
+  seed: string
+  produceExamGimmickEffectGroupId: string
+}
+export type RefineLessonResult = {
+  score: number
+  remainingTurn: number
+  stamina: number
+  produceDrinkIds: string[]
 }
 export type ResearchExchangeItemRewardResult = {
   researchId: string

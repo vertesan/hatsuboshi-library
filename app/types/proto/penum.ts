@@ -51,6 +51,7 @@ export enum AuthProviderType {
   Unknown = 0,
   BandaiNamcoId = 1,
   DmmgamesId = 2,
+  GooglePlayGamesId = 3,
 }
 export enum BadgeGrade {
   Unknown = 0,
@@ -86,12 +87,22 @@ export enum CharacterDetailType {
   Hobby = 13,
   Introduction = 14,
 }
+export enum CharacterLookEffectorSituationType {
+  Unknown = 0,
+  Photo = 1,
+  Panorama = 2,
+}
 export enum CharacterPersonalityType {
   Unknown = 0,
   A = 1,
   B = 2,
   C = 3,
   D = 4,
+}
+export enum CharacterPositionType {
+  Unknown = 0,
+  Default = 1,
+  Face = 2,
 }
 export enum CoinGashaBoxResetTypeType {
   Unknown = 0,
@@ -229,6 +240,9 @@ export enum ConditionType {
   ProduceGrowthPanelLevel = 74,
   ProduceGrowthPanelLevelCount = 75,
   IdolCardPrimaStellaCount = 76,
+  MeishiBaseAsset = 77,
+  MeishiIllustrationAsset = 78,
+  ProduceCardConversionAllDisabled = 79,
   Set = 998,
   NegativeSet = 999,
 }
@@ -367,12 +381,16 @@ export enum ErrorCode {
   ShopExceedPurchaseLimitOnPurchase = 2050,
   PaymentBalanceInvalid = 2051,
   BlockCountLimitExceeded = 2052,
+  PlayGamesIdInvalid = 2053,
   ProduceOutdatedRentalSupportCard = 2301,
   ProduceOutdatedRentalMemory = 2302,
   ProduceHistoryNotFound = 2303,
   ProduceUuidInvalid = 2304,
   ProduceNeedReset = 2305,
   ProduceClearTimeBanWarning = 2306,
+  RefineUuidInvalid = 2401,
+  RefineNeedReset = 2402,
+  RefineHistoryNotFound = 2403,
   GvgRaidStageAlreadyCleared = 3000,
   TowerProgressReset = 3300,
   BnidlinkUserNotFound = 5000,
@@ -399,6 +417,9 @@ export enum EventType {
   DearnessBoost = 10,
   Tour = 11,
   Research = 12,
+  Trail = 13,
+  MemoryRemake = 14,
+  StoryEventUnitStory = 15,
 }
 export enum ExamActionType {
   Unknown = 0,
@@ -411,6 +432,7 @@ export enum ExamAiModelType {
   Unknown = 0,
   Audition = 1,
   Competition = 2,
+  Refine = 3,
 }
 export enum ExamCommandType {
   Unknown = 0,
@@ -430,6 +452,8 @@ export enum ExamCommandType {
   CardEnchantTrigger = 14,
   SupportCardUpgrade = 15,
   Panic = 16,
+  ForcePlayReview = 17,
+  FusionMemberActivation = 18,
 }
 export enum ExamCostType {
   Unknown = 0,
@@ -491,6 +515,10 @@ export enum ExamMotionTargetType {
   Audition = 8,
   Contest = 9,
   Tour = 10,
+  RefineVocalLesson = 15,
+  RefineDanceLesson = 16,
+  RefineVisualLesson = 17,
+  RefineAudition = 18,
 }
 export enum ExamMotionType {
   Unknown = 0,
@@ -502,6 +530,7 @@ export enum ExamMotionType {
   Wait = 6,
   NoMotionUseDrink = 7,
   WaitOnce = 8,
+  Metamorphose = 9,
 }
 export enum ExamOutGameMotionType {
   Unknown = 0,
@@ -521,6 +550,8 @@ export enum ExamPhaseType {
   Main = 5,
   TurnEnd = 6,
   ExamEnd = 7,
+  ExamCardFusion = 8,
+  ExamCardFusionAfter = 9,
 }
 export enum ExamPlayType {
   Unknown = 0,
@@ -529,6 +560,11 @@ export enum ExamPlayType {
   ManualPlayLessonHard = 3,
   ManualPlayAudition = 4,
   AutoPlayCompetition = 5,
+}
+export enum ExamReplayRouteType {
+  Unknown = 0,
+  ProduceRanking = 1,
+  ProduceLatestHistory = 2,
 }
 export enum ExamStatusEffectType {
   Unknown = 0,
@@ -604,6 +640,8 @@ export enum ExamStatusEffectType {
   AggressiveAdditiveFix = 78,
   ReviewAdditiveFix = 79,
   FullPowerPointAdditiveFix = 80,
+  BuffConsumptionDownFix = 81,
+  BuffConsumptionAddFix = 82,
 }
 export enum ExchangeItemCategoryType {
   Unknown = 0,
@@ -650,6 +688,10 @@ export enum FeatureMaintenanceType {
   ProducerRanking = 23,
   ProduceEvent = 24,
   Competition = 25,
+  Trail = 26,
+  GradeMission = 27,
+  MemoryRemake = 28,
+  Refine = 29,
 }
 export enum FourPanelComicSeries {
   Unknown = 0,
@@ -692,6 +734,11 @@ export enum GashaButtonAppealType {
   FixSsr = 4,
   DiscountDrawableCount = 5,
 }
+export enum GashaButtonResourceTextType {
+  Unknown = 0,
+  Ticket = 1,
+  Item = 2,
+}
 export enum GashaButtonType {
   Unknown = 0,
   Static = 1,
@@ -704,6 +751,10 @@ export enum GashaCardBonusType {
   SupportCardAll = 3,
   IdolCard = 4,
   SupportCard = 5,
+  ProduceCardSkinAll = 6,
+  ProduceCardSkin = 7,
+  AnotherIdolCardAll = 8,
+  AnotherIdolCardPickupAll = 9,
 }
 export enum GashaContinuousStepType {
   Unknown = 0,
@@ -726,6 +777,7 @@ export enum GashaType {
   StepUp = 2,
   SelectPickup = 3,
   Continuous = 4,
+  StepUpSelectPickup = 5,
 }
 export enum GiftFilterType {
   Unknown = 0,
@@ -861,6 +913,13 @@ export enum IdolCardPotentialRank {
   _3 = 3,
   _4 = 4,
 }
+export enum IdolCardProduceItemType {
+  Unknown = 0,
+  BeforePotentialAndBeforeLevelLimit7 = 1,
+  BeforePotentialAndAfterLevelLimit7 = 2,
+  AfterPotentialAndBeforeLevelLimit7 = 3,
+  AfterPotentialAndAfterLevelLimit7 = 4,
+}
 export enum IdolCardRarity {
   Unknown = 0,
   R = 1,
@@ -903,6 +962,9 @@ export enum ItemType {
   MemoryInherit = 19,
   DearnessStoryUnlock = 20,
   CompetitionCoin = 21,
+  IdolCardCharacterPiece = 22,
+  UnitStoryUnlock = 23,
+  RefineExchange = 24,
   ProduceBoostRewardSupportCardEnhancePoint = 102,
   ProduceBoostRewardIdolCardLevelLimitMaterial = 103,
 }
@@ -955,6 +1017,29 @@ export enum LinkType {
   Competition = 41,
   WebStore = 42,
   ProduceCardConversion = 43,
+  Trail = 44,
+  ProduceCardSkin = 45,
+}
+export enum LiveAdditionalAssetType {
+  Unknown = 0,
+  LiveOverrideAsset = 1,
+  AdditionalActorBodyAsset = 10,
+  AdditionalActorFaceAsset = 11,
+  AdditionalActorHairAsset = 12,
+  AdditionalActorPropAsset = 13,
+}
+export enum LiveConditionType {
+  Unknown = 0,
+  Character = 1,
+  Costume = 2,
+  CostumeHead = 3,
+  Set = 998,
+  NegativeSet = 999,
+}
+export enum LiveType {
+  Unknown = 0,
+  Normal = 1,
+  Panorama = 2,
 }
 export enum LoginBonusType {
   Unknown = 0,
@@ -974,6 +1059,7 @@ export enum MediaMovieType {
   Unknown = 0,
   Movie = 1,
   Birthday = 2,
+  Story = 3,
 }
 export enum MediaType {
   Unknown = 0,
@@ -1020,6 +1106,12 @@ export enum MeishiObjectType {
   Movie = 16,
   BaseAsset = 17,
   Other = 999,
+}
+export enum MemoryRemakePhaseType {
+  Unknown = 0,
+  Ingame = 1,
+  IngameResult = 2,
+  MemorySelect = 3,
 }
 export enum MissionCategory {
   Unknown = 0,
@@ -1078,6 +1170,7 @@ export enum MissionType {
   IncrementCompetitionUseProduceCardCount = 174,
   IncrementCompetitionStageScoreCount = 175,
   IncrementGashaContinuousSnsShareCount = 176,
+  IncrementCharacterPhotoCount = 177,
   IncrementProduceSupportCardDeckUpdateCount = 201,
   IncrementProduceMemoryDeckUpdateCount = 202,
   IncrementProduceTotalScore = 203,
@@ -1146,6 +1239,11 @@ export enum MissionType {
   AbsoluteCompetitionDeckPower = 381,
   AbsoluteCompetitionTotalHighScore = 382,
   AbsoluteCompetitionStageHighScore = 383,
+  AbsoluteCharacterCostumeCount = 384,
+  AbsoluteCharacterCostumeHeadCount = 385,
+  AbsoluteCharacterMusicCount = 386,
+  AbsoluteCharacterProduceLiveTrueEndCount = 388,
+  AbsoluteCharacterProducerRankingRankCount = 389,
   AbsoluteProduceIdolCardHighScore = 401,
   AbsoluteProducePlanTotalHighScore = 402,
   AbsoluteProducePictureBookProduceCardCount = 410,
@@ -1156,6 +1254,17 @@ export enum MissionType {
   AbsoluteProducePlayCharacterCount = 422,
   AbsoluteProduceStoryRead = 423,
   AbsoluteProduceGrowthPanelComplete = 424,
+  AbsoluteProduceGradeCharacterCount = 425,
+  IncrementRefineClearSectionCount = 501,
+  IncrementRefineGetProduceCardCount = 502,
+  IncrementRefineUseProduceCardCount = 503,
+  IncrementRefineCustomizeProduceCardCount = 504,
+  IncrementRefineGetProduceDrinkCount = 505,
+  IncrementRefineUseProduceDrinkCount = 506,
+  IncrementRefineGetProduceItemCount = 507,
+  IncrementRefineUseProducePoint = 508,
+  IncrementRefineExamMissionClearCount = 509,
+  AbsoluteRefineGrade = 550,
   ConditionClear = 998,
   ProduceConditionClear = 999,
   ProduceConditionClearBeforeLiveEvaluation = 1000,
@@ -1237,6 +1346,7 @@ export enum PreferenceType {
   PhotoButtonExecuteType = 1,
   ProduceDisableForceLiveCommon = 2,
   ProduceNextIdolAuditionProEasyMode = 3,
+  ProduceDisableSupportCardEventProduceCardUpgrade = 4,
 }
 export enum ProduceAdvType {
   Unknown = 0,
@@ -1276,6 +1386,7 @@ export enum ProduceCardCategory {
   ActiveSkill = 1,
   MentalSkill = 2,
   Trouble = 3,
+  Derive = 4,
 }
 export enum ProduceCardGrowEffectType {
   Unknown = 0,
@@ -1332,6 +1443,7 @@ export enum ProduceCardGrowEffectType {
   LessonDependExamReviewAdd = 52,
   CostParameterBuffMultiplePerTurnAdd = 53,
   CostParameterBuffMultiplePerTurnReduce = 54,
+  MoveEffectChange = 55,
 }
 export enum ProduceCardMoveEffectTriggerType {
   Unknown = 0,
@@ -1340,6 +1452,7 @@ export enum ProduceCardMoveEffectTriggerType {
   Draw = 3,
   Hold = 4,
   Hand = 5,
+  Remove = 6,
 }
 export enum ProduceCardMovePositionType {
   Unknown = 0,
@@ -1350,12 +1463,25 @@ export enum ProduceCardMovePositionType {
   Grave = 5,
   Lost = 6,
   Hold = 7,
+  Remove = 8,
 }
 export enum ProduceCardOrderType {
   Unknown = 0,
   First = 1,
   Last = 2,
   Random = 3,
+}
+export enum ProduceCardPickFusionType {
+  Unknown = 0,
+  Normal = 1,
+  DistinctTop = 2,
+}
+export enum ProduceCardPlan4GroupType {
+  Unknown = 0,
+  Group1 = 1,
+  Group2 = 2,
+  Group3 = 3,
+  Group4 = 4,
 }
 export enum ProduceCardPositionType {
   Unknown = 0,
@@ -1373,6 +1499,8 @@ export enum ProduceCardPositionType {
   Hold = 13,
   DeckGrave = 14,
   NotLost = 15,
+  PlayingFusionTop = 16,
+  Remove = 17,
 }
 export enum ProduceCardRarity {
   Unknown = 0,
@@ -1389,6 +1517,13 @@ export enum ProduceCardSearchStatusType {
   Initial = 4,
   Restrict = 5,
   GravePlay = 6,
+}
+export enum ProduceCardSkinCutInType {
+  Unknown = 0,
+  Small = 1,
+  Mid = 2,
+  Grand = 3,
+  High = 4,
 }
 export enum ProduceConditionType {
   Unknown = 0,
@@ -1591,7 +1726,6 @@ export enum ProduceEffectType {
   VocalLimitUp = 91,
   DanceLimitUp = 92,
   VisualLimitUp = 93,
-  SupportCardEventProduceCardUpgrade = 94,
   ExamTurnUp = 95,
   ExamTurnDown = 96,
   AuditionNpcEnhance = 97,
@@ -1632,6 +1766,13 @@ export enum ProduceEffectType {
   ProduceCardChangeSelect = 132,
   ProduceDrinkPossessLimitUp = 133,
   ShopProduceCardPriceDiscountMultiplePermanent = 134,
+  VocalPermilAddition = 135,
+  DancePermilAddition = 136,
+  VisualPermilAddition = 137,
+  VocalPermilDown = 138,
+  DancePermilDown = 139,
+  VisualPermilDown = 140,
+  ProduceCardFreeCustomize = 141,
 }
 export enum ProduceEventCharacterType {
   Unknown = 0,
@@ -1726,6 +1867,7 @@ export enum ProduceExamAutoEvaluationType {
   ExamParameterBuffTurnEndReduceLock = 51,
   ExamBuffConsumptionDown = 52,
   ExamBuffConsumptionAdd = 53,
+  ExamMetamorphose = 54,
 }
 export enum ProduceExamEffectType {
   Unknown = 0,
@@ -1897,6 +2039,31 @@ export enum ProduceExamEffectType {
   ExamCardShuffleDeckLost = 217,
   ExamFullPowerPointDependFullPowerPointGetSum = 218,
   ExamStatusEnchantEncore = 219,
+  ExamPlan4Group1 = 220,
+  ExamPlan4Group2 = 221,
+  ExamPlan4Group3 = 222,
+  ExamPlan4Group4 = 223,
+  ExamPlan4Group1FusionLimitAdd = 224,
+  ExamPlan4Group2FusionLimitAdd = 225,
+  ExamPlan4Group3FusionLimitAdd = 226,
+  ExamPlan4Group4FusionLimitAdd = 227,
+  ExamPlan4Group1FusionLimitReduce = 228,
+  ExamPlan4Group2FusionLimitReduce = 229,
+  ExamPlan4Group3FusionLimitReduce = 230,
+  ExamPlan4Group4FusionLimitReduce = 231,
+  ExamCardMoveFusionSet = 232,
+  ExamPlan4Group1Change = 233,
+  ExamPlan4Group2Change = 234,
+  ExamPlan4Group3Change = 235,
+  ExamPlan4Group4Change = 236,
+  ExamMetamorphose = 237,
+  ExamMetamorphoseAfter = 238,
+  ExamLessonDependLessonBuff = 240,
+  ExamBuffConsumptionDownFix = 241,
+  ExamBuffConsumptionAddFix = 242,
+  ExamReviewForcePlay = 243,
+  ExamStaminaDamageFix = 244,
+  ExamStaminaReduceFixAffected = 245,
 }
 export enum ProduceExamFieldStatusType {
   Unknown = 0,
@@ -1941,6 +2108,7 @@ export enum ProduceExamFieldStatusType {
   TurnPlayCardCountUp = 56,
   DeckCardAllNoDuplicate = 57,
   DebuffCountUp = 58,
+  TurnCardRemoveUp = 59,
 }
 export enum ProduceExamPhaseType {
   Unknown = 0,
@@ -1999,7 +2167,15 @@ export enum ProduceExamPhaseType {
   ExamStanceChangeFullPowerInterval = 57,
   ExamCardUpgradeInterval = 58,
   ExamCardDrawInterval = 59,
+  ExamCardFusion = 60,
+  ExamCardFusionAfter = 61,
+  ExamCardMoveRemove = 62,
   None = 999,
+}
+export enum ProduceExamPickFusionExchangeType {
+  Unknown = 0,
+  Normal = 1,
+  All = 2,
 }
 export enum ProduceExamResultType {
   Unknown = 0,
@@ -2051,6 +2227,7 @@ export enum ProduceParameterType {
 export enum ProducePhaseType {
   Unknown = 0,
   RecoveryStamina = 1,
+  SectionStart = 2,
   CustomizeProduceCard = 3,
   GetProducePoint = 4,
   GetProduceItem = 6,
@@ -2112,6 +2289,7 @@ export enum ProducePlanType {
   Plan1 = 2,
   Plan2 = 3,
   Plan3 = 4,
+  Plan4 = 5,
 }
 export enum ProduceProgressAuditionStatusType {
   Unknown = 0,
@@ -2133,6 +2311,10 @@ export enum ProduceProgressConditionType {
   Visual = 9,
   StepNumber = 10,
   ProduceCardSearchCount = 11,
+  VocalPermil = 12,
+  DancePermil = 13,
+  VisualPermil = 14,
+  SectionNumber = 15,
 }
 export enum ProduceProgressStatus {
   Unknown = 0,
@@ -2194,6 +2376,13 @@ export enum ProduceResourceType {
   Vote = 9,
   Star = 10,
   ProduceCustomizeItem = 11,
+  RefinePark = 12,
+  MaxStamina = 13,
+  RewardReroll = 14,
+  IdolCardProduceCard = 15,
+  SupportCardProduceCard = 16,
+  IdolCardProduceItem = 17,
+  SupportCardProduceItem = 18,
   HighScoreGold = 100,
   CardChange = 994,
   CardCustomize = 995,
@@ -2399,6 +2588,7 @@ export enum ProduceTriggerOriginType {
   DearnessStory = 9,
   ProduceCustomizeItem = 10,
   ProduceGrowthPanel = 11,
+  RefinePark = 12,
 }
 export enum ProduceType {
   Unknown = 0,
@@ -2415,6 +2605,7 @@ export enum ProducerLevelUnlockType {
   ShopProduceCardDelete = 11,
   ProduceCardSelectRerollCount = 12,
   ProduceCardExcludeCount = 13,
+  SupportCardEventProduceCardUpgrade = 14,
 }
 export enum ProducerRankingGrade {
   Unknown = 0,
@@ -2492,6 +2683,73 @@ export enum PvpRateStageType {
   _2 = 2,
   _3 = 3,
 }
+export enum RefineActionStatusType {
+  Unknown = 0,
+  Start = 1,
+  End = 2,
+}
+export enum RefineActionType {
+  Unknown = 0,
+  SelectPresent = 1,
+  SelectPresentGroup = 2,
+  SwapSubProduceCard = 3,
+}
+export enum RefineAdvType {
+  Unknown = 0,
+  Opening = 1,
+  Success = 2,
+  Failure = 3,
+}
+export enum RefineGradeType {
+  Unknown = 0,
+  Class = 1,
+  Dan = 2,
+}
+export enum RefineProgressStatusType {
+  Unknown = 0,
+  OpeningAdv = 1,
+  SectionStart = 10,
+  SectionStepSelect = 11,
+  SectionStepStart = 12,
+  SectionStepEnd = 13,
+  SectionEnd = 14,
+  Result = 90,
+  Finished = 99,
+}
+export enum RefineStartMotionType {
+  Unknown = 0,
+  Reaction = 1,
+  Wait = 2,
+}
+export enum RefineStepAuditionMotionType {
+  Unknown = 0,
+  Start = 1,
+  Result1 = 2,
+  Failure = 3,
+  PreResult = 4,
+}
+export enum RefineStepAuditionStatusType {
+  Unknown = 0,
+  Start = 1,
+  ExamEnd = 2,
+  ExamResult = 3,
+  End = 4,
+}
+export enum RefineStepLessonStatusType {
+  Unknown = 0,
+  Start = 1,
+  ExamEnd = 2,
+  ExamResult = 3,
+  End = 4,
+}
+export enum RefineStepType {
+  Unknown = 0,
+  Audition = 1,
+  Setup = 10,
+  LessonVocal = 50,
+  LessonDance = 51,
+  LessonVisual = 52,
+}
 export enum ResetTimingType {
   Unknown = 0,
   Daily = 1,
@@ -2533,6 +2791,7 @@ export enum ResourceType {
   Badge = 24,
   CompetitionPlayCount = 25,
   ProduceCardConversion = 26,
+  ProduceCardSkin = 27,
   JewelTotal = 1100,
   JewelPaidOnly = 1101,
   Set = 9999,
@@ -2566,6 +2825,7 @@ export enum ResultGradeType {
   ProduceIdolCardParameter = 5,
   ProduceVoteCount = 6,
   ProduceStar = 7,
+  RefineParameter = 8,
 }
 export enum RewardProvideType {
   Unknown = 0,
@@ -2626,6 +2886,8 @@ export enum StartupNotificationDisplayType {
   StoryCampaign = 8,
   ProduceResult = 9,
   GvgRaid = 10,
+  ProduceStart = 11,
+  Refine = 12,
 }
 export enum StartupNotificationEffectType {
   Unknown = 0,
@@ -2673,6 +2935,8 @@ export enum StoryEventType {
   BoxGasha = 2,
   MainStory = 3,
   GuildMission = 4,
+  CharacterIntroduction = 5,
+  UnitStory = 6,
 }
 export enum StoryType {
   Unknown = 0,
@@ -2686,6 +2950,7 @@ export enum StoryType {
   StoryEvent = 9,
   GvgRaid = 10,
   ProduceHighScore = 11,
+  PrologueDearnessStory = 12,
   Other = 99,
 }
 export enum SupportCardLevelLimitRank {
@@ -2761,6 +3026,12 @@ export enum TourStageIconSizeType {
   Medium = 2,
   Large = 3,
 }
+export enum TrailSquareType {
+  Unknown = 0,
+  Normal = 1,
+  Reward = 2,
+  FeatureReward = 3,
+}
 export enum TutorialCharacterVoiceType {
   Unknown = 0,
   Select = 1,
@@ -2825,6 +3096,9 @@ export enum TutorialType {
   DearnessTop = 29,
   DearnessPoint = 30,
   PrimaStella = 31,
+  GradeMission = 32,
+  Panorama = 33,
+  PanoramaLive = 34,
   ProduceIdolCardSelect = 100,
   ProduceSupportCardSelect = 101,
   ProduceMemorySelect = 102,
@@ -2884,6 +3158,24 @@ export enum TutorialType {
   Competition = 213,
   CompetitionPreOpen = 214,
   Badge = 215,
+  Trail = 216,
+  StoryEventCharacterIntroduction = 217,
+  CharacterIntroductionTips = 218,
+  StoryEventUnitStory = 219,
+  Refine = 400,
+  RefineTop = 401,
+  RefineMainMemory = 402,
+  RefineSubMemory = 403,
+  RefinePark = 404,
+  RefineScheduleStepLesson = 405,
+  RefineStepAudition = 406,
+  RefineStepLesson = 407,
+  RefineStepSetup = 408,
+  RefineActionPresentGroup = 409,
+  RefineActionSubProduceCardSwap = 410,
+  RefineRanking = 411,
+  RefineMainMemoryEdit = 412,
+  RefineSubMemoryEdit = 413,
 }
 export enum ViewAreaType {
   Unknown = 0,
