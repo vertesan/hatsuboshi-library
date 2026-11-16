@@ -3,6 +3,7 @@
   "private": true,
   "sideEffects": false,
   "type": "module",
+  "packageManager": "pnpm@12.18.0",
   "scripts": {
     "build": "remix vite:build",
     "preview": "vite preview",
