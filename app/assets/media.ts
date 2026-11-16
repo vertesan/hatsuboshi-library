@@ -191,6 +191,8 @@ const extraEffectNameMap: { [x: number]: ProduceExamEffectType } = {
   [ProduceExamEffectType.ExamLessonDependPlayCardCountSum]: ProduceExamEffectType.ExamLesson,
   [ProduceExamEffectType.ExamMultipleEnthusiasticLesson]: ProduceExamEffectType.ExamLesson,
   [ProduceExamEffectType.ExamLessonAddMultipleParameterBuff]: ProduceExamEffectType.ExamLesson,
+  [ProduceExamEffectType.ExamEffectTimerEndTurn]: ProduceExamEffectType.ExamEffectTimer,
+  [ProduceExamEffectType.ExamStaminaReduceFixAffected]: ProduceExamEffectType.ExamStaminaRecoverFix,
 }
 
 const extraGrowEffectNameMap: { [x: number]: ProduceExamEffectType } = {
@@ -417,6 +419,9 @@ export const buffTypeBackground = {
   [ProduceExamEffectType.ExamCardShuffleDeckLost]: buffBgBlue,
   [ProduceExamEffectType.ExamFullPowerPointDependFullPowerPointGetSum]: buffBgBlue,
   [ProduceExamEffectType.ExamStatusEnchantEncore]: buffBgYellow,
+  [ProduceExamEffectType.ExamStaminaReduceFixAffected]: buffBgRed,
+  [ProduceExamEffectType.ExamMetamorphose]: buffBgBlue,
+  [ProduceExamEffectType.ExamMetamorphoseAfter]: buffBgBlue,
 }
 
 export const growBuffTypeBackground = {

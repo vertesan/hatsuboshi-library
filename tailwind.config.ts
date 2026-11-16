@@ -6,7 +6,7 @@ export default {
     "./node_modules/primereact/**/*.{js,ts,jsx,tsx}",
   ],
   safelist: [{
-    pattern: /(from|to|bg)-(amao|atbm|fktn|hmsz|hrnm|hski|hume|jkno|jsna|kcna|kllj|nasr|other|shro|ssmk|ttmr|user)-(main|acc2)/,
+    pattern: /(from|to|bg)-(amao|atbm|fktn|hmsz|hrnm|hski|hume|jkno|jsna|kcna|kllj|nasr|other|shro|ssmk|ttmr|hkne|user)-(main|acc2)/,
   }],
   theme: {
     extend: {
@@ -46,6 +46,8 @@ export default {
         'ssmk-acc2': '#CEE21D',
         'ttmr-main': '#27B4EB',
         'ttmr-acc2': '#87E9E2',
+        'hkne-main': '#0DB384',
+        'hkne-acc2': '#C1FF9A',
         'user-main': '#988D83',
         'user-acc2': '#988D83',
       },

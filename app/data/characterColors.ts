@@ -111,6 +111,13 @@ export const charaColors = {
     textColor: "009FDD",
     labelTextColor: "FFFFFF",
   },
+  hkne: {
+    mainColor: "0DB384",
+    gradientColor1: "0DB384",
+    gradientColor2: "C1FF9A",
+    textColor: "0DB384",
+    labelTextColor: "FFFFFF",
+  },
   user: {
     mainColor: "988D83",
     gradientColor1: "988D83",
