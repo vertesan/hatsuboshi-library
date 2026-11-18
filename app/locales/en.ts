@@ -317,6 +317,7 @@ const translation = {
       en: "English",
       "zh-Hans": "简体中文",
       "ja": "日本語",
+      "es": "Español",
     },
   },
 }
